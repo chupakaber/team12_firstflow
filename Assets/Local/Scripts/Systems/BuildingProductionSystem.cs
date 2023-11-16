@@ -8,7 +8,7 @@ namespace Scripts
     public class BuildingProductionSystem
     {
         public List<Building> Buildings = new List<Building>();
-        public CraftSystem CraftSystem;
+        public EventBus EventBus;
         public Character character;
 
         
@@ -24,7 +24,10 @@ namespace Scripts
             {
                 if (Time.time >= building.LastProductionTime + 1f && building.IsWork)
                 {
-                    CraftSystem.AddItem(building.ItemType, 1, character);
+                    //Заменяем вызов AddItem на создание события
+                    var addItemEvent = new AddItemEvent() {ItemType = building.ItemType, Count = 1, Character = character};
+                    EventBus.CallEvent(addItemEvent);
+                    //CraftSystem.AddItem(building.ItemType, 1, character);
                     Debug.Log("создал");
                     building.LastProductionTime = Time.time;
                 }

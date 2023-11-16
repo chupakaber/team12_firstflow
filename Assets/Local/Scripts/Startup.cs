@@ -1,4 +1,6 @@
 using Scripts.Systems;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Scripts
@@ -11,14 +13,16 @@ namespace Scripts
         public BuildingProductionSystem buildingProductionSystem;
         public CameraFollowSystem cameraFollowSystem;
         public CraftSystem craftSystem;
+        public EventBus eventBus = new EventBus();
 
         [SerializeField] private Camera _mainCamera;
 
         public void Start()
-        {
+        {            
             character = FindObjectOfType<Character>();
 
             playerMovementSystem = new PlayerMovementSystem();
+            playerMovementSystem.Character = character;
 
             playerInputSystem = new PlayerInputSystem();
             playerInputSystem.Character = character;
@@ -27,7 +31,7 @@ namespace Scripts
             craftSystem = new CraftSystem();
 
             buildingProductionSystem = new BuildingProductionSystem();
-            buildingProductionSystem.CraftSystem = craftSystem;
+            buildingProductionSystem.EventBus = eventBus;
             buildingProductionSystem.character = character;
             buildingProductionSystem.Init();
 
@@ -36,7 +40,8 @@ namespace Scripts
             cameraFollowSystem.Character = character;
             cameraFollowSystem.Init();
 
-
+            eventBus.Systems.Add(craftSystem);
+            eventBus.Systems.Add(playerMovementSystem);
         }
 
 
@@ -47,7 +52,7 @@ namespace Scripts
 
         public void FixedUpdate()
         {
-            playerMovementSystem.Movement(character);
+            eventBus.CallEvent(new FixedUpdateEvent());
 
             buildingProductionSystem.Production();
 

@@ -1,8 +1,17 @@
 ﻿namespace Scripts
 {
-    public class PlayerMovementSystem
+    public class PlayerMovementSystem: ISystem
     {
-        public void Movement(Character character)
+        public Character Character;
+        public void EventCatch(IEvent newEvent)
+        {
+            if (newEvent is FixedUpdateEvent)
+            {
+                Movement(Character);
+            }
+        }
+
+        private void Movement(Character character)
         {
             character.CharacterRigidbody.velocity = character.WorldDirection * character.Speed;
         }
