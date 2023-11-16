@@ -1,17 +1,16 @@
-using Assets.Local.Scripts;
-using System;
+using Scripts.Systems;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Scripts
 {
     public class Startup : MonoBehaviour
-    {        
+    {
         public Character character;
         public PlayerMovementSystem playerMovementSystem;
         public PlayerInputSystem playerInputSystem;
         public BuildingProductionSystem buildingProductionSystem;
         public CameraFollowSystem cameraFollowSystem;
+        public CraftSystem craftSystem;
 
         [SerializeField] private Camera _mainCamera;
 
@@ -25,13 +24,18 @@ namespace Scripts
             playerInputSystem.Character = character;
             playerInputSystem.Init();
 
+            craftSystem = new CraftSystem();
+
             buildingProductionSystem = new BuildingProductionSystem();
+            buildingProductionSystem.CraftSystem = craftSystem;
+            buildingProductionSystem.character = character;
             buildingProductionSystem.Init();
 
             cameraFollowSystem = new CameraFollowSystem();
             cameraFollowSystem.Camera = _mainCamera;
             cameraFollowSystem.Character = character;
             cameraFollowSystem.Init();
+
 
         }
 
@@ -49,7 +53,7 @@ namespace Scripts
 
             foreach (var building in buildingProductionSystem.Buildings)
             {
-               building.IsWork = character.CollidedWith != null && character.CollidedWith.Equals(building.ProductionArea);                
+                building.IsWork = character.CollidedWith != null && character.CollidedWith.Equals(building.ProductionArea);
             }
         }
     }

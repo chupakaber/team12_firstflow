@@ -1,11 +1,13 @@
-﻿using UnityEngine;
+﻿using Scripts.Enums;
+using UnityEngine;
 
-namespace Assets.Local.Scripts
+namespace Scripts
 {
     public class Building: MonoBehaviour
     {
         public Collider ProductionArea;
         public float LastProductionTime;
         public bool IsWork;
+        public ItemType ItemType;
     }
 }
