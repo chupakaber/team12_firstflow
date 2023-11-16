@@ -11,6 +11,9 @@ namespace Scripts
         public PlayerMovementSystem playerMovementSystem;
         public PlayerInputSystem playerInputSystem;
         public BuildingProductionSystem buildingProductionSystem;
+        public CameraFollowSystem cameraFollowSystem;
+
+        [SerializeField] private Camera _mainCamera;
 
         public void Start()
         {
@@ -24,12 +27,18 @@ namespace Scripts
 
             buildingProductionSystem = new BuildingProductionSystem();
             buildingProductionSystem.Init();
+
+            cameraFollowSystem = new CameraFollowSystem();
+            cameraFollowSystem.Camera = _mainCamera;
+            cameraFollowSystem.Character = character;
+            cameraFollowSystem.Init();
+
         }
 
 
         public void Update()
         {
-
+            cameraFollowSystem.CameraMovement();
         }
 
         public void FixedUpdate()
