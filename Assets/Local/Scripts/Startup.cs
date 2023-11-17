@@ -1,65 +1,52 @@
 using Scripts.Systems;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Scripts
 {
     public class Startup : MonoBehaviour
     {
-        public Character character;
-        public PlayerMovementSystem playerMovementSystem;
-        public PlayerInputSystem playerInputSystem;
-        public BuildingProductionSystem buildingProductionSystem;
-        public CameraFollowSystem cameraFollowSystem;
-        public CraftSystem craftSystem;
-        public EventBus eventBus = new EventBus();
-
         [SerializeField] private Camera _mainCamera;
+        [SerializeField] private Character _character;
+        public PlayerMovementSystem playerMovementSystem = new PlayerMovementSystem();
+        public PlayerInputSystem playerInputSystem = new PlayerInputSystem();
+        public BuildingProductionSystem buildingProductionSystem = new BuildingProductionSystem();
+        public CameraFollowSystem cameraFollowSystem = new CameraFollowSystem();
+        public CraftSystem craftSystem = new CraftSystem();
+        public EventBus eventBus = new EventBus();
+        public DIContainer container = new DIContainer();
+
 
         public void Start()
-        {            
-            character = FindObjectOfType<Character>();
+        {
+            AddSystem(craftSystem);
+            AddSystem(playerMovementSystem);
+            AddSystem(buildingProductionSystem);
+            AddSystem(playerInputSystem);
+            AddSystem(cameraFollowSystem);
 
-            playerMovementSystem = new PlayerMovementSystem();
-            playerMovementSystem.Character = character;
+            container.AddLink(eventBus, "EventBus");
+            container.AddLink(_character, "Character");
+            container.AddLink(_mainCamera, "Camera");
+            container.Init();
+            eventBus.Init();
 
-            playerInputSystem = new PlayerInputSystem();
-            playerInputSystem.Character = character;
-            playerInputSystem.Init();
-
-            craftSystem = new CraftSystem();
-
-            buildingProductionSystem = new BuildingProductionSystem();
-            buildingProductionSystem.EventBus = eventBus;
-            buildingProductionSystem.character = character;
-            buildingProductionSystem.Init();
-
-            cameraFollowSystem = new CameraFollowSystem();
-            cameraFollowSystem.Camera = _mainCamera;
-            cameraFollowSystem.Character = character;
-            cameraFollowSystem.Init();
-
-            eventBus.Systems.Add(craftSystem);
-            eventBus.Systems.Add(playerMovementSystem);
+            eventBus.CallEvent(new StartEvent());
         }
-
 
         public void Update()
         {
-            cameraFollowSystem.CameraMovement();
+            eventBus.CallEvent(new UpdateEvent());
         }
 
         public void FixedUpdate()
         {
             eventBus.CallEvent(new FixedUpdateEvent());
+        }
 
-            buildingProductionSystem.Production();
-
-            foreach (var building in buildingProductionSystem.Buildings)
-            {
-                building.IsWork = character.CollidedWith != null && character.CollidedWith.Equals(building.ProductionArea);
-            }
+        private void AddSystem(ISystem system)
+        {
+            eventBus.Systems.Add(system);
+            container.AddSystem(system);
         }
     }
 }
