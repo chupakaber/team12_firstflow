@@ -1,4 +1,5 @@
 using Scripts.Systems;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Scripts
@@ -7,13 +8,16 @@ namespace Scripts
     {
         [SerializeField] private Camera _mainCamera;
         [SerializeField] private Character _character;
-        public PlayerMovementSystem playerMovementSystem = new PlayerMovementSystem();
-        public PlayerInputSystem playerInputSystem = new PlayerInputSystem();
-        public BuildingProductionSystem buildingProductionSystem = new BuildingProductionSystem();
-        public CameraFollowSystem cameraFollowSystem = new CameraFollowSystem();
-        public CraftSystem craftSystem = new CraftSystem();
-        public EventBus eventBus = new EventBus();
-        public DIContainer container = new DIContainer();
+        private PlayerMovementSystem playerMovementSystem = new PlayerMovementSystem();
+        private PlayerInputSystem playerInputSystem = new PlayerInputSystem();
+        private BuildingProductionSystem buildingProductionSystem = new BuildingProductionSystem();
+        private CameraFollowSystem cameraFollowSystem = new CameraFollowSystem();
+        private CraftSystem craftSystem = new CraftSystem();
+        private BuildingCollectingSystem buildingCollectingSystem = new BuildingCollectingSystem();
+        private RemoveItemSystem removeItemSystem = new RemoveItemSystem();
+        private EventBus eventBus = new EventBus();
+        private DIContainer container = new DIContainer();
+        private List<Building> Buildings = new List<Building>();
 
 
         public void Start()
@@ -23,10 +27,13 @@ namespace Scripts
             AddSystem(buildingProductionSystem);
             AddSystem(playerInputSystem);
             AddSystem(cameraFollowSystem);
+            AddSystem(buildingCollectingSystem);
+            AddSystem(removeItemSystem);
 
             container.AddLink(eventBus, "EventBus");
             container.AddLink(_character, "Character");
             container.AddLink(_mainCamera, "Camera");
+            container.AddLink(Buildings, "Buildings");
             container.Init();
             eventBus.Init();
 

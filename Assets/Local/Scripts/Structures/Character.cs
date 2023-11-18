@@ -10,7 +10,9 @@ namespace Scripts
         public Vector3 WorldDirection;
         public float Speed;
         public Collider CollidedWith;
-        [SerializeField] public Dictionary<ItemType, int> Items = new Dictionary<ItemType, int>();
+        public ItemStack Items = new ItemStack();
+        public ItemStackView ItemStackView;
+        public float LastMoveItemTime;
 
         public void OnTriggerEnter(Collider other)
         {
@@ -29,12 +31,19 @@ namespace Scripts
 
         public void AddItem(ItemType type, int count)
         {
-            if (!Items.TryAdd(type, count))
+            Items.AddItem(type, count);
+
+            foreach (var item in Items) 
             {
-                Items[type] += count;
+                Debug.Log($"Кол-во {item.Type} равно {item.Amount}");
+            }           
+        }
+
+        public void RemoveItem(ItemType type, int count) 
+        {
+            {
+                Items.RemoveItem(type, count);
             }
-                Debug.Log($"Кол-во {type} равно {Items[type]}");
-            
         }
     }
 }
