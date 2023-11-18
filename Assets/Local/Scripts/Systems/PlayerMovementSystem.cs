@@ -6,7 +6,10 @@
 
         public void EventCatch(FixedUpdateEvent newEvent)
         {
-            Character.CharacterRigidbody.velocity = Character.WorldDirection * Character.Speed;
+            var newCharacterVelocity = Character.WorldDirection * Character.Speed;
+            newCharacterVelocity.y = Character.CharacterRigidbody.velocity.y;
+
+            Character.CharacterRigidbody.velocity = newCharacterVelocity;
         }
     }
 }
