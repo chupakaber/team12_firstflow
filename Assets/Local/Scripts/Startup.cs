@@ -6,59 +6,62 @@ namespace Scripts
 {
     public class Startup : MonoBehaviour
     {
-        [SerializeField] private Camera _mainCamera;
-        [SerializeField] private List<Character> _characters;
-        private PlayerMovementSystem playerMovementSystem = new PlayerMovementSystem();
-        private PlayerInputSystem playerInputSystem = new PlayerInputSystem();
-        private BuildingProductionSystem buildingProductionSystem = new BuildingProductionSystem();
-        private CameraFollowSystem cameraFollowSystem = new CameraFollowSystem();
-        private CraftSystem craftSystem = new CraftSystem();
-        private BuildingCollectingSystem buildingCollectingSystem = new BuildingCollectingSystem();
-        private RemoveItemSystem removeItemSystem = new RemoveItemSystem();
-        private PickUpSystem pickUpSystem = new PickUpSystem();
-        private TriggerSystem triggerSystem = new TriggerSystem();
-        private EventBus eventBus = new EventBus();
-        private DIContainer container = new DIContainer();
-        private List<Building> Buildings = new List<Building>();
+        private Camera _mainCamera;
+        private EventBus _eventBus = new EventBus();
+        private DIContainer _container = new DIContainer();
 
+        private List<Character> _characters = new List<Character>();
+        private List<Building> _buildings = new List<Building>();
+
+        private PlayerMovementSystem _playerMovementSystem = new PlayerMovementSystem();
+        private PlayerInputSystem _playerInputSystem = new PlayerInputSystem();
+        private BuildingProductionSystem _buildingProductionSystem = new BuildingProductionSystem();
+        private CameraFollowSystem _cameraFollowSystem = new CameraFollowSystem();
+        private CraftSystem _craftSystem = new CraftSystem();
+        private BuildingCollectingSystem _buildingCollectingSystem = new BuildingCollectingSystem();
+        private RemoveItemSystem _removeItemSystem = new RemoveItemSystem();
+        private PickUpSystem _pickUpSystem = new PickUpSystem();
+        private TriggerSystem _triggerSystem = new TriggerSystem();
 
         public void Start()
         {
-            _characters.Add(Object.FindObjectOfType<Character>());
-            AddSystem(craftSystem);
-            AddSystem(playerMovementSystem);
-            AddSystem(buildingProductionSystem);
-            AddSystem(playerInputSystem);
-            AddSystem(cameraFollowSystem);
-            AddSystem(buildingCollectingSystem);
-            AddSystem(removeItemSystem);
-            AddSystem(pickUpSystem);
-            AddSystem(triggerSystem);
+            _mainCamera = Camera.main;
+            _characters.Add(FindObjectOfType<Character>());
 
-            container.AddLink(eventBus, "EventBus");
-            container.AddLink(_characters, "Characters");
-            container.AddLink(_mainCamera, "Camera");
-            container.AddLink(Buildings, "Buildings");
-            container.Init();
-            eventBus.Init();
+            AddSystem(_craftSystem);
+            AddSystem(_playerMovementSystem);
+            AddSystem(_buildingProductionSystem);
+            AddSystem(_playerInputSystem);
+            AddSystem(_cameraFollowSystem);
+            AddSystem(_buildingCollectingSystem);
+            AddSystem(_removeItemSystem);
+            AddSystem(_pickUpSystem);
+            AddSystem(_triggerSystem);
 
-            eventBus.CallEvent(new StartEvent());
+            _container.AddLink(_eventBus, "EventBus");
+            _container.AddLink(_characters, "Characters");
+            _container.AddLink(_mainCamera, "Camera");
+            _container.AddLink(_buildings, "Buildings");
+            _container.Init();
+            _eventBus.Init();
+
+            _eventBus.CallEvent(new StartEvent());
         }
 
         public void Update()
         {
-            eventBus.CallEvent(new UpdateEvent());
+            _eventBus.CallEvent(new UpdateEvent());
         }
 
         public void FixedUpdate()
         {
-            eventBus.CallEvent(new FixedUpdateEvent());
+            _eventBus.CallEvent(new FixedUpdateEvent());
         }
 
         private void AddSystem(ISystem system)
         {
-            eventBus.Systems.Add(system);
-            container.AddSystem(system);
+            _eventBus.Systems.Add(system);
+            _container.AddSystem(system);
         }
     }
 }
