@@ -1,20 +1,16 @@
 ﻿using Scripts.Enums;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Scripts
 {
     public class ItemStack: IEnumerable<Item>
     {
-        private List<Item> Items = new List<Item>();
+        private List<Item> _items = new List<Item>();
 
         public void AddItem(ItemType type, int amount = 1)
         {
-            foreach(var item in Items)
+            foreach(var item in _items)
             {
                 if (type.Equals(item.Type))
                 {
@@ -23,12 +19,12 @@ namespace Scripts
                 }
             }
             var newItem = new Item() { Amount = amount, Type = type};
-            Items.Add(newItem);
+            _items.Add(newItem);
         }
 
         public bool RemoveItem(ItemType type, int amount = 1)
         {
-            foreach (var item in Items)
+            foreach (var item in _items)
             {
                 if (type.Equals(item.Type))
                 {
@@ -46,21 +42,43 @@ namespace Scripts
             return false;
         }
 
+        public int GetAmount(ItemType type)
+        {
+            foreach (var item in _items)
+            {
+                if (type.Equals(item.Type))
+                {
+                    return item.Amount;
+                }
+            }
+            return 0; 
+        }
+
+        public int GetAmount()
+        {
+            var amount = 0;
+            foreach (var item in _items)
+            {
+                amount += item.Amount;
+            }
+            return amount;
+        }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return Items.GetEnumerator();
+            return _items.GetEnumerator();
         }
 
         public IEnumerator<Item> GetEnumerator()
         {
-             return Items.GetEnumerator();
+             return _items.GetEnumerator();
         }
     }
-        public class Item
-        {
-            public int Amount;
-            public ItemType Type;
-        }
+    public class Item
+    {
+        public int Amount;
+        public ItemType Type;
+    }
 
     
 }

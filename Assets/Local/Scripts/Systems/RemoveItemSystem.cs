@@ -4,9 +4,9 @@
     {
         public void EventCatch(RemoveItemEvent newEvent)
         {
-            newEvent.Character.RemoveItem(newEvent.ItemType, newEvent.Count);
+            newEvent.Unit.RemoveItem(newEvent.ItemType, newEvent.Count);
 
-            newEvent.Character.ItemStackView.RemoveItem(newEvent.ItemType);
+            newEvent.Unit.ItemStackView.RemoveItem(newEvent.ItemType, newEvent.Count);
         }
 
     }

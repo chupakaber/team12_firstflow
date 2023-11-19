@@ -1,15 +1,20 @@
-﻿namespace Scripts
+﻿using System.Collections.Generic;
+
+namespace Scripts
 {
     public class PlayerMovementSystem: ISystem
     {
-        public Character Character;
+        public List<Character> Characters;
 
         public void EventCatch(FixedUpdateEvent newEvent)
         {
-            var newCharacterVelocity = Character.WorldDirection * Character.Speed;
-            newCharacterVelocity.y = Character.CharacterRigidbody.velocity.y;
+            foreach (Character character in Characters)
+            {
+                var newCharacterVelocity = character.WorldDirection * character.Speed;
+                newCharacterVelocity.y = character.CharacterRigidbody.velocity.y;
 
-            Character.CharacterRigidbody.velocity = newCharacterVelocity;
+                character.CharacterRigidbody.velocity = newCharacterVelocity;
+            }
         }
     }
 }

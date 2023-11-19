@@ -31,16 +31,23 @@ namespace Scripts
             SortItems();
         }
 
-        public void RemoveItem(ItemType itemType)
+        public void RemoveItem(ItemType itemType, int removeCount)
         {
-            foreach (var item in items) 
+            int a = 0;
+            for (var i = 0; i < items.Count; i++) 
             {
+                var item = items[i];
                 if (item.ItemType == itemType)
                 {
                     items.Remove(item);
                     Destroy(item.gameObject);
                     SortItems();
-                    return;
+                    i--;
+                    a++;
+                    if(a >= removeCount) 
+                    { 
+                        return; 
+                    }
                 }
             }
         }

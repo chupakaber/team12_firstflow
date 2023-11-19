@@ -6,6 +6,6 @@ namespace Scripts
     {
         public ItemType ItemType;
         public int Count;
-        public Character Character;
+        public Unit Unit;
     }
 }

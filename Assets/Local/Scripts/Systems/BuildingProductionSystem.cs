@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Scripts
@@ -6,7 +7,6 @@ namespace Scripts
     public class BuildingProductionSystem: ISystem
     {
         public EventBus EventBus;
-        public Character Character;
 
         public List<Building> Buildings;
 
@@ -19,26 +19,54 @@ namespace Scripts
             }
         }
 
-        public void EventCatch(FixedUpdateEvent newEvent)
+        public void EventCatch(EnterTriggerEvent newEvent)
         {
-            Production();
-
             foreach (var building in Buildings)
             {
-                building.IsWork = Character.CollidedWith != null && Character.CollidedWith.Equals(building.ProductionArea);
+                if (newEvent.Trigger.Equals(building.ProductionArea))
+                {
+                    building.ProductionCharacters.Add(newEvent.Character);
+                }
             }
         }
 
-        private void Production()
+        public void EventCatch(ExitTriggerEvent newEvent)
         {
             foreach (var building in Buildings)
             {
-                if (Time.time >= building.LastProductionTime + 1f && building.IsWork)
+                if (newEvent.Trigger.Equals(building.ProductionArea))
                 {
-                    var addItemEvent = new AddItemEvent() {ItemType = building.ProduceItemType, Count = 1, Character = Character};
-                    EventBus.CallEvent(addItemEvent);
-                    building.LastProductionTime = Time.time;
+                    building.ProductionCharacters.Remove(newEvent.Character);
                 }
+            }
+        }
+
+        public void EventCatch(FixedUpdateEvent newEvent)
+        {
+            foreach (var building in Buildings)
+            {
+                if (Time.time >= building.LastProductionTime + 1f)
+                {
+                    if(building.ProductionArea == null || building.ProductionCharacters.Count > 0)
+                    {
+                        if (building.ItemCost <= building.Items.GetAmount(building.ConsumeItemType))
+                        {
+                            if(building.ProductionLimit > building.Items.GetAmount(building.ProduceItemType))
+                            {
+                                var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = 1, Unit = building };
+                                EventBus.CallEvent(addItemEvent);
+
+                                if (building.ItemCost > 0)
+                                {
+                                    var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = building.ItemCost, Unit = building };
+                                    EventBus.CallEvent(removeItemEvent);
+                                }
+
+                                building.LastProductionTime = Time.time;
+                            }
+                        }
+                    }
+                }  
             }
         }
     }

@@ -7,7 +7,7 @@ namespace Scripts
     public class Startup : MonoBehaviour
     {
         [SerializeField] private Camera _mainCamera;
-        [SerializeField] private Character _character;
+        [SerializeField] private List<Character> _characters;
         private PlayerMovementSystem playerMovementSystem = new PlayerMovementSystem();
         private PlayerInputSystem playerInputSystem = new PlayerInputSystem();
         private BuildingProductionSystem buildingProductionSystem = new BuildingProductionSystem();
@@ -15,6 +15,8 @@ namespace Scripts
         private CraftSystem craftSystem = new CraftSystem();
         private BuildingCollectingSystem buildingCollectingSystem = new BuildingCollectingSystem();
         private RemoveItemSystem removeItemSystem = new RemoveItemSystem();
+        private PickUpSystem pickUpSystem = new PickUpSystem();
+        private TriggerSystem triggerSystem = new TriggerSystem();
         private EventBus eventBus = new EventBus();
         private DIContainer container = new DIContainer();
         private List<Building> Buildings = new List<Building>();
@@ -22,6 +24,7 @@ namespace Scripts
 
         public void Start()
         {
+            _characters.Add(Object.FindObjectOfType<Character>());
             AddSystem(craftSystem);
             AddSystem(playerMovementSystem);
             AddSystem(buildingProductionSystem);
@@ -29,9 +32,11 @@ namespace Scripts
             AddSystem(cameraFollowSystem);
             AddSystem(buildingCollectingSystem);
             AddSystem(removeItemSystem);
+            AddSystem(pickUpSystem);
+            AddSystem(triggerSystem);
 
             container.AddLink(eventBus, "EventBus");
-            container.AddLink(_character, "Character");
+            container.AddLink(_characters, "Characters");
             container.AddLink(_mainCamera, "Camera");
             container.AddLink(Buildings, "Buildings");
             container.Init();

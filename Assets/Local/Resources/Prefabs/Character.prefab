@@ -149,11 +149,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2dbe0ca16073f844a3cdfdd01e86b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemStackView: {fileID: 2898372853111570114}
   CharacterRigidbody: {fileID: 7473274180135748190}
   WorldDirection: {x: 0, y: 0, z: 0}
   Speed: 5
-  CollidedWith: {fileID: 0}
-  ItemStackView: {fileID: 2898372853111570114}
+  LastMoveItemTime: 0
+  IsPlayer: 1
+  ItemLimit: 15
 --- !u!1 &6579943441222713213
 GameObject:
   m_ObjectHideFlags: 0
