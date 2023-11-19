@@ -278,16 +278,18 @@ MonoBehaviour:
   UnloadingArea: {fileID: 0}
   PickingUpArea: {fileID: 1583323114164913259}
   UpgradeArea: {fileID: 3124377016976236655}
-  LastProductionTime: -1
   ProductionLimit: 10
   ResourceLimit: 0
   ItemCost: 0
+  ProductionAmountPerCycle: 1
+  ProductionCooldown: 1
   ProduceItemType: 1
   ConsumeItemType: 0
   ProductionCharacters: []
   UnloadingCharacters: []
   PickingUpCharacters: []
   UpgradeCharacters: []
+  LastProductionTime: -1
 --- !u!1 &9012902921280766969
 GameObject:
   m_ObjectHideFlags: 0

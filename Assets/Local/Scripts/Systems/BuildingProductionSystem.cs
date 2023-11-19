@@ -26,6 +26,7 @@ namespace Scripts
                 if (newEvent.Trigger.Equals(building.ProductionArea))
                 {
                     building.ProductionCharacters.Add(newEvent.Character);
+                    building.LastProductionTime = Time.time;
                 }
             }
         }
@@ -37,6 +38,7 @@ namespace Scripts
                 if (newEvent.Trigger.Equals(building.ProductionArea))
                 {
                     building.ProductionCharacters.Remove(newEvent.Character);
+                    building.LastProductionTime = Time.time;
                 }
             }
         }
@@ -45,15 +47,26 @@ namespace Scripts
         {
             foreach (var building in Buildings)
             {
-                if (Time.time >= building.LastProductionTime + 1f)
+                if (Time.time >= building.LastProductionTime + building.ProductionCooldown)
                 {
+                    foreach (var character in building.ProductionCharacters) {
+                        if (character.CharacterRigidbody.velocity.sqrMagnitude > 0.1f) {
+                            building.LastProductionTime = Time.time;
+                            break;
+                        }
+                    }
+
+                    if (Time.time < building.LastProductionTime + building.ProductionCooldown) {
+                        break;
+                    }
+
                     if(building.ProductionArea == null || building.ProductionCharacters.Count > 0)
                     {
                         if (building.ItemCost <= building.Items.GetAmount(building.ConsumeItemType))
                         {
-                            if(building.ProductionLimit > building.Items.GetAmount(building.ProduceItemType))
+                            if(building.ProductionLimit >= building.Items.GetAmount(building.ProduceItemType) + building.ProductionAmountPerCycle)
                             {
-                                var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = 1, Unit = building };
+                                var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = building.ProductionAmountPerCycle, Unit = building };
                                 EventBus.CallEvent(addItemEvent);
 
                                 if (building.ItemCost > 0)

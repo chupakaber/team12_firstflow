@@ -44,14 +44,15 @@ namespace Scripts
 
         private void PickUp(Building building, Character character)
         {
-            if (Time.time >= character.LastMoveItemTime + 1f)
+            var itemsMoveAmount = 1;
+            if (Time.time >= character.LastMoveItemTime + character.PickUpCooldown)
             {
-                if (character.ItemLimit >= character.Items.GetAmount() + 1)
+                if (character.ItemLimit >= character.Items.GetAmount() + itemsMoveAmount)
                 {
-                    if (building.Items.GetAmount(building.ProduceItemType) >= 1)
+                    if (building.Items.GetAmount(building.ProduceItemType) >= itemsMoveAmount)
                     {
-                        var removeItemEvent = new RemoveItemEvent() { ItemType = building.ProduceItemType, Count = 1, Unit = building };
-                        var addItemEvent = new AddItemEvent() { Count = 1, ItemType = building.ProduceItemType, Unit = character };
+                        var removeItemEvent = new RemoveItemEvent() { ItemType = building.ProduceItemType, Count = itemsMoveAmount, Unit = building };
+                        var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = itemsMoveAmount, Unit = character };
                         EventBus.CallEvent(removeItemEvent);
                         EventBus.CallEvent(addItemEvent);
                         character.LastMoveItemTime = Time.time;

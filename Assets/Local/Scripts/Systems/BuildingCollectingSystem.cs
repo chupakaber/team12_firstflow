@@ -47,15 +47,21 @@ namespace Scripts
         }
 
         private void Collecting(Building building, Character character)
-        {            
-            if (Time.time >= character.LastMoveItemTime + 1f)
+        {
+            var itemsMovingAmount = 1;
+            
+            if (character.CharacterRigidbody.velocity.sqrMagnitude > 0.1f) {
+                character.LastMoveItemTime = Time.time;
+            }
+
+            if (Time.time >= character.LastMoveItemTime + character.PickUpCooldown)
             {
-                if (character.Items.GetAmount(building.ConsumeItemType) >= 1)
+                if (character.Items.GetAmount(building.ConsumeItemType) >= itemsMovingAmount)
                 {
                     if (building.Items.GetAmount(building.ConsumeItemType) < building.ResourceLimit)
                     {
-                        var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = 1, Unit = character };
-                        var addItemEvent = new AddItemEvent() { Count = 1, ItemType = building.ConsumeItemType, Unit = building };
+                        var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = itemsMovingAmount, Unit = character };
+                        var addItemEvent = new AddItemEvent() { ItemType = building.ConsumeItemType, Count = itemsMovingAmount, Unit = building };
                         EventBus.CallEvent(removeItemEvent);
                         EventBus.CallEvent(addItemEvent);
                         character.LastMoveItemTime = Time.time;

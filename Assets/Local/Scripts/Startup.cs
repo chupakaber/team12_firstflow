@@ -17,7 +17,7 @@ namespace Scripts
         private PlayerInputSystem _playerInputSystem = new PlayerInputSystem();
         private BuildingProductionSystem _buildingProductionSystem = new BuildingProductionSystem();
         private CameraFollowSystem _cameraFollowSystem = new CameraFollowSystem();
-        private CraftSystem _craftSystem = new CraftSystem();
+        private AddItemSystem _craftSystem = new AddItemSystem();
         private BuildingCollectingSystem _buildingCollectingSystem = new BuildingCollectingSystem();
         private RemoveItemSystem _removeItemSystem = new RemoveItemSystem();
         private PickUpSystem _pickUpSystem = new PickUpSystem();

@@ -151,11 +151,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemStackView: {fileID: 2898372853111570114}
   CharacterRigidbody: {fileID: 7473274180135748190}
-  WorldDirection: {x: 0, y: 0, z: 0}
   Speed: 5
-  LastMoveItemTime: 0
   IsPlayer: 1
   ItemLimit: 15
+  PickUpCooldown: 0.2
+  WorldDirection: {x: 0, y: 0, z: 0}
+  LastMoveItemTime: 0
 --- !u!1 &6579943441222713213
 GameObject:
   m_ObjectHideFlags: 0
