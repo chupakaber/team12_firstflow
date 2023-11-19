@@ -49,8 +49,9 @@ namespace Scripts
         private void Collecting(Building building, Character character)
         {
             var itemsMovingAmount = 1;
-            
-            if (character.CharacterRigidbody.velocity.sqrMagnitude > 0.1f) {
+
+            if (character.CharacterRigidbody.velocity.sqrMagnitude > 0.1f)
+            {
                 character.LastMoveItemTime = Time.time;
             }
 

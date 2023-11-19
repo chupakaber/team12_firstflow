@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Scripts
 {
-    public class PlayerMovementSystem: ISystem
+    public class CharacterMovementSystem: ISystem
     {
         public List<Character> Characters;
 
@@ -14,6 +15,11 @@ namespace Scripts
                 newCharacterVelocity.y = character.CharacterRigidbody.velocity.y;
 
                 character.CharacterRigidbody.velocity = newCharacterVelocity;
+
+                if (character.WorldDirection.sqrMagnitude > 0.1f)
+                {
+                    character.transform.rotation = Quaternion.Lerp(character.transform.rotation, Quaternion.LookRotation(character.WorldDirection), Time.fixedDeltaTime * 10f);
+                }
             }
         }
     }

@@ -49,14 +49,17 @@ namespace Scripts
             {
                 if (Time.time >= building.LastProductionTime + building.ProductionCooldown)
                 {
-                    foreach (var character in building.ProductionCharacters) {
-                        if (character.CharacterRigidbody.velocity.sqrMagnitude > 0.1f) {
+                    foreach (var character in building.ProductionCharacters)
+                    {
+                        if (character.CharacterRigidbody.velocity.sqrMagnitude > 0.1f)
+                        {
                             building.LastProductionTime = Time.time;
                             break;
                         }
                     }
 
-                    if (Time.time < building.LastProductionTime + building.ProductionCooldown) {
+                    if (Time.time < building.LastProductionTime + building.ProductionCooldown)
+                    {
                         break;
                     }
 

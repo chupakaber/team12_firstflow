@@ -13,7 +13,7 @@ namespace Scripts
         private List<Character> _characters = new List<Character>();
         private List<Building> _buildings = new List<Building>();
 
-        private PlayerMovementSystem _playerMovementSystem = new PlayerMovementSystem();
+        private CharacterMovementSystem _playerMovementSystem = new CharacterMovementSystem();
         private PlayerInputSystem _playerInputSystem = new PlayerInputSystem();
         private BuildingProductionSystem _buildingProductionSystem = new BuildingProductionSystem();
         private CameraFollowSystem _cameraFollowSystem = new CameraFollowSystem();
