@@ -14,9 +14,11 @@ namespace Scripts
         public int ProductionLimit;
         public int ResourceLimit;
         public int ItemCost;
-        public int ProductionAmountPerCycle;
+        public int ProductionItemAmountPerCycle;
+        public int ProductionSecondItemAmountPerCycle;
         public float ProductionCooldown;
         public ItemType ProduceItemType;
+        public ItemType ProduceSecondItemType;
         public ItemType ConsumeItemType;
 
         [Header("Building Runtime")]

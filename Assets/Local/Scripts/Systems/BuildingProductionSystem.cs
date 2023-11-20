@@ -52,10 +52,16 @@ namespace Scripts
                     {
                         if (building.ItemCost <= building.Items.GetAmount(building.ConsumeItemType))
                         {
-                            if(building.ProductionLimit >= building.Items.GetAmount(building.ProduceItemType) + building.ProductionAmountPerCycle)
+                            if(building.ProductionLimit >= building.Items.GetAmount(building.ProduceItemType) + building.ProductionItemAmountPerCycle)
                             {
-                                var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = building.ProductionAmountPerCycle, Unit = building };
+                                var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = building.ProductionItemAmountPerCycle, Unit = building };
                                 EventBus.CallEvent(addItemEvent);
+
+                                if(building.ProduceSecondItemType != Enums.ItemType.NONE)
+                                {
+                                    addItemEvent = new AddItemEvent() { ItemType = building.ProduceSecondItemType, Count = building.ProductionSecondItemAmountPerCycle, Unit = building };
+                                    EventBus.CallEvent(addItemEvent);
+                                }
 
                                 if (building.ItemCost > 0)
                                 {

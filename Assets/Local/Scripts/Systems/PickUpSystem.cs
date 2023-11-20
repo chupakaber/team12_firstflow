@@ -57,6 +57,15 @@ namespace Scripts
                         EventBus.CallEvent(addItemEvent);
                         character.LastMoveItemTime = Time.time;
                     }
+
+                    if (building.Items.GetAmount(building.ProduceSecondItemType) >= itemsMoveAmount)
+                    {
+                        var removeItemEvent = new RemoveItemEvent() { ItemType = building.ProduceSecondItemType, Count = itemsMoveAmount, Unit = building };
+                        var addItemEvent = new AddItemEvent() { ItemType = building.ProduceSecondItemType, Count = itemsMoveAmount, Unit = character };
+                        EventBus.CallEvent(removeItemEvent);
+                        EventBus.CallEvent(addItemEvent);
+                        character.LastMoveItemTime = Time.time;
+                    }
                 }
             }
         }
