@@ -11,5 +11,7 @@
         GUN = 6,
         GOLD = 7,
         HONOR = 8,
+        ASSISTANT = 9,
+        APPRENTICE = 10
     }
 }

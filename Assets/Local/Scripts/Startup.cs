@@ -22,7 +22,12 @@ namespace Scripts
         private RemoveItemSystem _removeItemSystem = new RemoveItemSystem();
         private PickUpSystem _pickUpSystem = new PickUpSystem();
         private TriggerSystem _triggerSystem = new TriggerSystem();
+        private AssignWorkerSystem _assignWorkerSystem = new AssignWorkerSystem();
+        private WorkerSpawnSystem _workerSpawnSystem = new WorkerSpawnSystem();
+        private WorkerPickUpSystem _workerPickUpSystem = new WorkerPickUpSystem();
+        private WorkerBehaviorSystem _workerBehaviorSystem = new WorkerBehaviorSystem();
         private AssistantBehaviorSystem _assistantBehaviorSystem = new AssistantBehaviorSystem();
+        
 
         public void Start()
         {
@@ -38,6 +43,10 @@ namespace Scripts
             AddSystem(_removeItemSystem);
             AddSystem(_pickUpSystem);
             AddSystem(_triggerSystem);
+            AddSystem(_assignWorkerSystem);
+            AddSystem(_workerSpawnSystem);
+            AddSystem(_workerPickUpSystem);
+            AddSystem(_workerBehaviorSystem);
             AddSystem(_assistantBehaviorSystem);
 
             _container.AddLink(_eventBus, "EventBus");

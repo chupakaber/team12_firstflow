@@ -220,10 +220,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemStackView: {fileID: 1665914974629571384}
   CharacterRigidbody: {fileID: 6616809623660779437}
-  Speed: 2
+  Speed: 4.5
   CharacterType: 2
   ItemLimit: 5
   PickUpCooldown: 0.2
   WorldDirection: {x: 0, y: 0, z: 0}
   LastMoveItemTime: 0
   NavMeshAgent: {fileID: 3677099979974564584}
+  LastBehaviorTime: 0
+  SpawnBuilding: {fileID: 0}
+  TargetBuilding: {fileID: 0}
+  TargetCharacter: {fileID: 0}
+  ResourceBuilding: {fileID: 0}
