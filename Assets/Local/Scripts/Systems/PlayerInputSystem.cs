@@ -3,13 +3,13 @@ using UnityEngine.InputSystem;
 
 namespace Scripts
 {
-    public class PlayerInputSystem
+    public class PlayerInputSystem: ISystem
     {
         public Character Character;
         private PlayerInput _playerInput;
         private Transform _cameraTransform;
 
-        public void Init()
+        public void EventCatch(StartEvent newEvent)
         {
             _playerInput = new PlayerInput();
             _playerInput.Enable();

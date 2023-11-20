@@ -1,6 +1,6 @@
 ﻿namespace Scripts
 {
-    public interface ISystem
+    public class UpdateEvent: IEvent
     {
     }
 }
