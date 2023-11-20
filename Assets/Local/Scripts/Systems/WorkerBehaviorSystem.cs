@@ -30,20 +30,6 @@ namespace Scripts
                         if (Time.time > worker.LastBehaviorTime + 0.2f)
                         {
                             worker.LastBehaviorTime = Time.time;
-
-                            /*
-                            if (worker.TargetCharacter == null)
-                            {
-                                foreach (var targetCharacter in Characters)
-                                {
-                                    if (targetCharacter.CharacterType == CharacterType.PLAYER)
-                                    {
-                                        worker.TargetCharacter = targetCharacter;
-                                    }
-                                }
-                            }
-                            */
-
                             var targetPosition = worker.TargetCharacter != null ? worker.TargetCharacter.transform.position : worker.SpawnBuilding.PickingUpArea.transform.position;
                             var workerPosition = worker.transform.position;
                             if (worker.NavMeshAgent.CalculatePath(targetPosition, _path))

@@ -27,6 +27,7 @@ namespace Scripts
         private WorkerPickUpSystem _workerPickUpSystem = new WorkerPickUpSystem();
         private WorkerBehaviorSystem _workerBehaviorSystem = new WorkerBehaviorSystem();
         private AssistantBehaviorSystem _assistantBehaviorSystem = new AssistantBehaviorSystem();
+        private ApprenticeBehaviorSystem _apprenticeBehaviorSystem = new ApprenticeBehaviorSystem();
         
 
         public void Start()
@@ -48,6 +49,7 @@ namespace Scripts
             AddSystem(_workerPickUpSystem);
             AddSystem(_workerBehaviorSystem);
             AddSystem(_assistantBehaviorSystem);
+            AddSystem(_apprenticeBehaviorSystem);
 
             _container.AddLink(_eventBus, "EventBus");
             _container.AddLink(_characters, "Characters");

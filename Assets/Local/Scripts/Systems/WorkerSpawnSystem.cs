@@ -10,6 +10,12 @@ namespace Scripts
         public List<Building> Buildings;
 
         private float _lastCheckTime = -3f;
+        private Vector3 _workerSpawnPoint;
+
+        public void EventCatch(StartEvent newEvent)
+        {
+            _workerSpawnPoint = GameObject.Find("WorkerSpawnPoint").transform.position;
+        }
 
         public void EventCatch(FixedUpdateEvent newEvent)
         {
@@ -47,7 +53,7 @@ namespace Scripts
                     var character = instance.GetComponent<Character>();
                     Characters.Add(character);
 
-                    character.transform.position = Vector3.zero;
+                    character.transform.position = _workerSpawnPoint;
 
                     var assistant = (Assistant) character;
                     foreach (var building in Buildings)
@@ -59,7 +65,24 @@ namespace Scripts
                     }
                 }
 
-                // TODO: add spawning apprentice
+                if (freeApprenticesCount < 1)
+                {
+                    var prefab = Resources.Load<GameObject>("Prefabs/Characters/Apprentice");
+                    var instance = Object.Instantiate(prefab);
+                    var character = instance.GetComponent<Character>();
+                    Characters.Add(character);
+
+                    character.transform.position = _workerSpawnPoint;
+
+                    var assistant = (Apprentice) character;
+                    foreach (var building in Buildings)
+                    {
+                        if (building.ProduceItemType == ItemType.APPRENTICE)
+                        {
+                            assistant.SpawnBuilding = building;
+                        }
+                    }
+                }
             }
         }
     }

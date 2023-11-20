@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Scripts
@@ -12,7 +11,7 @@ namespace Scripts
 
         public void EventCatch(StartEvent newEvent)
         {
-            var buildingsArray = GameObject.FindObjectsOfType<Building>();
+            var buildingsArray = Object.FindObjectsOfType<Building>();
             foreach (Building building in buildingsArray)
             {
                 Buildings.Add(building);
@@ -49,20 +48,6 @@ namespace Scripts
             {
                 if (Time.time >= building.LastProductionTime + building.ProductionCooldown)
                 {
-                    foreach (var character in building.ProductionCharacters)
-                    {
-                        if (character.CharacterRigidbody.velocity.sqrMagnitude > 0.1f)
-                        {
-                            building.LastProductionTime = Time.time;
-                            break;
-                        }
-                    }
-
-                    if (Time.time < building.LastProductionTime + building.ProductionCooldown)
-                    {
-                        break;
-                    }
-
                     if(building.ProductionArea == null || building.ProductionCharacters.Count > 0)
                     {
                         if (building.ItemCost <= building.Items.GetAmount(building.ConsumeItemType))

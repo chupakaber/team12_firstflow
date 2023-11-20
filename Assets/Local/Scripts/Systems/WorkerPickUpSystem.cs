@@ -57,7 +57,9 @@ namespace Scripts
 
                 foreach (var character in Characters)
                 {
-                    if (character.CharacterType == CharacterType.ASSISTANT)
+                    if (
+                        (character.CharacterType == CharacterType.ASSISTANT && building.ProduceItemType == ItemType.ASSISTANT) 
+                        || (character.CharacterType == CharacterType.APPRENTICE && building.ProduceItemType == ItemType.APPRENTICE))
                     {
                         var worker = (Worker) character;
                         if (worker.TargetBuilding == null && worker.TargetCharacter == null)
