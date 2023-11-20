@@ -22,6 +22,7 @@ namespace Scripts
         private RemoveItemSystem _removeItemSystem = new RemoveItemSystem();
         private PickUpSystem _pickUpSystem = new PickUpSystem();
         private TriggerSystem _triggerSystem = new TriggerSystem();
+        private AssistantBehaviorSystem _assistantBehaviorSystem = new AssistantBehaviorSystem();
 
         public void Start()
         {
@@ -37,6 +38,7 @@ namespace Scripts
             AddSystem(_removeItemSystem);
             AddSystem(_pickUpSystem);
             AddSystem(_triggerSystem);
+            AddSystem(_assistantBehaviorSystem);
 
             _container.AddLink(_eventBus, "EventBus");
             _container.AddLink(_characters, "Characters");

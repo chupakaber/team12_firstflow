@@ -6,6 +6,7 @@ namespace Scripts
 {
     public class Building: Unit
     {
+        [Header("Building Config")]
         public Collider ProductionArea;
         public Collider UnloadingArea;
         public Collider PickingUpArea;
@@ -18,6 +19,7 @@ namespace Scripts
         public ItemType ProduceItemType;
         public ItemType ConsumeItemType;
 
+        [Header("Building Runtime")]
         public List<Character> ProductionCharacters = new List<Character>();
         public List<Character> UnloadingCharacters = new List<Character>();
         public List<Character> PickingUpCharacters = new List<Character>();

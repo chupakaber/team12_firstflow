@@ -50,7 +50,9 @@ namespace Scripts
         {
             var itemsMovingAmount = 1;
 
-            if (character.CharacterRigidbody.velocity.sqrMagnitude > 0.1f)
+            var characterHorizontalVelocity = character.CharacterRigidbody.velocity;
+            characterHorizontalVelocity.y = 0f;
+            if (characterHorizontalVelocity.sqrMagnitude > 0.1f)
             {
                 character.LastMoveItemTime = Time.time;
             }

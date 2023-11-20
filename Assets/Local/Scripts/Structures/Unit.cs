@@ -5,8 +5,10 @@ namespace Scripts
 {
     public class Unit : MonoBehaviour
     {
-        public ItemStack Items = new ItemStack();
+        [Header("Unit Config")]
         public ItemStackView ItemStackView;
+
+        public ItemStack Items = new ItemStack();
 
         public void AddItem(ItemType type, int count)
         {

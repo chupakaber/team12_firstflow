@@ -23,7 +23,7 @@ namespace Scripts
         {
             foreach (Character character in Characters) 
             {
-               if (character.IsPlayer)
+               if (character.CharacterType == Enums.CharacterType.PLAYER)
                {
                     var direction = context.ReadValue<Vector2>();
                     character.WorldDirection = new Vector3(direction.x, 0f, direction.y);
