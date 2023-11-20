@@ -1,34 +1,39 @@
-﻿using Scripts.Enums;
-using Scripts.Systems;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Scripts
 {
-    public class BuildingProductionSystem
+    public class BuildingProductionSystem: ISystem
     {
-        public List<Building> Buildings = new List<Building>();
         public EventBus EventBus;
-        public Character character;
+        public Character Character;
 
-        
-        public void Init()
+        private List<Building> Buildings = new List<Building>();
+
+        public void EventCatch(StartEvent newEvent)
         {
             var buildingsArray = GameObject.FindObjectsOfType<Building>();
             Buildings = new List<Building>(buildingsArray);
         }
 
-        public void Production()
+        public void EventCatch(FixedUpdateEvent newEvent)
+        {
+            Production();
+
+            foreach (var building in Buildings)
+            {
+                building.IsWork = Character.CollidedWith != null && Character.CollidedWith.Equals(building.ProductionArea);
+            }
+        }
+
+        private void Production()
         {
             foreach (var building in Buildings)
             {
                 if (Time.time >= building.LastProductionTime + 1f && building.IsWork)
                 {
-                    //Заменяем вызов AddItem на создание события
-                    var addItemEvent = new AddItemEvent() {ItemType = building.ItemType, Count = 1, Character = character};
+                    var addItemEvent = new AddItemEvent() {ItemType = building.ItemType, Count = 1, Character = Character};
                     EventBus.CallEvent(addItemEvent);
-                    //CraftSystem.AddItem(building.ItemType, 1, character);
-                    Debug.Log("создал");
                     building.LastProductionTime = Time.time;
                 }
             }
