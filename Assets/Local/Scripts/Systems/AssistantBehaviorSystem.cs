@@ -42,8 +42,9 @@ namespace Scripts
                                 }
                             }
 
-                            var resourceAmount = character.Items.GetAmount();
-                            var load = (float) resourceAmount / character.ItemLimit;
+                            var totalAmount = character.Items.GetAmount();
+                            var resourceAmount = character.Items.GetAmount(assistant.TargetBuilding.ConsumeItemType);
+                            var load = (float) resourceAmount / Mathf.Max(1, character.ItemLimit - (totalAmount - resourceAmount));
                             var productionDistance = (assistant.TargetBuilding.UnloadingArea.transform.position - character.transform.position).magnitude;
                             var resourceDistance = (assistant.ResourceBuilding.PickingUpArea.transform.position - character.transform.position).magnitude;
                             var isResourceNeeded = productionDistance / (productionDistance + resourceDistance) > load;
