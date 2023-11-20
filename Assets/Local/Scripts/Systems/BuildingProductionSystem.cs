@@ -8,12 +8,15 @@ namespace Scripts
         public EventBus EventBus;
         public Character Character;
 
-        private List<Building> Buildings = new List<Building>();
+        public List<Building> Buildings;
 
         public void EventCatch(StartEvent newEvent)
         {
             var buildingsArray = GameObject.FindObjectsOfType<Building>();
-            Buildings = new List<Building>(buildingsArray);
+            foreach (Building building in buildingsArray)
+            {
+                Buildings.Add(building);
+            }
         }
 
         public void EventCatch(FixedUpdateEvent newEvent)
@@ -32,7 +35,7 @@ namespace Scripts
             {
                 if (Time.time >= building.LastProductionTime + 1f && building.IsWork)
                 {
-                    var addItemEvent = new AddItemEvent() {ItemType = building.ItemType, Count = 1, Character = Character};
+                    var addItemEvent = new AddItemEvent() {ItemType = building.ProduceItemType, Count = 1, Character = Character};
                     EventBus.CallEvent(addItemEvent);
                     building.LastProductionTime = Time.time;
                 }
