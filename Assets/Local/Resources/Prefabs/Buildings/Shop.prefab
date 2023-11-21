@@ -188,6 +188,7 @@ Transform:
   - {fileID: 646038346145884589}
   - {fileID: 8087077128159615074}
   - {fileID: 2222201930340954808}
+  - {fileID: 2103775045506096898}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6183322111238749790
@@ -278,19 +279,22 @@ MonoBehaviour:
   UnloadingArea: {fileID: 7033799050344559191}
   PickingUpArea: {fileID: 3367812564722817883}
   UpgradeArea: {fileID: 8601378806829848091}
+  ProgressBarPivot: {fileID: 2103775045506096898}
   ProductionLimit: 10
   ResourceLimit: 10
   ItemCost: 1
   ProductionItemAmountPerCycle: 2
-  ProductionSecondItemAmountPerCycle: 3
   ProductionCooldown: 3
+  ProductionEndTime: 0
   ProduceItemType: 7
-  ProduceSecondItemType: 8
   ConsumeItemType: 4
   ProductionCharacters: []
   UnloadingCharacters: []
   PickingUpCharacters: []
   UpgradeCharacters: []
+  AssignedProductionCharacters: []
+  AssignedUnloadingCharacters: []
+  AssignedPickingUpCharacters: []
   LastProductionTime: -1
 --- !u!1 &6067547472030308689
 GameObject:
@@ -397,6 +401,37 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &6753355511587659088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2103775045506096898}
+  m_Layer: 0
+  m_Name: ProgressBarPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2103775045506096898
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6753355511587659088}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2013289688210010218}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7798052542918784143
 GameObject:
   m_ObjectHideFlags: 0

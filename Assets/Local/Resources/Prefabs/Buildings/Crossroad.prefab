@@ -144,6 +144,7 @@ Transform:
   - {fileID: 2249320711305608052}
   - {fileID: 5996793062174199710}
   - {fileID: 7031134031561487615}
+  - {fileID: 2603531392982331363}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &81419167277516161
@@ -234,17 +235,22 @@ MonoBehaviour:
   UnloadingArea: {fileID: 0}
   PickingUpArea: {fileID: 5086938148076077555}
   UpgradeArea: {fileID: 0}
+  ProgressBarPivot: {fileID: 2603531392982331363}
   ProductionLimit: 0
   ResourceLimit: 0
   ItemCost: 10
-  ProductionAmountPerCycle: 1
+  ProductionItemAmountPerCycle: 0
   ProductionCooldown: 1
+  ProductionEndTime: 0
   ProduceItemType: 9
   ConsumeItemType: 7
   ProductionCharacters: []
   UnloadingCharacters: []
   PickingUpCharacters: []
   UpgradeCharacters: []
+  AssignedProductionCharacters: []
+  AssignedUnloadingCharacters: []
+  AssignedPickingUpCharacters: []
   LastProductionTime: -1
 --- !u!1 &4106149893519805018
 GameObject:
@@ -456,6 +462,37 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &5831091728760469568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2603531392982331363}
+  m_Layer: 0
+  m_Name: ProgressBarPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2603531392982331363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5831091728760469568}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6638843261506000139}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6755511236078173757
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using Scripts.Enums;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Scripts
 {
@@ -11,11 +12,13 @@ namespace Scripts
         public Collider UnloadingArea;
         public Collider PickingUpArea;
         public Collider UpgradeArea;
+        public Transform ProgressBarPivot;
         public int ProductionLimit;
         public int ResourceLimit;
         public int ItemCost;
         public int ProductionItemAmountPerCycle;
         public float ProductionCooldown;
+        public float ProductionEndTime;
         public ItemType ProduceItemType;
         public ItemType ConsumeItemType;
 
@@ -32,6 +35,19 @@ namespace Scripts
         public int GetLastCustomerHonor()
         {
             return 1;
+        }
+
+        public float ProductionProgress()
+        {
+            if (ProductionEndTime > LastProductionTime)
+            {
+                return (ProductionEndTime - LastProductionTime) / ProductionCooldown;
+            }
+            else
+            {
+                var currentProductionTime = Time.time - LastProductionTime;
+                return currentProductionTime / ProductionCooldown;
+            }
         }
     }
 }
