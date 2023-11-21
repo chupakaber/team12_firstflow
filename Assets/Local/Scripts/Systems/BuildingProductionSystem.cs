@@ -21,7 +21,8 @@ namespace Scripts
                 Buildings.Add(building);
 
                 var progressBar = Object.Instantiate(progressBarPrefab);
-                progressBar.transform.SetParent(UIView.transform);
+                progressBar.transform.SetParent(UIView.WorldSpaceTransform);
+                progressBar.transform.localScale = Vector3.one;
                 ProgressBarViews.Add(progressBar);
             }
         }
@@ -33,13 +34,17 @@ namespace Scripts
                 if (newEvent.Trigger.Equals(building.ProductionArea))
                 {
                     building.ProductionCharacters.Add(newEvent.Character);
-                    if (building.ProductionEndTime > building.LastProductionTime)
+                    if (building.ProductionCharacters.Count == 1)
                     {
-                        building.LastProductionTime = Time.time - (building.ProductionEndTime - building.LastProductionTime);
-                    }
-                    else
-                    {
-                        building.LastProductionTime = Time.time;
+                        if (building.ProductionEndTime > building.LastProductionTime)
+                        {
+                            building.LastProductionTime = Time.time - (building.ProductionEndTime - building.LastProductionTime);
+                            building.ProductionEndTime = building.LastProductionTime - 1f;
+                        }
+                        else
+                        {
+                            building.LastProductionTime = Time.time;
+                        }
                     }
                 }
             }
@@ -52,7 +57,10 @@ namespace Scripts
                 if (newEvent.Trigger.Equals(building.ProductionArea))
                 {
                     building.ProductionCharacters.Remove(newEvent.Character);
-                    building.ProductionEndTime = Time.time;
+                    if (building.ProductionCharacters.Count == 0)
+                    {
+                        building.ProductionEndTime = Time.time;
+                    }
                 }
             }
         }

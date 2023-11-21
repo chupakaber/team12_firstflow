@@ -1,7 +1,6 @@
 ﻿using Scripts.Enums;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Scripts
 {
@@ -39,15 +38,12 @@ namespace Scripts
 
         public float ProductionProgress()
         {
-            if (ProductionEndTime > LastProductionTime)
+            var currentProductionTime = ProductionEndTime > LastProductionTime ? ProductionEndTime - LastProductionTime : Time.time - LastProductionTime;
+            if (currentProductionTime >= ProductionCooldown)
             {
-                return (ProductionEndTime - LastProductionTime) / ProductionCooldown;
+                return 0f;
             }
-            else
-            {
-                var currentProductionTime = Time.time - LastProductionTime;
-                return currentProductionTime / ProductionCooldown;
-            }
+            return currentProductionTime / ProductionCooldown;
         }
     }
 }

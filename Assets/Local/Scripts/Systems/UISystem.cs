@@ -33,7 +33,7 @@ namespace Scripts
 
                 var worldPosition = building.ProgressBarPivot.position;
                 var screenPosition = Camera.WorldToScreenPoint(worldPosition);
-                var canvasTransform = (RectTransform)UIView.transform;
+                var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
                 var progressBarTransform = (RectTransform)progressBar.transform;
                 progressBarTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
             }
