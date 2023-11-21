@@ -59,9 +59,34 @@ namespace Scripts
             var amount = 0;
             foreach (var item in _items)
             {
-                amount += item.Amount;
+                amount += GetItemVolume(item.Type) * item.Amount;
             }
             return amount;
+        }
+
+        public int GetItemVolume(ItemType type)
+        {
+            if (type == ItemType.GOLD || type == ItemType.HONOR)
+            {
+                return 0;
+            }
+            return 1;
+        }
+
+        public bool TryGetFirstItem(out ItemType type, out int amount)
+        {
+            foreach (var item in _items)
+            {
+                if (item.Amount > 0)
+                {
+                    type = item.Type;
+                    amount = item.Amount;
+                    return true;
+                }
+            }
+            type = ItemType.NONE;
+            amount = 0;
+            return false;
         }
 
         IEnumerator IEnumerable.GetEnumerator()

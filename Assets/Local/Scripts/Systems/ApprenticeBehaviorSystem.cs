@@ -25,33 +25,15 @@ namespace Scripts
                 if (character.CharacterType == CharacterType.APPRENTICE)
                 {
                     var apprentice = (Apprentice) character;
-                    if (Time.time > apprentice.LastBehaviorTime + 0.2f)
+                    if (Time.time > apprentice.LastApprenticeBehaviorTime + 1f)
                     {
-                        apprentice.LastBehaviorTime = Time.time;
+                        apprentice.LastApprenticeBehaviorTime = Time.time;
 
-                        if (apprentice.TargetBuilding != null)
+                        if (apprentice.TargetBuilding != null && apprentice.TargetBuilding.ProductionArea != null)
                         {
                             var target = apprentice.TargetBuilding.ProductionArea;
-                            var targetPosition = target.transform.position;
-                            if (apprentice.NavMeshAgent.CalculatePath(targetPosition, _path))
-                            {
-                                if (_path.GetCornersNonAlloc(_pathCorners) > 1)
-                                {
-                                    targetPosition = _pathCorners[1];
-                                }
-                                var delta = targetPosition - character.transform.position;
-                                delta.y = 0f;
-                                character.WorldDirection = delta.normalized;
-                                
-                                if (delta.magnitude < 0.5f)
-                                {
-                                    character.WorldDirection = Vector3.zero;
-                                }
-                            }
-                            else
-                            {
-                                character.WorldDirection = Vector3.zero;
-                            }
+                            apprentice.TargetPosition = target.transform.position;
+                            apprentice.FollowingOffset = 0.7f;
                         }
                     }
                 }

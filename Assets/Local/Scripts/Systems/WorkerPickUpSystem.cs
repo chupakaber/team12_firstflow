@@ -62,9 +62,11 @@ namespace Scripts
                         || (character.CharacterType == CharacterType.APPRENTICE && building.ProduceItemType == ItemType.APPRENTICE))
                     {
                         var worker = (Worker) character;
-                        if (worker.TargetBuilding == null && worker.TargetCharacter == null)
+                        if (worker.TargetBuilding == building && worker.TargetCharacter == null)
                         {
+                            worker.TargetBuilding = null;
                             worker.TargetCharacter = player;
+                            worker.FollowingOffset = 2f;
                         }
                     }
                 }

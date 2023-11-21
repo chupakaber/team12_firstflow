@@ -29,7 +29,7 @@ namespace Scripts
                     if (character.CharacterType == CharacterType.ASSISTANT)
                     {
                         var worker = (Worker) character;
-                        if (worker.TargetBuilding == null)
+                        if (worker.TargetBuilding != null && worker.TargetBuilding.ProduceItemType == ItemType.ASSISTANT)
                         {
                             freeAssistantsCount++;
                         }
@@ -38,7 +38,7 @@ namespace Scripts
                     if (character.CharacterType == CharacterType.APPRENTICE)
                     {
                         var worker = (Worker) character;
-                        if (worker.TargetBuilding == null)
+                        if (worker.TargetBuilding != null && worker.TargetBuilding.ProduceItemType == ItemType.APPRENTICE)
                         {
                             freeApprenticesCount++;
                         }
@@ -60,7 +60,8 @@ namespace Scripts
                     {
                         if (building.ProduceItemType == ItemType.ASSISTANT)
                         {
-                            assistant.SpawnBuilding = building;
+                            assistant.TargetBuilding = building;
+                            assistant.FollowingOffset = 0.7f;
                         }
                     }
                 }
@@ -74,12 +75,13 @@ namespace Scripts
 
                     character.transform.position = _workerSpawnPoint;
 
-                    var assistant = (Apprentice) character;
+                    var apprentice = (Apprentice) character;
                     foreach (var building in Buildings)
                     {
                         if (building.ProduceItemType == ItemType.APPRENTICE)
                         {
-                            assistant.SpawnBuilding = building;
+                            apprentice.TargetBuilding = building;
+                            apprentice.FollowingOffset = 0.7f;
                         }
                     }
                 }

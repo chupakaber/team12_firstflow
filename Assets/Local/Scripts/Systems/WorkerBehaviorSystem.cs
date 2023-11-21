@@ -22,36 +22,55 @@ namespace Scripts
         {
             foreach (var character in Characters)
             {
-                if (character.CharacterType == CharacterType.ASSISTANT || character.CharacterType == CharacterType.APPRENTICE)
+                if (character is Worker)
                 {
                     var worker = (Worker) character;
-                    if (worker.TargetBuilding == null)
+                    if (Time.time > worker.LastBehaviorTime + 0.1f)
                     {
-                        if (Time.time > worker.LastBehaviorTime + 0.2f)
-                        {
-                            worker.LastBehaviorTime = Time.time;
-                            var targetPosition = worker.TargetCharacter != null ? worker.TargetCharacter.transform.position : worker.SpawnBuilding.PickingUpArea.transform.position;
-                            var workerPosition = worker.transform.position;
-                            if (worker.NavMeshAgent.CalculatePath(targetPosition, _path))
-                            {
-                                var pathPosition = targetPosition;
-                                if (_path.GetCornersNonAlloc(_pathCorners) > 1)
-                                {
-                                    pathPosition = _pathCorners[1];
-                                }
-                                var pathDelta = pathPosition - workerPosition;
-                                pathDelta.y = 0f;
-                                character.WorldDirection = pathDelta.normalized;
+                        worker.LastBehaviorTime = Time.time;
 
-                                var toTargetDistance = (targetPosition - workerPosition).magnitude;
-                                
-                                if (toTargetDistance < 1.5f) {
-                                    character.WorldDirection = Vector3.zero;
-                                }
+                        if (worker.TargetCharacter != null)
+                        {
+                            worker.TargetPosition = worker.TargetCharacter.transform.position;
+                        }
+                        else if (worker.TargetBuilding != null)
+                        {
+                            if (worker.TargetBuilding.ProduceItemType == ItemType.APPRENTICE || worker.TargetBuilding.ProduceItemType == ItemType.ASSISTANT)
+                            {
+                                worker.TargetPosition = worker.TargetBuilding.PickingUpArea.transform.position;
+                            }
+                        }
+
+                        
+                        if (worker.TargetPosition.sqrMagnitude > float.Epsilon * 2f)
+                        {
+                            var workerPosition = worker.transform.position;
+
+                            var toTargetDistance = (worker.TargetPosition - workerPosition).magnitude;
+                            if (toTargetDistance < worker.FollowingOffset)
+                            {
+                                character.WorldDirection = Vector3.zero;
                             }
                             else
                             {
-                                character.WorldDirection = Vector3.zero;
+                                var pathPosition = worker.TargetPosition;
+
+                                if (worker.NavMeshAgent.CalculatePath(worker.TargetPosition, _path))
+                                {
+                                    var cornersCount = _path.GetCornersNonAlloc(_pathCorners);
+                                    if (cornersCount > 1)
+                                    {
+                                        pathPosition = _pathCorners[1];
+                                    }
+                                    else if (cornersCount > 0)
+                                    {
+                                        pathPosition = _pathCorners[0];
+                                    }
+                                }
+
+                                var pathDelta = pathPosition - workerPosition;
+                                pathDelta.y = 0f;
+                                character.WorldDirection = pathDelta.normalized;
                             }
                         }
                     }

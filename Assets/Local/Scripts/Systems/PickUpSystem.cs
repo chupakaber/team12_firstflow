@@ -47,24 +47,27 @@ namespace Scripts
             var itemsMoveAmount = 1;
             if (Time.time >= character.LastMoveItemTime + character.PickUpCooldown)
             {
-                if (character.ItemLimit >= character.Items.GetAmount() + itemsMoveAmount)
+                if (character.PickUpItemConstraint == Enums.ItemType.NONE || character.PickUpItemConstraint == building.ProduceItemType)
                 {
-                    if (building.Items.GetAmount(building.ProduceItemType) >= itemsMoveAmount)
+                    if (character.ItemLimit >= character.Items.GetAmount() + character.Items.GetItemVolume(building.ProduceItemType) * itemsMoveAmount)
                     {
-                        var removeItemEvent = new RemoveItemEvent() { ItemType = building.ProduceItemType, Count = itemsMoveAmount, Unit = building };
-                        var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = itemsMoveAmount, Unit = character };
-                        EventBus.CallEvent(removeItemEvent);
-                        EventBus.CallEvent(addItemEvent);
-                        character.LastMoveItemTime = Time.time;
-                    }
+                        if (building.Items.GetAmount(building.ProduceItemType) >= itemsMoveAmount)
+                        {
+                            var removeItemEvent = new RemoveItemEvent() { ItemType = building.ProduceItemType, Count = itemsMoveAmount, Unit = building };
+                            var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = itemsMoveAmount, Unit = character };
+                            EventBus.CallEvent(removeItemEvent);
+                            EventBus.CallEvent(addItemEvent);
+                            character.LastMoveItemTime = Time.time;
+                        }
 
-                    if (building.Items.GetAmount(building.ProduceSecondItemType) >= itemsMoveAmount)
-                    {
-                        var removeItemEvent = new RemoveItemEvent() { ItemType = building.ProduceSecondItemType, Count = itemsMoveAmount, Unit = building };
-                        var addItemEvent = new AddItemEvent() { ItemType = building.ProduceSecondItemType, Count = itemsMoveAmount, Unit = character };
-                        EventBus.CallEvent(removeItemEvent);
-                        EventBus.CallEvent(addItemEvent);
-                        character.LastMoveItemTime = Time.time;
+                        if (building.Items.GetAmount(building.ProduceSecondItemType) >= itemsMoveAmount)
+                        {
+                            var removeItemEvent = new RemoveItemEvent() { ItemType = building.ProduceSecondItemType, Count = itemsMoveAmount, Unit = building };
+                            var addItemEvent = new AddItemEvent() { ItemType = building.ProduceSecondItemType, Count = itemsMoveAmount, Unit = character };
+                            EventBus.CallEvent(removeItemEvent);
+                            EventBus.CallEvent(addItemEvent);
+                            character.LastMoveItemTime = Time.time;
+                        }
                     }
                 }
             }

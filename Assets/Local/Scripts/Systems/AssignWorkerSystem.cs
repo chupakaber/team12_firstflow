@@ -7,6 +7,7 @@ namespace Scripts
 {
     public class AssignWorkerSystem: ISystem
     {
+        public EventBus EventBus;
         public List<Character> Characters;
         public List<Building> Buildings;
 
@@ -24,50 +25,49 @@ namespace Scripts
                     {
                         if (building.ProduceItemType != ItemType.NONE && building.ProduceItemType != ItemType.ASSISTANT && building.ProduceItemType != ItemType.APPRENTICE)
                         {
-                            var isBuildingAssistantAssigned = false;
-                            var isBuildingApprenticeAssigned = false;
-
-                            foreach (var character in Characters)
-                            {
-                                if (character.CharacterType == CharacterType.ASSISTANT || character.CharacterType == CharacterType.APPRENTICE)
-                                {
-                                    var worker = (Worker) character;
-                                    if (worker.TargetBuilding == building)
-                                    {
-                                        if (character.CharacterType == CharacterType.ASSISTANT)
-                                        {
-                                            isBuildingAssistantAssigned = true;
-                                        }
-                                        if (character.CharacterType == CharacterType.APPRENTICE)
-                                        {
-                                            isBuildingApprenticeAssigned = true;
-                                        }
-                                    }
-                                }
-                            }
-
-                            if (!isBuildingAssistantAssigned && building.UnloadingArea != null)
+                            if ((building.AssignedPickingUpCharacters.Count == 0 && building.PickingUpArea != null) || (building.AssignedProductionCharacters.Count == 0 && building.ProductionArea != null))
                             {
                                 foreach (var character in Characters)
                                 {
-                                    if (character.CharacterType == CharacterType.ASSISTANT)
+                                    if (character.CharacterType == CharacterType.ASSISTANT && building.AssignedPickingUpCharacters.Count == 0 && building.PickingUpArea != null && building.ProduceItemType != ItemType.GOLD)
                                     {
-                                        var worker = (Worker) character;
-                                        worker.TargetBuilding = building;
-                                        break;
-                                    }
-                                }
-                            }
+                                        var assistant = (Assistant) character;
+                                        if (assistant.ResourceBuilding == null && assistant.TargetCharacter != null)
+                                        {
+                                            foreach (var building2 in Buildings)
+                                            {
+                                                if (building2.ConsumeItemType == building.ProduceItemType && building2.UnloadingArea != null)
+                                                {
+                                                    assistant.ResourceBuilding = building;
+                                                    building.AssignedPickingUpCharacters.Add(assistant);
 
-                            if (!isBuildingApprenticeAssigned && building.ProductionArea != null)
-                            {
-                                foreach (var character in Characters)
-                                {
-                                    if (character.CharacterType == CharacterType.APPRENTICE)
+                                                    assistant.TargetBuilding = building2;
+                                                    building2.AssignedUnloadingCharacters.Add(assistant);
+
+                                                    assistant.PickUpItemConstraint = building.ProduceItemType;
+
+                                                    while (assistant.Items.TryGetFirstItem(out var type, out var amount))
+                                                    {
+                                                        var removeItemEvent = new RemoveItemEvent() { ItemType = type, Count = amount, Unit = assistant };
+                                                        EventBus.CallEvent(removeItemEvent);
+                                                    }
+
+                                                    assistant.TargetCharacter = null;
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    if (character.CharacterType == CharacterType.APPRENTICE && building.AssignedProductionCharacters.Count == 0 && building.ProductionArea != null)
                                     {
-                                        var worker = (Worker) character;
-                                        worker.TargetBuilding = building;
-                                        break;
+                                        var apprentice = (Worker) character;
+                                        if (apprentice.TargetBuilding == null && apprentice.TargetCharacter != null)
+                                        {
+                                            apprentice.TargetBuilding = building;
+                                            building.AssignedProductionCharacters.Add(apprentice);
+
+                                            apprentice.TargetCharacter = null;
+                                        }
                                     }
                                 }
                             }

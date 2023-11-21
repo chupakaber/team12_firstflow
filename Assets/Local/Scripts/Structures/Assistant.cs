@@ -6,5 +6,6 @@ namespace Scripts
     {
         [Header("Assistant Runtime")]
         public Building ResourceBuilding;
+        public float LastAssistantBehaviorTime;
     }
 }

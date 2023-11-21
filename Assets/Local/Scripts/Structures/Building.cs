@@ -26,6 +26,9 @@ namespace Scripts
         public List<Character> UnloadingCharacters = new List<Character>();
         public List<Character> PickingUpCharacters = new List<Character>();
         public List<Character> UpgradeCharacters = new List<Character>();
+        public List<Character> AssignedProductionCharacters = new List<Character>();
+        public List<Character> AssignedUnloadingCharacters = new List<Character>();
+        public List<Character> AssignedPickingUpCharacters = new List<Character>();
         public float LastProductionTime;
     }
 }

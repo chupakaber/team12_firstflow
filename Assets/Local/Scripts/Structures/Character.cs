@@ -14,6 +14,7 @@ namespace Scripts
         public CharacterType CharacterType;
         public int ItemLimit;
         public float PickUpCooldown;
+        public ItemType PickUpItemConstraint = ItemType.NONE;
 
         [Header("Character Runtime")]
         public Vector3 WorldDirection;
