@@ -2,6 +2,12 @@ Shader "Team12/DiffuseWithAO" {
     Properties {
         _MainTex ("Base (RGB)", 2D) = "white" {}
         _AmbientOcclusionTex ("Ambient Occlusion (RGB)", 2D) = "white" {}
+        _PreIntensity ("Pre Intencity", Range(0.1, 2)) = 1
+        _Intensity ("Intencity", Range(0.1, 2)) = 1
+        _SaturationBase ("Saturation Base", Range(0, 1)) = 0.5
+        _Saturation ("Saturation", Range(0, 5)) = 0
+        _LightColor ("Light Color", Color) = (0, 0, 0, 0)
+        _ShadowColor ("Shadow Color", Color) = (0, 0, 0, 0)
     }
 
     SubShader {
@@ -35,6 +41,13 @@ Shader "Team12/DiffuseWithAO" {
             uniform float4 _LightColor0;
             uniform sampler2D _MainTex;
             uniform sampler2D _AmbientOcclusionTex;
+            uniform float _SaturationBase;
+            uniform float _Saturation;
+            uniform float _Lighten;
+            uniform float _PreIntensity;
+            uniform float _Intensity;
+            uniform float4 _LightColor;
+            uniform float4 _ShadowColor;
 
             vertexOutput vert(vertexInput i) 
             {
@@ -59,10 +72,20 @@ Shader "Team12/DiffuseWithAO" {
 
             float4 frag(vertexOutput i) : COLOR
             {
-                half4 color = tex2D(_MainTex, i.uv0);
-                half4 ao = tex2D(_AmbientOcclusionTex, i.uv1);
-                color *= ao;
+                half4 color = tex2D(_MainTex, i.uv1);
+                half4 ao = tex2D(_AmbientOcclusionTex, i.uv0);
+                half saturation = (ao.r - _SaturationBase) * _Saturation;
                 color *= i.col;
+                color *= _PreIntensity;
+                half minColor = min(color.r, min(color.g, color.b));
+                color.r += (color.r - minColor) * saturation;
+                color.g += (color.g - minColor) * saturation;
+                color.b += (color.b - minColor) * saturation;
+                color *= ao;
+                color *= _Intensity;
+                half shadowFactor = clamp((_SaturationBase - ao) / _SaturationBase, 0, 1);
+                color += (1 - shadowFactor) * _LightColor;
+                color += shadowFactor * _ShadowColor;
                 return color;
             }
 
