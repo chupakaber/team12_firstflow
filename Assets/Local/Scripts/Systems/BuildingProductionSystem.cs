@@ -57,12 +57,6 @@ namespace Scripts
                                 var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = building.ProductionItemAmountPerCycle, Unit = building };
                                 EventBus.CallEvent(addItemEvent);
 
-                                if(building.ProduceSecondItemType != Enums.ItemType.NONE)
-                                {
-                                    addItemEvent = new AddItemEvent() { ItemType = building.ProduceSecondItemType, Count = building.ProductionSecondItemAmountPerCycle, Unit = building };
-                                    EventBus.CallEvent(addItemEvent);
-                                }
-
                                 if (building.ItemCost > 0)
                                 {
                                     var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = building.ItemCost, Unit = building };

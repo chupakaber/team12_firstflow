@@ -18,7 +18,8 @@ namespace Scripts
         private PlayerInputSystem _playerInputSystem = new PlayerInputSystem();
         private BuildingProductionSystem _buildingProductionSystem = new BuildingProductionSystem();
         private CameraFollowSystem _cameraFollowSystem = new CameraFollowSystem();
-        private AddItemSystem _craftSystem = new AddItemSystem();
+        private AddItemSystem _addItemSystem = new AddItemSystem();
+        private AddHonorSystem _addHonorSystem = new AddHonorSystem();
         private BuildingCollectingSystem _buildingCollectingSystem = new BuildingCollectingSystem();
         private RemoveItemSystem _removeItemSystem = new RemoveItemSystem();
         private PickUpSystem _pickUpSystem = new PickUpSystem();
@@ -38,7 +39,8 @@ namespace Scripts
             _characters.Add(FindObjectOfType<Character>());
             _uiView = FindObjectOfType<UIView>();
 
-            AddSystem(_craftSystem);
+            AddSystem(_addItemSystem);
+            AddSystem(_addHonorSystem);
             AddSystem(_playerMovementSystem);
             AddSystem(_buildingProductionSystem);
             AddSystem(_playerInputSystem);

@@ -15,10 +15,8 @@ namespace Scripts
         public int ResourceLimit;
         public int ItemCost;
         public int ProductionItemAmountPerCycle;
-        public int ProductionSecondItemAmountPerCycle;
         public float ProductionCooldown;
         public ItemType ProduceItemType;
-        public ItemType ProduceSecondItemType;
         public ItemType ConsumeItemType;
 
         [Header("Building Runtime")]
@@ -30,5 +28,10 @@ namespace Scripts
         public List<Character> AssignedUnloadingCharacters = new List<Character>();
         public List<Character> AssignedPickingUpCharacters = new List<Character>();
         public float LastProductionTime;
+
+        public int GetLastCustomerHonor()
+        {
+            return 1;
+        }
     }
 }
