@@ -1,5 +1,6 @@
 ﻿using Scripts.Enums;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Scripts
@@ -22,9 +23,10 @@ namespace Scripts
         public ItemType ProduceItemType;
         public ItemType ConsumeItemType;
         public List<BuildingLevel> Levels;
-        public ItemStackView UpgradeItemStackView;
-        public ItemStackView ConstructionItemStackView;
-        public ItemStack UpgradeItems = new ItemStack();
+        public Unit UpgradeStorage;
+        public Unit ConstructionStorage;
+        public List<TMP_Text> ConstructionPriceLabels;
+        public List<Transform> ConstructionProgressBars;
         [SerializeField] private int _level;
 
         [Header("Building Runtime")]
