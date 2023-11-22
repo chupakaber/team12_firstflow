@@ -38,22 +38,29 @@ namespace Scripts
                                             {
                                                 if (building2.ConsumeItemType == building.ProduceItemType && building2.UnloadingArea != null)
                                                 {
-                                                    assistant.ResourceBuilding = building;
-                                                    building.AssignedPickingUpCharacters.Add(assistant);
-
-                                                    assistant.TargetBuilding = building2;
-                                                    building2.AssignedUnloadingCharacters.Add(assistant);
-
-                                                    assistant.PickUpItemConstraint = building.ProduceItemType;
-
-                                                    while (assistant.Items.TryGetFirstItem(out var type, out var amount))
+                                                    if (assistant.TargetBuilding == null || assistant.TargetBuilding.AssignedUnloadingCharacters.Count > building2.AssignedUnloadingCharacters.Count)
                                                     {
-                                                        var removeItemEvent = new RemoveItemEvent() { ItemType = type, Count = amount, Unit = assistant };
-                                                        EventBus.CallEvent(removeItemEvent);
+                                                        assistant.TargetBuilding = building2;
                                                     }
-
-                                                    assistant.TargetCharacter = null;
                                                 }
+                                            }
+
+                                            if (assistant.TargetBuilding != null)
+                                            {
+                                                assistant.ResourceBuilding = building;
+                                                building.AssignedPickingUpCharacters.Add(assistant);
+
+                                                assistant.TargetBuilding.AssignedUnloadingCharacters.Add(assistant);
+
+                                                assistant.PickUpItemConstraint = building.ProduceItemType;
+
+                                                while (assistant.Items.TryGetFirstItem(out var type, out var amount))
+                                                {
+                                                    var removeItemEvent = new RemoveItemEvent() { ItemType = type, Count = amount, Unit = assistant };
+                                                    EventBus.CallEvent(removeItemEvent);
+                                                }
+
+                                                assistant.TargetCharacter = null;
                                             }
                                         }
                                     }

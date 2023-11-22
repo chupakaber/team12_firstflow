@@ -46,7 +46,10 @@ namespace Scripts
                         {
                             var workerPosition = worker.transform.position;
 
-                            var toTargetDistance = (worker.TargetPosition - workerPosition).magnitude;
+                            var toTargetDelta = worker.TargetPosition - workerPosition;
+                            toTargetDelta.y = 0f;
+                            var toTargetDistance = toTargetDelta.magnitude;
+
                             if (toTargetDistance < worker.FollowingOffset)
                             {
                                 character.WorldDirection = Vector3.zero;
@@ -70,7 +73,7 @@ namespace Scripts
 
                                 var pathDelta = pathPosition - workerPosition;
                                 pathDelta.y = 0f;
-                                character.WorldDirection = pathDelta.normalized;
+                                character.WorldDirection = pathDelta.normalized * Mathf.Min(Mathf.Max(pathDelta.magnitude, 0.1f), 1f);
                             }
                         }
                     }

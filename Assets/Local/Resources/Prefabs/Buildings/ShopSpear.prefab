@@ -240,7 +240,7 @@ Transform:
   m_GameObject: {fileID: 1008960212952923780}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.215}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -400,7 +400,7 @@ Transform:
   m_GameObject: {fileID: 1973254503851273655}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.15, y: 0, z: 0.93}
+  m_LocalPosition: {x: -2.088, y: 0, z: 1.538}
   m_LocalScale: {x: 2.82, y: 1, z: 3.56}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -426,7 +426,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0.64, y: 0.5, z: -0.24}
 --- !u!1 &2659093098276752137
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,9 +729,12 @@ MonoBehaviour:
       Type: 2
     - Amount: 1
       Type: 7
-  UpgradeItemStackView: {fileID: 8781558119863303856}
-  ConstructionItemStackView: {fileID: 892569837840612369}
+  UpgradeStorage: {fileID: 0}
+  ConstructionStorage: {fileID: 0}
+  ConstructionPriceLabels: []
+  ConstructionProgressBars: []
   _level: 1
+  ConstructionCharacters: []
   ProductionCharacters: []
   UnloadingCharacters: []
   PickingUpCharacters: []
@@ -766,7 +769,7 @@ Transform:
   m_GameObject: {fileID: 5593613793845364823}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.78, y: -0.022000074, z: -1.96}
+  m_LocalPosition: {x: 1.05, y: -0.022000074, z: -1.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -821,7 +824,7 @@ Transform:
   m_GameObject: {fileID: 6067547472030308689}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.065, y: 0, z: -1.139}
+  m_LocalPosition: {x: 0.065, y: 0, z: -1.289}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -848,7 +851,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &6753355511587659088
 GameObject:
   m_ObjectHideFlags: 0

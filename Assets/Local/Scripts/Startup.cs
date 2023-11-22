@@ -15,13 +15,12 @@ namespace Scripts
         private List<Building> _buildings = new List<Building>();
         private List<ProgressBarView> _progressBarViews = new List<ProgressBarView>();
 
-        private CharacterMovementSystem _playerMovementSystem = new CharacterMovementSystem();
         private PlayerInputSystem _playerInputSystem = new PlayerInputSystem();
         private CameraFollowSystem _cameraFollowSystem = new CameraFollowSystem();
         private AddItemSystem _addItemSystem = new AddItemSystem();
         private AddHonorSystem _addHonorSystem = new AddHonorSystem();
         private RemoveItemSystem _removeItemSystem = new RemoveItemSystem();
-        private PickUpSystem _pickUpSystem = new PickUpSystem();
+        private BuildingPickUpSystem _buildingPickUpSystem = new BuildingPickUpSystem();
         private TriggerSystem _triggerSystem = new TriggerSystem();
         private BuildingTriggerSystem _buildingTriggerSystem = new BuildingTriggerSystem();
         private BuildingProductionSystem _buildingProductionSystem = new BuildingProductionSystem();
@@ -33,6 +32,7 @@ namespace Scripts
         private WorkerBehaviorSystem _workerBehaviorSystem = new WorkerBehaviorSystem();
         private AssistantBehaviorSystem _assistantBehaviorSystem = new AssistantBehaviorSystem();
         private ApprenticeBehaviorSystem _apprenticeBehaviorSystem = new ApprenticeBehaviorSystem();
+        private CharacterMovementSystem _characterMovementSystem = new CharacterMovementSystem();
         private UISystem _uiSystem = new UISystem();
         
 
@@ -44,7 +44,6 @@ namespace Scripts
 
             AddSystem(_addItemSystem);
             AddSystem(_addHonorSystem);
-            AddSystem(_playerMovementSystem);
             AddSystem(_playerInputSystem);
             AddSystem(_cameraFollowSystem);
             AddSystem(_removeItemSystem);
@@ -53,13 +52,14 @@ namespace Scripts
             AddSystem(_buildingProductionSystem);
             AddSystem(_buildingCollectingSystem);
             AddSystem(_buildingConstructionSystem);
-            AddSystem(_pickUpSystem);
+            AddSystem(_buildingPickUpSystem);
             AddSystem(_workerAssignSystem);
             AddSystem(_workerSpawnSystem);
             AddSystem(_workerPickUpSystem);
             AddSystem(_workerBehaviorSystem);
             AddSystem(_assistantBehaviorSystem);
             AddSystem(_apprenticeBehaviorSystem);
+            AddSystem(_characterMovementSystem);
             AddSystem(_uiSystem);
 
             _container.AddLink(_eventBus, "EventBus");
@@ -72,10 +72,6 @@ namespace Scripts
             _eventBus.Init();
 
             _eventBus.CallEvent(new StartEvent());
-
-            _eventBus.CallEvent(new AddItemEvent() { Count = 220, ItemType = Enums.ItemType.WOOD, Unit = _characters[0] });
-            _eventBus.CallEvent(new AddItemEvent() { Count = 220, ItemType = Enums.ItemType.GOLD, Unit = _characters[0] });
-            _eventBus.CallEvent(new AddItemEvent() { Count = 15, ItemType = Enums.ItemType.HONOR, Unit = _characters[0] });
         }
 
         public void Update()
