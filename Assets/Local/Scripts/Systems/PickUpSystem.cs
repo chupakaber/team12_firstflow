@@ -20,28 +20,6 @@ namespace Scripts
             }
         }
 
-        public void EventCatch(EnterTriggerEvent newEvent)
-        {
-            foreach (var building in Buildings)
-            {
-                if (newEvent.Trigger.Equals(building.PickingUpArea))
-                {
-                    building.PickingUpCharacters.Add(newEvent.Character);
-                }
-            }
-        }
-
-        public void EventCatch(ExitTriggerEvent newEvent)
-        {
-            foreach (var building in Buildings)
-            {
-                if (newEvent.Trigger.Equals(building.PickingUpArea))
-                {
-                    building.PickingUpCharacters.Remove(newEvent.Character);
-                }
-            }
-        }
-
         private void PickUp(Building building, Character character)
         {
             var itemsMoveAmount = 1;

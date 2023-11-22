@@ -18,6 +18,7 @@ namespace Scripts
 
             foreach (Building building in buildingsArray)
             {
+                building.Level = building.Level;
                 Buildings.Add(building);
 
                 var progressBar = Object.Instantiate(progressBarPrefab);
@@ -33,7 +34,6 @@ namespace Scripts
             {
                 if (newEvent.Trigger.Equals(building.ProductionArea))
                 {
-                    building.ProductionCharacters.Add(newEvent.Character);
                     if (building.ProductionCharacters.Count == 1)
                     {
                         if (building.ProductionEndTime > building.LastProductionTime)
@@ -56,7 +56,6 @@ namespace Scripts
             {
                 if (newEvent.Trigger.Equals(building.ProductionArea))
                 {
-                    building.ProductionCharacters.Remove(newEvent.Character);
                     if (building.ProductionCharacters.Count == 0)
                     {
                         building.ProductionEndTime = Time.time;
@@ -69,28 +68,39 @@ namespace Scripts
         {
             foreach (var building in Buildings)
             {
-                if (Time.time >= building.LastProductionTime + building.ProductionCooldown)
+                if (building.Level < 1)
                 {
-                    if(building.ProductionArea == null || building.ProductionCharacters.Count > 0)
+                    continue;
+                }
+
+                if (Time.time < building.LastProductionTime + building.ProductionCooldown)
+                {
+                    continue;
+                }
+
+                if(building.ProductionArea != null && building.ProductionCharacters.Count < 1)
+                {
+                    continue;
+                }
+
+                if (building.ItemCost > building.Items.GetAmount(building.ConsumeItemType))
+                {
+                    continue;
+                }
+
+                if(building.ProductionLimit >= building.Items.GetAmount(building.ProduceItemType) + building.ProductionItemAmountPerCycle)
+                {
+                    var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = building.ProductionItemAmountPerCycle, Unit = building };
+                    EventBus.CallEvent(addItemEvent);
+
+                    if (building.ItemCost > 0)
                     {
-                        if (building.ItemCost <= building.Items.GetAmount(building.ConsumeItemType))
-                        {
-                            if(building.ProductionLimit >= building.Items.GetAmount(building.ProduceItemType) + building.ProductionItemAmountPerCycle)
-                            {
-                                var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = building.ProductionItemAmountPerCycle, Unit = building };
-                                EventBus.CallEvent(addItemEvent);
-
-                                if (building.ItemCost > 0)
-                                {
-                                    var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = building.ItemCost, Unit = building };
-                                    EventBus.CallEvent(removeItemEvent);
-                                }
-
-                                building.LastProductionTime = Time.time;
-                            }
-                        }
+                        var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = building.ItemCost, Unit = building };
+                        EventBus.CallEvent(removeItemEvent);
                     }
-                }  
+
+                    building.LastProductionTime = Time.time;
+                }
             }
         }
     }

@@ -99,11 +99,4 @@ namespace Scripts
              return _items.GetEnumerator();
         }
     }
-    public class Item
-    {
-        public int Amount;
-        public ItemType Type;
-    }
-
-    
 }
