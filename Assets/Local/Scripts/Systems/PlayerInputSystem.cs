@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Scripts
 {
     public class PlayerInputSystem: ISystem
     {
-        public Character Character;
+        public List<Character> Characters;
         private PlayerInput _playerInput;
         private Transform _cameraTransform;
 
@@ -20,9 +21,15 @@ namespace Scripts
 
         private void OnMovement(InputAction.CallbackContext context)
         {
-            var direction = context.ReadValue<Vector2>();
-            Character.WorldDirection = new Vector3(direction.x, 0f, direction.y);
-            Character.WorldDirection = Quaternion.Euler(0, _cameraTransform.rotation.eulerAngles.y, 0) * Character.WorldDirection;
+            foreach (Character character in Characters) 
+            {
+               if (character.CharacterType == Enums.CharacterType.PLAYER)
+               {
+                    var direction = context.ReadValue<Vector2>();
+                    character.WorldDirection = new Vector3(direction.x, 0f, direction.y);
+                    character.WorldDirection = Quaternion.Euler(0, _cameraTransform.rotation.eulerAngles.y, 0) * character.WorldDirection;                
+               } 
+            }
         }
     }
 
