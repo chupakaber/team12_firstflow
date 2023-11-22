@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace Scripts
 {
-    public class AssignWorkerSystem: ISystem
+    public class WorkerAssignSystem: ISystem
     {
         public EventBus EventBus;
         public List<Character> Characters;
