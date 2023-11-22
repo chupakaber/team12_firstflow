@@ -75,6 +75,7 @@ namespace Scripts
 
             _eventBus.CallEvent(new AddItemEvent() { Count = 220, ItemType = Enums.ItemType.WOOD, Unit = _characters[0] });
             _eventBus.CallEvent(new AddItemEvent() { Count = 220, ItemType = Enums.ItemType.GOLD, Unit = _characters[0] });
+            _eventBus.CallEvent(new AddItemEvent() { Count = 15, ItemType = Enums.ItemType.HONOR, Unit = _characters[0] });
         }
 
         public void Update()
