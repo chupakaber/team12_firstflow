@@ -6,15 +6,24 @@ namespace Scripts
     public class BuildingProductionSystem: ISystem
     {
         public EventBus EventBus;
+        public UIView UIView;
 
         public List<Building> Buildings;
+        public List<ProgressBarView> ProgressBarViews;
 
         public void EventCatch(StartEvent newEvent)
         {
             var buildingsArray = Object.FindObjectsOfType<Building>();
+            var progressBarPrefab = Resources.Load<ProgressBarView>("Prefabs/UI/ProgressBar");
+
             foreach (Building building in buildingsArray)
             {
                 Buildings.Add(building);
+
+                var progressBar = Object.Instantiate(progressBarPrefab);
+                progressBar.transform.SetParent(UIView.WorldSpaceTransform);
+                progressBar.transform.localScale = Vector3.one;
+                ProgressBarViews.Add(progressBar);
             }
         }
 
@@ -25,7 +34,18 @@ namespace Scripts
                 if (newEvent.Trigger.Equals(building.ProductionArea))
                 {
                     building.ProductionCharacters.Add(newEvent.Character);
-                    building.LastProductionTime = Time.time;
+                    if (building.ProductionCharacters.Count == 1)
+                    {
+                        if (building.ProductionEndTime > building.LastProductionTime)
+                        {
+                            building.LastProductionTime = Time.time - (building.ProductionEndTime - building.LastProductionTime);
+                            building.ProductionEndTime = building.LastProductionTime - 1f;
+                        }
+                        else
+                        {
+                            building.LastProductionTime = Time.time;
+                        }
+                    }
                 }
             }
         }
@@ -37,7 +57,10 @@ namespace Scripts
                 if (newEvent.Trigger.Equals(building.ProductionArea))
                 {
                     building.ProductionCharacters.Remove(newEvent.Character);
-                    building.LastProductionTime = Time.time;
+                    if (building.ProductionCharacters.Count == 0)
+                    {
+                        building.ProductionEndTime = Time.time;
+                    }
                 }
             }
         }

@@ -188,6 +188,7 @@ Transform:
   - {fileID: 4879925676582945281}
   - {fileID: 4535711018507247574}
   - {fileID: 738344068484848908}
+  - {fileID: 2027503695333976660}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6323845437266889994
@@ -278,20 +279,54 @@ MonoBehaviour:
   UnloadingArea: {fileID: 0}
   PickingUpArea: {fileID: 1583323114164913259}
   UpgradeArea: {fileID: 3124377016976236655}
+  ProgressBarPivot: {fileID: 2027503695333976660}
   ProductionLimit: 10
   ResourceLimit: 0
   ItemCost: 0
   ProductionItemAmountPerCycle: 1
-  ProductionSecondItemAmountPerCycle: 0
   ProductionCooldown: 1
+  ProductionEndTime: -100
   ProduceItemType: 1
-  ProduceSecondItemType: 0
   ConsumeItemType: 0
   ProductionCharacters: []
   UnloadingCharacters: []
   PickingUpCharacters: []
   UpgradeCharacters: []
-  LastProductionTime: -1
+  AssignedProductionCharacters: []
+  AssignedUnloadingCharacters: []
+  AssignedPickingUpCharacters: []
+  LastProductionTime: -200
+--- !u!1 &8321110698908577487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2027503695333976660}
+  m_Layer: 0
+  m_Name: ProgressBarPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2027503695333976660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8321110698908577487}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4429453375236135139}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9012902921280766969
 GameObject:
   m_ObjectHideFlags: 0

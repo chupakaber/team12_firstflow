@@ -13,6 +13,7 @@ namespace Scripts
 
         private List<Character> _characters = new List<Character>();
         private List<Building> _buildings = new List<Building>();
+        private List<ProgressBarView> _progressBarViews = new List<ProgressBarView>();
 
         private CharacterMovementSystem _playerMovementSystem = new CharacterMovementSystem();
         private PlayerInputSystem _playerInputSystem = new PlayerInputSystem();
@@ -62,6 +63,7 @@ namespace Scripts
             _container.AddLink(_mainCamera, "Camera");
             _container.AddLink(_uiView, "UIView");
             _container.AddLink(_buildings, "Buildings");
+            _container.AddLink(_progressBarViews, "ProgressBarViews");
             _container.Init();
             _eventBus.Init();
 
