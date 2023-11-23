@@ -35,6 +35,60 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""DebugSpeedX1"",
+                    ""type"": ""Button"",
+                    ""id"": ""448ef922-7e32-4ec3-9e83-643fbccde9f5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DebugSpeedX2"",
+                    ""type"": ""Button"",
+                    ""id"": ""2f725d7e-1243-4359-8d35-d5c4d5e2b4a6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DebugSpeedX5"",
+                    ""type"": ""Button"",
+                    ""id"": ""bdbde444-7482-4405-a7d4-c64cc2d35b86"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DebugSpeedX10"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c6098c0-6792-4be1-bd01-e5002b4f5b07"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DebugPause"",
+                    ""type"": ""Button"",
+                    ""id"": ""b1019a55-e658-47b1-9ac6-62bbf361d464"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DebugReload"",
+                    ""type"": ""Button"",
+                    ""id"": ""fe81e79d-ccdf-4524-b48d-2c85e48c11c8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -92,6 +146,72 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""542c6294-f64b-4df6-9e83-cfa203111c36"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugSpeedX1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2667d85a-f218-4f83-ab57-222c8b6017aa"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugSpeedX2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""282529d7-e464-40c4-ab9c-69a5bc22c954"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugSpeedX5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""508ed8b9-38a5-47e0-a749-1461420ba7af"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugSpeedX10"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90ba95d0-d9bb-4ea2-a478-13cda98384c7"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugPause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11142d39-ffa3-4c21-a9b6-4a8216dda904"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugReload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -101,6 +221,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // Default
         m_Default = asset.FindActionMap("Default", throwIfNotFound: true);
         m_Default_Movement = m_Default.FindAction("Movement", throwIfNotFound: true);
+        m_Default_DebugSpeedX1 = m_Default.FindAction("DebugSpeedX1", throwIfNotFound: true);
+        m_Default_DebugSpeedX2 = m_Default.FindAction("DebugSpeedX2", throwIfNotFound: true);
+        m_Default_DebugSpeedX5 = m_Default.FindAction("DebugSpeedX5", throwIfNotFound: true);
+        m_Default_DebugSpeedX10 = m_Default.FindAction("DebugSpeedX10", throwIfNotFound: true);
+        m_Default_DebugPause = m_Default.FindAction("DebugPause", throwIfNotFound: true);
+        m_Default_DebugReload = m_Default.FindAction("DebugReload", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -163,11 +289,23 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Default;
     private List<IDefaultActions> m_DefaultActionsCallbackInterfaces = new List<IDefaultActions>();
     private readonly InputAction m_Default_Movement;
+    private readonly InputAction m_Default_DebugSpeedX1;
+    private readonly InputAction m_Default_DebugSpeedX2;
+    private readonly InputAction m_Default_DebugSpeedX5;
+    private readonly InputAction m_Default_DebugSpeedX10;
+    private readonly InputAction m_Default_DebugPause;
+    private readonly InputAction m_Default_DebugReload;
     public struct DefaultActions
     {
         private @PlayerInput m_Wrapper;
         public DefaultActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Default_Movement;
+        public InputAction @DebugSpeedX1 => m_Wrapper.m_Default_DebugSpeedX1;
+        public InputAction @DebugSpeedX2 => m_Wrapper.m_Default_DebugSpeedX2;
+        public InputAction @DebugSpeedX5 => m_Wrapper.m_Default_DebugSpeedX5;
+        public InputAction @DebugSpeedX10 => m_Wrapper.m_Default_DebugSpeedX10;
+        public InputAction @DebugPause => m_Wrapper.m_Default_DebugPause;
+        public InputAction @DebugReload => m_Wrapper.m_Default_DebugReload;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -180,6 +318,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @DebugSpeedX1.started += instance.OnDebugSpeedX1;
+            @DebugSpeedX1.performed += instance.OnDebugSpeedX1;
+            @DebugSpeedX1.canceled += instance.OnDebugSpeedX1;
+            @DebugSpeedX2.started += instance.OnDebugSpeedX2;
+            @DebugSpeedX2.performed += instance.OnDebugSpeedX2;
+            @DebugSpeedX2.canceled += instance.OnDebugSpeedX2;
+            @DebugSpeedX5.started += instance.OnDebugSpeedX5;
+            @DebugSpeedX5.performed += instance.OnDebugSpeedX5;
+            @DebugSpeedX5.canceled += instance.OnDebugSpeedX5;
+            @DebugSpeedX10.started += instance.OnDebugSpeedX10;
+            @DebugSpeedX10.performed += instance.OnDebugSpeedX10;
+            @DebugSpeedX10.canceled += instance.OnDebugSpeedX10;
+            @DebugPause.started += instance.OnDebugPause;
+            @DebugPause.performed += instance.OnDebugPause;
+            @DebugPause.canceled += instance.OnDebugPause;
+            @DebugReload.started += instance.OnDebugReload;
+            @DebugReload.performed += instance.OnDebugReload;
+            @DebugReload.canceled += instance.OnDebugReload;
         }
 
         private void UnregisterCallbacks(IDefaultActions instance)
@@ -187,6 +343,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @DebugSpeedX1.started -= instance.OnDebugSpeedX1;
+            @DebugSpeedX1.performed -= instance.OnDebugSpeedX1;
+            @DebugSpeedX1.canceled -= instance.OnDebugSpeedX1;
+            @DebugSpeedX2.started -= instance.OnDebugSpeedX2;
+            @DebugSpeedX2.performed -= instance.OnDebugSpeedX2;
+            @DebugSpeedX2.canceled -= instance.OnDebugSpeedX2;
+            @DebugSpeedX5.started -= instance.OnDebugSpeedX5;
+            @DebugSpeedX5.performed -= instance.OnDebugSpeedX5;
+            @DebugSpeedX5.canceled -= instance.OnDebugSpeedX5;
+            @DebugSpeedX10.started -= instance.OnDebugSpeedX10;
+            @DebugSpeedX10.performed -= instance.OnDebugSpeedX10;
+            @DebugSpeedX10.canceled -= instance.OnDebugSpeedX10;
+            @DebugPause.started -= instance.OnDebugPause;
+            @DebugPause.performed -= instance.OnDebugPause;
+            @DebugPause.canceled -= instance.OnDebugPause;
+            @DebugReload.started -= instance.OnDebugReload;
+            @DebugReload.performed -= instance.OnDebugReload;
+            @DebugReload.canceled -= instance.OnDebugReload;
         }
 
         public void RemoveCallbacks(IDefaultActions instance)
@@ -207,5 +381,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface IDefaultActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnDebugSpeedX1(InputAction.CallbackContext context);
+        void OnDebugSpeedX2(InputAction.CallbackContext context);
+        void OnDebugSpeedX5(InputAction.CallbackContext context);
+        void OnDebugSpeedX10(InputAction.CallbackContext context);
+        void OnDebugPause(InputAction.CallbackContext context);
+        void OnDebugReload(InputAction.CallbackContext context);
     }
 }

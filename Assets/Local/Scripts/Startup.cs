@@ -84,6 +84,11 @@ namespace Scripts
             _eventBus.CallEvent(new FixedUpdateEvent());
         }
 
+        public void OnDisable()
+        {
+            _eventBus.CallEvent(new DisposeEvent());
+        }
+
         private void AddSystem(ISystem system)
         {
             _eventBus.Systems.Add(system);
