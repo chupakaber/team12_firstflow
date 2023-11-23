@@ -26,7 +26,7 @@ namespace Scripts
 
             var characterHorizontalVelocity = character.CharacterRigidbody.velocity;
             characterHorizontalVelocity.y = 0f;
-            if (characterHorizontalVelocity.sqrMagnitude > 0.1f)
+            if (characterHorizontalVelocity.sqrMagnitude > 0.5f)
             {
                 character.LastMoveItemTime = Time.time;
             }

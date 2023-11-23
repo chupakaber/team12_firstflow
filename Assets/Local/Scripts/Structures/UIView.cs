@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Scripts
 {
@@ -7,7 +8,7 @@ namespace Scripts
     {
         public TMP_Text GoldCountText;
         public TMP_Text HonorCountText;
-        public RectTransform HonorProgressBarTransform;
+        public Image HonorProgressBarImage;
         public RectTransform WorldSpaceTransform;
 
         public void SetGold(int count)
@@ -18,10 +19,8 @@ namespace Scripts
         public void SetHonor(int count) 
         {
             HonorCountText.text = count.ToString();
-            
-            var progressBarSize = HonorProgressBarTransform.sizeDelta;
-            progressBarSize.x = count / 100f * ((RectTransform)HonorProgressBarTransform.parent).rect.width;
-            HonorProgressBarTransform.sizeDelta = progressBarSize;
+
+            HonorProgressBarImage.fillAmount = count / 100f;
         }
     }
 }

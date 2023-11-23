@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using Scripts.Enums;
 using UnityEngine;
 
 namespace Scripts
 {
-    public class PickUpSystem : ISystem
+    public class BuildingPickUpSystem : ISystem
     {
         public EventBus EventBus;
         public List<Character> Characters;
@@ -25,7 +26,7 @@ namespace Scripts
             var itemsMoveAmount = 1;
             if (Time.time >= character.LastMoveItemTime + character.PickUpCooldown)
             {
-                if (character.PickUpItemConstraint == Enums.ItemType.NONE || character.PickUpItemConstraint == building.ProduceItemType)
+                if (character.PickUpItemConstraint == ItemType.NONE || character.PickUpItemConstraint == building.ProduceItemType)
                 {
                     if (character.ItemLimit >= character.Items.GetAmount() + character.Items.GetItemVolume(building.ProduceItemType) * itemsMoveAmount)
                     {

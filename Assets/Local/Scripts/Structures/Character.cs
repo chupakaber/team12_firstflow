@@ -22,14 +22,12 @@ namespace Scripts
 
         public void OnTriggerEnter(Collider other)
         {
-            Debug.Log($"{other.name}Enter");
-            EnterColliders.Push( other );
+            EnterColliders.Push(other);
         }
 
         public void OnTriggerExit(Collider other)
         {
-            Debug.Log($"{other.name}Exit");
-            ExitColliders.Push( other );            
+            ExitColliders.Push(other);
         }
     }
 }

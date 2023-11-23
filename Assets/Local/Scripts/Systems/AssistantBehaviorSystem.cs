@@ -42,31 +42,9 @@ namespace Scripts
                             var resourceDistance = (assistant.ResourceBuilding.PickingUpArea.transform.position - character.transform.position).magnitude;
                             var isResourceNeeded = productionDistance / (productionDistance + resourceDistance) > load;
                             var target = isResourceNeeded ? assistant.ResourceBuilding.PickingUpArea : assistant.TargetBuilding.UnloadingArea;
-                            //var targetPosition = target.transform.position;
 
                             assistant.TargetPosition = target.transform.position;
-                            assistant.FollowingOffset = 0.7f;
-                            /*
-                            if (assistant.NavMeshAgent.CalculatePath(targetPosition, _path))
-                            {
-                                if (_path.GetCornersNonAlloc(_pathCorners) > 1)
-                                {
-                                    targetPosition = _pathCorners[1];
-                                }
-                                var delta = targetPosition - character.transform.position;
-                                delta.y = 0f;
-                                character.WorldDirection = delta.normalized;
-                                
-                                if (delta.magnitude < 0.5f)
-                                {
-                                    character.WorldDirection = Vector3.zero;
-                                }
-                            }
-                            else
-                            {
-                                character.WorldDirection = Vector3.zero;
-                            }
-                            */
+                            assistant.FollowingOffset = 0.3f;
                         }
                     }
                 }

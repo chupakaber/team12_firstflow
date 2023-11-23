@@ -61,7 +61,7 @@ namespace Scripts
                         if (building.ProduceItemType == ItemType.ASSISTANT)
                         {
                             assistant.TargetBuilding = building;
-                            assistant.FollowingOffset = 0.7f;
+                            assistant.FollowingOffset = 0.3f;
                         }
                     }
                 }
@@ -81,7 +81,7 @@ namespace Scripts
                         if (building.ProduceItemType == ItemType.APPRENTICE)
                         {
                             apprentice.TargetBuilding = building;
-                            apprentice.FollowingOffset = 0.7f;
+                            apprentice.FollowingOffset = 0.3f;
                         }
                     }
                 }
