@@ -65,6 +65,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AOBrightness: 0.3
+    - _AOPreMultiply: 0.78
+    - _AOSaturation: 1.75
+    - _Brightness: -0.22
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -73,16 +77,19 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Intencity: 1
-    - _Intensity: 1.904
+    - _Intensity: 0.68
     - _Lighten: 0
     - _Metallic: 0
     - _Mode: 0
+    - _Multiply: 1.564
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _PreBrightness: 0.02
     - _PreIntencity: 1
-    - _PreIntensity: 1.523
-    - _Saturation: 0
-    - _SaturationBase: 1
+    - _PreIntensity: 4.13
+    - _PreMultiply: 1.537
+    - _Saturation: 0.65
+    - _SaturationBase: 0.523
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -91,6 +98,6 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0.05660379, g: 0.049402505, b: 0.020558922, a: 1}
-    - _LightColor: {r: 0.047169805, g: 0.03138042, b: 0, a: 0}
-    - _ShadowColor: {r: 0, g: 0.07566262, b: 0.21698111, a: 0}
+    - _LightColor: {r: 0, g: 0, b: 0, a: 0}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
