@@ -2,20 +2,26 @@ Shader "Team12/DiffuseWithAO" {
     Properties {
         _MainTex ("Base (RGB)", 2D) = "white" {}
         _AmbientOcclusionTex ("Ambient Occlusion (RGB)", 2D) = "white" {}
-        _AOBrightness ("AO Brightness", Range(0, 3)) = 0
-        _AOPreMultiply ("AO Pre Multiply", Range(0, 3)) = 1
+        _AOBrightness ("AO Brightness", Range(0, 3)) = 0.1
+        _AOPreMultiply ("AO Pre Multiply", Range(0, 3)) = 1.5
         _PreMultiply ("Pre Multiply", Range(0.5, 2)) = 1
         _Multiply ("Multiply", Range(0.5, 2)) = 1
         _PreBrightness ("Pre Brightness", Range(-3, 3)) = 0
         _Brightness ("Brightness", Range(-3, 3)) = 0
-        _PreIntensity ("Pre Intencity", Range(-5, 5)) = 1
+        _PreIntensity ("Pre Intencity", Range(-5, 5)) = 2.5
         _Intensity ("Intencity", Range(-5, 5)) = 1
 
-        _SaturationBase ("Saturation Base", Range(0, 1)) = 0.5
-        _AOSaturation ("AO Saturation", Range(-1, 10)) = 0
-        _Saturation ("Saturation", Range(-1, 10)) = 0
+        _SaturationBase ("Saturation Base", Range(0, 1)) = 0.6
+        _AOSaturation ("AO Saturation", Range(-1, 10)) = 3
+        _Saturation ("Saturation", Range(-1, 10)) = 1.8
         _LightColor ("Light Color", Color) = (0, 0, 0, 0)
-        _ShadowColor ("Shadow Color", Color) = (0, 0, 0, 0)
+        _ShadowColor ("Shadow Color", Color) = (0.07, 0, 0.21, 1)
+        _FogStart ("Fog Start", Range(-100, 100)) = -14
+        _FogScale ("Fog Scale", Range(0.001, 100)) = 0.04
+        _FogPower ("Fog Power", Range(0.5, 2)) = 2
+        _FogHeight ("Fog Height", Range(-10, 10)) = 0.5
+        _FogHeightScale ("Fog Height Scale", Range(0.01, 10)) = 0.15
+        _FogColor ("Fog Color", Color) = (0.82, 0.82, 0.82, 0)
     }
 
     SubShader {
@@ -44,6 +50,7 @@ Shader "Team12/DiffuseWithAO" {
                 float4 col : COLOR;
                 float2 uv0 : TEXCOORD0;
                 float2 uv1 : TEXCOORD1;
+                float4 fog : TEXCOORD2;
             };
 
             uniform float4 _LightColor0;
@@ -63,6 +70,13 @@ Shader "Team12/DiffuseWithAO" {
             uniform float _Intensity;
             uniform float4 _LightColor;
             uniform float4 _ShadowColor;
+            uniform float _FogStart;
+            uniform float _FogScale;
+            uniform float _FogPower;
+            uniform float _FogHeight;
+            uniform float _FogHeightScale;
+            uniform float4 _FogColor;
+            uniform float4 _CameraWorldPosition;
 
             vertexOutput vert(vertexInput i) 
             {
@@ -82,6 +96,12 @@ Shader "Team12/DiffuseWithAO" {
 
                 o.col = float4(diffuseReflection, 1.0);
                 o.pos = UnityObjectToClipPos(i.vertex);
+                
+                float4 worldPosition = mul(unity_ObjectToWorld, i.vertex);
+                half fogValue = length(_CameraWorldPosition - worldPosition);
+                fogValue = max(pow((fogValue + _FogStart) * _FogScale, _FogPower), (-worldPosition.y + _FogHeight) * _FogHeightScale);
+                fogValue = clamp(fogValue, 0, 1);
+                o.fog = float4(_FogColor.rgb, _FogColor.a * fogValue);
                 return o;
             }
 
@@ -107,6 +127,7 @@ Shader "Team12/DiffuseWithAO" {
                 half shadowFactor = clamp((_SaturationBase - ao) / _SaturationBase, 0, 1);
                 color += (1 - shadowFactor) * _LightColor;
                 color += shadowFactor * _ShadowColor;
+                color.rgb = color.rgb * (1 - i.fog.a) + i.fog.rgb * i.fog.a;
                 return color;
             }
 

@@ -34,6 +34,7 @@ namespace Scripts
         private ApprenticeBehaviorSystem _apprenticeBehaviorSystem = new ApprenticeBehaviorSystem();
         private CharacterMovementSystem _characterMovementSystem = new CharacterMovementSystem();
         private UISystem _uiSystem = new UISystem();
+        private EnvironmentShaderSystem _environmentShaderSystem = new EnvironmentShaderSystem();
         
 
         public void Start()
@@ -61,6 +62,7 @@ namespace Scripts
             AddSystem(_apprenticeBehaviorSystem);
             AddSystem(_characterMovementSystem);
             AddSystem(_uiSystem);
+            AddSystem(_environmentShaderSystem);
 
             _container.AddLink(_eventBus, "EventBus");
             _container.AddLink(_characters, "Characters");
