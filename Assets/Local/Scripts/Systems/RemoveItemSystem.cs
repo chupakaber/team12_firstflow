@@ -8,6 +8,5 @@
 
             newEvent.Unit.ItemStackView.RemoveItem(newEvent.ItemType, newEvent.Count);
         }
-
     }
 }

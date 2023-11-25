@@ -1,3 +1,4 @@
+using Scripts.Enums;
 using Scripts.Systems;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace Scripts
         private List<Character> _characters = new List<Character>();
         private List<Building> _buildings = new List<Building>();
         private List<ProgressBarView> _progressBarViews = new List<ProgressBarView>();
+        private PoolCollection<ItemView> _itemViewPools = new PoolCollection<ItemView>();
 
         private PlayerInputSystem _playerInputSystem = new PlayerInputSystem();
         private CameraFollowSystem _cameraFollowSystem = new CameraFollowSystem();
@@ -43,6 +45,13 @@ namespace Scripts
             _characters.Add(FindObjectOfType<Character>());
             _uiView = FindObjectOfType<UIView>();
 
+            var names = System.Enum.GetNames(typeof(ItemType));
+            var values = (ItemType[])System.Enum.GetValues(typeof(ItemType));
+            for (int i = 0; i < values.Length; i++)
+            {
+                _itemViewPools.Pools.Add(values[i], new ObjectPool<ItemView>($"Prefabs/{names[i]}"));
+            }
+
             AddSystem(_addItemSystem);
             AddSystem(_addHonorSystem);
             AddSystem(_playerInputSystem);
@@ -70,6 +79,7 @@ namespace Scripts
             _container.AddLink(_uiView, "UIView");
             _container.AddLink(_buildings, "Buildings");
             _container.AddLink(_progressBarViews, "ProgressBarViews");
+            _container.AddLink(_itemViewPools, "ItemViewPools");
             _container.Init();
             _eventBus.Init();
 

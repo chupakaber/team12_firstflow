@@ -1,10 +1,11 @@
 ﻿using Scripts.Enums;
-using UnityEngine;
 
 namespace Scripts.Systems
 {
     public class AddItemSystem: ISystem
     {
+        public PoolCollection<ItemView> ItemViewPools;
+
         public void EventCatch(AddItemEvent newEvent)
         {            
             newEvent.Unit.AddItem(newEvent.ItemType, newEvent.Count);
@@ -13,13 +14,10 @@ namespace Scripts.Systems
             {
                 return;
             }
-
-            var itemPrefab = Resources.Load<GameObject>($"Prefabs/{newEvent.ItemType.ToString()}");
             
             for (var i = 0; i < newEvent.Count; i++)
             {
-                var item = Object.Instantiate(itemPrefab);
-                var itemView = item.GetComponent<ItemView>(); 
+                var itemView = ItemViewPools.Get(newEvent.ItemType); 
                 newEvent.Unit.ItemStackView.AddItem(itemView);
             }
         }

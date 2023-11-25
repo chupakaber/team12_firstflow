@@ -36,7 +36,7 @@ namespace Scripts
                 if (item.ItemType == itemType)
                 {
                     items.Remove(item);
-                    Destroy(item.gameObject);
+                    item.Release();
                     SortItems();
                     i--;
                     a++;
