@@ -72,7 +72,7 @@ namespace Scripts
                                 }
 
                                 var pathDelta = pathPosition - workerPosition;
-                                pathDelta.y = 0f;
+                                // pathDelta.y = 0f;
                                 character.WorldDirection = pathDelta.normalized * Mathf.Min(Mathf.Max(pathDelta.magnitude, 0.1f), 1f);
                             }
                         }

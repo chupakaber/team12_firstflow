@@ -31,6 +31,11 @@ namespace Scripts
                     return;
                 }
 
+                if (building.ProduceItemType == ItemType.ASSISTANT && character.CharacterType != CharacterType.PLAYER)
+                {
+                    return;
+                }
+
                 if (character.PickUpItemConstraint == ItemType.NONE || character.PickUpItemConstraint == building.ProduceItemType)
                 {
                     if (character.ItemLimit >= character.Items.GetAmount() + character.Items.GetItemVolume(building.ProduceItemType) * itemsMoveAmount)

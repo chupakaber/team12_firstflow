@@ -398,7 +398,7 @@ Transform:
   m_GameObject: {fileID: 1973254503851273655}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.088, y: 0, z: 1.538}
+  m_LocalPosition: {x: -1.85, y: 0, z: 1.538}
   m_LocalScale: {x: 2.82, y: 1, z: 3.56}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -423,8 +423,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0.64, y: 0.5, z: -0.24}
+  m_Size: {x: 1.23, y: 1, z: 1}
+  m_Center: {x: 0.54, y: 0.5, z: -0.24}
 --- !u!1 &2659093098276752137
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,10 +708,10 @@ MonoBehaviour:
   ConstructionArea: {fileID: 5214511036190391278}
   ProductionArea: {fileID: 321897648743843693}
   UnloadingArea: {fileID: 4115369036491878708}
-  PickingUpArea: {fileID: 3367812564722817883}
+  PickingUpArea: {fileID: 9033488770357468245}
   UpgradeArea: {fileID: 3620876365620267310}
   ProgressBarPivot: {fileID: 2103775045506096898}
-  ProductionLimit: 10
+  ProductionLimit: 1000
   ResourceLimit: 10
   ItemCost: 1
   ProductionItemAmountPerCycle: 2
@@ -803,7 +803,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 646038346145884589}
-  - component: {fileID: 3367812564722817883}
+  - component: {fileID: 9033488770357468245}
   m_Layer: 0
   m_Name: PickingUpArea
   m_TagString: Untagged
@@ -821,14 +821,14 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.065, y: 0, z: -1.289}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2222201930340954808}
   m_Father: {fileID: 2013289688210010218}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &3367812564722817883
-SphereCollider:
+--- !u!65 &9033488770357468245
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -846,8 +846,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 2.45, y: 1, z: 2.25}
+  m_Center: {x: -0.49, y: 0.5, z: 0.36}
 --- !u!1 &6753355511587659088
 GameObject:
   m_ObjectHideFlags: 0

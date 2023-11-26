@@ -42,7 +42,8 @@ namespace Scripts
                {
                     var direction = context.ReadValue<Vector2>();
                     character.WorldDirection = new Vector3(direction.x, 0f, direction.y);
-                    character.WorldDirection = Quaternion.Euler(0, _cameraTransform.rotation.eulerAngles.y, 0) * character.WorldDirection;                
+
+                    character.WorldDirection = Quaternion.Euler(0, _cameraTransform.rotation.eulerAngles.y, 0) * character.WorldDirection;
                } 
             }
         }

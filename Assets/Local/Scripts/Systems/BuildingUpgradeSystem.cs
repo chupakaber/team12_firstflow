@@ -102,6 +102,7 @@ namespace Scripts
                         if (progressBar.ItemType == requirement.Type)
                         {
                             progressBar.Capacity = requirement.Amount;
+                            progressBar.FillValues();
                         }
                     }
                 }
