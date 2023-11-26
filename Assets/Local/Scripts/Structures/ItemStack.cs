@@ -42,6 +42,11 @@ namespace Scripts
             return false;
         }
 
+        public void Clear()
+        {
+            _items.Clear();
+        }
+
         public int GetAmount(ItemType type)
         {
             foreach (var item in _items)

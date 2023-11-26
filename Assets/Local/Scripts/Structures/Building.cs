@@ -24,9 +24,7 @@ namespace Scripts
         public ItemType ConsumeItemType;
         public List<BuildingLevel> Levels;
         public Unit UpgradeStorage;
-        public Unit ConstructionStorage;
-        public List<TMP_Text> ConstructionPriceLabels;
-        public List<Transform> ConstructionProgressBars;
+
         [SerializeField] private int _level;
 
         [Header("Building Runtime")]

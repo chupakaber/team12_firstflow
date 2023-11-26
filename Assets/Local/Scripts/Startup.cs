@@ -28,6 +28,8 @@ namespace Scripts
         private BuildingProductionSystem _buildingProductionSystem = new BuildingProductionSystem();
         private BuildingCollectingSystem _buildingCollectingSystem = new BuildingCollectingSystem();
         private BuildingConstructionSystem _buildingConstructionSystem = new BuildingConstructionSystem();
+        private BuildingProgressBarSystem _buildingProgressBarSystem = new BuildingProgressBarSystem();
+        private BuildingUpgradeSystem _buildingUpgradeSystem = new BuildingUpgradeSystem();
         private WorkerAssignSystem _workerAssignSystem = new WorkerAssignSystem();
         private WorkerSpawnSystem _workerSpawnSystem = new WorkerSpawnSystem();
         private WorkerPickUpSystem _workerPickUpSystem = new WorkerPickUpSystem();
@@ -63,6 +65,8 @@ namespace Scripts
             AddSystem(_buildingCollectingSystem);
             AddSystem(_buildingConstructionSystem);
             AddSystem(_buildingPickUpSystem);
+            AddSystem(_buildingProgressBarSystem);
+            AddSystem(_buildingUpgradeSystem);
             AddSystem(_workerAssignSystem);
             AddSystem(_workerSpawnSystem);
             AddSystem(_workerPickUpSystem);
@@ -84,6 +88,9 @@ namespace Scripts
             _eventBus.Init();
 
             _eventBus.CallEvent(new StartEvent());
+
+            _eventBus.CallEvent(new AddItemEvent() { ItemType = ItemType.GOLD, Count = 300, Unit = _characters[0]});
+            _eventBus.CallEvent(new AddItemEvent() { ItemType = ItemType.WOOD, Count = 100, Unit = _characters[0]});
         }
 
         public void Update()

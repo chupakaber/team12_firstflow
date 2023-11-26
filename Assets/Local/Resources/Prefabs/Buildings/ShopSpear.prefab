@@ -44,8 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c1af02f1d9b9b45872252e2cea459b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
-  offset: 0.2
+  _offset: 0.2
 --- !u!1 &288878056130565586
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,8 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c1af02f1d9b9b45872252e2cea459b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
-  offset: 0.2
+  _offset: 0.2
 --- !u!1 &1278244612347282969
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,6 +704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemStackView: {fileID: 5034304201018385340}
+  CollectingProgressBars: []
   ConstructionArea: {fileID: 5214511036190391278}
   ProductionArea: {fileID: 321897648743843693}
   UnloadingArea: {fileID: 4115369036491878708}
@@ -730,9 +729,6 @@ MonoBehaviour:
     - Amount: 1
       Type: 7
   UpgradeStorage: {fileID: 0}
-  ConstructionStorage: {fileID: 0}
-  ConstructionPriceLabels: []
-  ConstructionProgressBars: []
   _level: 1
   ConstructionCharacters: []
   ProductionCharacters: []
@@ -1068,8 +1064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c1af02f1d9b9b45872252e2cea459b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
-  offset: 0.2
+  _offset: 0
 --- !u!1 &8373479902842107500
 GameObject:
   m_ObjectHideFlags: 0

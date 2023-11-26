@@ -44,8 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c1af02f1d9b9b45872252e2cea459b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
-  offset: 0.2
+  _offset: 0.2
 --- !u!1 &4554096309983936205
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,6 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemStackView: {fileID: 7765566615740201118}
+  CollectingProgressBars: []
   CharacterRigidbody: {fileID: 8803190688523478502}
   Speed: 4.5
   CharacterType: 3

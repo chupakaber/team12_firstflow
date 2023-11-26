@@ -20,6 +20,12 @@ namespace Scripts
                 o.Activate();
                 return (T)o;
             }
+            
+            if (itemPrefab == null)
+            {
+                return null;
+            }
+
             var newObject = Object.Instantiate(itemPrefab);
             newObject.Pool = this;
             return newObject;

@@ -26,6 +26,11 @@ namespace Scripts
             var itemsMoveAmount = 1;
             if (Time.time >= character.LastMoveItemTime + character.PickUpCooldown)
             {
+                if (building.ProduceItemType == ItemType.ASSISTANT || building.ProduceItemType == ItemType.APPRENTICE)
+                {
+                    return;
+                }
+
                 if (character.PickUpItemConstraint == ItemType.NONE || character.PickUpItemConstraint == building.ProduceItemType)
                 {
                     if (character.ItemLimit >= character.Items.GetAmount() + character.Items.GetItemVolume(building.ProduceItemType) * itemsMoveAmount)
