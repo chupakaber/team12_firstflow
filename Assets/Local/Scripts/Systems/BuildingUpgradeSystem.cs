@@ -30,6 +30,11 @@ namespace Scripts
 
         private void Collecting(Building building, Character character)
         {
+            if (building.UpgradeStorage == null)
+            {
+                return;
+            }
+
             var itemsMovingAmount = 1;
 
             var characterHorizontalVelocity = character.CharacterRigidbody.velocity;
@@ -93,6 +98,11 @@ namespace Scripts
 
         public void UpdateUpgradeProgressViewSettings(Building building)
         {
+            if (building.UpgradeStorage == null)
+            {
+                return;
+            }
+            
             if (building.Levels.Count > building.Level + 1)
             {
                 var levelConfig = building.Levels[building.Level + 1];
