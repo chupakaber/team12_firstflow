@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
-  offset: 0.4
+  offset: 0.2
 --- !u!1 &4554096309983936205
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +229,8 @@ MonoBehaviour:
   LastMoveItemTime: 0
   NavMeshAgent: {fileID: 173981568709443060}
   LastBehaviorTime: 0
-  SpawnBuilding: {fileID: 0}
   TargetBuilding: {fileID: 0}
   TargetCharacter: {fileID: 0}
+  TargetPosition: {x: 0, y: 0, z: 0}
+  FollowingOffset: 0
+  LastApprenticeBehaviorTime: 0
