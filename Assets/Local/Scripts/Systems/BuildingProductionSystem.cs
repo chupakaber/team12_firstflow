@@ -1,34 +1,84 @@
-﻿using Scripts.Enums;
-using Scripts.Systems;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Scripts
 {
-    public class BuildingProductionSystem
+    public class BuildingProductionSystem: ISystem
     {
-        public List<Building> Buildings = new List<Building>();
         public EventBus EventBus;
-        public Character character;
+        public List<Building> Buildings;
 
-        
-        public void Init()
-        {
-            var buildingsArray = GameObject.FindObjectsOfType<Building>();
-            Buildings = new List<Building>(buildingsArray);
-        }
-
-        public void Production()
+        public void EventCatch(EnterTriggerEvent newEvent)
         {
             foreach (var building in Buildings)
             {
-                if (Time.time >= building.LastProductionTime + 1f && building.IsWork)
+                if (newEvent.Trigger.Equals(building.ProductionArea))
                 {
-                    //Заменяем вызов AddItem на создание события
-                    var addItemEvent = new AddItemEvent() {ItemType = building.ItemType, Count = 1, Character = character};
+                    if (building.ProductionCharacters.Count == 1)
+                    {
+                        if (building.ProductionEndTime > building.LastProductionTime)
+                        {
+                            building.LastProductionTime = Time.time - (building.ProductionEndTime - building.LastProductionTime);
+                            building.ProductionEndTime = building.LastProductionTime - 1f;
+                        }
+                        else
+                        {
+                            building.LastProductionTime = Time.time;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void EventCatch(ExitTriggerEvent newEvent)
+        {
+            foreach (var building in Buildings)
+            {
+                if (newEvent.Trigger.Equals(building.ProductionArea))
+                {
+                    if (building.ProductionCharacters.Count == 0)
+                    {
+                        building.ProductionEndTime = Time.time;
+                    }
+                }
+            }
+        }
+
+        public void EventCatch(FixedUpdateEvent newEvent)
+        {
+            foreach (var building in Buildings)
+            {
+                if (building.Level < 1)
+                {
+                    continue;
+                }
+
+                if (Time.time < building.LastProductionTime + building.ProductionCooldown)
+                {
+                    continue;
+                }
+
+                if(building.ProductionArea != null && building.ProductionCharacters.Count < 1)
+                {
+                    continue;
+                }
+
+                if (building.ItemCost > building.Items.GetAmount(building.ConsumeItemType))
+                {
+                    continue;
+                }
+
+                if(building.ProductionLimit >= building.Items.GetAmount(building.ProduceItemType) + building.ProductionItemAmountPerCycle)
+                {
+                    var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = building.ProductionItemAmountPerCycle, Unit = building };
                     EventBus.CallEvent(addItemEvent);
-                    //CraftSystem.AddItem(building.ItemType, 1, character);
-                    Debug.Log("создал");
+
+                    if (building.ItemCost > 0)
+                    {
+                        var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = building.ItemCost, Unit = building };
+                        EventBus.CallEvent(removeItemEvent);
+                    }
+
                     building.LastProductionTime = Time.time;
                 }
             }

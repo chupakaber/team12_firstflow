@@ -4,37 +4,30 @@ using Scripts.Enums;
 
 namespace Scripts
 {
-    public class Character: MonoBehaviour
+    public class Character: Unit
     {
+        [Header("Character Config")]
         public Rigidbody CharacterRigidbody;
-        public Vector3 WorldDirection;
         public float Speed;
-        public Collider CollidedWith;
-        [SerializeField] public Dictionary<ItemType, int> Items = new Dictionary<ItemType, int>();
+        public Stack<Collider> EnterColliders = new Stack<Collider>();
+        public Stack<Collider> ExitColliders = new Stack<Collider>();
+        public CharacterType CharacterType;
+        public int ItemLimit;
+        public float PickUpCooldown;
+        public ItemType PickUpItemConstraint = ItemType.NONE;
+
+        [Header("Character Runtime")]
+        public Vector3 WorldDirection;
+        public float LastMoveItemTime;
 
         public void OnTriggerEnter(Collider other)
         {
-            CollidedWith = other;
-            Debug.Log($"{other.name}Enter");
+            EnterColliders.Push(other);
         }
 
         public void OnTriggerExit(Collider other)
         {
-            if (other == CollidedWith)
-            {
-                CollidedWith = null;
-                Debug.Log($"{other.name}Exit");
-            }
-        }
-
-        public void AddItem(ItemType type, int count)
-        {
-            if (!Items.TryAdd(type, count))
-            {
-                Items[type] += count;
-            }
-                Debug.Log($"Кол-во {type} равно {Items[type]}");
-            
+            ExitColliders.Push(other);
         }
     }
 }
