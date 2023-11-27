@@ -37,7 +37,7 @@ namespace Scripts
                 {
                     if (building.Items.GetAmount(building.ConsumeItemType) < building.ResourceLimit)
                     {
-                        var sourcePileTopPosition = character.ItemStackView.transform.position + Vector3.up * character.ItemStackView.Count * character.ItemStackView.Offset;
+                        var sourcePileTopPosition = character.GetStackTopPosition();
                         var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = itemsMovingAmount, Unit = character };
                         var addItemEvent = new AddItemEvent() { ItemType = building.ConsumeItemType, Count = itemsMovingAmount, Unit = building, FromPosition = sourcePileTopPosition };
                         EventBus.CallEvent(removeItemEvent);

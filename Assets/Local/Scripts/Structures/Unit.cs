@@ -22,5 +22,17 @@ namespace Scripts
         {            
             Items.RemoveItem(type, count);
         }
+
+        public Vector3 GetStackTopPosition()
+        {
+            var position = ItemStackView.transform.position;
+
+            if (ItemStackView.gameObject.activeInHierarchy)
+            {
+                position.y += ItemStackView.Count * ItemStackView.Offset;
+            }
+            
+            return position;
+        }
     }
 }

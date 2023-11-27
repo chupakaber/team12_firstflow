@@ -19,8 +19,7 @@ namespace Scripts.Systems
                 var itemView = ItemViewPools.Get((int) newEvent.ItemType);
                 if (itemView != null)
                 {
-                    var stackHeight = newEvent.Unit.ItemStackView.Count * newEvent.Unit.ItemStackView.Offset;
-                    var endPosition = newEvent.Unit.ItemStackView.transform.position + Vector3.up * stackHeight;
+                    var endPosition = newEvent.Unit.GetStackTopPosition();
                     if (newEvent.FromPosition.sqrMagnitude > float.Epsilon)
                     {
                         var itemViewForFly = ItemViewPools.Get((int) newEvent.ItemType);

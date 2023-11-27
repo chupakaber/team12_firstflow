@@ -50,8 +50,9 @@ namespace Scripts
                         {
                             if (building.UpgradeStorage.Items.GetAmount(requiredItem.Type) < requiredItem.Amount)
                             {
+                                var sourcePileTopPosition = character.GetStackTopPosition();
                                 var removeItemEvent = new RemoveItemEvent() { ItemType = requiredItem.Type, Count = itemsMovingAmount, Unit = character };
-                                var addItemEvent = new AddItemEvent() { ItemType = requiredItem.Type, Count = itemsMovingAmount, Unit = building.UpgradeStorage };
+                                var addItemEvent = new AddItemEvent() { ItemType = requiredItem.Type, Count = itemsMovingAmount, Unit = building.UpgradeStorage, FromPosition = sourcePileTopPosition };
                                 EventBus.CallEvent(removeItemEvent);
                                 EventBus.CallEvent(addItemEvent);
                                 character.LastMoveItemTime = Time.time;
