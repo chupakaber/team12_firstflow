@@ -33,7 +33,7 @@ namespace Scripts
                         {
                             var target = apprentice.TargetBuilding.ProductionArea;
                             apprentice.TargetPosition = target.transform.position;
-                            apprentice.FollowingOffset = 0.7f;
+                            apprentice.FollowingOffset = 0.3f;
                         }
                     }
                 }

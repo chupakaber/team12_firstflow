@@ -26,7 +26,7 @@ namespace Scripts
 
             var characterHorizontalVelocity = character.CharacterRigidbody.velocity;
             characterHorizontalVelocity.y = 0f;
-            if (characterHorizontalVelocity.sqrMagnitude > 0.1f)
+            if (characterHorizontalVelocity.sqrMagnitude > 0.5f)
             {
                 character.LastMoveItemTime = Time.time;
             }
@@ -37,8 +37,9 @@ namespace Scripts
                 {
                     if (building.Items.GetAmount(building.ConsumeItemType) < building.ResourceLimit)
                     {
+                        var sourcePileTopPosition = character.ItemStackView.transform.position + Vector3.up * character.ItemStackView.Count * character.ItemStackView.Offset;
                         var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = itemsMovingAmount, Unit = character };
-                        var addItemEvent = new AddItemEvent() { ItemType = building.ConsumeItemType, Count = itemsMovingAmount, Unit = building };
+                        var addItemEvent = new AddItemEvent() { ItemType = building.ConsumeItemType, Count = itemsMovingAmount, Unit = building, FromPosition = sourcePileTopPosition };
                         EventBus.CallEvent(removeItemEvent);
                         EventBus.CallEvent(addItemEvent);
                         character.LastMoveItemTime = Time.time;

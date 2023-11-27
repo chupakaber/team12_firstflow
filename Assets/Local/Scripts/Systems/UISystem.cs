@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using Scripts.Enums;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Scripts
 {
@@ -11,6 +11,17 @@ namespace Scripts
         public List<Building> Buildings;
         public UIView UIView;
         public Camera Camera;
+
+        public void EventCatch(StartEvent newEvent)
+        {
+            foreach (var character in Characters)
+            {
+                if (character.CharacterType == CharacterType.PLAYER)
+                {
+                    UpdateGoldAndHonor(character);
+                }
+            }
+        }
 
         public void EventCatch(AddItemEvent newEvent)
         {
@@ -45,13 +56,13 @@ namespace Scripts
             {
                 var character = (Character)unit;
 
-                if (character.CharacterType == Enums.CharacterType.PLAYER)
+                if (character.CharacterType == CharacterType.PLAYER)
                 {
-                    var goldCount = character.Items.GetAmount(Enums.ItemType.GOLD);
+                    var goldCount = character.Items.GetAmount(ItemType.GOLD);
 
                     UIView.SetGold(goldCount);
 
-                    var honorCount = character.Items.GetAmount(Enums.ItemType.HONOR);
+                    var honorCount = character.Items.GetAmount(ItemType.HONOR);
 
                     UIView.SetHonor(honorCount);
                 }
