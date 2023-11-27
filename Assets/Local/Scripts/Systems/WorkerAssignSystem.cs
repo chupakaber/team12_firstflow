@@ -36,7 +36,7 @@ namespace Scripts
                                         {
                                             foreach (var building2 in Buildings)
                                             {
-                                                if (building2.ConsumeItemType == building.ProduceItemType && building2.UnloadingArea != null)
+                                                if (building2.Level > 0 && building2.ConsumeItemType == building.ProduceItemType && building2.UnloadingArea != null)
                                                 {
                                                     if (assistant.TargetBuilding == null || assistant.TargetBuilding.AssignedUnloadingCharacters.Count > building2.AssignedUnloadingCharacters.Count)
                                                     {

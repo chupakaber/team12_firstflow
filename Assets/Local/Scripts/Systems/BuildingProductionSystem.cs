@@ -70,7 +70,8 @@ namespace Scripts
 
                 if(building.ProductionLimit >= building.Items.GetAmount(building.ProduceItemType) + building.ProductionItemAmountPerCycle)
                 {
-                    var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = building.ProductionItemAmountPerCycle, Unit = building };
+                    var sourcePileTopPosition = building.transform.position;
+                    var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = building.ProductionItemAmountPerCycle, Unit = building, FromPosition = sourcePileTopPosition };
                     EventBus.CallEvent(addItemEvent);
 
                     if (building.ItemCost > 0)

@@ -45,6 +45,23 @@ namespace Scripts
 
                             assistant.TargetPosition = target.transform.position;
                             assistant.FollowingOffset = 0.3f;
+
+                            if (assistant.TargetBuilding.UnloadingCharacters.Count > 0)
+                            {
+                                foreach (var unloadingCharacter in assistant.TargetBuilding.UnloadingCharacters)
+                                {
+                                    if (unloadingCharacter != assistant && unloadingCharacter.CharacterType == CharacterType.ASSISTANT)
+                                    {
+                                        var otherAssistant = (Assistant) unloadingCharacter;
+                                        if (otherAssistant.TargetBuilding == assistant.TargetBuilding)
+                                        {
+                                            assistant.TargetPosition = assistant.transform.position;
+                                            assistant.FollowingOffset = 0.3f;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
