@@ -53,7 +53,6 @@ Shader "Team12/DiffuseWithAO" {
                 float4 fog : TEXCOORD2;
             };
 
-            uniform float4 _LightColor0;
             uniform sampler2D _MainTex;
             uniform sampler2D _AmbientOcclusionTex;
             uniform float _AOBrightness;
@@ -92,7 +91,7 @@ Shader "Team12/DiffuseWithAO" {
                 float3 normalDirection = UnityObjectToWorldNormal(i.normal);
                 float3 lightDirection = normalize(_WorldSpaceLightPos0.xyz);
 
-                float3 diffuseReflection = _LightColor0.rgb * (0.5 + max(0.0, dot(normalDirection, lightDirection)) * 0.5);
+                float3 diffuseReflection = (0.5 + max(0.0, dot(normalDirection, lightDirection)) * 0.5);
 
                 o.col = float4(diffuseReflection, 1.0);
                 o.pos = UnityObjectToClipPos(i.vertex);

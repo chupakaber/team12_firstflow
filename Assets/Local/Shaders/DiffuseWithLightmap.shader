@@ -1,8 +1,6 @@
-Shader "Team12/VertexColorWithAO" {
+Shader "Team12/DiffuseWithLightmap" {
     Properties {
-        //_MainTex ("Base (RGB)", 2D) = "white" {}
-        _Color ("Color", Color) = (0.5, 0.5, 0.5, 1)
-        _AmbientOcclusionTex ("Ambient Occlusion (RGB)", 2D) = "white" {}
+        _MainTex ("Base (RGB)", 2D) = "white" {}
         _AOBrightness ("AO Brightness", Range(0, 3)) = 0.1
         _AOPreMultiply ("AO Pre Multiply", Range(0, 3)) = 1.5
         _PreMultiply ("Pre Multiply", Range(0.5, 2)) = 1
@@ -30,83 +28,17 @@ Shader "Team12/VertexColorWithAO" {
 
     SubShader {
         LOD 100
+        Tags { "LightMode" = "ForwardBase" "RenderType" = "Opaque" } 
 
-
-        Pass
-        {
-            Name "META"
-            Tags { "LightMode" = "Meta" }
-            Cull Off
-            CGPROGRAM
-
-            #include "UnityStandardMeta.cginc"
-
-            sampler2D _GIAlbedoTex;
-            fixed4 _GIAlbedoColor;
-            float4 frag_meta2 (v2f_meta i): SV_Target
-            {
-                // We're interested in diffuse & specular colors
-                // and surface roughness to produce final albedo.
-
-                FragmentCommonData data = UNITY_SETUP_BRDF_INPUT (i.uv);
-                UnityMetaInput o;
-                UNITY_INITIALIZE_OUTPUT(UnityMetaInput, o);
-                fixed4 c = tex2D (_GIAlbedoTex, i.uv);
-                o.Albedo = fixed3(c.rgb * _GIAlbedoColor.rgb);
-                o.Emission = Emission(i.uv.xy);
-                return UnityMetaFragment(o);
-            }
-
-            #pragma vertex vert_meta
-            #pragma fragment frag_meta2
-            #pragma shader_feature _EMISSION
-            #pragma shader_feature _METALLICGLOSSMAP
-            #pragma shader_feature ___ _DETAIL_MULX2
-            ENDCG
-        }
-
-        Tags {"RenderType"="Opaque"}
-        LOD 200
-
-        CGPROGRAM
-        // Physically-based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard fullforwardshadows nometa
-        // Use Shader model 3.0 target, to get nicer looking lighting
-        #pragma target 3.0
-
-        sampler2D _AmbientOcclusionTex;
-
-        struct Input {
-            float2 uv_MainTex;
-        };
-
-        half _Glossiness;
-        half _Metallic;
-        fixed4 _Color;
-
-        void surf (Input IN,inout SurfaceOutputStandard o){
-            // Albedo comes from a texture tinted by color
-            fixed4 c = tex2D (_AmbientOcclusionTex, IN.uv_MainTex) * _Color;
-            o.Albedo = c.rgb;
-            // Metallic and smoothness come from slider variables
-            o.Metallic = _Metallic;
-            o.Smoothness = _Glossiness;
-            o.Alpha = c.a;
-        }
-        ENDCG
-
-/*
         Pass {
-            Tags { "LightMode" = "ForwardBase" "RenderType" = "Opaque" } 
 
             CGPROGRAM
 
             #pragma vertex vert  
             #pragma fragment frag 
-            #pragma LIGHTMAP_ON DYNAMICLIGHTMAP_ON Standard fullforwardshadows nometa
+            #pragma LIGHTMAP_ON Standard
 
             #include "UnityCG.cginc"
-            //#include "UnityStandardMeta.cginc"
 
             struct vertexInput {
                 float4 vertex : POSITION;
@@ -114,23 +46,20 @@ Shader "Team12/VertexColorWithAO" {
                 float4 color : COLOR;
                 float2 uv0 : TEXCOORD0;
                 float2 uv1 : TEXCOORD1;
-                //float2 uv2 : TEXCOORD2;
+                float2 uv2 : TEXCOORD2;
+                float2 uv3 : TEXCOORD3;
             };
 
             struct vertexOutput {
                 float4 pos : SV_POSITION;
                 float4 col : COLOR;
                 float2 uv0 : TEXCOORD0;
-                float2 uv1 : TEXCOORD1;
-                //float2 uv2 : TEXCOORD2;
-                float4 fog : TEXCOORD3;
-                float4 worldPosition : TEXCOORD4;
+                float4 lightmapUV : TEXCOORD1;
+                float4 fog : TEXCOORD2;
+                float4 worldPosition : TEXCOORD3;
             };
 
-            uniform float4 _LightColor0;
-            uniform float4 _Color;
-            //uniform sampler2D _MainTex;
-            uniform sampler2D _AmbientOcclusionTex;
+            uniform sampler2D _MainTex;
             uniform float _AOBrightness;
             uniform float _AOPreMultiply;
             uniform float _SaturationBase;
@@ -158,8 +87,9 @@ Shader "Team12/VertexColorWithAO" {
                 vertexOutput o;
 
                 o.uv0 = i.uv0;
-                o.uv1 = i.uv1;
-                //o.uv2 = i.uv2;
+
+                o.lightmapUV.xy = i.uv1.xy * unity_LightmapST.xy + unity_LightmapST.zw;
+                o.lightmapUV.zw = 0;
 
                 float4x4 modelMatrix = UNITY_MATRIX_M;
                 float4x4 modelMatrixInverse = unity_WorldToObject;
@@ -168,9 +98,9 @@ Shader "Team12/VertexColorWithAO" {
                 float3 normalDirection = UnityObjectToWorldNormal(i.normal);
                 float3 lightDirection = normalize(_WorldSpaceLightPos0.xyz);
 
-                float3 diffuseReflection = _LightColor0.rgb * (0.5 + max(0.0, dot(normalDirection, lightDirection)) * 0.5);
+                float3 diffuseReflection = (0.5 + max(0.0, dot(normalDirection, lightDirection)) * 0.5);
 
-                o.col = i.color * _Color * float4(diffuseReflection, 1.0);
+                o.col = i.color * float4(diffuseReflection, 1.0);
                 o.pos = UnityObjectToClipPos(i.vertex);
                 
                 float4 worldPosition = mul(modelMatrix, i.vertex);
@@ -184,11 +114,14 @@ Shader "Team12/VertexColorWithAO" {
 
             float4 frag(vertexOutput i) : COLOR
             {
-                half4 color = i.col;
-                half4 ao = tex2D(_AmbientOcclusionTex, i.uv0);
-                half saturation = (ao.r - _SaturationBase) * _AOSaturation + _Saturation;
+                half4 color = tex2D(_MainTex, i.uv0) * i.col;
+                
+                half4 bakedLighmap = UNITY_SAMPLE_TEX2D(unity_Lightmap, i.lightmapUV.xy);
+                half3 decodedLightmap = DecodeLightmap(bakedLighmap);
+                half ao = (decodedLightmap.r + decodedLightmap.g + decodedLightmap.b) / 3;
+                half saturationBaseDiff = ao - _SaturationBase;
+                half saturation = saturationBaseDiff * _AOSaturation + _Saturation;
                 ao = ao * _AOPreMultiply + _AOBrightness;
-                //color *= i.col;
                 color += _PreBrightness;
                 color *= _PreIntensity;
                 color *= ao;
@@ -201,7 +134,7 @@ Shader "Team12/VertexColorWithAO" {
                 color = mul(color, _Multiply);
                 color *= _Intensity;
                 color += _Brightness;
-                half shadowFactor = clamp((_SaturationBase - ao) / _SaturationBase, 0, 1);
+                half shadowFactor = clamp(-saturationBaseDiff / _SaturationBase, 0, 1);
                 color += (1 - shadowFactor) * _LightColor;
                 color += shadowFactor * _ShadowColor;
 
@@ -216,6 +149,5 @@ Shader "Team12/VertexColorWithAO" {
 
             ENDCG
         }
-*/
     }
 }
