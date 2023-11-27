@@ -6,21 +6,27 @@ namespace Scripts
 {
     public class ItemStackView: MonoBehaviour
     {
-        public List<ItemView> items = new List<ItemView>();
-        [SerializeField] private float offset;
+        [SerializeField] private float _offset;
+
+        public int Count { get; private set; }
+        public float Offset { get { return _offset; } }
+
+        private List<ItemView> _items = new List<ItemView>();
 
         public void SortItems()
         {
-            for (int i = 0; i < items.Count; i++)
+            for (int i = 0; i < _items.Count; i++)
             {
-                var item = items[i];
-                item.transform.localPosition = new Vector3(0, i * offset, 0);
+                var item = _items[i];
+                item.transform.localPosition = new Vector3(0, i * _offset, 0);
             }
         }
 
         public void AddItem(ItemView itemView)
         {
-            items.Add(itemView);
+            Count++;
+
+            _items.Add(itemView);
 
             itemView.transform.SetParent(transform);
 
@@ -29,14 +35,16 @@ namespace Scripts
 
         public void RemoveItem(ItemType itemType, int removeCount)
         {
+            Count -= removeCount;
+            
             int a = 0;
-            for (var i = 0; i < items.Count; i++) 
+            for (var i = 0; i < _items.Count; i++) 
             {
-                var item = items[i];
+                var item = _items[i];
                 if (item.ItemType == itemType)
                 {
-                    items.Remove(item);
-                    Destroy(item.gameObject);
+                    _items.Remove(item);
+                    item.Release();
                     SortItems();
                     i--;
                     a++;

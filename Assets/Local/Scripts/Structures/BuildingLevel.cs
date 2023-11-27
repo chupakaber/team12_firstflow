@@ -9,5 +9,7 @@ namespace Scripts
         public GameObject Visual;
         [SerializeField]
         public List<Item> Cost;
+        [SerializeField]
+        public List<Boost> Boost;
     }
 }

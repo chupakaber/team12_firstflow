@@ -41,39 +41,22 @@ namespace Scripts
                 {
                     if (character.Items.GetAmount(requirementItem.Type) >= itemsMovingAmount)
                     {
-                        if (building.ConstructionStorage.Items.GetAmount(requirementItem.Type) < requirementItem.Amount)
+                        if (building.Items.GetAmount(requirementItem.Type) < requirementItem.Amount)
                         {
+                            var sourcePileTopPosition = character.ItemStackView.transform.position + Vector3.up * character.ItemStackView.Count * character.ItemStackView.Offset;
                             var removeItemEvent = new RemoveItemEvent() { ItemType = requirementItem.Type, Count = itemsMovingAmount, Unit = character };
-                            var addItemEvent = new AddItemEvent() { ItemType = requirementItem.Type, Count = itemsMovingAmount, Unit = building.ConstructionStorage };
+                            var addItemEvent = new AddItemEvent() { ItemType = requirementItem.Type, Count = itemsMovingAmount, Unit = building, FromPosition = sourcePileTopPosition };
                             EventBus.CallEvent(removeItemEvent);
                             EventBus.CallEvent(addItemEvent);
 
-                            var amount = building.ConstructionStorage.Items.GetAmount(requirementItem.Type);
-                            if (requirementItemIndex < building.ConstructionProgressBars.Count)
-                            {
-                                var progressBar = building.ConstructionProgressBars[requirementItemIndex];
-                                if (progressBar != null)
-                                {
-                                    progressBar.localScale = new Vector3(1f, (float) amount / requirementItem.Amount, 1f);
-                                    progressBar.localPosition = new Vector3(0f, 0.5f - (float) amount / requirementItem.Amount * 0.5f, 0f);
-                                }
-                            }
-
-                            if (requirementItemIndex < building.ConstructionPriceLabels.Count)
-                            {
-                                var label = building.ConstructionPriceLabels[requirementItemIndex];
-                                if (label != null)
-                                {
-                                    label.text = $"{requirementItem.Amount - amount}";
-                                }
-                            }
+                            var amount = building.Items.GetAmount(requirementItem.Type);
 
                             if (amount >= requirementItem.Amount)
                             {
                                 var levelUp = true;
                                 foreach (var requirement in building.Levels[1].Cost)
                                 {
-                                    if (building.ConstructionStorage.Items.GetAmount(requirement.Type) < requirement.Amount)
+                                    if (building.Items.GetAmount(requirement.Type) < requirement.Amount)
                                     {
                                         levelUp = false;
                                     }
@@ -82,6 +65,12 @@ namespace Scripts
                                 if (levelUp)
                                 {
                                     building.Level = building.Level + 1;
+                                    foreach (var item in building.Items)
+                                    {
+                                        EventBus.CallEvent(new RemoveItemEvent() { ItemType = item.Type, Count = item.Amount, Unit = building });
+                                    }
+
+                                    UpdateUpgradeProgressViewSettings(building);
                                 }
                             }
 
@@ -92,6 +81,26 @@ namespace Scripts
                     requirementItemIndex++;
                 }
             }            
+        }
+
+        public void UpdateUpgradeProgressViewSettings(Building building)
+        {
+            if (building.Levels.Count > building.Level + 1)
+            {
+                var levelConfig = building.Levels[building.Level + 1];
+                
+                foreach (var progressBar in building.UpgradeStorage.CollectingProgressBars)
+                {
+                    foreach (var requirement in levelConfig.Cost)
+                    {
+                        if (progressBar.ItemType == requirement.Type)
+                        {
+                            progressBar.Capacity = requirement.Amount;
+                            progressBar.FillValues();
+                        }
+                    }
+                }
+            }
         }
     }
 }

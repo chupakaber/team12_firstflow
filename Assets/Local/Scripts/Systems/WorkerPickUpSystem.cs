@@ -42,9 +42,14 @@ namespace Scripts
                         var worker = (Worker) character;
                         if (worker.TargetBuilding == building && worker.TargetCharacter == null)
                         {
-                            worker.TargetBuilding = null;
-                            worker.TargetCharacter = player;
-                            worker.FollowingOffset = 2f;
+                            if (building.Items.GetAmount(building.ProduceItemType) > 0)
+                            {
+                                EventBus.CallEvent(new RemoveItemEvent() { Unit = building, ItemType = building.ProduceItemType, Count = 1 });
+
+                                worker.TargetBuilding = null;
+                                worker.TargetCharacter = player;
+                                worker.FollowingOffset = 2f;
+                            }
                         }
                     }
                 }

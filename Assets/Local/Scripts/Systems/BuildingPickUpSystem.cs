@@ -26,14 +26,25 @@ namespace Scripts
             var itemsMoveAmount = 1;
             if (Time.time >= character.LastMoveItemTime + character.PickUpCooldown)
             {
+                if (building.ProduceItemType == ItemType.ASSISTANT || building.ProduceItemType == ItemType.APPRENTICE)
+                {
+                    return;
+                }
+
+                if (building.ProduceItemType == ItemType.GOLD && character.CharacterType != CharacterType.PLAYER)
+                {
+                    return;
+                }
+
                 if (character.PickUpItemConstraint == ItemType.NONE || character.PickUpItemConstraint == building.ProduceItemType)
                 {
                     if (character.ItemLimit >= character.Items.GetAmount() + character.Items.GetItemVolume(building.ProduceItemType) * itemsMoveAmount)
                     {
                         if (building.Items.GetAmount(building.ProduceItemType) >= itemsMoveAmount)
                         {
+                            var sourcePileTopPosition = building.ItemStackView.transform.position + Vector3.up * building.ItemStackView.Count * building.ItemStackView.Offset;
                             var removeItemEvent = new RemoveItemEvent() { ItemType = building.ProduceItemType, Count = itemsMoveAmount, Unit = building };
-                            var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = itemsMoveAmount, Unit = character };
+                            var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = itemsMoveAmount, Unit = character, FromPosition = sourcePileTopPosition };
                             EventBus.CallEvent(removeItemEvent);
                             EventBus.CallEvent(addItemEvent);
                             character.LastMoveItemTime = Time.time;

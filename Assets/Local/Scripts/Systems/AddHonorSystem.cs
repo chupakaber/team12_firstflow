@@ -13,14 +13,17 @@ namespace Scripts
             if (newEvent.ItemType == ItemType.GOLD && newEvent.Unit is Building)
             {
                 var building = (Building) newEvent.Unit;
-                foreach (var character in Characters)
+                if (building.ProduceItemType == ItemType.GOLD)
                 {
-                    if (character.CharacterType == CharacterType.PLAYER)
+                    foreach (var character in Characters)
                     {
-                        var honorAmount = building.GetLastCustomerHonor();
+                        if (character.CharacterType == CharacterType.PLAYER)
+                        {
+                            var honorAmount = building.GetLastCustomerHonor();
 
-                        var addItemEvent = new AddItemEvent() { ItemType = ItemType.HONOR, Count = honorAmount, Unit = character };
-                        EventBus.CallEvent(addItemEvent);
+                            var addItemEvent = new AddItemEvent() { ItemType = ItemType.HONOR, Count = honorAmount, Unit = character };
+                            EventBus.CallEvent(addItemEvent);
+                        }
                     }
                 }
             }
