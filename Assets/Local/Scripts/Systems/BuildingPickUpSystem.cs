@@ -42,8 +42,9 @@ namespace Scripts
                     {
                         if (building.Items.GetAmount(building.ProduceItemType) >= itemsMoveAmount)
                         {
+                            var sourcePileTopPosition = building.ItemStackView.transform.position + Vector3.up * building.ItemStackView.Count * building.ItemStackView.Offset;
                             var removeItemEvent = new RemoveItemEvent() { ItemType = building.ProduceItemType, Count = itemsMoveAmount, Unit = building };
-                            var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = itemsMoveAmount, Unit = character };
+                            var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = itemsMoveAmount, Unit = character, FromPosition = sourcePileTopPosition };
                             EventBus.CallEvent(removeItemEvent);
                             EventBus.CallEvent(addItemEvent);
                             character.LastMoveItemTime = Time.time;

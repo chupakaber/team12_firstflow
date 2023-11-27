@@ -8,6 +8,9 @@ namespace Scripts
     {
         [SerializeField] private float _offset;
 
+        public int Count { get; private set; }
+        public float Offset { get { return _offset; } }
+
         private List<ItemView> _items = new List<ItemView>();
 
         public void SortItems()
@@ -21,6 +24,8 @@ namespace Scripts
 
         public void AddItem(ItemView itemView)
         {
+            Count++;
+
             _items.Add(itemView);
 
             itemView.transform.SetParent(transform);
@@ -30,6 +35,8 @@ namespace Scripts
 
         public void RemoveItem(ItemType itemType, int removeCount)
         {
+            Count -= removeCount;
+            
             int a = 0;
             for (var i = 0; i < _items.Count; i++) 
             {
