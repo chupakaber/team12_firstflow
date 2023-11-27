@@ -1,6 +1,5 @@
 ﻿using Scripts.Enums;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 namespace Scripts
@@ -19,7 +18,6 @@ namespace Scripts
         public int ItemCost;
         public int ProductionItemAmountPerCycle;
         public float ProductionCooldown;
-        public float ProductionEndTime;
         public ItemType ProduceItemType;
         public ItemType ConsumeItemType;
         public List<BuildingLevel> Levels;
@@ -37,6 +35,7 @@ namespace Scripts
         public List<Character> AssignedUnloadingCharacters = new List<Character>();
         public List<Character> AssignedPickingUpCharacters = new List<Character>();
         public float LastProductionTime;
+        public float ProductionEndTime;
         public int Level
         {
             get

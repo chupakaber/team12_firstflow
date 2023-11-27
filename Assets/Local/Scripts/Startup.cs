@@ -26,6 +26,7 @@ namespace Scripts
         private BuildingPickUpSystem _buildingPickUpSystem = new BuildingPickUpSystem();
         private TriggerSystem _triggerSystem = new TriggerSystem();
         private BuildingTriggerSystem _buildingTriggerSystem = new BuildingTriggerSystem();
+        private BuildingInitSystem _buildingInitSystem = new BuildingInitSystem();
         private BuildingProductionSystem _buildingProductionSystem = new BuildingProductionSystem();
         private BuildingCollectingSystem _buildingCollectingSystem = new BuildingCollectingSystem();
         private BuildingConstructionSystem _buildingConstructionSystem = new BuildingConstructionSystem();
@@ -63,6 +64,7 @@ namespace Scripts
             AddSystem(_cameraFollowSystem);
             AddSystem(_removeItemSystem);
             AddSystem(_triggerSystem);
+            AddSystem(_buildingInitSystem);
             AddSystem(_buildingTriggerSystem);
             AddSystem(_buildingProductionSystem);
             AddSystem(_buildingCollectingSystem);

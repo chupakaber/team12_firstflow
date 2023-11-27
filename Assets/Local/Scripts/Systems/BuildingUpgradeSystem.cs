@@ -95,6 +95,7 @@ namespace Scripts
             if (building.Levels.Count > building.Level + 1)
             {
                 var levelConfig = building.Levels[building.Level + 1];
+                
                 foreach (var progressBar in building.UpgradeStorage.CollectingProgressBars)
                 {
                     foreach (var requirement in levelConfig.Cost)
@@ -106,6 +107,21 @@ namespace Scripts
                         }
                     }
                 }
+
+                foreach (var boost in levelConfig.Boost)
+                {
+                    ApplyUpgrade(building, boost);
+                }
+            }
+        }
+
+        public void ApplyUpgrade(Building building, Boost boost)
+        {
+            switch (boost.Type)
+            {
+                case Enums.BoostType.PRODUCTION_COOLDOWN_MULTIPLICATOR:
+                    building.ProductionCooldown *= boost.Value;
+                break;
             }
         }
     }

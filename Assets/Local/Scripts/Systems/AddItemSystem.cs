@@ -21,10 +21,10 @@ namespace Scripts.Systems
                 }
                 else
                 {
-                    if (newEvent.ItemType == ItemType.GOLD)
+                    if (newEvent.ItemType == ItemType.GOLD && newEvent.Unit is Character && ((Character) newEvent.Unit).CharacterType == CharacterType.PLAYER)
                     {
                         var icon = IconViewPools.Get(0);
-                        UIView.FlyIcon(icon);
+                        UIView.FlyCoin(icon, true);
                     }
                 }
             }

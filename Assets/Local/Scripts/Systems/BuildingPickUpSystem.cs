@@ -31,7 +31,7 @@ namespace Scripts
                     return;
                 }
 
-                if (building.ProduceItemType == ItemType.ASSISTANT && character.CharacterType != CharacterType.PLAYER)
+                if (building.ProduceItemType == ItemType.GOLD && character.CharacterType != CharacterType.PLAYER)
                 {
                     return;
                 }

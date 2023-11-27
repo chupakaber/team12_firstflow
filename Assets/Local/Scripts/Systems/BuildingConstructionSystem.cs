@@ -68,6 +68,8 @@ namespace Scripts
                                     {
                                         EventBus.CallEvent(new RemoveItemEvent() { ItemType = item.Type, Count = item.Amount, Unit = building });
                                     }
+
+                                    UpdateUpgradeProgressViewSettings(building);
                                 }
                             }
 
@@ -78,6 +80,26 @@ namespace Scripts
                     requirementItemIndex++;
                 }
             }            
+        }
+
+        public void UpdateUpgradeProgressViewSettings(Building building)
+        {
+            if (building.Levels.Count > building.Level + 1)
+            {
+                var levelConfig = building.Levels[building.Level + 1];
+                
+                foreach (var progressBar in building.UpgradeStorage.CollectingProgressBars)
+                {
+                    foreach (var requirement in levelConfig.Cost)
+                    {
+                        if (progressBar.ItemType == requirement.Type)
+                        {
+                            progressBar.Capacity = requirement.Amount;
+                            progressBar.FillValues();
+                        }
+                    }
+                }
+            }
         }
     }
 }
