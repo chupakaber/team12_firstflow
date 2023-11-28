@@ -65,6 +65,9 @@ namespace Scripts
                                 if (levelUp)
                                 {
                                     building.Level = building.Level + 1;
+
+                                    EventBus.CallEvent(new ConstructionCompleteEvent() { Building = building });
+
                                     foreach (var item in building.Items)
                                     {
                                         EventBus.CallEvent(new RemoveItemEvent() { ItemType = item.Type, Count = item.Amount, Unit = building });

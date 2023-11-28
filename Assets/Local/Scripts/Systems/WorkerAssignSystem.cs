@@ -40,7 +40,10 @@ namespace Scripts
                                                 {
                                                     if (assistant.TargetBuilding == null || assistant.TargetBuilding.AssignedUnloadingCharacters.Count > building2.AssignedUnloadingCharacters.Count)
                                                     {
-                                                        assistant.TargetBuilding = building2;
+                                                        if (building2.AssignedUnloadingCharacters.Count == 0 || building2.ProduceItemType == ItemType.GOLD)
+                                                        {
+                                                            assistant.TargetBuilding = building2;
+                                                        }
                                                     }
                                                 }
                                             }

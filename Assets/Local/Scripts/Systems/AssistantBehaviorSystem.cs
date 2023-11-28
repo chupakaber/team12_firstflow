@@ -46,17 +46,52 @@ namespace Scripts
                             assistant.TargetPosition = target.transform.position;
                             assistant.FollowingOffset = 0.3f;
 
-                            if (assistant.TargetBuilding.UnloadingCharacters.Count > 0)
+                            if (!isResourceNeeded && assistant.TargetBuilding.UnloadingCharacters.Count > 0)
                             {
                                 foreach (var unloadingCharacter in assistant.TargetBuilding.UnloadingCharacters)
                                 {
-                                    if (unloadingCharacter != assistant && unloadingCharacter.CharacterType == CharacterType.ASSISTANT)
+                                    if (unloadingCharacter != assistant)
                                     {
-                                        var otherAssistant = (Assistant) unloadingCharacter;
-                                        if (otherAssistant.TargetBuilding == assistant.TargetBuilding)
+                                        if (unloadingCharacter.CharacterType == CharacterType.ASSISTANT)
                                         {
-                                            assistant.TargetPosition = assistant.transform.position;
-                                            assistant.FollowingOffset = 0.3f;
+                                            var otherAssistant = (Assistant) unloadingCharacter;
+                                            if (otherAssistant.TargetBuilding == assistant.TargetBuilding)
+                                            {
+                                                assistant.TargetPosition = otherAssistant.transform.position;
+                                                assistant.FollowingOffset = 2f;
+                                                break;
+                                            }
+                                        }
+                                        // else if (unloadingCharacter.CharacterType == CharacterType.PLAYER)
+                                        // {
+                                        //     assistant.TargetPosition = unloadingCharacter.transform.position;
+                                        //     assistant.FollowingOffset = 2f;
+                                        //     break;
+                                        // }
+                                    }
+                                }
+                            }
+
+                            if (isResourceNeeded && assistant.ResourceBuilding.PickingUpCharacters.Count > 0)
+                            {
+                                foreach (var pickingUpCharacter in assistant.ResourceBuilding.PickingUpCharacters)
+                                {
+                                    if (pickingUpCharacter != assistant)
+                                    {
+                                        if (pickingUpCharacter.CharacterType == CharacterType.ASSISTANT)
+                                        {
+                                            var otherAssistant = (Assistant) pickingUpCharacter;
+                                            if (otherAssistant.ResourceBuilding == assistant.ResourceBuilding)
+                                            {
+                                                assistant.TargetPosition = otherAssistant.transform.position;
+                                                assistant.FollowingOffset = 2f;
+                                                break;
+                                            }
+                                        }
+                                        else if (pickingUpCharacter.CharacterType == CharacterType.PLAYER)
+                                        {
+                                            assistant.TargetPosition = pickingUpCharacter.transform.position;
+                                            assistant.FollowingOffset = 2f;
                                             break;
                                         }
                                     }
