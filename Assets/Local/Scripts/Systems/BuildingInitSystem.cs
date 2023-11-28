@@ -39,7 +39,7 @@ namespace Scripts
                 {
                     foreach (var requirement in levelConfig.Cost)
                     {
-                        if (requirement.Type == progressBar.ItemType)
+                        if (requirement.Type == progressBar.ItemType && progressBar.gameObject.activeInHierarchy)
                         {
                             progressBar.Capacity = requirement.Amount;
                             progressBar.FillValues();

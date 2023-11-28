@@ -31,10 +31,10 @@ namespace Scripts
             characterHorizontalVelocity.y = 0f;
             if (characterHorizontalVelocity.sqrMagnitude > 0.1f)
             {
-                character.LastMoveItemTime = Time.time;
+                character.LastDropItemTime = Time.time;
             }
 
-            if (Time.time >= character.LastMoveItemTime + 0.06f)
+            if (Time.time >= character.LastDropItemTime + 0.06f)
             {
                 var requirementItemIndex = 0;
                 foreach (var requirementItem in building.Levels[1].Cost)
@@ -82,7 +82,7 @@ namespace Scripts
                                 }
                             }
 
-                            character.LastMoveItemTime = Time.time;
+                            character.LastDropItemTime = Time.time;
                             break;
                         }
                     }

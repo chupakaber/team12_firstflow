@@ -18,7 +18,8 @@ namespace Scripts
 
         [Header("Character Runtime")]
         public Vector3 WorldDirection;
-        public float LastMoveItemTime;
+        public float LastDropItemTime;
+        public float LastPickUpItemTime;
 
         public void OnTriggerEnter(Collider other)
         {

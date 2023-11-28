@@ -98,6 +98,10 @@ namespace Scripts
             _container.Init();
             _eventBus.Init();
 
+            _characters[0].Items.AddItem(ItemType.BOTTLE_HERO, 0);
+            _characters[0].Items.AddItem(ItemType.BOTTLE_WORKER, 0);
+            _characters[0].Items.AddItem(ItemType.HONOR, 0);
+
             _eventBus.CallEvent(new StartEvent());
 
             _eventBus.CallEvent(new AddItemEvent() { ItemType = ItemType.GOLD, Count = 300, Unit = _characters[0]});

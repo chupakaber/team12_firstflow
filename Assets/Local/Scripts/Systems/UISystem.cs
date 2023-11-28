@@ -18,19 +18,22 @@ namespace Scripts
             {
                 if (character.CharacterType == CharacterType.PLAYER)
                 {
-                    UpdateGoldAndHonor(character);
+                    foreach (var item in character.Items) 
+                    {
+                        UpdateItemsCount(character, item.Type);
+                    }
                 }
             }
         }
 
         public void EventCatch(AddItemEvent newEvent)
         {
-            UpdateGoldAndHonor(newEvent.Unit);
+            UpdateItemsCount(newEvent.Unit, newEvent.ItemType);
         }
 
         public void EventCatch(RemoveItemEvent newEvent)
         {
-            UpdateGoldAndHonor(newEvent.Unit);
+            UpdateItemsCount(newEvent.Unit, newEvent.ItemType);
         }
 
         public void EventCatch(UpdateEvent newEvent)
@@ -50,7 +53,7 @@ namespace Scripts
             }
         }
 
-        private void UpdateGoldAndHonor(Unit unit)
+        private void UpdateItemsCount(Unit unit, ItemType itemType)
         {
             if (unit is Character)
             {
@@ -58,15 +61,11 @@ namespace Scripts
 
                 if (character.CharacterType == CharacterType.PLAYER)
                 {
-                    var goldCount = character.Items.GetAmount(ItemType.GOLD);
-
-                    UIView.SetGold(goldCount);
-
-                    var honorCount = character.Items.GetAmount(ItemType.HONOR);
-
-                    UIView.SetHonor(honorCount);
+                    var itemCount = character.Items.GetAmount(itemType);
+                    UIView.SetItemCount(itemType, itemCount);
                 }
             }
         }
+
     }
 }

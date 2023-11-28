@@ -28,10 +28,10 @@ namespace Scripts
             characterHorizontalVelocity.y = 0f;
             if (characterHorizontalVelocity.sqrMagnitude > 0.5f)
             {
-                character.LastMoveItemTime = Time.time;
+                character.LastDropItemTime = Time.time;
             }
 
-            if (Time.time >= character.LastMoveItemTime + character.PickUpCooldown)
+            if (Time.time >= character.LastDropItemTime + character.PickUpCooldown)
             {
                 if (character.Items.GetAmount(building.ConsumeItemType) >= itemsMovingAmount)
                 {
@@ -42,7 +42,7 @@ namespace Scripts
                         var addItemEvent = new AddItemEvent() { ItemType = building.ConsumeItemType, Count = itemsMovingAmount, Unit = building, FromPosition = sourcePileTopPosition };
                         EventBus.CallEvent(removeItemEvent);
                         EventBus.CallEvent(addItemEvent);
-                        character.LastMoveItemTime = Time.time;
+                        character.LastDropItemTime = Time.time;
                     }
                 }
             }            

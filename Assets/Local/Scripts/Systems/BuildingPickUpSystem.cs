@@ -24,7 +24,7 @@ namespace Scripts
         private void PickUp(Building building, Character character)
         {
             var itemsMoveAmount = 1;
-            if (Time.time >= character.LastMoveItemTime + character.PickUpCooldown)
+            if (Time.time >= character.LastPickUpItemTime + character.PickUpCooldown)
             {
                 if (building.ProduceItemType == ItemType.ASSISTANT || building.ProduceItemType == ItemType.APPRENTICE)
                 {
@@ -47,7 +47,7 @@ namespace Scripts
                             var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = itemsMoveAmount, Unit = character, FromPosition = sourcePileTopPosition };
                             EventBus.CallEvent(removeItemEvent);
                             EventBus.CallEvent(addItemEvent);
-                            character.LastMoveItemTime = Time.time;
+                            character.LastPickUpItemTime = Time.time;
                         }
                     }
                 }
