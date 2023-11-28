@@ -19,19 +19,18 @@ namespace Scripts.Systems
                 var itemView = ItemViewPools.Get((int) newEvent.ItemType);
                 if (itemView != null)
                 {
+                    newEvent.Unit.ItemStackView.AddItem(itemView);
                     var endPosition = newEvent.Unit.GetStackTopPosition();
                     if (newEvent.FromPosition.sqrMagnitude > float.Epsilon)
                     {
+                        itemView.gameObject.SetActive(false);
                         var itemViewForFly = ItemViewPools.Get((int) newEvent.ItemType);
                         itemViewForFly.transform.position = newEvent.FromPosition;
                         itemViewForFly.transform.DOJump(endPosition, 1f, 1, 0.5f).OnComplete(() => {
                             itemViewForFly.Release();
-                            newEvent.Unit.ItemStackView.AddItem(itemView);
+                            itemView.gameObject.SetActive(true);
+                            newEvent.Unit.ItemStackView.SortItems();
                         });
-                    }
-                    else
-                    {
-                        newEvent.Unit.ItemStackView.AddItem(itemView);
                     }
                 }
                 else
