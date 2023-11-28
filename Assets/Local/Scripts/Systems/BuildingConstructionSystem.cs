@@ -68,6 +68,11 @@ namespace Scripts
 
                                     EventBus.CallEvent(new ConstructionCompleteEvent() { Building = building });
 
+                                    foreach (var teleportingCharacter in building.ConstructionCharacters)
+                                    {
+                                        teleportingCharacter.transform.position = building.PickingUpArea.transform.position;
+                                    }
+
                                     foreach (var item in building.Items)
                                     {
                                         EventBus.CallEvent(new RemoveItemEvent() { ItemType = item.Type, Count = item.Amount, Unit = building });
