@@ -15,10 +15,15 @@ namespace Scripts
 
         public void SortItems()
         {
+            var counter = 0;
             for (int i = 0; i < _items.Count; i++)
             {
                 var item = _items[i];
-                item.transform.localPosition = new Vector3(0, i * _offset, 0);
+                if (item.gameObject.activeSelf)
+                {
+                    item.transform.localPosition = new Vector3(0, i * _offset, 0);
+                    counter++;
+                }
             }
         }
 
