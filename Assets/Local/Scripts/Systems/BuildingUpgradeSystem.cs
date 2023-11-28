@@ -103,13 +103,20 @@ namespace Scripts
                 return;
             }
             
+            var currentLevelConfig = building.Levels[building.Level];
+            foreach (var boost in currentLevelConfig.Boost)
+            {
+                ApplyUpgrade(building, boost);
+            }
+
+
             if (building.Levels.Count > building.Level + 1)
             {
-                var levelConfig = building.Levels[building.Level + 1];
+                var nextLevelConfig = building.Levels[building.Level + 1];
                 
                 foreach (var progressBar in building.UpgradeStorage.CollectingProgressBars)
                 {
-                    foreach (var requirement in levelConfig.Cost)
+                    foreach (var requirement in nextLevelConfig.Cost)
                     {
                         if (progressBar.ItemType == requirement.Type)
                         {
@@ -117,11 +124,6 @@ namespace Scripts
                             progressBar.FillValues();
                         }
                     }
-                }
-
-                foreach (var boost in levelConfig.Boost)
-                {
-                    ApplyUpgrade(building, boost);
                 }
             }
         }
