@@ -954,11 +954,11 @@ MonoBehaviour:
   PickingUpArea: {fileID: 629642973650601602}
   UpgradeArea: {fileID: 4675343170769064664}
   ProgressBarPivot: {fileID: 1488919688794172699}
-  ProductionLimit: 15
+  ProductionLimit: 30
   ResourceLimit: 0
   ItemCost: 0
   ProductionItemAmountPerCycle: 1
-  ProductionCooldown: 15
+  ProductionCooldown: 10
   ProduceItemType: 3
   ConsumeItemType: 0
   Levels:
@@ -967,9 +967,9 @@ MonoBehaviour:
     Boost: []
   - Visual: {fileID: 2792210670167945921}
     Cost:
-    - Amount: 200
+    - Amount: 15
       Type: 2
-    - Amount: 150
+    - Amount: 100
       Type: 7
     Boost: []
   - Visual: {fileID: 5018824647081971899}
