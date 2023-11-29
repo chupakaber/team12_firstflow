@@ -8,6 +8,7 @@ namespace Scripts
     {
         [Header("Character Config")]
         public Rigidbody CharacterRigidbody;
+        public Animator CharacterAnimator;
         public float Speed;
         public Stack<Collider> EnterColliders = new Stack<Collider>();
         public Stack<Collider> ExitColliders = new Stack<Collider>();
@@ -23,6 +24,9 @@ namespace Scripts
         public float LastPickUpItemTime;
         public BagOfTries BagOfTries = new BagOfTries();
         public BagOfTriesView BagOfTriesView;
+
+        private int _loadedAnimationKey = Animator.StringToHash("Loaded");
+        private int _speedAnimationKey = Animator.StringToHash("Speed");
 
         public void OnTriggerEnter(Collider other)
         {
@@ -78,6 +82,12 @@ namespace Scripts
             {
                 BagOfTriesView.Hide();
             }
+        }
+
+        public void UpdateAnimation()
+        {
+            CharacterAnimator.SetBool(_loadedAnimationKey, Items.GetAmount() > 0);
+            CharacterAnimator.SetFloat(_speedAnimationKey, (CharacterRigidbody.velocity.magnitude - 0.5f) / 4f);
         }
     }
 }

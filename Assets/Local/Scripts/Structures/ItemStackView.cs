@@ -22,6 +22,7 @@ namespace Scripts
                 if (item.gameObject.activeSelf)
                 {
                     item.transform.localPosition = new Vector3(0, i * _offset, 0);
+                    item.transform.localRotation = Quaternion.identity;
                     counter++;
                 }
             }

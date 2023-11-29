@@ -42,6 +42,7 @@ namespace Scripts
         private AssistantBehaviorSystem _assistantBehaviorSystem = new AssistantBehaviorSystem();
         private ApprenticeBehaviorSystem _apprenticeBehaviorSystem = new ApprenticeBehaviorSystem();
         private CharacterMovementSystem _characterMovementSystem = new CharacterMovementSystem();
+        private CharacterAnimationSystem _characterAnimationSystem = new CharacterAnimationSystem();
         private UISystem _uiSystem = new UISystem();
         private EnvironmentShaderSystem _environmentShaderSystem = new EnvironmentShaderSystem();
         
@@ -85,6 +86,7 @@ namespace Scripts
             AddSystem(_assistantBehaviorSystem);
             AddSystem(_apprenticeBehaviorSystem);
             AddSystem(_characterMovementSystem);
+            AddSystem(_characterAnimationSystem);
             AddSystem(_uiSystem);
             AddSystem(_environmentShaderSystem);
 

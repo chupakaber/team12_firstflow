@@ -54,9 +54,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 118541853485366174}
+  - component: {fileID: 266040528827178448}
   - component: {fileID: 4788258802640738630}
   - component: {fileID: 4175443670471181183}
-  - component: {fileID: 266040528827178448}
   - component: {fileID: 6219996418553763288}
   - component: {fileID: 4134119455966445133}
   m_Layer: 0
@@ -75,13 +75,36 @@ Transform:
   m_GameObject: {fileID: 5654337054825551289}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.6, y: 3.89, z: -0.74}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4656217787714723787}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &266040528827178448
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654337054825551289}
+  m_Material: {fileID: 13400000, guid: a3f4ecab4ad46234794e3993d9f4709c, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.4
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!33 &4788258802640738630
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -132,29 +155,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &266040528827178448
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5654337054825551289}
-  m_Material: {fileID: 13400000, guid: a3f4ecab4ad46234794e3993d9f4709c, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6219996418553763288
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -197,10 +197,14 @@ MonoBehaviour:
   ItemStackView: {fileID: 3267061645016571922}
   CollectingProgressBars: []
   CharacterRigidbody: {fileID: 6219996418553763288}
+  CharacterAnimator: {fileID: 0}
   Speed: 5
   CharacterType: 4
   ItemLimit: 15
   PickUpCooldown: 0.2
   PickUpItemConstraint: 0
+  BaseBagOfTriesCapacity: 8
   WorldDirection: {x: 0, y: 0, z: 0}
-  LastMoveItemTime: 0
+  LastDropItemTime: 0
+  LastPickUpItemTime: 0
+  BagOfTriesView: {fileID: 0}
