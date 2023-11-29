@@ -21,13 +21,18 @@ namespace Scripts
 
             lastIndex = CurrentIndex;
 
-            changedValue = Random.Range(0f, 1f) > 0.5f;
+            //changedValue = Random.Range(0f, 1f) > 0.5f;
+            changedValue = !Values[CurrentIndex];
             Values[CurrentIndex] = changedValue;
 
-            CurrentIndex++;
-            if (CurrentIndex >= Values.Count)
+            var randomOffset = Random.Range(1, Values.Count - 2);
+            for (var i = 0; i < randomOffset; i++)
             {
-                CurrentIndex = 0;
+                CurrentIndex++;
+                if (CurrentIndex >= Values.Count)
+                {
+                    CurrentIndex = 0;
+                }
             }
 
             nextIndex = CurrentIndex;

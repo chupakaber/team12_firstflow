@@ -80,7 +80,7 @@ namespace Scripts
                 {
                     var success = true;
 
-                    if (building.ProductionCharacters.Count > 0)
+                    if (building.ProductionUseBagOfTries && building.ProductionCharacters.Count > 0)
                     {
                         var character = building.ProductionCharacters[0];
                         if (character.BagOfTries.TryGetNext(out var lastIndex, out var changedValue, out var nextIndex, out var nextValue))

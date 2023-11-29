@@ -42,7 +42,7 @@ namespace Scripts
         {
             if (BagOfTries.TryGetNext(out var lastIndex, out var changedValue, out var nextIndex, out var nextValue))
             {
-                BagOfTriesView.Roll(nextIndex, 0.2f);
+                BagOfTriesView.Roll(nextIndex, 0.4f);
                 BagOfTriesView.SetValue(lastIndex, changedValue);
                 return nextValue;
             }

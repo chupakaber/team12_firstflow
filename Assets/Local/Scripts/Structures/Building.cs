@@ -18,6 +18,7 @@ namespace Scripts
         public int ItemCost;
         public int ProductionItemAmountPerCycle;
         public float ProductionCooldown;
+        public bool ProductionUseBagOfTries = true;
         public ItemType ProduceItemType;
         public ItemType ConsumeItemType;
         public List<BuildingLevel> Levels;
