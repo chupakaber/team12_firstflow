@@ -767,7 +767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2013289688210010218
 Transform:
   m_ObjectHideFlags: 0
@@ -817,6 +817,7 @@ MonoBehaviour:
   ItemCost: 1
   ProductionItemAmountPerCycle: 3
   ProductionCooldown: 2.5
+  ProductionUseBagOfTries: 1
   ProduceItemType: 7
   ConsumeItemType: 5
   Levels:
