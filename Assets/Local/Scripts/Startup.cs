@@ -17,6 +17,8 @@ namespace Scripts
         private List<ProgressBarView> _progressBarViews = new List<ProgressBarView>();
         private PoolCollection<ItemView> _itemViewPools = new PoolCollection<ItemView>();
         private PoolCollection<IconView> _iconViewPools = new PoolCollection<IconView>();
+        private PoolCollection<BagOfTriesView> _bagOfTriesViewPools = new PoolCollection<BagOfTriesView>();
+        private UnlockQueue _unlockQueue = new UnlockQueue();
 
         private PlayerInputSystem _playerInputSystem = new PlayerInputSystem();
         private CameraFollowSystem _cameraFollowSystem = new CameraFollowSystem();
@@ -32,6 +34,7 @@ namespace Scripts
         private BuildingConstructionSystem _buildingConstructionSystem = new BuildingConstructionSystem();
         private BuildingProgressBarSystem _buildingProgressBarSystem = new BuildingProgressBarSystem();
         private BuildingUpgradeSystem _buildingUpgradeSystem = new BuildingUpgradeSystem();
+        private BuildingUnlockSystem _buildingUnlockSystem = new BuildingUnlockSystem();
         private WorkerAssignSystem _workerAssignSystem = new WorkerAssignSystem();
         private WorkerSpawnSystem _workerSpawnSystem = new WorkerSpawnSystem();
         private WorkerPickUpSystem _workerPickUpSystem = new WorkerPickUpSystem();
@@ -48,6 +51,7 @@ namespace Scripts
             _mainCamera = Camera.main;
             _characters.Add(FindObjectOfType<Character>());
             _uiView = FindObjectOfType<UIView>();
+            _unlockQueue = FindObjectOfType<UnlockQueue>();
 
             var names = System.Enum.GetNames(typeof(ItemType));
             var values = (ItemType[])System.Enum.GetValues(typeof(ItemType));
@@ -57,6 +61,7 @@ namespace Scripts
             }
 
             _iconViewPools.Pools.Add(0, new ObjectPool<IconView>("Prefabs/UI/Icons/GOLD"));
+            _bagOfTriesViewPools.Pools.Add(0, new ObjectPool<BagOfTriesView>("Prefabs/UI/BagOfTries"));
 
             AddSystem(_addItemSystem);
             AddSystem(_addHonorSystem);
@@ -72,6 +77,7 @@ namespace Scripts
             AddSystem(_buildingPickUpSystem);
             AddSystem(_buildingProgressBarSystem);
             AddSystem(_buildingUpgradeSystem);
+            AddSystem(_buildingUnlockSystem);
             AddSystem(_workerAssignSystem);
             AddSystem(_workerSpawnSystem);
             AddSystem(_workerPickUpSystem);
@@ -90,8 +96,15 @@ namespace Scripts
             _container.AddLink(_progressBarViews, "ProgressBarViews");
             _container.AddLink(_itemViewPools, "ItemViewPools");
             _container.AddLink(_iconViewPools, "IconViewPools");
+            _container.AddLink(_unlockQueue, "UnlockQueue");
+            _container.AddLink(_bagOfTriesViewPools, "BagOfTriesViewPools");
             _container.Init();
             _eventBus.Init();
+
+            _characters[0].Items.AddItem(ItemType.BOTTLE_HERO, 0);
+            _characters[0].Items.AddItem(ItemType.BOTTLE_WORKER, 0);
+            _characters[0].Items.AddItem(ItemType.HONOR, 0);
+            _characters[0].ResizeBagOfTries(_characters[0].BaseBagOfTriesCapacity);
 
             _eventBus.CallEvent(new StartEvent());
 

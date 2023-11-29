@@ -1,4 +1,7 @@
 ﻿using DG.Tweening;
+using Scripts.Enums;
+using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,25 +15,33 @@ namespace Scripts
         public RectTransform FrontSpaceTransform;
 
         [Header("Permanent Indicators")]
-        public TMP_Text GoldCountText;
-        public TMP_Text HonorCountText;
-        public Image HonorProgressBarImage;
+        public List<ItemCounter> ItemCounters; 
 
         [Header("Flying Coin")]
         public RectTransform FlyingCoinPivot;
         public float FlyingCoinMinScale = 0.2f;
         public float FlyingCoinDuration = 0.5f;
 
-        public void SetGold(int count)
+        public void SetItemCount(ItemType itemType, int count)
         {
-            GoldCountText.text = count.ToString();
-        }
+            foreach (var counter in ItemCounters)
+            {
+                if (counter.ItemType == itemType) 
+                {
+                    counter.Counter.text = count.ToString();
 
-        public void SetHonor(int count) 
-        {
-            HonorCountText.text = count.ToString();
+                    if (counter.ProgressBarImage != null)
+                    {
+                        counter.ProgressBarImage.fillAmount = count / 100f;
+                    }
 
-            HonorProgressBarImage.fillAmount = count / 100f;
+                    if (counter.RootObject != null) 
+                    {
+                        var isActive = count > 0;
+                        counter.RootObject.SetActive(isActive);
+                    }
+                }
+            }
         }
 
         public void FlyCoin(IconView icon, bool isIncrease = true)
@@ -60,5 +71,14 @@ namespace Scripts
                 icon.Release();
             });
         }
+    }
+
+    [Serializable]
+    public class ItemCounter
+    {
+        public TMP_Text Counter;
+        public GameObject RootObject;
+        public ItemType ItemType;
+        public Image ProgressBarImage;
     }
 }

@@ -29,9 +29,9 @@ namespace Scripts
 
         private void PickUp(Building building, Character player)
         {
-            if (Time.time >= player.LastMoveItemTime + 1f)
+            if (Time.time >= player.LastPickUpItemTime + 0.1f)
             {
-                player.LastMoveItemTime = Time.time;
+                player.LastPickUpItemTime = Time.time;
 
                 foreach (var character in Characters)
                 {

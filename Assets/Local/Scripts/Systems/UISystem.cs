@@ -11,6 +11,7 @@ namespace Scripts
         public List<Building> Buildings;
         public UIView UIView;
         public Camera Camera;
+        public PoolCollection<BagOfTriesView> BagOfTriesViewPools;
 
         public void EventCatch(StartEvent newEvent)
         {
@@ -18,19 +19,22 @@ namespace Scripts
             {
                 if (character.CharacterType == CharacterType.PLAYER)
                 {
-                    UpdateGoldAndHonor(character);
+                    foreach (var item in character.Items) 
+                    {
+                        UpdateItemsCount(character, item.Type);
+                    }
                 }
             }
         }
 
         public void EventCatch(AddItemEvent newEvent)
         {
-            UpdateGoldAndHonor(newEvent.Unit);
+            UpdateItemsCount(newEvent.Unit, newEvent.ItemType);
         }
 
         public void EventCatch(RemoveItemEvent newEvent)
         {
-            UpdateGoldAndHonor(newEvent.Unit);
+            UpdateItemsCount(newEvent.Unit, newEvent.ItemType);
         }
 
         public void EventCatch(UpdateEvent newEvent)
@@ -48,9 +52,45 @@ namespace Scripts
                 var progressBarTransform = (RectTransform)progressBar.transform;
                 progressBarTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
             }
+
+            foreach (var character in Characters)
+            {
+                if (character.BagOfTriesView != null && character.BagOfTriesView.gameObject.activeSelf)
+                {
+                    var worldPosition = character.transform.position + Vector3.up * 2.5f;
+                    var screenPosition = Camera.WorldToScreenPoint(worldPosition);
+                    var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
+                    character.BagOfTriesView.Transform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
+
+                }
+            }
         }
 
-        private void UpdateGoldAndHonor(Unit unit)
+        public void EventCatch(RollBagOfTriesEvent newEvent)
+        {
+            var character = newEvent.Character;
+
+            if (character.BagOfTriesView == null)
+            {
+                character.BagOfTriesView = BagOfTriesViewPools.Get(0);
+                
+                character.BagOfTriesView.Transform.SetParent(UIView.FrontSpaceTransform);
+                character.BagOfTriesView.Transform.localScale = Vector3.one;
+
+                character.BagOfTriesView.Resize(character.BagOfTries.Values.Count);
+
+                for (var i = 0; i < character.BagOfTries.Values.Count; i++)
+                {
+                    character.BagOfTriesView.SetValue(i, character.BagOfTries.Values[i]);
+                }
+            }
+
+            character.BagOfTriesView.Roll(newEvent.NextIndex, 0.2f);
+            character.BagOfTriesView.SetValue(newEvent.LastIndex, newEvent.ChangedValue);
+
+        }
+
+        private void UpdateItemsCount(Unit unit, ItemType itemType)
         {
             if (unit is Character)
             {
@@ -58,15 +98,11 @@ namespace Scripts
 
                 if (character.CharacterType == CharacterType.PLAYER)
                 {
-                    var goldCount = character.Items.GetAmount(ItemType.GOLD);
-
-                    UIView.SetGold(goldCount);
-
-                    var honorCount = character.Items.GetAmount(ItemType.HONOR);
-
-                    UIView.SetHonor(honorCount);
+                    var itemCount = character.Items.GetAmount(itemType);
+                    UIView.SetItemCount(itemType, itemCount);
                 }
             }
         }
+
     }
 }

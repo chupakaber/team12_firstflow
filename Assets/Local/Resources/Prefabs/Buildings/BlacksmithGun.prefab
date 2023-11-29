@@ -1839,11 +1839,11 @@ MonoBehaviour:
   PickingUpArea: {fileID: 2070323476316506405}
   UpgradeArea: {fileID: 5994469945120820063}
   ProgressBarPivot: {fileID: 5563264094661935307}
-  ProductionLimit: 10
-  ResourceLimit: 20
-  ItemCost: 2
+  ProductionLimit: 20
+  ResourceLimit: 30
+  ItemCost: 4
   ProductionItemAmountPerCycle: 1
-  ProductionCooldown: 30
+  ProductionCooldown: 15
   ProduceItemType: 6
   ConsumeItemType: 3
   Levels:
@@ -1852,9 +1852,9 @@ MonoBehaviour:
     Boost: []
   - Visual: {fileID: 1090790243169818112}
     Cost:
-    - Amount: 200
+    - Amount: 300
       Type: 2
-    - Amount: 200
+    - Amount: 20
       Type: 7
     Boost: []
   - Visual: {fileID: 3604082814826527700}

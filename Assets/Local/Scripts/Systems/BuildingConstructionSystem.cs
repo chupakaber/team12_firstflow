@@ -31,10 +31,10 @@ namespace Scripts
             characterHorizontalVelocity.y = 0f;
             if (characterHorizontalVelocity.sqrMagnitude > 0.1f)
             {
-                character.LastMoveItemTime = Time.time;
+                character.LastDropItemTime = Time.time;
             }
 
-            if (Time.time >= character.LastMoveItemTime + 0.06f)
+            if (Time.time >= character.LastDropItemTime + 0.06f)
             {
                 var requirementItemIndex = 0;
                 foreach (var requirementItem in building.Levels[1].Cost)
@@ -65,6 +65,14 @@ namespace Scripts
                                 if (levelUp)
                                 {
                                     building.Level = building.Level + 1;
+
+                                    EventBus.CallEvent(new ConstructionCompleteEvent() { Building = building });
+
+                                    foreach (var teleportingCharacter in building.ConstructionCharacters)
+                                    {
+                                        teleportingCharacter.transform.position = building.PickingUpArea.transform.position;
+                                    }
+
                                     foreach (var item in building.Items)
                                     {
                                         EventBus.CallEvent(new RemoveItemEvent() { ItemType = item.Type, Count = item.Amount, Unit = building });
@@ -74,7 +82,7 @@ namespace Scripts
                                 }
                             }
 
-                            character.LastMoveItemTime = Time.time;
+                            character.LastDropItemTime = Time.time;
                             break;
                         }
                     }
