@@ -287,7 +287,7 @@ MonoBehaviour:
   ProductionLimit: 1000
   ResourceLimit: 30
   ItemCost: 1
-  ProductionItemAmountPerCycle: 10
+  ProductionItemAmountPerCycle: 6
   ProductionCooldown: 3
   ProduceItemType: 7
   ConsumeItemType: 4
@@ -297,38 +297,38 @@ MonoBehaviour:
     Boost: []
   - Visual: {fileID: 4912161121183710594}
     Cost:
-    - Amount: 10
+    - Amount: 5
       Type: 2
-    - Amount: 20
+    - Amount: 35
       Type: 7
     Boost: []
   - Visual: {fileID: 7443749866242623908}
     Cost:
-    - Amount: 100
+    - Amount: 5
       Type: 2
-    - Amount: 75
+    - Amount: 70
       Type: 7
     Boost:
     - Type: 1
-      Value: 0.8
+      Value: 0.83
   - Visual: {fileID: 3993607042436838574}
     Cost:
-    - Amount: 100
+    - Amount: 6
       Type: 2
-    - Amount: 75
+    - Amount: 140
       Type: 7
     Boost:
     - Type: 1
-      Value: 0.75
+      Value: 0.81
   - Visual: {fileID: 7181045205311866476}
     Cost:
-    - Amount: 100
+    - Amount: 7
       Type: 2
-    - Amount: 75
+    - Amount: 300
       Type: 7
     Boost:
     - Type: 1
-      Value: 0.6666
+      Value: 0.74
   UpgradeStorage: {fileID: 8144332563421834516}
   _level: 0
   ConstructionCharacters: []

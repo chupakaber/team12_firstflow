@@ -1400,38 +1400,38 @@ MonoBehaviour:
     Boost: []
   - Visual: {fileID: 4224729212063634066}
     Cost:
-    - Amount: 15
+    - Amount: 5
       Type: 2
     - Amount: 40
       Type: 7
     Boost: []
   - Visual: {fileID: 235093955524100327}
     Cost:
-    - Amount: 120
+    - Amount: 5
       Type: 2
-    - Amount: 150
+    - Amount: 40
+      Type: 7
+    Boost:
+    - Type: 1
+      Value: 0.86
+  - Visual: {fileID: 5229329122285429484}
+    Cost:
+    - Amount: 6
+      Type: 2
+    - Amount: 80
+      Type: 7
+    Boost:
+    - Type: 1
+      Value: 0.83
+  - Visual: {fileID: 6929230853878223238}
+    Cost:
+    - Amount: 7
+      Type: 2
+    - Amount: 250
       Type: 7
     Boost:
     - Type: 1
       Value: 0.8
-  - Visual: {fileID: 5229329122285429484}
-    Cost:
-    - Amount: 120
-      Type: 2
-    - Amount: 150
-      Type: 7
-    Boost:
-    - Type: 1
-      Value: 0.75
-  - Visual: {fileID: 6929230853878223238}
-    Cost:
-    - Amount: 120
-      Type: 2
-    - Amount: 150
-      Type: 7
-    Boost:
-    - Type: 1
-      Value: 0.66666
   UpgradeStorage: {fileID: 4870775315968118031}
   _level: 0
   ConstructionCharacters: []
