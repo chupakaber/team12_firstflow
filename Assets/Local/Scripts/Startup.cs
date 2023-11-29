@@ -45,7 +45,8 @@ namespace Scripts
         private CharacterAnimationSystem _characterAnimationSystem = new CharacterAnimationSystem();
         private UISystem _uiSystem = new UISystem();
         private EnvironmentShaderSystem _environmentShaderSystem = new EnvironmentShaderSystem();
-        
+        private CharactersStatsUpSystem _charactersStatsUpSystem = new CharactersStatsUpSystem();
+
 
         public void Start()
         {
@@ -89,6 +90,7 @@ namespace Scripts
             AddSystem(_characterAnimationSystem);
             AddSystem(_uiSystem);
             AddSystem(_environmentShaderSystem);
+            AddSystem(_charactersStatsUpSystem);
 
             _container.AddLink(_eventBus, "EventBus");
             _container.AddLink(_characters, "Characters");

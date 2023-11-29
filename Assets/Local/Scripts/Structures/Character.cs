@@ -17,6 +17,8 @@ namespace Scripts
         public float PickUpCooldown;
         public ItemType PickUpItemConstraint = ItemType.NONE;
         public int BaseBagOfTriesCapacity = 8;
+        public int CharactecTierLvl = 1;
+        public CharactersStatsUpSystem charactersStatsUpSystem = new CharactersStatsUpSystem(); 
 
         [Header("Character Runtime")]
         public Vector3 WorldDirection;
@@ -36,6 +38,21 @@ namespace Scripts
         public void OnTriggerExit(Collider other)
         {
             ExitColliders.Push(other);
+        }
+
+        public void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.GetComponent<Assistant>())
+            {
+                Character npc = collision.gameObject.GetComponent<Character>();
+                charactersStatsUpSystem.NpcStatsUp(this, npc);
+            }
+
+            if (collision.gameObject.GetComponent<Apprentice>())
+            {
+                Character npc = collision.gameObject.GetComponent<Character>();
+                charactersStatsUpSystem.NpcStatsUp(this, npc);
+            }
         }
 
         public bool GetActionTry()
@@ -88,6 +105,26 @@ namespace Scripts
         {
             CharacterAnimator.SetBool(_loadedAnimationKey, Items.GetAmount() > 0);
             CharacterAnimator.SetFloat(_speedAnimationKey, (CharacterRigidbody.velocity.magnitude - 0.5f) / 4f);
+        }
+
+        public void TierLvlUp()
+        {
+            CharactecTierLvl += 1;
+
+            if (this.CharacterType == CharacterType.PLAYER)
+            {
+                Speed += 2; 
+            }
+
+            if (this.CharacterType == CharacterType.ASSISTANT)
+            {
+                ItemLimit += 5;
+            }
+
+            if (this.CharacterType == CharacterType.APPRENTICE)
+            {
+                BaseBagOfTriesCapacity += 1; // Спросить этот ли параметр отвечает за КОлесо крафта
+            }
         }
     }
 }
