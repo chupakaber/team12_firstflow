@@ -16,6 +16,7 @@ namespace Scripts
                 {
                     if (building.ProductionCharacters.Count == 1)
                     {
+                        newEvent.Character.ShowBagOfTries();
                         if (building.ProductionEndTime > building.LastProductionTime)
                         {
                             building.LastProductionTime = Time.time - (building.ProductionEndTime - building.LastProductionTime);
@@ -26,6 +27,8 @@ namespace Scripts
                             building.LastProductionTime = Time.time;
                         }
                     }
+
+                    TryRestoreTries(building);
                 }
             }
         }
@@ -36,9 +39,14 @@ namespace Scripts
             {
                 if (newEvent.Trigger.Equals(building.ProductionArea))
                 {
+                    newEvent.Character.HideBagOfTries();
                     if (building.ProductionCharacters.Count == 0)
                     {
                         building.ProductionEndTime = Time.time;
+                    }
+                    else
+                    {
+                        building.ProductionCharacters[0].ShowBagOfTries();
                     }
                 }
             }
@@ -70,17 +78,55 @@ namespace Scripts
 
                 if(building.ProductionLimit >= building.Items.GetAmount(building.ProduceItemType) + building.ProductionItemAmountPerCycle)
                 {
-                    var sourcePileTopPosition = building.transform.position;
-                    var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = building.ProductionItemAmountPerCycle, Unit = building, FromPosition = sourcePileTopPosition };
-                    EventBus.CallEvent(addItemEvent);
+                    var success = true;
 
-                    if (building.ItemCost > 0)
+                    if (building.ProductionCharacters.Count > 0)
                     {
-                        var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = building.ItemCost, Unit = building };
-                        EventBus.CallEvent(removeItemEvent);
+                        var character = building.ProductionCharacters[0];
+                        if (character.BagOfTries.TryGetNext(out var lastIndex, out var changedValue, out var nextIndex, out var nextValue))
+                        {
+                            EventBus.CallEvent(new RollBagOfTriesEvent() { Character = character, LastIndex = lastIndex, ChangedValue = changedValue, NextIndex = nextIndex, NextValue = nextValue});
+                            success = nextValue;
+                        }
+
+                        TryRestoreTries(building);
+                    }
+
+                    if (success)
+                    {
+                        var sourcePileTopPosition = building.transform.position;
+                        var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = building.ProductionItemAmountPerCycle, Unit = building, FromPosition = sourcePileTopPosition };
+                        EventBus.CallEvent(addItemEvent);
+
+                        if (building.ItemCost > 0)
+                        {
+                            var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = building.ItemCost, Unit = building };
+                            EventBus.CallEvent(removeItemEvent);
+                        }
                     }
 
                     building.LastProductionTime = Time.time;
+                }
+            }
+        }
+
+        private void TryRestoreTries(Building building)
+        {
+            var playerInArea = false;
+            
+            foreach (var character in building.ProductionCharacters)
+            {
+                if (character.CharacterType == Enums.CharacterType.PLAYER)
+                {
+                    playerInArea = true;
+                }
+            }
+
+            if (playerInArea)
+            {
+                foreach (var character in building.ProductionCharacters)
+                {
+                    character.RestoreActionTries();
                 }
             }
         }

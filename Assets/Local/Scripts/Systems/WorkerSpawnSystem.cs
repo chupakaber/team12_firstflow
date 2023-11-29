@@ -74,6 +74,7 @@ namespace Scripts
                     Characters.Add(character);
 
                     character.transform.position = _workerSpawnPoint;
+                    character.ResizeBagOfTries(character.BaseBagOfTriesCapacity);
 
                     var apprentice = (Apprentice) character;
                     foreach (var building in Buildings)

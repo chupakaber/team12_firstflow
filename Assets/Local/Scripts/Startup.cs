@@ -17,6 +17,7 @@ namespace Scripts
         private List<ProgressBarView> _progressBarViews = new List<ProgressBarView>();
         private PoolCollection<ItemView> _itemViewPools = new PoolCollection<ItemView>();
         private PoolCollection<IconView> _iconViewPools = new PoolCollection<IconView>();
+        private PoolCollection<BagOfTriesView> _bagOfTriesViewPools = new PoolCollection<BagOfTriesView>();
         private UnlockQueue _unlockQueue = new UnlockQueue();
 
         private PlayerInputSystem _playerInputSystem = new PlayerInputSystem();
@@ -60,6 +61,7 @@ namespace Scripts
             }
 
             _iconViewPools.Pools.Add(0, new ObjectPool<IconView>("Prefabs/UI/Icons/GOLD"));
+            _bagOfTriesViewPools.Pools.Add(0, new ObjectPool<BagOfTriesView>("Prefabs/UI/BagOfTries"));
 
             AddSystem(_addItemSystem);
             AddSystem(_addHonorSystem);
@@ -95,12 +97,14 @@ namespace Scripts
             _container.AddLink(_itemViewPools, "ItemViewPools");
             _container.AddLink(_iconViewPools, "IconViewPools");
             _container.AddLink(_unlockQueue, "UnlockQueue");
+            _container.AddLink(_bagOfTriesViewPools, "BagOfTriesViewPools");
             _container.Init();
             _eventBus.Init();
 
             _characters[0].Items.AddItem(ItemType.BOTTLE_HERO, 0);
             _characters[0].Items.AddItem(ItemType.BOTTLE_WORKER, 0);
             _characters[0].Items.AddItem(ItemType.HONOR, 0);
+            _characters[0].ResizeBagOfTries(_characters[0].BaseBagOfTriesCapacity);
 
             _eventBus.CallEvent(new StartEvent());
 
