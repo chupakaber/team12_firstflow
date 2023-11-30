@@ -12,6 +12,11 @@ namespace Scripts
         {
             foreach (var building in Buildings)
             {
+                if (!building.gameObject.activeSelf)
+                {
+                    building.ProductionCharacters.Clear();
+                }
+
                 if (newEvent.Trigger.Equals(building.ProductionArea))
                 {
                     if (building.ProductionCharacters.Count == 1)

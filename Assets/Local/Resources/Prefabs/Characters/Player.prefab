@@ -54,9 +54,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 796236960348475552}
-  - component: {fileID: 5704888393325222780}
-  - component: {fileID: 7473274180135748190}
   - component: {fileID: 376377110316800867}
+  - component: {fileID: 5704888393325222780}
+  - component: {fileID: 2726041749864129604}
+  - component: {fileID: 7473274180135748190}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -81,6 +82,33 @@ Transform:
   - {fileID: 2021396120128867996}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &376377110316800867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6561193947678557720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2dbe0ca16073f844a3cdfdd01e86b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemStackView: {fileID: 2350703000907028196}
+  CollectingProgressBars: []
+  CharacterRigidbody: {fileID: 7473274180135748190}
+  CharacterAnimator: {fileID: 5399074724537930982}
+  Speed: 6
+  CharacterType: 1
+  ItemLimit: 15
+  PickUpCooldown: 0.2
+  PickUpItemConstraint: 0
+  BaseBagOfTriesCapacity: 8
+  PlayerSpeedBoostAmount: 2
+  WorldDirection: {x: 0, y: 0, z: 0}
+  LastDropItemTime: 0
+  LastPickUpItemTime: 0
+  BagOfTriesView: {fileID: 0}
 --- !u!136 &5704888393325222780
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -104,6 +132,27 @@ CapsuleCollider:
   m_Height: 2.4
   m_Direction: 1
   m_Center: {x: 0, y: 1.2, z: 0}
+--- !u!135 &2726041749864129604
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6561193947678557720}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.6
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &7473274180135748190
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,32 +180,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!114 &376377110316800867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6561193947678557720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2dbe0ca16073f844a3cdfdd01e86b3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemStackView: {fileID: 2350703000907028196}
-  CollectingProgressBars: []
-  CharacterRigidbody: {fileID: 7473274180135748190}
-  CharacterAnimator: {fileID: 5399074724537930982}
-  Speed: 6
-  CharacterType: 1
-  ItemLimit: 15
-  PickUpCooldown: 0.2
-  PickUpItemConstraint: 0
-  BaseBagOfTriesCapacity: 8
-  WorldDirection: {x: 0, y: 0, z: 0}
-  LastDropItemTime: 0
-  LastPickUpItemTime: 0
-  BagOfTriesView: {fileID: 0}
 --- !u!1001 &1983774556122196343
 PrefabInstance:
   m_ObjectHideFlags: 0

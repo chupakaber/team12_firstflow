@@ -54,10 +54,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8292796056480109628}
+  - component: {fileID: -3327792582280430687}
   - component: {fileID: -6021721549260471375}
+  - component: {fileID: 8193037139705549172}
   - component: {fileID: 8803190688523478502}
   - component: {fileID: 173981568709443060}
-  - component: {fileID: -3327792582280430687}
   m_Layer: 7
   m_Name: Apprentice
   m_TagString: Untagged
@@ -82,6 +83,41 @@ Transform:
   - {fileID: 699250433491390217}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3327792582280430687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4554096309983936205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c831623da0c0e44822637430cd54f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemStackView: {fileID: 3829768820510857073}
+  CollectingProgressBars: []
+  CharacterRigidbody: {fileID: 8803190688523478502}
+  CharacterAnimator: {fileID: 6869133215961388403}
+  Speed: 4.5
+  CharacterType: 3
+  ItemLimit: 5
+  PickUpCooldown: 0.2
+  PickUpItemConstraint: 0
+  BaseBagOfTriesCapacity: 8
+  PlayerSpeedBoostAmount: 2
+  WorldDirection: {x: 0, y: 0, z: 0}
+  LastDropItemTime: 0
+  LastPickUpItemTime: 0
+  BagOfTriesView: {fileID: 0}
+  NavMeshAgent: {fileID: 173981568709443060}
+  LastBehaviorTime: 0
+  TargetBuilding: {fileID: 0}
+  TargetCharacter: {fileID: 0}
+  TargetPosition: {x: 0, y: 0, z: 0}
+  FollowingOffset: 0
+  TriesCapacityBoostAmount: 4
+  LastApprenticeBehaviorTime: 0
 --- !u!136 &-6021721549260471375
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -105,6 +141,27 @@ CapsuleCollider:
   m_Height: 2.4
   m_Direction: 1
   m_Center: {x: 0, y: 1.2, z: 0}
+--- !u!135 &8193037139705549172
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4554096309983936205}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.6
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &8803190688523478502
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -139,54 +196,21 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4554096309983936205}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.55
-  m_Speed: 2.5
-  m_Acceleration: 8
+  m_Speed: 0
+  m_Acceleration: 0
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 0
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 2
---- !u!114 &-3327792582280430687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4554096309983936205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87c831623da0c0e44822637430cd54f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemStackView: {fileID: 3829768820510857073}
-  CollectingProgressBars: []
-  CharacterRigidbody: {fileID: 8803190688523478502}
-  CharacterAnimator: {fileID: 6869133215961388403}
-  Speed: 4.5
-  CharacterType: 3
-  ItemLimit: 5
-  PickUpCooldown: 0.2
-  PickUpItemConstraint: 0
-  BaseBagOfTriesCapacity: 8
-  WorldDirection: {x: 0, y: 0, z: 0}
-  LastDropItemTime: 0
-  LastPickUpItemTime: 0
-  BagOfTriesView: {fileID: 0}
-  NavMeshAgent: {fileID: 173981568709443060}
-  LastBehaviorTime: 0
-  TargetBuilding: {fileID: 0}
-  TargetCharacter: {fileID: 0}
-  TargetPosition: {x: 0, y: 0, z: 0}
-  FollowingOffset: 0
-  LastApprenticeBehaviorTime: 0
 --- !u!1001 &1026405022335215842
 PrefabInstance:
   m_ObjectHideFlags: 0

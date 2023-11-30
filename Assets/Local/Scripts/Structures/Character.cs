@@ -10,13 +10,14 @@ namespace Scripts
         public Rigidbody CharacterRigidbody;
         public Animator CharacterAnimator;
         public float Speed;
-        public Stack<Collider> EnterColliders = new Stack<Collider>();
-        public Stack<Collider> ExitColliders = new Stack<Collider>();
         public CharacterType CharacterType;
         public int ItemLimit;
         public float PickUpCooldown;
         public ItemType PickUpItemConstraint = ItemType.NONE;
         public int BaseBagOfTriesCapacity = 8;
+
+        [Header("Player Config")]
+        public float PlayerSpeedBoostAmount = 2f;
 
         [Header("Character Runtime")]
         public Vector3 WorldDirection;
@@ -24,18 +25,41 @@ namespace Scripts
         public float LastPickUpItemTime;
         public BagOfTries BagOfTries = new BagOfTries();
         public BagOfTriesView BagOfTriesView;
+        public Stack<Collider> EnterColliders = new Stack<Collider>();
+        public Stack<Collider> ExitColliders = new Stack<Collider>();
+        public LinkedList<Character> CharacterCollisions = new LinkedList<Character>();
 
         private int _loadedAnimationKey = Animator.StringToHash("Loaded");
         private int _speedAnimationKey = Animator.StringToHash("Speed");
 
         public void OnTriggerEnter(Collider other)
         {
+            var character = other.gameObject.GetComponent<Character>();
+            if (character != null)
+            {
+                if (!CharacterCollisions.Contains(character))
+                {
+                    CharacterCollisions.AddLast(character);
+                }
+            }
             EnterColliders.Push(other);
         }
 
         public void OnTriggerExit(Collider other)
         {
             ExitColliders.Push(other);
+        }
+
+        public void OnCollisionEnter(Collision collision)
+        {
+            var character = collision.collider.gameObject.GetComponent<Character>();
+            if (character != null)
+            {
+                if (!CharacterCollisions.Contains(character))
+                {
+                    CharacterCollisions.AddLast(character);
+                }
+            }
         }
 
         public bool GetActionTry()
@@ -88,6 +112,14 @@ namespace Scripts
         {
             CharacterAnimator.SetBool(_loadedAnimationKey, Items.GetAmount() > 0);
             CharacterAnimator.SetFloat(_speedAnimationKey, (CharacterRigidbody.velocity.magnitude - 0.5f) / 4f);
+        }
+
+        public virtual void LevelUp()
+        {
+            if (CharacterType == CharacterType.PLAYER)
+            {
+                Speed += PlayerSpeedBoostAmount;
+            }
         }
     }
 }

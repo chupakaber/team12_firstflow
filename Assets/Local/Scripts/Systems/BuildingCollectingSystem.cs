@@ -13,6 +13,11 @@ namespace Scripts
         {
             foreach (var building in Buildings)
             {
+                if (!building.gameObject.activeSelf)
+                {
+                    building.UnloadingCharacters.Clear();
+                }
+                
                 foreach (var character in building.UnloadingCharacters)
                 {
                     Collecting(building,character);

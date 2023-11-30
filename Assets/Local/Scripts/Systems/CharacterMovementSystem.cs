@@ -16,16 +16,15 @@ namespace Scripts
                 horizontalDirection.y = 0f;
 
                 var origin = character.transform.position + Vector3.up * 0.75f;
-                var castDirection = character.transform.position + horizontalDirection * 0.3f - origin;
+                var castDirection = horizontalDirection * 0.3f - Vector3.up * 0.75f;
                 var hasHitGround = false;
-                var hasHorizontalDirection = horizontalDirection.sqrMagnitude > float.Epsilon;
-                if (hasHorizontalDirection)
+                if (Physics.Raycast(origin, castDirection.normalized, out var hitInfo, 1.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore))
                 {
-                    if (Physics.Raycast(origin, castDirection, out var hitInfo, 1.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore))
-                    {
-                        worldDirection = (hitInfo.point - character.transform.position).normalized;
-                        hasHitGround = true;
-                    }
+                    worldDirection = hitInfo.point - character.transform.position;
+                    var worldDirectionY = Mathf.Sign(worldDirection.y) * Mathf.Min(Mathf.Abs(worldDirection.y), 1f);
+                    worldDirection = worldDirection.normalized;
+                    worldDirection.y = worldDirectionY;
+                    hasHitGround = true;
                 }
 
                 var characterRigidbody = character.CharacterRigidbody;
@@ -34,9 +33,10 @@ namespace Scripts
                 {
                     newCharacterVelocity.y = characterRigidbody.velocity.y;
                 }
+
                 //newCharacterVelocity.y = Mathf.Lerp(characterRigidbody.velocity.y, newCharacterVelocity.y, 0.5f);
                 //newCharacterVelocity.y += characterRigidbody.velocity.y;
-                characterRigidbody.velocity = Vector3.Lerp(characterRigidbody.velocity, newCharacterVelocity, Time.deltaTime * 8f);
+                characterRigidbody.velocity = Vector3.Lerp(characterRigidbody.velocity, newCharacterVelocity, Time.fixedDeltaTime * 8f);
 
                 if (horizontalDirection.sqrMagnitude > 0.1f)
                 {
