@@ -10,6 +10,8 @@ Shader "Team12/DiffuseWithAO" {
         _Brightness ("Brightness", Range(-3, 3)) = 0
         _PreIntensity ("Pre Intencity", Range(-5, 5)) = 2.5
         _Intensity ("Intencity", Range(-5, 5)) = 1
+        _LambertIntensity ("_LambertIntensity", Range(0, 3)) = 1
+        _LambertOffset ("_LambertOffset", Range(-5, 5)) = 0
 
         _SaturationBase ("Saturation Base", Range(0, 1)) = 0.6
         _AOSaturation ("AO Saturation", Range(-1, 10)) = 3
@@ -76,6 +78,8 @@ Shader "Team12/DiffuseWithAO" {
             uniform float _FogHeightScale;
             uniform float4 _FogColor;
             uniform float4 _CameraWorldPosition;
+            uniform float _LambertIntensity;
+            uniform float _LambertOffset;
 
             vertexOutput vert(vertexInput i) 
             {
@@ -91,7 +95,7 @@ Shader "Team12/DiffuseWithAO" {
                 float3 normalDirection = UnityObjectToWorldNormal(i.normal);
                 float3 lightDirection = normalize(_WorldSpaceLightPos0.xyz);
 
-                float3 diffuseReflection = (0.5 + max(0.0, dot(normalDirection, lightDirection)) * 0.5);
+                float3 diffuseReflection = (_LambertOffset + max(0.0, dot(normalDirection, lightDirection)) * _LambertIntensity);
 
                 o.col = float4(diffuseReflection, 1.0);
                 o.pos = UnityObjectToClipPos(i.vertex);
