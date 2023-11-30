@@ -1,8 +1,4 @@
-﻿
-
-using UnityEngine;
-
-namespace Scripts
+﻿namespace Scripts
 {
     public class StartEvent: IEvent
     {

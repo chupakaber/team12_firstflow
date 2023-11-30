@@ -1,4 +1,5 @@
 ﻿using Scripts.Enums;
+using UnityEngine;
 
 namespace Scripts
 {
@@ -6,6 +7,7 @@ namespace Scripts
     {
         public ItemType ItemType;
         public int Count;
-        public Character Character;
+        public Unit Unit;
+        public Vector3 FromPosition;
     }
 }

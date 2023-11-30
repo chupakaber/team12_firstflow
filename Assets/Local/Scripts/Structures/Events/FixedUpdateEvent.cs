@@ -1,6 +1,4 @@
-﻿using Scripts.Enums;
-
-namespace Scripts
+﻿namespace Scripts
 {
     public class FixedUpdateEvent : IEvent
     {
