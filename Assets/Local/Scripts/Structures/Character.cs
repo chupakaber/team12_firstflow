@@ -10,15 +10,14 @@ namespace Scripts
         public Rigidbody CharacterRigidbody;
         public Animator CharacterAnimator;
         public float Speed;
-        public Stack<Collider> EnterColliders = new Stack<Collider>();
-        public Stack<Collider> ExitColliders = new Stack<Collider>();
         public CharacterType CharacterType;
         public int ItemLimit;
         public float PickUpCooldown;
         public ItemType PickUpItemConstraint = ItemType.NONE;
         public int BaseBagOfTriesCapacity = 8;
-        public int CharactecTierLvl = 1;
-        public CharactersStatsUpSystem charactersStatsUpSystem = new CharactersStatsUpSystem(); 
+
+        [Header("Player Config")]
+        public float PlayerSpeedBoostAmount = 2f;
 
         [Header("Character Runtime")]
         public Vector3 WorldDirection;
@@ -26,12 +25,24 @@ namespace Scripts
         public float LastPickUpItemTime;
         public BagOfTries BagOfTries = new BagOfTries();
         public BagOfTriesView BagOfTriesView;
+        public Stack<Collider> EnterColliders = new Stack<Collider>();
+        public Stack<Collider> ExitColliders = new Stack<Collider>();
+        public LinkedList<Character> CharacterCollisions = new LinkedList<Character>();
 
         private int _loadedAnimationKey = Animator.StringToHash("Loaded");
         private int _speedAnimationKey = Animator.StringToHash("Speed");
 
         public void OnTriggerEnter(Collider other)
         {
+            var character = other.gameObject.GetComponent<Character>();
+            Debug.Log($"Trigger with character: {(character == null ? "null" : character.GetHashCode())}");
+            if (character != null)
+            {
+                if (!CharacterCollisions.Contains(character))
+                {
+                    CharacterCollisions.AddLast(character);
+                }
+            }
             EnterColliders.Push(other);
         }
 
@@ -42,16 +53,13 @@ namespace Scripts
 
         public void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.GetComponent<Assistant>())
+            var character = collision.collider.gameObject.GetComponent<Character>();
+            if (character != null)
             {
-                Character npc = collision.gameObject.GetComponent<Character>();
-                charactersStatsUpSystem.NpcStatsUp(this, npc);
-            }
-
-            if (collision.gameObject.GetComponent<Apprentice>())
-            {
-                Character npc = collision.gameObject.GetComponent<Character>();
-                charactersStatsUpSystem.NpcStatsUp(this, npc);
+                if (!CharacterCollisions.Contains(character))
+                {
+                    CharacterCollisions.AddLast(character);
+                }
             }
         }
 
@@ -108,22 +116,11 @@ namespace Scripts
         }
 
         public void TierLvlUp()
+        public virtual void LevelUp()
         {
-            CharactecTierLvl += 1;
-
-            if (this.CharacterType == CharacterType.PLAYER)
+            if (CharacterType == CharacterType.PLAYER)
             {
-                Speed += 2; 
-            }
-
-            if (this.CharacterType == CharacterType.ASSISTANT)
-            {
-                ItemLimit += 5;
-            }
-
-            if (this.CharacterType == CharacterType.APPRENTICE)
-            {
-                BaseBagOfTriesCapacity += 1; // Спросить этот ли параметр отвечает за КОлесо крафта
+                Speed += PlayerSpeedBoostAmount;
             }
         }
     }

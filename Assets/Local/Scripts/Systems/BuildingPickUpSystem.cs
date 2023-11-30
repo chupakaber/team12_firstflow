@@ -14,6 +14,11 @@ namespace Scripts
         {
             foreach (var building in Buildings)
             {
+                if (!building.gameObject.activeSelf)
+                {
+                    building.PickingUpCharacters.Clear();
+                }
+
                 foreach (var character in building.PickingUpCharacters)
                 {
                     PickUp(building, character);

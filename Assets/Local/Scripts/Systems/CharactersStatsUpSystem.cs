@@ -1,35 +1,95 @@
 ﻿using System.Collections.Generic;
+using Scripts.Enums;
+using UnityEngine;
 
 namespace Scripts
 {
     public class CharactersStatsUpSystem: ISystem
     {
+        public EventBus EventBus;
         public List<Character> Characters;
 
-        public void EventCatch(AddItemEvent newEvent)
+        private const float COLLISION_CHECK_PERIOD = 0.3f;
+        private const float BREAK_COLLISION_DISTANCE_SQR = 4f;
+
+        private float _lastCollisionCheckTime;
+
+        public void EventCatch(FixedUpdateEvent newEvent)
         {
-            if (newEvent.ItemType == Enums.ItemType.BOTTLE_HERO)
+            if (Time.time < _lastCollisionCheckTime + COLLISION_CHECK_PERIOD)
             {
-                foreach (Character character in Characters)
+                return;
+            }
+
+            _lastCollisionCheckTime = Time.time;
+
+            foreach (var character in Characters)
+            {
+                if (character.CharacterType == CharacterType.PLAYER)
                 {
-                    if (character.CharacterType == Enums.CharacterType.PLAYER)
+                    var characterPosition = character.transform.position;
+                    var node = character.CharacterCollisions.First;
+                    while (node != null)
                     {
-                        if(character.Items.GetAmount(Enums.ItemType.BOTTLE_HERO) > 0) 
+                        var nodeNext = node.Next;
+
+                        var collisionCharacter = node.Value;
+                        if ((characterPosition - collisionCharacter.transform.position).sqrMagnitude > BREAK_COLLISION_DISTANCE_SQR)
                         {
-                            character.TierLvlUp();
-                            character.Items.RemoveItem(Enums.ItemType.BOTTLE_HERO, 1);
+                            character.CharacterCollisions.Remove(node);
                         }
+                        else
+                        {
+                            if (collisionCharacter.CharacterType == CharacterType.ASSISTANT || collisionCharacter.CharacterType == CharacterType.APPRENTICE)
+                            {
+                                GiveBoostBottle(character, collisionCharacter);
+                            }
+                        }
+                        
+                        node = nodeNext;
                     }
                 }
             }
         }
 
-        public void NpcStatsUp(Character character, Character npc)
+        public void EventCatch(AddItemEvent newEvent)
         {
-            if (character.Items.GetAmount(Enums.ItemType.BOTTLE_WORKER) > 0)
+            if (newEvent.ItemType == ItemType.BOTTLE_HERO)
             {
-                character.Items.RemoveItem(Enums.ItemType.BOTTLE_WORKER, 1);
-                npc.TierLvlUp();
+                if (newEvent.Unit is Character)
+                {
+                    var character = (Character) newEvent.Unit;
+                    if (character.CharacterType == CharacterType.PLAYER)
+                    {
+                        character.LevelUp();
+                    }
+                }
+            }
+            else if(newEvent.ItemType == ItemType.BOTTLE_WORKER)
+            {
+                if (newEvent.Unit is Assistant)
+                {
+                    var asssistant = (Assistant) newEvent.Unit;
+                    asssistant.LevelUp();
+                }
+                else if (newEvent.Unit is Apprentice)
+                {
+                    var apprentice = (Apprentice) newEvent.Unit;
+                    apprentice.LevelUp();
+                }
+            }
+        }
+
+        public void GiveBoostBottle(Character character, Character npc)
+        {
+            var boostBottleType = ItemType.BOTTLE_WORKER;
+            if (character.Items.GetAmount(boostBottleType) > 0)
+            {
+                if (npc.Items.GetAmount(boostBottleType) < 1)
+                {
+                    EventBus.CallEvent(new AddItemEvent() { Unit = npc, ItemType = boostBottleType, Count = 1, FromPosition = character.transform.position });
+                    EventBus.CallEvent(new RemoveItemEvent() { Unit = character, ItemType = boostBottleType, Count = 1 });
+                }
             }
         }
     }

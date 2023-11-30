@@ -35,6 +35,7 @@ namespace Scripts
         private BuildingProgressBarSystem _buildingProgressBarSystem = new BuildingProgressBarSystem();
         private BuildingUpgradeSystem _buildingUpgradeSystem = new BuildingUpgradeSystem();
         private BuildingUnlockSystem _buildingUnlockSystem = new BuildingUnlockSystem();
+        private AlchemicSystem _alchemicSystem = new AlchemicSystem();
         private WorkerAssignSystem _workerAssignSystem = new WorkerAssignSystem();
         private WorkerSpawnSystem _workerSpawnSystem = new WorkerSpawnSystem();
         private WorkerPickUpSystem _workerPickUpSystem = new WorkerPickUpSystem();
@@ -66,10 +67,10 @@ namespace Scripts
             _bagOfTriesViewPools.Pools.Add(0, new ObjectPool<BagOfTriesView>("Prefabs/UI/BagOfTries"));
 
             AddSystem(_addItemSystem);
+            AddSystem(_removeItemSystem);
             AddSystem(_addHonorSystem);
             AddSystem(_playerInputSystem);
             AddSystem(_cameraFollowSystem);
-            AddSystem(_removeItemSystem);
             AddSystem(_triggerSystem);
             AddSystem(_buildingInitSystem);
             AddSystem(_buildingTriggerSystem);
@@ -80,6 +81,7 @@ namespace Scripts
             AddSystem(_buildingProgressBarSystem);
             AddSystem(_buildingUpgradeSystem);
             AddSystem(_buildingUnlockSystem);
+            AddSystem(_alchemicSystem);
             AddSystem(_workerAssignSystem);
             AddSystem(_workerSpawnSystem);
             AddSystem(_workerPickUpSystem);

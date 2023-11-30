@@ -13,6 +13,11 @@ namespace Scripts
         {
             foreach (var building in Buildings)
             {
+                if (!building.gameObject.activeSelf)
+                {
+                    building.UpgradeCharacters.Clear();
+                }
+
                 UpdateUpgradeProgressViewSettings(building);
             }
         }
