@@ -25,6 +25,8 @@ namespace Scripts
         public Stack<Collider> EnterColliders = new Stack<Collider>();
         public Stack<Collider> ExitColliders = new Stack<Collider>();
         public LinkedList<Character> CharacterCollisions = new LinkedList<Character>();
+        public Character NextInQueue;
+        public Character PreviousInQueue;
 
         private int _loadedAnimationKey = Animator.StringToHash("Loaded");
         private int _speedAnimationKey = Animator.StringToHash("Speed");
@@ -113,6 +115,46 @@ namespace Scripts
 
         public virtual void LevelUp()
         {
+        }
+
+        public void AddLastInQueue(Character newCharacter)
+        {
+            var character = this;
+            while (character.NextInQueue != null)
+            {
+                character = character.NextInQueue;
+            }
+
+            character.NextInQueue = newCharacter;
+            newCharacter.PreviousInQueue = character;
+        }
+
+        public void AddFirstInQueue(Character newCharacter)
+        {
+            var character = this;
+            while (character.PreviousInQueue != null)
+            {
+                character = character.PreviousInQueue;
+            }
+
+            character.PreviousInQueue = newCharacter;
+            newCharacter.NextInQueue = character;
+        }
+
+        public void LeaveQueue()
+        {
+            if (NextInQueue != null)
+            {
+                NextInQueue.PreviousInQueue = PreviousInQueue;
+            }
+
+            if (PreviousInQueue != null)
+            {
+                PreviousInQueue.NextInQueue = NextInQueue;
+            }
+
+            NextInQueue = null;
+            PreviousInQueue = null;
         }
     }
 }
