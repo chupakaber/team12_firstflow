@@ -35,7 +35,6 @@ namespace Scripts
         public void OnTriggerEnter(Collider other)
         {
             var character = other.gameObject.GetComponent<Character>();
-            Debug.Log($"Trigger with character: {(character == null ? "null" : character.GetHashCode())}");
             if (character != null)
             {
                 if (!CharacterCollisions.Contains(character))
@@ -115,7 +114,6 @@ namespace Scripts
             CharacterAnimator.SetFloat(_speedAnimationKey, (CharacterRigidbody.velocity.magnitude - 0.5f) / 4f);
         }
 
-        public void TierLvlUp()
         public virtual void LevelUp()
         {
             if (CharacterType == CharacterType.PLAYER)

@@ -54,10 +54,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1466144333492710776}
+  - component: {fileID: 5222714964136319190}
   - component: {fileID: 1459244882306214140}
+  - component: {fileID: 2338455853727700924}
   - component: {fileID: 6616809623660779437}
   - component: {fileID: 3677099979974564584}
-  - component: {fileID: 5222714964136319190}
   m_Layer: 7
   m_Name: Assistant
   m_TagString: Untagged
@@ -82,6 +83,42 @@ Transform:
   - {fileID: 3353114304198220060}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5222714964136319190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8526243911801116609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9b2b9ab3d1db54b98bdc1c761ce7e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemStackView: {fileID: 2851424416596831675}
+  CollectingProgressBars: []
+  CharacterRigidbody: {fileID: 6616809623660779437}
+  CharacterAnimator: {fileID: 8676337948917613414}
+  Speed: 4.5
+  CharacterType: 2
+  ItemLimit: 5
+  PickUpCooldown: 0.2
+  PickUpItemConstraint: 0
+  BaseBagOfTriesCapacity: 8
+  PlayerSpeedBoostAmount: 2
+  WorldDirection: {x: 0, y: 0, z: 0}
+  LastDropItemTime: 0
+  LastPickUpItemTime: 0
+  BagOfTriesView: {fileID: 0}
+  NavMeshAgent: {fileID: 3677099979974564584}
+  LastBehaviorTime: 0
+  TargetBuilding: {fileID: 0}
+  TargetCharacter: {fileID: 0}
+  TargetPosition: {x: 0, y: 0, z: 0}
+  FollowingOffset: 0
+  ItemLimitBoostAmount: 5
+  ResourceBuilding: {fileID: 0}
+  LastAssistantBehaviorTime: 0
 --- !u!136 &1459244882306214140
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -105,6 +142,27 @@ CapsuleCollider:
   m_Height: 2.4
   m_Direction: 1
   m_Center: {x: 0, y: 1.2, z: 0}
+--- !u!135 &2338455853727700924
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8526243911801116609}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.6
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &6616809623660779437
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -154,40 +212,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 2
---- !u!114 &5222714964136319190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8526243911801116609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df9b2b9ab3d1db54b98bdc1c761ce7e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemStackView: {fileID: 2851424416596831675}
-  CollectingProgressBars: []
-  CharacterRigidbody: {fileID: 6616809623660779437}
-  CharacterAnimator: {fileID: 8676337948917613414}
-  Speed: 4.5
-  CharacterType: 2
-  ItemLimit: 5
-  PickUpCooldown: 0.2
-  PickUpItemConstraint: 0
-  BaseBagOfTriesCapacity: 8
-  WorldDirection: {x: 0, y: 0, z: 0}
-  LastDropItemTime: 0
-  LastPickUpItemTime: 0
-  BagOfTriesView: {fileID: 0}
-  NavMeshAgent: {fileID: 3677099979974564584}
-  LastBehaviorTime: 0
-  TargetBuilding: {fileID: 0}
-  TargetCharacter: {fileID: 0}
-  TargetPosition: {x: 0, y: 0, z: 0}
-  FollowingOffset: 0
-  ResourceBuilding: {fileID: 0}
-  LastAssistantBehaviorTime: 0
 --- !u!1001 &2954958170515668727
 PrefabInstance:
   m_ObjectHideFlags: 0
