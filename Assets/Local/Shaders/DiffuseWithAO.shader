@@ -110,8 +110,8 @@ Shader "Team12/DiffuseWithAO" {
 
             float4 frag(vertexOutput i) : COLOR
             {
-                half4 color = tex2D(_MainTex, i.uv1);
-                half4 ao = tex2D(_AmbientOcclusionTex, i.uv0);
+                half4 color = tex2D(_MainTex, i.uv0);
+                half4 ao = tex2D(_AmbientOcclusionTex, i.uv1);
                 half saturation = (ao.r - _SaturationBase) * _AOSaturation + _Saturation;
                 ao = ao * _AOPreMultiply + _AOBrightness;
                 color *= i.col;
