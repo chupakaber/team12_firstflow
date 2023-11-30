@@ -58,6 +58,7 @@ namespace Scripts
                             {
                                 var pathPosition = worker.TargetPosition;
 
+                                worker.NavMeshAgent.enabled = true;
                                 if (worker.NavMeshAgent.CalculatePath(worker.TargetPosition, _path))
                                 {
                                     var cornersCount = _path.GetCornersNonAlloc(_pathCorners);
@@ -70,6 +71,7 @@ namespace Scripts
                                         pathPosition = _pathCorners[0];
                                     }
                                 }
+                                worker.NavMeshAgent.enabled = false;
 
                                 var pathDelta = pathPosition - workerPosition;
                                 // pathDelta.y = 0f;
