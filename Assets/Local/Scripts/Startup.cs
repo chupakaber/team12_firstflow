@@ -75,11 +75,11 @@ namespace Scripts
             AddSystem(_buildingInitSystem);
             AddSystem(_buildingTriggerSystem);
             AddSystem(_buildingProductionSystem);
+            AddSystem(_buildingUpgradeSystem);
             AddSystem(_buildingCollectingSystem);
             AddSystem(_buildingConstructionSystem);
             AddSystem(_buildingPickUpSystem);
             AddSystem(_buildingProgressBarSystem);
-            AddSystem(_buildingUpgradeSystem);
             AddSystem(_buildingUnlockSystem);
             AddSystem(_alchemicSystem);
             AddSystem(_workerAssignSystem);
