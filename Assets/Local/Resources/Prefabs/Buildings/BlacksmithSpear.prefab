@@ -312,6 +312,37 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 3978904377094198899}
   m_maskType: 0
+--- !u!1 &2662261865931433719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6945435602154185919}
+  m_Layer: 0
+  m_Name: ResourceStack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6945435602154185919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2662261865931433719}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.17, y: 0, z: -1.73}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9157545213598127503}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2856005282601088981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,6 +1423,7 @@ MonoBehaviour:
   ItemCost: 2
   ProductionItemAmountPerCycle: 1
   ProductionCooldown: 7
+  ProductionUseBagOfTries: 1
   ProduceItemType: 5
   ConsumeItemType: 2
   Levels:
@@ -1783,7 +1815,8 @@ Transform:
   m_LocalPosition: {x: 0.03399992, y: -0.35, z: 0.051000357}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6945435602154185919}
   m_Father: {fileID: 3932196983562750594}
   m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
 --- !u!114 &6079820032646329072
@@ -1799,6 +1832,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _exclusiveStacks:
+  - ItemType: 2
+    Transform: {fileID: 6945435602154185919}
 --- !u!1 &8150142926635821867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,6 +2052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _exclusiveStacks: []
 --- !u!114 &4870775315968118031
 MonoBehaviour:
   m_ObjectHideFlags: 0

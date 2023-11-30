@@ -20,7 +20,7 @@ namespace Scripts.Systems
                 if (itemView != null)
                 {
                     newEvent.Unit.ItemStackView.AddItem(itemView);
-                    var endPosition = newEvent.Unit.GetStackTopPosition();
+                    var endPosition = newEvent.Unit.GetStackTopPosition(newEvent.ItemType);
                     if (newEvent.FromPosition.sqrMagnitude > float.Epsilon)
                     {
                         itemView.gameObject.SetActive(false);

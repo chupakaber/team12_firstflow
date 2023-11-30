@@ -42,7 +42,7 @@ namespace Scripts
                 {
                     if (building.Items.GetAmount(building.ConsumeItemType) < building.ResourceLimit)
                     {
-                        var sourcePileTopPosition = character.GetStackTopPosition();
+                        var sourcePileTopPosition = character.GetStackTopPosition(building.ConsumeItemType);
                         var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = itemsMovingAmount, Unit = character };
                         var addItemEvent = new AddItemEvent() { ItemType = building.ConsumeItemType, Count = itemsMovingAmount, Unit = building, FromPosition = sourcePileTopPosition };
                         EventBus.CallEvent(removeItemEvent);

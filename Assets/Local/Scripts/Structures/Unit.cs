@@ -23,16 +23,9 @@ namespace Scripts
             Items.RemoveItem(type, count);
         }
 
-        public Vector3 GetStackTopPosition()
+        public Vector3 GetStackTopPosition(ItemType itemType = ItemType.NONE)
         {
-            var position = ItemStackView.transform.position;
-
-            if (ItemStackView.gameObject.activeInHierarchy)
-            {
-                position.y += ItemStackView.Count * ItemStackView.Offset;
-            }
-            
-            return position;
+            return ItemStackView.GetTopPosition(itemType);
         }
     }
 }

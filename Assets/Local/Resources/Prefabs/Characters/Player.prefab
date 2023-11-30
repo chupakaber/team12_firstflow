@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 796236960348475552}
-  - component: {fileID: 376377110316800867}
+  - component: {fileID: 7037618684741372764}
   - component: {fileID: 5704888393325222780}
   - component: {fileID: 2726041749864129604}
   - component: {fileID: 7473274180135748190}
@@ -82,7 +82,7 @@ Transform:
   - {fileID: 2021396120128867996}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &376377110316800867
+--- !u!114 &7037618684741372764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6561193947678557720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2dbe0ca16073f844a3cdfdd01e86b3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1691f84ad7b68314eac48e8b1c32fc78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ItemStackView: {fileID: 2350703000907028196}
@@ -104,11 +104,11 @@ MonoBehaviour:
   PickUpCooldown: 0.2
   PickUpItemConstraint: 0
   BaseBagOfTriesCapacity: 8
-  PlayerSpeedBoostAmount: 2
   WorldDirection: {x: 0, y: 0, z: 0}
   LastDropItemTime: 0
   LastPickUpItemTime: 0
   BagOfTriesView: {fileID: 0}
+  PlayerSpeedBoostAmount: 2
 --- !u!136 &5704888393325222780
 CapsuleCollider:
   m_ObjectHideFlags: 0

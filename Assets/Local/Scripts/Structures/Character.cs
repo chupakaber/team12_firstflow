@@ -16,9 +16,6 @@ namespace Scripts
         public ItemType PickUpItemConstraint = ItemType.NONE;
         public int BaseBagOfTriesCapacity = 8;
 
-        [Header("Player Config")]
-        public float PlayerSpeedBoostAmount = 2f;
-
         [Header("Character Runtime")]
         public Vector3 WorldDirection;
         public float LastDropItemTime;
@@ -116,10 +113,6 @@ namespace Scripts
 
         public virtual void LevelUp()
         {
-            if (CharacterType == CharacterType.PLAYER)
-            {
-                Speed += PlayerSpeedBoostAmount;
-            }
         }
     }
 }

@@ -47,7 +47,7 @@ namespace Scripts
                     {
                         if (building.Items.GetAmount(building.ProduceItemType) >= itemsMoveAmount)
                         {
-                            var sourcePileTopPosition = building.GetStackTopPosition();
+                            var sourcePileTopPosition = building.GetStackTopPosition(building.ProduceItemType);
                             var removeItemEvent = new RemoveItemEvent() { ItemType = building.ProduceItemType, Count = itemsMoveAmount, Unit = building };
                             var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = itemsMoveAmount, Unit = character, FromPosition = sourcePileTopPosition };
                             EventBus.CallEvent(removeItemEvent);
