@@ -47,18 +47,6 @@ namespace Scripts
             ExitColliders.Push(other);
         }
 
-        public void OnCollisionEnter(Collision collision)
-        {
-            var character = collision.collider.gameObject.GetComponent<Character>();
-            if (character != null)
-            {
-                if (!CharacterCollisions.Contains(character))
-                {
-                    CharacterCollisions.AddLast(character);
-                }
-            }
-        }
-
         public bool GetActionTry()
         {
             if (BagOfTries.TryGetNext(out var lastIndex, out var changedValue, out var nextIndex, out var nextValue))
