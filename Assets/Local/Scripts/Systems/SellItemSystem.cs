@@ -25,7 +25,7 @@ namespace Scripts.Systems
                         if (character.CharacterType == CharacterType.CUSTOMER)
                         {
                             var customer = (Customer) character;
-                            if (customer.TargetBuilding == building)
+                            if (customer.TargetBuilding == building && customer.IsReadyToBuy())
                             {
                                 customer.AddItem(newEvent.ItemType, newEvent.Count);
                                 for (var i = 0; i < newEvent.Count; i++)

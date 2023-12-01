@@ -23,7 +23,7 @@ namespace Scripts
 
         public void EventCatch(FixedUpdateEvent newEvent)
         {
-            if (Time.time > _lastCheckTime + 3f) {
+            if (Time.time > _lastCheckTime + 0.3f) {
                 _lastCheckTime = Time.time;
 
                 foreach (var building in Buildings)
