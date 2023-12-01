@@ -27,8 +27,6 @@ namespace Scripts
 
         private void Collecting(Building building, Character character)
         {
-            var itemsMovingAmount = 1;
-
             var characterHorizontalVelocity = character.CharacterRigidbody.velocity;
             characterHorizontalVelocity.y = 0f;
             if (characterHorizontalVelocity.sqrMagnitude > 0.5f)
@@ -36,19 +34,22 @@ namespace Scripts
                 character.LastDropItemTime = Time.time;
             }
 
-            if (Time.time >= character.LastDropItemTime + character.PickUpCooldown)
+            var dropCooldown = character.GetDropCooldown(building.ConsumeItemType, out var itemsMovingAmount, building.ResourceLimit);
+
+            if (Time.time >= character.LastDropItemTime + dropCooldown)
             {
-                if (character.Items.GetAmount(building.ConsumeItemType) >= itemsMovingAmount)
+                var storageAmount = building.Items.GetAmount(building.ConsumeItemType);
+                var requiredAmount = building.ResourceLimit - storageAmount;
+                var availableAmount = character.Items.GetAmount(building.ConsumeItemType);
+                itemsMovingAmount = Mathf.Min(itemsMovingAmount, Mathf.Min(requiredAmount, availableAmount));
+                if (itemsMovingAmount > 0)
                 {
-                    if (building.Items.GetAmount(building.ConsumeItemType) < building.ResourceLimit)
-                    {
-                        var sourcePileTopPosition = character.GetStackTopPosition(building.ConsumeItemType);
-                        var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = itemsMovingAmount, Unit = character };
-                        var addItemEvent = new AddItemEvent() { ItemType = building.ConsumeItemType, Count = itemsMovingAmount, Unit = building, FromPosition = sourcePileTopPosition };
-                        EventBus.CallEvent(removeItemEvent);
-                        EventBus.CallEvent(addItemEvent);
-                        character.LastDropItemTime = Time.time;
-                    }
+                    var sourcePileTopPosition = character.GetStackTopPosition(building.ConsumeItemType);
+                    var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = itemsMovingAmount, Unit = character };
+                    var addItemEvent = new AddItemEvent() { ItemType = building.ConsumeItemType, Count = itemsMovingAmount, Unit = building, FromPosition = sourcePileTopPosition };
+                    EventBus.CallEvent(removeItemEvent);
+                    EventBus.CallEvent(addItemEvent);
+                    character.LastDropItemTime = Time.time;
                 }
             }            
         }
