@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _exclusiveStacks: []
 --- !u!1 &6561193947678557720
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,13 +102,17 @@ MonoBehaviour:
   Speed: 6
   CharacterType: 1
   ItemLimit: 15
-  PickUpCooldown: 0.2
+  PickUpCooldown: 0.15
+  PickUpGoldMaxTime: 5
+  DropGoldMaxTime: 5
   PickUpItemConstraint: 0
   BaseBagOfTriesCapacity: 8
   WorldDirection: {x: 0, y: 0, z: 0}
   LastDropItemTime: 0
   LastPickUpItemTime: 0
   BagOfTriesView: {fileID: 0}
+  NextInQueue: {fileID: 0}
+  PreviousInQueue: {fileID: 0}
   PlayerSpeedBoostAmount: 2
 --- !u!136 &5704888393325222780
 CapsuleCollider:

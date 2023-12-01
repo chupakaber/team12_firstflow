@@ -25,13 +25,13 @@ namespace Scripts
                 if (character is Worker)
                 {
                     var worker = (Worker) character;
+                    
                     if (Time.time > worker.LastBehaviorTime + 0.1f)
                     {
                         worker.LastBehaviorTime = Time.time;
-
-                        if (worker.TargetCharacter != null)
+                        if (worker.PreviousInQueue != null)
                         {
-                            worker.TargetPosition = worker.TargetCharacter.transform.position;
+                            worker.TargetPosition = worker.PreviousInQueue.transform.position;
                         }
                         else if (worker.TargetBuilding != null)
                         {

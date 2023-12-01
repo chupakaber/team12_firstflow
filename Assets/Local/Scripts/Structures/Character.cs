@@ -13,6 +13,8 @@ namespace Scripts
         public CharacterType CharacterType;
         public int ItemLimit;
         public float PickUpCooldown;
+        public float PickUpGoldMaxTime = 5f;
+        public float DropGoldMaxTime = 5f;
         public ItemType PickUpItemConstraint = ItemType.NONE;
         public int BaseBagOfTriesCapacity = 8;
 
@@ -25,6 +27,10 @@ namespace Scripts
         public Stack<Collider> EnterColliders = new Stack<Collider>();
         public Stack<Collider> ExitColliders = new Stack<Collider>();
         public LinkedList<Character> CharacterCollisions = new LinkedList<Character>();
+        public Character NextInQueue;
+        public Character PreviousInQueue;
+
+        private const float MIN_COOLDOWN = 0.06f;
 
         private int _loadedAnimationKey = Animator.StringToHash("Loaded");
         private int _speedAnimationKey = Animator.StringToHash("Speed");
@@ -101,6 +107,80 @@ namespace Scripts
 
         public virtual void LevelUp()
         {
+        }
+
+        public void AddLastInQueue(Character newCharacter)
+        {
+            var character = this;
+            while (character.NextInQueue != null)
+            {
+                character = character.NextInQueue;
+            }
+
+            character.NextInQueue = newCharacter;
+            newCharacter.PreviousInQueue = character;
+        }
+
+        public void AddFirstInQueue(Character newCharacter)
+        {
+            var character = this;
+            while (character.PreviousInQueue != null)
+            {
+                character = character.PreviousInQueue;
+            }
+
+            character.PreviousInQueue = newCharacter;
+            newCharacter.NextInQueue = character;
+        }
+
+        public void LeaveQueue()
+        {
+            if (NextInQueue != null)
+            {
+                NextInQueue.PreviousInQueue = PreviousInQueue;
+            }
+
+            if (PreviousInQueue != null)
+            {
+                PreviousInQueue.NextInQueue = NextInQueue;
+            }
+
+            NextInQueue = null;
+            PreviousInQueue = null;
+        }
+
+        public float GetPickUpCooldown(ItemType itemType, out int batchCount, int sourceCount = 1)
+        {
+            batchCount = 1;
+
+            if (itemType == ItemType.GOLD)
+            {
+                var count = Mathf.Max(1, sourceCount);
+                var cooldown = PickUpGoldMaxTime / count;
+                cooldown = Mathf.Min(PickUpCooldown, cooldown);
+                batchCount = (int) Mathf.Ceil(Mathf.Max(1f, MIN_COOLDOWN / cooldown));
+                
+                return cooldown;
+            }
+
+            return PickUpCooldown;
+        }
+
+        public float GetDropCooldown(ItemType itemType, out int batchCount, int capacity = 1)
+        {
+            batchCount = 1;
+
+            if (itemType == ItemType.GOLD)
+            {
+                var count = Mathf.Max(1, capacity);
+                var cooldown = DropGoldMaxTime / count;
+                cooldown = Mathf.Min(PickUpCooldown, cooldown);
+                batchCount = (int) Mathf.Ceil(Mathf.Max(1f, MIN_COOLDOWN / cooldown));
+
+                return cooldown;
+            }
+            
+            return PickUpCooldown;
         }
     }
 }
