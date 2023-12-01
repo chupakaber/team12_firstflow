@@ -13,6 +13,8 @@ namespace Scripts
         public CharacterType CharacterType;
         public int ItemLimit;
         public float PickUpCooldown;
+        public float PickUpGoldMaxTime = 5f;
+        public float DropGoldMaxTime = 5f;
         public ItemType PickUpItemConstraint = ItemType.NONE;
         public int BaseBagOfTriesCapacity = 8;
 
@@ -27,6 +29,8 @@ namespace Scripts
         public LinkedList<Character> CharacterCollisions = new LinkedList<Character>();
         public Character NextInQueue;
         public Character PreviousInQueue;
+
+        private const float MIN_COOLDOWN = 0.06f;
 
         private int _loadedAnimationKey = Animator.StringToHash("Loaded");
         private int _speedAnimationKey = Animator.StringToHash("Speed");
@@ -155,6 +159,40 @@ namespace Scripts
 
             NextInQueue = null;
             PreviousInQueue = null;
+        }
+
+        public float GetPickUpCooldown(ItemType itemType, out int batchCount, int sourceCount = 1)
+        {
+            batchCount = 1;
+
+            if (itemType == ItemType.GOLD)
+            {
+                var count = Mathf.Max(1, sourceCount);
+                var cooldown = PickUpGoldMaxTime / count;
+                cooldown = Mathf.Min(PickUpCooldown, cooldown);
+                batchCount = (int) Mathf.Ceil(Mathf.Max(1f, MIN_COOLDOWN / cooldown));
+                
+                return cooldown;
+            }
+
+            return PickUpCooldown;
+        }
+
+        public float GetDropCooldown(ItemType itemType, out int batchCount, int capacity = 1)
+        {
+            batchCount = 1;
+
+            if (itemType == ItemType.GOLD)
+            {
+                var count = Mathf.Max(1, capacity);
+                var cooldown = DropGoldMaxTime / count;
+                cooldown = Mathf.Min(PickUpCooldown, cooldown);
+                batchCount = (int) Mathf.Ceil(Mathf.Max(1f, MIN_COOLDOWN / cooldown));
+
+                return cooldown;
+            }
+            
+            return PickUpCooldown;
         }
     }
 }

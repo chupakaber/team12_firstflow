@@ -25,8 +25,6 @@ namespace Scripts
 
         private void Collecting(Building building, Character character)
         {
-            var itemsMovingAmount = 1;
-
             var characterHorizontalVelocity = character.CharacterRigidbody.velocity;
             characterHorizontalVelocity.y = 0f;
             if (characterHorizontalVelocity.sqrMagnitude > 0.1f)
@@ -34,59 +32,67 @@ namespace Scripts
                 character.LastDropItemTime = Time.time;
             }
 
-            if (Time.time >= character.LastDropItemTime + 0.06f)
+            var requiredItemIndex = 0;
+            foreach (var requiredItem in building.Levels[1].Cost)
             {
-                var requirementItemIndex = 0;
-                foreach (var requirementItem in building.Levels[1].Cost)
+                var storageAmount = building.Items.GetAmount(requiredItem.Type);
+                var requiredAmount = requiredItem.Amount - storageAmount;
+                var availableAmount = character.Items.GetAmount(requiredItem.Type);
+                var dropCooldown = character.GetDropCooldown(requiredItem.Type, out var itemsMovingAmount, requiredAmount);
+
+                if (Time.time >= character.LastDropItemTime + dropCooldown)
                 {
-                    if (character.Items.GetAmount(requirementItem.Type) >= itemsMovingAmount)
+                    itemsMovingAmount = Mathf.Min(itemsMovingAmount, Mathf.Min(requiredAmount, availableAmount));
+
+                    if (itemsMovingAmount > 0)
                     {
-                        if (building.Items.GetAmount(requirementItem.Type) < requirementItem.Amount)
+                        var sourcePileTopPosition = character.GetStackTopPosition(requiredItem.Type);
+                        var removeItemEvent = new RemoveItemEvent() { ItemType = requiredItem.Type, Count = itemsMovingAmount, Unit = character };
+                        var addItemEvent = new AddItemEvent() { ItemType = requiredItem.Type, Count = itemsMovingAmount, Unit = building, FromPosition = sourcePileTopPosition };
+                        EventBus.CallEvent(removeItemEvent);
+                        EventBus.CallEvent(addItemEvent);
+
+                        var amount = building.Items.GetAmount(requiredItem.Type);
+
+                        if (amount >= requiredItem.Amount)
                         {
-                            var sourcePileTopPosition = character.GetStackTopPosition(requirementItem.Type);
-                            var removeItemEvent = new RemoveItemEvent() { ItemType = requirementItem.Type, Count = itemsMovingAmount, Unit = character };
-                            var addItemEvent = new AddItemEvent() { ItemType = requirementItem.Type, Count = itemsMovingAmount, Unit = building, FromPosition = sourcePileTopPosition };
-                            EventBus.CallEvent(removeItemEvent);
-                            EventBus.CallEvent(addItemEvent);
-
-                            var amount = building.Items.GetAmount(requirementItem.Type);
-
-                            if (amount >= requirementItem.Amount)
+                            var levelUp = true;
+                            foreach (var requirement in building.Levels[1].Cost)
                             {
-                                var levelUp = true;
-                                foreach (var requirement in building.Levels[1].Cost)
+                                if (building.Items.GetAmount(requirement.Type) < requirement.Amount)
                                 {
-                                    if (building.Items.GetAmount(requirement.Type) < requirement.Amount)
-                                    {
-                                        levelUp = false;
-                                    }
-                                }
-
-                                if (levelUp)
-                                {
-                                    building.Level = building.Level + 1;
-
-                                    EventBus.CallEvent(new ConstructionCompleteEvent() { Building = building });
-
-                                    foreach (var teleportingCharacter in building.ConstructionCharacters)
-                                    {
-                                        teleportingCharacter.transform.position = building.PickingUpArea.transform.position;
-                                    }
-
-                                    foreach (var item in building.Items)
-                                    {
-                                        EventBus.CallEvent(new RemoveItemEvent() { ItemType = item.Type, Count = item.Amount, Unit = building });
-                                    }
-
-                                    UpdateUpgradeProgressViewSettings(building);
+                                    levelUp = false;
                                 }
                             }
 
-                            character.LastDropItemTime = Time.time;
-                            break;
+                            if (levelUp)
+                            {
+                                building.Level = building.Level + 1;
+
+                                EventBus.CallEvent(new ConstructionCompleteEvent() { Building = building });
+
+                                foreach (var teleportingCharacter in building.ConstructionCharacters)
+                                {
+                                    teleportingCharacter.transform.position = building.PickingUpArea.transform.position;
+                                }
+
+                                foreach (var item in building.Items)
+                                {
+                                    EventBus.CallEvent(new RemoveItemEvent() { ItemType = item.Type, Count = item.Amount, Unit = building });
+                                }
+
+                                UpdateUpgradeProgressViewSettings(building);
+                            }
                         }
+
+                        character.LastDropItemTime = Time.time;
+                        break;
                     }
-                    requirementItemIndex++;
+                    requiredItemIndex++;
+                }
+                else if (availableAmount > 0 && requiredAmount > 0)
+                {
+                    break;
                 }
             }            
         }
