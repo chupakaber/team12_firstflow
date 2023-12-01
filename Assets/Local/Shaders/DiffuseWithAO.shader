@@ -80,6 +80,7 @@ Shader "Team12/DiffuseWithAO" {
             uniform float4 _CameraWorldPosition;
             uniform float _LambertIntensity;
             uniform float _LambertOffset;
+            uniform float4 _WorldSpaceLightDirectionTest;
 
             vertexOutput vert(vertexInput i) 
             {
@@ -93,7 +94,7 @@ Shader "Team12/DiffuseWithAO" {
 
                 //float3 normalDirection = normalize(mul(float4(i.normal, 0.0), modelMatrixInverse).xyz);
                 float3 normalDirection = UnityObjectToWorldNormal(i.normal);
-                float3 lightDirection = normalize(_WorldSpaceLightPos0.xyz);
+                float3 lightDirection = normalize(_WorldSpaceLightDirectionTest.xyz);
 
                 float3 diffuseReflection = (_LambertOffset + max(0.0, dot(normalDirection, lightDirection)) * _LambertIntensity);
 
@@ -110,8 +111,8 @@ Shader "Team12/DiffuseWithAO" {
 
             float4 frag(vertexOutput i) : COLOR
             {
-                half4 color = tex2D(_MainTex, i.uv1);
-                half4 ao = tex2D(_AmbientOcclusionTex, i.uv0);
+                half4 color = tex2D(_MainTex, i.uv0);
+                half4 ao = tex2D(_AmbientOcclusionTex, i.uv1);
                 half saturation = (ao.r - _SaturationBase) * _AOSaturation + _Saturation;
                 ao = ao * _AOPreMultiply + _AOBrightness;
                 color *= i.col;

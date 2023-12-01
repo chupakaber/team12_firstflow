@@ -40,15 +40,15 @@ namespace Scripts
                         || (character.CharacterType == CharacterType.APPRENTICE && building.ProduceItemType == ItemType.APPRENTICE))
                     {
                         var worker = (Worker) character;
-                        if (worker.TargetBuilding == building && worker.TargetCharacter == null)
+                        if (worker.TargetBuilding == building && worker.PreviousInQueue == null)
                         {
                             if (building.Items.GetAmount(building.ProduceItemType) > 0)
                             {
                                 EventBus.CallEvent(new RemoveItemEvent() { Unit = building, ItemType = building.ProduceItemType, Count = 1 });
 
                                 worker.TargetBuilding = null;
-                                worker.TargetCharacter = player;
-                                worker.FollowingOffset = 2f;
+                                player.AddLastInQueue(worker);
+                                worker.FollowingOffset = 2.2f;
                             }
                         }
                     }

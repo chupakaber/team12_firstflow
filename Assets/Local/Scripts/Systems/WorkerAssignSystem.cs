@@ -32,7 +32,7 @@ namespace Scripts
                                     if (character.CharacterType == CharacterType.ASSISTANT && building.AssignedPickingUpCharacters.Count == 0 && building.PickingUpArea != null && building.ProduceItemType != ItemType.GOLD)
                                     {
                                         var assistant = (Assistant) character;
-                                        if (assistant.ResourceBuilding == null && assistant.TargetCharacter != null)
+                                        if (assistant.ResourceBuilding == null && assistant.PreviousInQueue != null)
                                         {
                                             foreach (var building2 in Buildings)
                                             {
@@ -63,7 +63,7 @@ namespace Scripts
                                                     EventBus.CallEvent(removeItemEvent);
                                                 }
 
-                                                assistant.TargetCharacter = null;
+                                                assistant.LeaveQueue();
                                             }
                                         }
                                     }
@@ -71,12 +71,12 @@ namespace Scripts
                                     if (character.CharacterType == CharacterType.APPRENTICE && building.AssignedProductionCharacters.Count == 0 && building.ProductionArea != null)
                                     {
                                         var apprentice = (Worker) character;
-                                        if (apprentice.TargetBuilding == null && apprentice.TargetCharacter != null)
+                                        if (apprentice.TargetBuilding == null && apprentice.PreviousInQueue != null)
                                         {
                                             apprentice.TargetBuilding = building;
                                             building.AssignedProductionCharacters.Add(apprentice);
 
-                                            apprentice.TargetCharacter = null;
+                                            apprentice.LeaveQueue();
                                         }
                                     }
                                 }
