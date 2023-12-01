@@ -120,8 +120,8 @@ namespace Scripts
 
             _eventBus.CallEvent(new StartEvent());
 
-            _eventBus.CallEvent(new AddItemEvent() { ItemType = ItemType.GOLD, Count = 300, Unit = _characters[0]});
-            _eventBus.CallEvent(new AddItemEvent() { ItemType = ItemType.WOOD, Count = 100, Unit = _characters[0]});
+            _eventBus.CallEvent(new AddItemEvent() { ItemType = ItemType.GOLD, Count = 50, Unit = _characters[0]});
+            //_eventBus.CallEvent(new AddItemEvent() { ItemType = ItemType.WOOD, Count = 100, Unit = _characters[0]});
         }
 
         public void Update()
