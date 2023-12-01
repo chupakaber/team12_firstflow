@@ -42,6 +42,9 @@ namespace Scripts
         private WorkerBehaviorSystem _workerBehaviorSystem = new WorkerBehaviorSystem();
         private AssistantBehaviorSystem _assistantBehaviorSystem = new AssistantBehaviorSystem();
         private ApprenticeBehaviorSystem _apprenticeBehaviorSystem = new ApprenticeBehaviorSystem();
+        private CustomerSpawnSystem _customerSpawnSystem = new CustomerSpawnSystem();
+        private CustomerBehaviorSystem _customerBehaviorSystem = new CustomerBehaviorSystem();
+        private SellItemSystem _sellItemSystem = new SellItemSystem();
         private CharacterMovementSystem _characterMovementSystem = new CharacterMovementSystem();
         private CharacterAnimationSystem _characterAnimationSystem = new CharacterAnimationSystem();
         private UISystem _uiSystem = new UISystem();
@@ -88,6 +91,9 @@ namespace Scripts
             AddSystem(_workerBehaviorSystem);
             AddSystem(_assistantBehaviorSystem);
             AddSystem(_apprenticeBehaviorSystem);
+            AddSystem(_customerSpawnSystem);
+            AddSystem(_customerBehaviorSystem);
+            AddSystem(_sellItemSystem);
             AddSystem(_characterMovementSystem);
             AddSystem(_characterAnimationSystem);
             AddSystem(_uiSystem);

@@ -111,6 +111,11 @@ namespace Scripts
 
         public void AddLastInQueue(Character newCharacter)
         {
+            if (newCharacter == this)
+            {
+                throw new UnityException("Trying to add in character queue itself.");
+            }
+
             var character = this;
             while (character.NextInQueue != null)
             {

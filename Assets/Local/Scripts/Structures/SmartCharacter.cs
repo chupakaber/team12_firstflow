@@ -10,5 +10,7 @@ namespace Scripts
 
         [Header("SmartCharacter Runtime")]
         public float LastBehaviorTime;
+        public CustomerRoute Route;
+        public int CurrentRouteWaypointIndex;
     }
 }
