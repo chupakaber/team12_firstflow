@@ -28,8 +28,14 @@ namespace Scripts
 
         private void PickUp(Building building, Character character)
         {
-            var storageAmount = character.Items.GetAmount();
             var availableAmount = building.Items.GetAmount(building.ProduceItemType);
+
+            if (availableAmount < 1)
+            {
+                return;
+            }
+
+            var storageAmount = character.Items.GetAmount();
             var pickUpCooldown = character.GetPickUpCooldown(building.ProduceItemType, out var itemsMovingAmount, availableAmount);
 
             if (Time.time >= character.LastPickUpItemTime + pickUpCooldown)
