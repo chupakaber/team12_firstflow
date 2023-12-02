@@ -102,12 +102,12 @@ namespace Scripts
                         var sourcePileTopPosition = building.transform.position;
                         var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = building.ProductionItemAmountPerCycle, Unit = building, FromPosition = sourcePileTopPosition };
                         EventBus.CallEvent(addItemEvent);
+                    }
 
-                        if (building.ItemCost > 0)
-                        {
-                            var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = building.ItemCost, Unit = building };
-                            EventBus.CallEvent(removeItemEvent);
-                        }
+                    if (building.ItemCost > 0)
+                    {
+                        var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = building.ItemCost, Unit = building };
+                        EventBus.CallEvent(removeItemEvent);
                     }
 
                     building.LastProductionTime = Time.time;
