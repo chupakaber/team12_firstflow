@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _exclusiveStacks: []
 --- !u!1 &1281108906890449132
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,6 +111,7 @@ MonoBehaviour:
   ItemCost: 25
   ProductionItemAmountPerCycle: 1
   ProductionCooldown: 0.1
+  ProductionUseBagOfTries: 1
   ProduceItemType: 11
   ConsumeItemType: 7
   Levels:
@@ -118,9 +120,9 @@ MonoBehaviour:
     Boost: []
   - Visual: {fileID: 2834133233212791249}
     Cost:
-    - Amount: 75
+    - Amount: 5
       Type: 2
-    - Amount: 50
+    - Amount: 5
       Type: 7
     Boost: []
   UpgradeStorage: {fileID: 0}
