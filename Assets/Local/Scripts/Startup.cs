@@ -18,6 +18,7 @@ namespace Scripts
         private PoolCollection<ItemView> _itemViewPools = new PoolCollection<ItemView>();
         private PoolCollection<IconView> _iconViewPools = new PoolCollection<IconView>();
         private PoolCollection<BagOfTriesView> _bagOfTriesViewPools = new PoolCollection<BagOfTriesView>();
+        private PoolCollection<PinnedCounterView> _pinnedCounterViewPools = new PoolCollection<PinnedCounterView>();
         private PoolCollection<Assistant> _assistantPools = new PoolCollection<Assistant>();
         private PoolCollection<Apprentice> _apprenticePools = new PoolCollection<Apprentice>();
         private PoolCollection<Customer> _customerPools = new PoolCollection<Customer>();
@@ -78,6 +79,7 @@ namespace Scripts
             _apprenticePools.Pools.Add(0, new ObjectPool<Apprentice>("Prefabs/Characters/Apprentice"));
             _customerPools.Pools.Add(0, new ObjectPool<Customer>("Prefabs/Characters/CustomerSoldier"));
             _customerPools.Pools.Add(1, new ObjectPool<Customer>("Prefabs/Characters/CustomerOfficial"));
+            _pinnedCounterViewPools.Pools.Add(0, new ObjectPool<PinnedCounterView>("Prefabs/UI/ShopCoinCounter"));
             
 
             AddSystem(_addItemSystem);
@@ -122,6 +124,7 @@ namespace Scripts
             _container.AddLink(_iconViewPools, "IconViewPools");
             _container.AddLink(_unlockQueue, "UnlockQueue");
             _container.AddLink(_bagOfTriesViewPools, "BagOfTriesViewPools");
+            _container.AddLink(_pinnedCounterViewPools, "PinnedCounterViewPools");
             _container.AddLink(_assistantPools, "AssistantPools");
             _container.AddLink(_apprenticePools, "ApprenticePools");
             _container.AddLink(_customerPools, "CustomerPools");

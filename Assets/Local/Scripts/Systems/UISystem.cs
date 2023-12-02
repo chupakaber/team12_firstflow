@@ -12,6 +12,9 @@ namespace Scripts
         public UIView UIView;
         public Camera Camera;
         public PoolCollection<BagOfTriesView> BagOfTriesViewPools;
+        public PoolCollection<PinnedCounterView> PinnedCounterViewPools;
+
+        private Dictionary<int, PinnedCounterView> _shopCoinCounters = new Dictionary<int, PinnedCounterView>();
 
         public void EventCatch(StartEvent newEvent)
         {
@@ -64,6 +67,32 @@ namespace Scripts
 
                 }
             }
+
+            foreach (var building in Buildings)
+            {
+                if (building.ProduceItemType == ItemType.GOLD && building.Level > 0)
+                {
+                    if (_shopCoinCounters.TryGetValue(building.GetHashCode(), out var counter))
+                    {
+                        var worldPosition = building.ItemStackView.GetTopPosition(building.ProduceItemType);
+                        if (worldPosition.sqrMagnitude > float.Epsilon)
+                        {
+                            if (!counter.gameObject.activeSelf)
+                            {
+                                counter.gameObject.SetActive(true);
+                            }
+
+                            var screenPosition = Camera.WorldToScreenPoint(worldPosition);
+                            var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
+                            counter.transform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
+                        }
+                        else if (counter.gameObject.activeSelf)
+                        {
+                            counter.gameObject.SetActive(false);
+                        }
+                    }
+                }   
+            }
         }
 
         public void EventCatch(RollBagOfTriesEvent newEvent)
@@ -100,6 +129,28 @@ namespace Scripts
                 {
                     var itemCount = character.Items.GetAmount(itemType);
                     UIView.SetItemCount(itemType, itemCount);
+                }
+            }
+            else if (unit is Building)
+            {
+                var building = (Building) unit;
+                if (building.ProduceItemType == ItemType.GOLD)
+                {
+                    var buildingHash = building.GetHashCode();
+                    
+                    if (!_shopCoinCounters.TryGetValue(buildingHash, out var counter))
+                    {
+                        counter = PinnedCounterViewPools.Get(0);
+                        counter.transform.SetParent(UIView.WorldSpaceTransform);
+                        counter.transform.localScale = Vector3.one;
+                        counter.transform.localRotation = Quaternion.identity;
+                        _shopCoinCounters.TryAdd(buildingHash, counter);
+                    }
+                    
+                    if (counter != null)
+                    {
+                        counter.Count = building.Items.GetAmount(ItemType.GOLD);
+                    }
                 }
             }
         }

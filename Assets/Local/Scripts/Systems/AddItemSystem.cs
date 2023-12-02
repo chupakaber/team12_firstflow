@@ -35,10 +35,17 @@ namespace Scripts.Systems
                 }
                 else
                 {
-                    if (newEvent.ItemType == ItemType.GOLD && newEvent.Unit is Character && ((Character) newEvent.Unit).CharacterType == CharacterType.PLAYER)
+                    if (newEvent.ItemType == ItemType.GOLD)
                     {
-                        var icon = IconViewPools.Get(0);
-                        UIView.FlyCoin(icon, true);
+                        if (newEvent.Unit is Character && ((Character) newEvent.Unit).CharacterType == CharacterType.PLAYER)
+                        {
+                            var icon = IconViewPools.Get(0);
+                            UIView.FlyCoin(icon, true);
+                        }
+                        else if (newEvent.Unit is Building)
+                        {
+                            newEvent.Unit.ItemStackView.ToggleExclusiveItemStack(newEvent.ItemType, true);
+                        }
                     }
                 }
             }

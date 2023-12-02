@@ -1,6 +1,5 @@
 ﻿using DG.Tweening;
 using Scripts.Enums;
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -64,16 +63,16 @@ namespace Scripts
 
             rectTransform.anchoredPosition = from;
             rectTransform.DOScale(startScale, 0f).OnComplete(() => {
-                rectTransform.DOScale(endScale, 0.5f);
+                rectTransform.DOScale(endScale, 1.1f);
             });
 
-            rectTransform.DOAnchorPos(to, 0.5f).OnComplete(() => {
+            rectTransform.DOJumpAnchorPos(to, Random.Range(0f, 500f), 1, 1.1f).OnComplete(() => {
                 icon.Release();
             });
         }
     }
 
-    [Serializable]
+    [System.Serializable]
     public class ItemCounter
     {
         public TMP_Text Counter;
