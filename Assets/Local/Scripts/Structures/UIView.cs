@@ -21,6 +21,9 @@ namespace Scripts
         public Vector3 PointerArrowTargetPosition;
 
         [Header("Flying Coin")]
+        public List<Sprite> EmojiSprites;
+
+        [Header("Flying Coin")]
         public RectTransform FlyingCoinPivot;
         public float FlyingCoinMinScale = 0.2f;
         public float FlyingCoinDuration = 0.5f;

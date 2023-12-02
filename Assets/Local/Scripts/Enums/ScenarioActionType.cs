@@ -5,6 +5,7 @@ namespace Scripts.Enums
         NONE = 0,
         ACTIVATE = 1,
         DEACTIVATE = 2,
-        ARROW_POINTER = 3
+        ARROW_POINTER = 3,
+        SHOW_EMOJI = 4
     }
 }

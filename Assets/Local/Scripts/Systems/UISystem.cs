@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using DG.Tweening;
 using Scripts.Enums;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace Scripts
@@ -14,8 +14,10 @@ namespace Scripts
         public Camera Camera;
         public PoolCollection<BagOfTriesView> BagOfTriesViewPools;
         public PoolCollection<PinnedCounterView> PinnedCounterViewPools;
+        public PoolCollection<BubbleView> BubbleViewPools;
 
         private Dictionary<int, PinnedCounterView> _shopCoinCounters = new Dictionary<int, PinnedCounterView>();
+        private LinkedList<BubbleView> _bubbleViews = new LinkedList<BubbleView>();
 
         public void EventCatch(StartEvent newEvent)
         {
@@ -125,6 +127,14 @@ namespace Scripts
                 UIView.PointerArrowTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
                 UIView.PointerArrowTransform.localRotation = Quaternion.Euler(0f, 0f, -Quaternion.LookRotation(direction).eulerAngles.y - 45f);
             }
+
+            foreach (var bubble in _bubbleViews)
+            {
+                var worldPosition = bubble.RelatedTransform.position + bubble.WorldOffset;
+                var screenPosition = Camera.WorldToScreenPoint(worldPosition);
+                var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
+                bubble.transform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
+            }
         }
 
         public void EventCatch(RollBagOfTriesEvent newEvent)
@@ -148,7 +158,25 @@ namespace Scripts
 
             character.BagOfTriesView.Roll(newEvent.NextIndex, 0.2f);
             character.BagOfTriesView.SetValue(newEvent.LastIndex, newEvent.ChangedValue);
+        }
 
+        public void EventCatch(ShowEmojiEvent newEvent)
+        {
+            var bubble = BubbleViewPools.Get(0);
+            _bubbleViews.AddLast(bubble);
+            bubble.RelatedTransform = newEvent.Character.transform;
+            bubble.WorldOffset = new Vector3(0f, 2f, 0.5f);
+            bubble.Icon.sprite = UIView.EmojiSprites[newEvent.SpriteIndex];
+            bubble.transform.SetParent(UIView.WorldSpaceTransform);
+            bubble.transform.localScale = Vector3.one * 0.1f;
+            bubble.transform.DOScale(1f, 0.3f).OnComplete(() => {
+                bubble.transform.DOScale(1f, 3f).OnComplete(() => {
+                    bubble.transform.DOScale(0.1f, 0.3f).OnComplete(() => {
+                        _bubbleViews.Remove(bubble);
+                        bubble.Release();
+                    });
+                });
+            });
         }
 
         private void UpdateItemsCount(Unit unit, ItemType itemType)
