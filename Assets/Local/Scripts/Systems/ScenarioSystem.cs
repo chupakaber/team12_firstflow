@@ -130,6 +130,13 @@ namespace Scripts
                         action.Transform.gameObject.SetActive(true);
                     }
                     break;
+                case ScenarioActionType.ARROW_POINTER:
+                    UIView.PointerArrowTargetPosition = action.Transform != null ? action.Transform.position : Vector3.zero;
+                    break;
+                case ScenarioActionType.SHOW_EMOJI:
+                    // TODO: find character procedural
+                    EventBus.CallEvent(new ShowEmojiEvent() { Character = Characters[0], SpriteIndex = (int) Mathf.Round(action.Value) });
+                    break;
             }
         }
 

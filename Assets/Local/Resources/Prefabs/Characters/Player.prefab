@@ -99,12 +99,12 @@ MonoBehaviour:
   CollectingProgressBars: []
   CharacterRigidbody: {fileID: 7473274180135748190}
   CharacterAnimator: {fileID: 6453962931840213754}
-  Speed: 6
+  Speed: 7
   CharacterType: 1
   ItemLimit: 15
   PickUpCooldown: 0.15
-  PickUpGoldMaxTime: 5
-  DropGoldMaxTime: 5
+  PickUpGoldMaxTime: 1.5
+  DropGoldMaxTime: 2
   PickUpItemConstraint: 0
   BaseBagOfTriesCapacity: 8
   WorldDirection: {x: 0, y: 0, z: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
   BagOfTriesView: {fileID: 0}
   NextInQueue: {fileID: 0}
   PreviousInQueue: {fileID: 0}
-  PlayerSpeedBoostAmount: 2
+  PlayerSpeedBoostAmount: 1.07
 --- !u!136 &5704888393325222780
 CapsuleCollider:
   m_ObjectHideFlags: 0
