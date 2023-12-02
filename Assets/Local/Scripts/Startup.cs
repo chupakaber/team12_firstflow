@@ -18,7 +18,10 @@ namespace Scripts
         private PoolCollection<ItemView> _itemViewPools = new PoolCollection<ItemView>();
         private PoolCollection<IconView> _iconViewPools = new PoolCollection<IconView>();
         private PoolCollection<BagOfTriesView> _bagOfTriesViewPools = new PoolCollection<BagOfTriesView>();
-        private UnlockQueue _unlockQueue = new UnlockQueue();
+        private PoolCollection<Assistant> _assistantPools = new PoolCollection<Assistant>();
+        private PoolCollection<Apprentice> _apprenticePools = new PoolCollection<Apprentice>();
+        private PoolCollection<Customer> _customerPools = new PoolCollection<Customer>();
+        private UnlockQueue _unlockQueue;
 
         private PlayerInputSystem _playerInputSystem = new PlayerInputSystem();
         private CameraFollowSystem _cameraFollowSystem = new CameraFollowSystem();
@@ -68,6 +71,11 @@ namespace Scripts
 
             _iconViewPools.Pools.Add(0, new ObjectPool<IconView>("Prefabs/UI/Icons/GOLD"));
             _bagOfTriesViewPools.Pools.Add(0, new ObjectPool<BagOfTriesView>("Prefabs/UI/BagOfTries"));
+            _assistantPools.Pools.Add(0, new ObjectPool<Assistant>("Prefabs/Characters/Assistant"));
+            _apprenticePools.Pools.Add(0, new ObjectPool<Apprentice>("Prefabs/Characters/Apprentice"));
+            _customerPools.Pools.Add(0, new ObjectPool<Customer>("Prefabs/Characters/CustomerSoldier"));
+            _customerPools.Pools.Add(1, new ObjectPool<Customer>("Prefabs/Characters/CustomerOfficial"));
+            
 
             AddSystem(_addItemSystem);
             AddSystem(_removeItemSystem);
@@ -110,6 +118,10 @@ namespace Scripts
             _container.AddLink(_iconViewPools, "IconViewPools");
             _container.AddLink(_unlockQueue, "UnlockQueue");
             _container.AddLink(_bagOfTriesViewPools, "BagOfTriesViewPools");
+            _container.AddLink(_assistantPools, "AssistantPools");
+            _container.AddLink(_apprenticePools, "ApprenticePools");
+            _container.AddLink(_customerPools, "CustomerPools");
+            
             _container.Init();
             _eventBus.Init();
 

@@ -23,14 +23,22 @@ namespace Scripts
             var customer = newEvent.Customer;
             customer.State++;
 
-            if (customer.State == 3)
+            if (customer.State >= 3)
             {
+                customer.State = 0;
                 foreach (var item in customer.Items)
                 {
                     customer.ItemStackView.RemoveItem(item.Type, item.Amount);
                 }
+                customer.Items.Clear();
                 Characters.Remove(customer);
-                Object.Destroy(customer.gameObject);
+                customer.CurrentRouteWaypointIndex = 0;
+                customer.CharacterCollisions.Clear();
+                customer.ExitColliders.Clear();
+                customer.EnterColliders.Clear();
+                customer.NavMeshAgent.enabled = false;
+                customer.LeaveQueue();
+                customer.Release();
             }
         }
 
