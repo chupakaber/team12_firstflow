@@ -18,6 +18,10 @@ namespace Scripts
                     var icon = IconViewPools.Get(0);
                     UIView.FlyCoin(icon, false);
                 }
+                else if (newEvent.Unit is Building)
+                {
+                    newEvent.Unit.ItemStackView.ToggleExclusiveItemStack(newEvent.ItemType, newEvent.Unit.Items.GetAmount(newEvent.ItemType) > 0);
+                }
             }
             else
             {
