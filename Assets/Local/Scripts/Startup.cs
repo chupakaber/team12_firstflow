@@ -22,6 +22,7 @@ namespace Scripts
         private PoolCollection<Apprentice> _apprenticePools = new PoolCollection<Apprentice>();
         private PoolCollection<Customer> _customerPools = new PoolCollection<Customer>();
         private UnlockQueue _unlockQueue;
+        private Scenario _scenario;
 
         private PlayerInputSystem _playerInputSystem = new PlayerInputSystem();
         private CameraFollowSystem _cameraFollowSystem = new CameraFollowSystem();
@@ -53,6 +54,7 @@ namespace Scripts
         private UISystem _uiSystem = new UISystem();
         private EnvironmentShaderSystem _environmentShaderSystem = new EnvironmentShaderSystem();
         private CharactersStatsUpSystem _charactersStatsUpSystem = new CharactersStatsUpSystem();
+        private ScenarioSystem _scenarioSystem = new ScenarioSystem();
 
 
         public void Start()
@@ -61,6 +63,7 @@ namespace Scripts
             _characters.Add(FindObjectOfType<Character>());
             _uiView = FindObjectOfType<UIView>();
             _unlockQueue = FindObjectOfType<UnlockQueue>();
+            _scenario = FindObjectOfType<Scenario>();
 
             var names = System.Enum.GetNames(typeof(ItemType));
             var values = (ItemType[])System.Enum.GetValues(typeof(ItemType));
@@ -107,6 +110,7 @@ namespace Scripts
             AddSystem(_uiSystem);
             AddSystem(_environmentShaderSystem);
             AddSystem(_charactersStatsUpSystem);
+            AddSystem(_scenarioSystem);
 
             _container.AddLink(_eventBus, "EventBus");
             _container.AddLink(_characters, "Characters");
@@ -121,6 +125,7 @@ namespace Scripts
             _container.AddLink(_assistantPools, "AssistantPools");
             _container.AddLink(_apprenticePools, "ApprenticePools");
             _container.AddLink(_customerPools, "CustomerPools");
+            _container.AddLink(_scenario, "Scenario");
             
             _container.Init();
             _eventBus.Init();
