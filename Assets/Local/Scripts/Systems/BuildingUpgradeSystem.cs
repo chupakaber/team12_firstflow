@@ -35,7 +35,7 @@ namespace Scripts
 
         private void Collecting(Building building, Character character)
         {
-            if (building.UpgradeStorage == null)
+            if (building.UpgradeStorage == null || !character)
             {
                 return;
             }

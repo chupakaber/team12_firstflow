@@ -9,6 +9,8 @@ namespace Scripts
         public List<Character> Characters;
         public List<Building> Buildings;
 
+        public PoolCollection<Customer> CustomerPools;
+
         private float _lastCheckTime = -3f;
         private Dictionary<ItemType, CustomerRoute> _customerRoutes = new Dictionary<ItemType, CustomerRoute>();
 
@@ -23,7 +25,7 @@ namespace Scripts
 
         public void EventCatch(FixedUpdateEvent newEvent)
         {
-            if (Time.time > _lastCheckTime + 3f) {
+            if (Time.time > _lastCheckTime + 0.3f) {
                 _lastCheckTime = Time.time;
 
                 foreach (var building in Buildings)
@@ -47,13 +49,9 @@ namespace Scripts
 
                             if (customersCount < 5)
                             {
-                                var prefabName = Random.Range(0f, 1f) > 0.3f ? "CustomerSoldier" : "CustomerOfficial";
-                                var prefab = Resources.Load<GameObject>($"Prefabs/Characters/{prefabName}");
-                                var instance = Object.Instantiate(prefab);
-                                var character = instance.GetComponent<Character>();
-                                Characters.Add(character);
+                                var customer = CustomerPools.Get(Random.Range(0f, 1f) > 0.3f ? 0 : 1);
+                                Characters.Add(customer);
 
-                                var customer = (Customer) character;
                                 customer.Route = route;
                                 customer.transform.position = customer.Route.Waypoints[0].Transform.position;
                                 customer.TargetBuilding = building;

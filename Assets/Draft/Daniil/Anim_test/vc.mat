@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: vc
-  m_Shader: {fileID: 4800000, guid: e2a0565d245422740a2542774fc658a8, type: 3}
+  m_Shader: {fileID: 4800000, guid: 92392ac7c7c76f6489b13ca5bc4378eb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -52,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 3300f3cc007f9f04a9a2e2852849becb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -69,7 +69,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AOBrightness: 0.27
+    - _AOBrightness: 0.4
     - _AOPreMultiply: 0.85
     - _AOSaturation: 1.11
     - _Brightness: 0.11
@@ -86,6 +86,8 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Intensity: 1.5
+    - _LambertIntensity: 1
+    - _LambertOffset: 0
     - _Metallic: 0
     - _Mode: 0
     - _Multiply: 1.036
@@ -93,7 +95,7 @@ Material:
     - _Parallax: 0.02
     - _PreBrightness: -0.24
     - _PreIntensity: 0.86
-    - _PreMultiply: 1.394
+    - _PreMultiply: 0.944
     - _Saturation: 2.96
     - _SaturationBase: 0.639
     - _Shininess: 0.078125

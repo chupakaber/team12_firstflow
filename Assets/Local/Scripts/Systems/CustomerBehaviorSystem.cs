@@ -23,14 +23,22 @@ namespace Scripts
             var customer = newEvent.Customer;
             customer.State++;
 
-            if (customer.State == 3)
+            if (customer.State >= 3)
             {
+                customer.State = 0;
                 foreach (var item in customer.Items)
                 {
                     customer.ItemStackView.RemoveItem(item.Type, item.Amount);
                 }
+                customer.Items.Clear();
                 Characters.Remove(customer);
-                Object.Destroy(customer.gameObject);
+                customer.CurrentRouteWaypointIndex = 0;
+                customer.CharacterCollisions.Clear();
+                customer.ExitColliders.Clear();
+                customer.EnterColliders.Clear();
+                customer.NavMeshAgent.enabled = false;
+                customer.LeaveQueue();
+                customer.Release();
             }
         }
 
@@ -115,6 +123,14 @@ namespace Scripts
                                 var pathDelta = pathPosition - workerPosition;
                                 // pathDelta.y = 0f;
                                 character.WorldDirection = pathDelta.normalized * Mathf.Min(Mathf.Max(pathDelta.magnitude, 0.1f), 1f);
+
+                                if (Physics.Raycast(character.transform.position + Vector3.up * 1.7f, character.WorldDirection, out var hitInfo, 2f))
+                                {
+                                    if (hitInfo.collider is CapsuleCollider)
+                                    {
+                                        character.WorldDirection = Quaternion.Euler(0f, 45f, 0f) * character.WorldDirection;
+                                    }
+                                }
                             }
                         }
                     }

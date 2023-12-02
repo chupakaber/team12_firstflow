@@ -11,5 +11,10 @@ namespace Scripts
         public Building TargetBuilding;
         public float FollowingOffset = 2.2f;
         public int State;
+
+        public bool IsReadyToBuy()
+        {
+            return State == 1;
+        }
     }
 }

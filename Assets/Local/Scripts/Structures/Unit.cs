@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Scripts
 {
-    public class Unit : MonoBehaviour
+    public class Unit : PoolableObject
     {
         [Header("Unit Config")]
         public ItemStackView ItemStackView;
