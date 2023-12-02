@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _exclusiveStacks: []
 --- !u!1 &866461290152350341
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,6 +623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _exclusiveStacks: []
 --- !u!114 &6520388164899832615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1843,7 +1845,8 @@ MonoBehaviour:
   ResourceLimit: 30
   ItemCost: 4
   ProductionItemAmountPerCycle: 1
-  ProductionCooldown: 15
+  ProductionCooldown: 7.5
+  ProductionUseBagOfTries: 1
   ProduceItemType: 6
   ConsumeItemType: 3
   Levels:

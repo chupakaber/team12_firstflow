@@ -35,12 +35,10 @@ namespace Scripts
 
         private void Collecting(Building building, Character character)
         {
-            if (building.UpgradeStorage == null)
+            if (building.UpgradeStorage == null || !character)
             {
                 return;
             }
-
-            var itemsMovingAmount = 1;
 
             var characterHorizontalVelocity = character.CharacterRigidbody.velocity;
             characterHorizontalVelocity.y = 0f;
@@ -49,53 +47,60 @@ namespace Scripts
                 character.LastDropItemTime = Time.time;
             }
 
-            if (Time.time >= character.LastDropItemTime + character.PickUpCooldown)
+            if (building.Levels.Count > building.Level + 1)
             {
-                if (building.Levels.Count > building.Level + 1)
+                var levelConfig = building.Levels[building.Level + 1];
+                foreach (var requiredItem in levelConfig.Cost)
                 {
-                    var levelConfig = building.Levels[building.Level + 1];
-                    foreach (var requiredItem in levelConfig.Cost)
-                    {
-                        if (character.Items.GetAmount(requiredItem.Type) >= itemsMovingAmount)
-                        {
-                            if (building.UpgradeStorage.Items.GetAmount(requiredItem.Type) < requiredItem.Amount)
-                            {
-                                var sourcePileTopPosition = character.GetStackTopPosition(requiredItem.Type);
-                                var removeItemEvent = new RemoveItemEvent() { ItemType = requiredItem.Type, Count = itemsMovingAmount, Unit = character };
-                                var addItemEvent = new AddItemEvent() { ItemType = requiredItem.Type, Count = itemsMovingAmount, Unit = building.UpgradeStorage, FromPosition = sourcePileTopPosition };
-                                EventBus.CallEvent(removeItemEvent);
-                                EventBus.CallEvent(addItemEvent);
-                                character.LastDropItemTime = Time.time;
+                    var storageAmount = building.UpgradeStorage.Items.GetAmount(requiredItem.Type);
+                    var requiredAmount = requiredItem.Amount - storageAmount;
+                    var availableAmount = character.Items.GetAmount(requiredItem.Type);
+                    var dropCooldown = character.GetDropCooldown(requiredItem.Type, out var itemsMovingAmount, requiredAmount);
 
-                                var completed = true;
-                                
-                                foreach (var requiredItem2 in levelConfig.Cost)
+                    if (Time.time >= character.LastDropItemTime + dropCooldown)
+                    {
+                        itemsMovingAmount = Mathf.Min(itemsMovingAmount, Mathf.Min(requiredAmount, availableAmount));
+                        if (itemsMovingAmount > 0)
+                        {
+                            var sourcePileTopPosition = character.GetStackTopPosition(requiredItem.Type);
+                            var removeItemEvent = new RemoveItemEvent() { ItemType = requiredItem.Type, Count = itemsMovingAmount, Unit = character };
+                            var addItemEvent = new AddItemEvent() { ItemType = requiredItem.Type, Count = itemsMovingAmount, Unit = building.UpgradeStorage, FromPosition = sourcePileTopPosition };
+                            EventBus.CallEvent(removeItemEvent);
+                            EventBus.CallEvent(addItemEvent);
+                            character.LastDropItemTime = Time.time;
+
+                            var completed = true;
+                            
+                            foreach (var requiredItem2 in levelConfig.Cost)
+                            {
+                                if (building.UpgradeStorage.Items.GetAmount(requiredItem2.Type) < requiredItem2.Amount)
                                 {
-                                    if (building.UpgradeStorage.Items.GetAmount(requiredItem2.Type) < requiredItem2.Amount)
-                                    {
-                                        completed = false;
-                                    }
+                                    completed = false;
+                                }
+                            }
+
+                            if (completed)
+                            {
+                                building.Level = building.Level + 1;
+
+                                UpdateUpgradeProgressViewSettings(building);
+                                
+                                foreach (var item in building.UpgradeStorage.Items)
+                                {
+                                    EventBus.CallEvent(new RemoveItemEvent() { ItemType = item.Type, Count = item.Amount, Unit = building.UpgradeStorage });
                                 }
 
-                                if (completed)
+                                if (building.Levels.Count <= building.Level + 1)
                                 {
-                                    building.Level = building.Level + 1;
-
-                                    UpdateUpgradeProgressViewSettings(building);
-                                    
-                                    foreach (var item in building.UpgradeStorage.Items)
-                                    {
-                                        EventBus.CallEvent(new RemoveItemEvent() { ItemType = item.Type, Count = item.Amount, Unit = building.UpgradeStorage });
-                                    }
-
-                                    if (building.Levels.Count <= building.Level + 1)
-                                    {
-                                        building.UpgradeArea.gameObject.SetActive(false);
-                                        building.UpgradeArea = null;
-                                    }
+                                    building.UpgradeArea.gameObject.SetActive(false);
+                                    building.UpgradeArea = null;
                                 }
                             }
                         }
+                    }
+                    else if (availableAmount > 0 && requiredAmount > 0)
+                    {
+                        break;
                     }
                 }
             }

@@ -6,7 +6,7 @@ namespace Scripts.Enums
         PLAYER = 1,
         ASSISTANT = 2,
         APPRENTICE = 3,
-        CLIENT = 4,
+        CUSTOMER = 4,
         JOKER = 5,
         IMPERATOR = 6
     }

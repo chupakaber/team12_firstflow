@@ -71,7 +71,7 @@ namespace Scripts
 
         public int GetItemVolume(ItemType type)
         {
-            if (type == ItemType.GOLD || type == ItemType.HONOR)
+            if (type == ItemType.GOLD || type == ItemType.HONOR || type == ItemType.BOTTLE_HERO || type == ItemType.BOTTLE_WORKER)
             {
                 return 0;
             }

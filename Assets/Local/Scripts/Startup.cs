@@ -18,7 +18,11 @@ namespace Scripts
         private PoolCollection<ItemView> _itemViewPools = new PoolCollection<ItemView>();
         private PoolCollection<IconView> _iconViewPools = new PoolCollection<IconView>();
         private PoolCollection<BagOfTriesView> _bagOfTriesViewPools = new PoolCollection<BagOfTriesView>();
-        private UnlockQueue _unlockQueue = new UnlockQueue();
+        private PoolCollection<Assistant> _assistantPools = new PoolCollection<Assistant>();
+        private PoolCollection<Apprentice> _apprenticePools = new PoolCollection<Apprentice>();
+        private PoolCollection<Customer> _customerPools = new PoolCollection<Customer>();
+        private UnlockQueue _unlockQueue;
+        private Scenario _scenario;
 
         private PlayerInputSystem _playerInputSystem = new PlayerInputSystem();
         private CameraFollowSystem _cameraFollowSystem = new CameraFollowSystem();
@@ -42,11 +46,15 @@ namespace Scripts
         private WorkerBehaviorSystem _workerBehaviorSystem = new WorkerBehaviorSystem();
         private AssistantBehaviorSystem _assistantBehaviorSystem = new AssistantBehaviorSystem();
         private ApprenticeBehaviorSystem _apprenticeBehaviorSystem = new ApprenticeBehaviorSystem();
+        private CustomerSpawnSystem _customerSpawnSystem = new CustomerSpawnSystem();
+        private CustomerBehaviorSystem _customerBehaviorSystem = new CustomerBehaviorSystem();
+        private SellItemSystem _sellItemSystem = new SellItemSystem();
         private CharacterMovementSystem _characterMovementSystem = new CharacterMovementSystem();
         private CharacterAnimationSystem _characterAnimationSystem = new CharacterAnimationSystem();
         private UISystem _uiSystem = new UISystem();
         private EnvironmentShaderSystem _environmentShaderSystem = new EnvironmentShaderSystem();
         private CharactersStatsUpSystem _charactersStatsUpSystem = new CharactersStatsUpSystem();
+        private ScenarioSystem _scenarioSystem = new ScenarioSystem();
 
 
         public void Start()
@@ -55,6 +63,7 @@ namespace Scripts
             _characters.Add(FindObjectOfType<Character>());
             _uiView = FindObjectOfType<UIView>();
             _unlockQueue = FindObjectOfType<UnlockQueue>();
+            _scenario = FindObjectOfType<Scenario>();
 
             var names = System.Enum.GetNames(typeof(ItemType));
             var values = (ItemType[])System.Enum.GetValues(typeof(ItemType));
@@ -65,6 +74,11 @@ namespace Scripts
 
             _iconViewPools.Pools.Add(0, new ObjectPool<IconView>("Prefabs/UI/Icons/GOLD"));
             _bagOfTriesViewPools.Pools.Add(0, new ObjectPool<BagOfTriesView>("Prefabs/UI/BagOfTries"));
+            _assistantPools.Pools.Add(0, new ObjectPool<Assistant>("Prefabs/Characters/Assistant"));
+            _apprenticePools.Pools.Add(0, new ObjectPool<Apprentice>("Prefabs/Characters/Apprentice"));
+            _customerPools.Pools.Add(0, new ObjectPool<Customer>("Prefabs/Characters/CustomerSoldier"));
+            _customerPools.Pools.Add(1, new ObjectPool<Customer>("Prefabs/Characters/CustomerOfficial"));
+            
 
             AddSystem(_addItemSystem);
             AddSystem(_removeItemSystem);
@@ -88,11 +102,15 @@ namespace Scripts
             AddSystem(_workerBehaviorSystem);
             AddSystem(_assistantBehaviorSystem);
             AddSystem(_apprenticeBehaviorSystem);
+            AddSystem(_customerSpawnSystem);
+            AddSystem(_customerBehaviorSystem);
+            AddSystem(_sellItemSystem);
             AddSystem(_characterMovementSystem);
             AddSystem(_characterAnimationSystem);
             AddSystem(_uiSystem);
             AddSystem(_environmentShaderSystem);
             AddSystem(_charactersStatsUpSystem);
+            AddSystem(_scenarioSystem);
 
             _container.AddLink(_eventBus, "EventBus");
             _container.AddLink(_characters, "Characters");
@@ -104,6 +122,11 @@ namespace Scripts
             _container.AddLink(_iconViewPools, "IconViewPools");
             _container.AddLink(_unlockQueue, "UnlockQueue");
             _container.AddLink(_bagOfTriesViewPools, "BagOfTriesViewPools");
+            _container.AddLink(_assistantPools, "AssistantPools");
+            _container.AddLink(_apprenticePools, "ApprenticePools");
+            _container.AddLink(_customerPools, "CustomerPools");
+            _container.AddLink(_scenario, "Scenario");
+            
             _container.Init();
             _eventBus.Init();
 
@@ -114,8 +137,8 @@ namespace Scripts
 
             _eventBus.CallEvent(new StartEvent());
 
-            _eventBus.CallEvent(new AddItemEvent() { ItemType = ItemType.GOLD, Count = 300, Unit = _characters[0]});
-            _eventBus.CallEvent(new AddItemEvent() { ItemType = ItemType.WOOD, Count = 100, Unit = _characters[0]});
+            _eventBus.CallEvent(new AddItemEvent() { ItemType = ItemType.GOLD, Count = 50, Unit = _characters[0]});
+            //_eventBus.CallEvent(new AddItemEvent() { ItemType = ItemType.WOOD, Count = 100, Unit = _characters[0]});
         }
 
         public void Update()

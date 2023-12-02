@@ -892,8 +892,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.23, y: 1, z: 1}
-  m_Center: {x: 0.54, y: 0.5, z: -0.24}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0.2, y: 0.5, z: -0.24}
 --- !u!1 &3226855767941387841
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,6 +992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _exclusiveStacks: []
 --- !u!114 &243217601791744313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1456,6 +1457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _exclusiveStacks: []
 --- !u!1 &6170902742592678787
 GameObject:
   m_ObjectHideFlags: 0
@@ -1776,7 +1778,8 @@ MonoBehaviour:
   ResourceLimit: 30
   ItemCost: 1
   ProductionItemAmountPerCycle: 9
-  ProductionCooldown: 4
+  ProductionCooldown: 2
+  ProductionUseBagOfTries: 0
   ProduceItemType: 7
   ConsumeItemType: 6
   Levels:
