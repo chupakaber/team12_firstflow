@@ -130,6 +130,9 @@ namespace Scripts
                         action.Transform.gameObject.SetActive(true);
                     }
                     break;
+                case ScenarioActionType.ARROW_POINTER:
+                    UIView.PointerArrowTargetPosition = action.Transform != null ? action.Transform.position : Vector3.zero;
+                    break;
             }
         }
 

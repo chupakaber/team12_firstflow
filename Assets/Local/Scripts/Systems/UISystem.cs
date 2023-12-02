@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Scripts.Enums;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace Scripts
@@ -93,6 +94,37 @@ namespace Scripts
                     }
                 }   
             }
+
+            if (UIView.PointerArrowTargetPosition.sqrMagnitude <= float.Epsilon)
+            {
+                if (UIView.PointerArrowTransform.gameObject.activeSelf)
+                {
+                    UIView.PointerArrowTransform.gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                if (!UIView.PointerArrowTransform.gameObject.activeSelf)
+                {
+                    UIView.PointerArrowTransform.gameObject.SetActive(true);
+                }
+
+                var direction = Vector3.forward;
+                var worldPosition = UIView.PointerArrowTargetPosition;
+                foreach (var character in Characters)
+                {
+                    if (character.CharacterType == CharacterType.PLAYER)
+                    {
+                        direction = worldPosition - character.transform.position;
+                        var distance = Mathf.Min(direction.magnitude, 2.5f);
+                        worldPosition = character.transform.position + direction.normalized * distance;
+                    }
+                }
+                var screenPosition = Camera.WorldToScreenPoint(worldPosition);
+                var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
+                UIView.PointerArrowTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
+                UIView.PointerArrowTransform.localRotation = Quaternion.Euler(0f, 0f, -Quaternion.LookRotation(direction).eulerAngles.y - 45f);
+            }
         }
 
         public void EventCatch(RollBagOfTriesEvent newEvent)
@@ -134,7 +166,7 @@ namespace Scripts
             else if (unit is Building)
             {
                 var building = (Building) unit;
-                if (building.ProduceItemType == ItemType.GOLD)
+                if (building.ProduceItemType == ItemType.GOLD && building.Level > 0)
                 {
                     var buildingHash = building.GetHashCode();
                     

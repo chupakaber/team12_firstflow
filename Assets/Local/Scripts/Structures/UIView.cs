@@ -14,7 +14,11 @@ namespace Scripts
         public RectTransform FrontSpaceTransform;
 
         [Header("Permanent Indicators")]
-        public List<ItemCounter> ItemCounters; 
+        public List<ItemCounter> ItemCounters;
+
+        [Header("Dynamic Indicators")]
+        public RectTransform PointerArrowTransform;
+        public Vector3 PointerArrowTargetPosition;
 
         [Header("Flying Coin")]
         public RectTransform FlyingCoinPivot;
