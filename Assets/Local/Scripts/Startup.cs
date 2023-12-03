@@ -24,6 +24,7 @@ namespace Scripts
         private PoolCollection<Assistant> _assistantPools = new PoolCollection<Assistant>();
         private PoolCollection<Apprentice> _apprenticePools = new PoolCollection<Apprentice>();
         private PoolCollection<Customer> _customerPools = new PoolCollection<Customer>();
+        private PoolCollection<Mercenary> _mercenaryPools = new PoolCollection<Mercenary>();
         private UnlockQueue _unlockQueue;
         private Scenario _scenario;
 
@@ -58,7 +59,7 @@ namespace Scripts
         private EnvironmentShaderSystem _environmentShaderSystem = new EnvironmentShaderSystem();
         private CharactersStatsUpSystem _charactersStatsUpSystem = new CharactersStatsUpSystem();
         private ScenarioSystem _scenarioSystem = new ScenarioSystem();
-
+        private MercenaryCampSystem _mercenaryCampSystem = new MercenaryCampSystem();
 
         public void Start()
         {
@@ -83,6 +84,7 @@ namespace Scripts
             _customerPools.Pools.Add(1, new ObjectPool<Customer>("Prefabs/Characters/CustomerOfficial"));
             _pinnedCounterViewPools.Pools.Add(0, new ObjectPool<PinnedCounterView>("Prefabs/UI/ShopCoinCounter"));
             _bubbleViewPools.Pools.Add(0, new ObjectPool<BubbleView>("Prefabs/UI/BubbleEmoji"));
+            _mercenaryPools.Pools.Add(0, new ObjectPool<Mercenary>("Prefabs/Characters/Mercenary"));
             
 
             AddSystem(_addItemSystem);
@@ -116,6 +118,7 @@ namespace Scripts
             AddSystem(_environmentShaderSystem);
             AddSystem(_charactersStatsUpSystem);
             AddSystem(_scenarioSystem);
+            AddSystem(_mercenaryCampSystem);
 
             _container.AddLink(_eventBus, "EventBus");
             _container.AddLink(_characters, "Characters");
@@ -133,6 +136,7 @@ namespace Scripts
             _container.AddLink(_apprenticePools, "ApprenticePools");
             _container.AddLink(_customerPools, "CustomerPools");
             _container.AddLink(_scenario, "Scenario");
+            _container.AddLink(_mercenaryPools, "MercenaryPools");
             
             _container.Init();
             _eventBus.Init();

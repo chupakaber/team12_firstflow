@@ -8,6 +8,7 @@ namespace Scripts.Enums
         APPRENTICE = 3,
         CUSTOMER = 4,
         JOKER = 5,
-        IMPERATOR = 6
+        IMPERATOR = 6,
+        MERCENARY = 7,
     }
 }

@@ -14,6 +14,7 @@
         ASSISTANT = 9,
         APPRENTICE = 10,
         BOTTLE_HERO = 11,
-        BOTTLE_WORKER = 12
+        BOTTLE_WORKER = 12,
+        MERCENARY = 13
     }
 }
