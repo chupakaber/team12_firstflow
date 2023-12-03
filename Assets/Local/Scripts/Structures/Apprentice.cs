@@ -14,7 +14,10 @@ namespace Scripts
         {
             BaseBagOfTriesCapacity += TriesCapacityBoostAmount;
             BagOfTries.Resize(BaseBagOfTriesCapacity);
-            BagOfTriesView.Resize(BaseBagOfTriesCapacity);
+            if (BagOfTriesView != null)
+            {
+                BagOfTriesView.Resize(BaseBagOfTriesCapacity);
+            }
         }
     }
 }
