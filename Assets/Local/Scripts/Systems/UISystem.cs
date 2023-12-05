@@ -10,6 +10,7 @@ namespace Scripts
         public List<Character> Characters;
         public List<ProgressBarView> ProgressBarViews;
         public List<Building> Buildings;
+        public EventBus EventBus;
         public UIView UIView;
         public Camera Camera;
         public PoolCollection<BagOfTriesView> BagOfTriesViewPools;
@@ -18,9 +19,12 @@ namespace Scripts
 
         private Dictionary<int, PinnedCounterView> _shopCoinCounters = new Dictionary<int, PinnedCounterView>();
         private LinkedList<BubbleView> _bubbleViews = new LinkedList<BubbleView>();
+        private LinkedList<TouchInputEvent> _touchInputEvents = new LinkedList<TouchInputEvent>();
 
         public void EventCatch(StartEvent newEvent)
         {
+            UIView.EventBus = EventBus;
+
             foreach (var character in Characters)
             {
                 if (character.CharacterType == CharacterType.PLAYER)
@@ -135,6 +139,27 @@ namespace Scripts
                 var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
                 bubble.transform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
             }
+
+            foreach (var touchInputEvent in _touchInputEvents)
+            {
+                foreach (var character in Characters)
+                {
+                    if (character.CharacterType == CharacterType.PLAYER)
+                    {
+                        if (touchInputEvent.End)
+                        {
+                            UIView.EndTouch(touchInputEvent.Index, touchInputEvent.TouchID, touchInputEvent.Position);
+                            character.WorldDirection = Vector2.zero;
+                        }
+                        else
+                        {
+                            UIView.ProcessTouch(touchInputEvent.Index, touchInputEvent.TouchID, touchInputEvent.Position);
+                            character.WorldDirection = Quaternion.Euler(0f, Camera.transform.eulerAngles.y, 0f) * new Vector3(UIView.Stick.Value.x, 0f, UIView.Stick.Value.y).normalized;
+                        }
+                    }
+                }
+            }
+            _touchInputEvents.Clear();
         }
 
         public void EventCatch(RollBagOfTriesEvent newEvent)
@@ -177,6 +202,11 @@ namespace Scripts
                     });
                 });
             });
+        }
+
+        public void EventCatch(TouchInputEvent currentEvent)
+        {
+            _touchInputEvents.AddLast(currentEvent);
         }
 
         private void UpdateItemsCount(Unit unit, ItemType itemType)

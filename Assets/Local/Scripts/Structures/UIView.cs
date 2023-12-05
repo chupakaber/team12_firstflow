@@ -3,6 +3,7 @@ using Scripts.Enums;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Scripts
@@ -15,18 +16,24 @@ namespace Scripts
 
         [Header("Permanent Indicators")]
         public List<ItemCounter> ItemCounters;
+        public UIStickView Stick;
 
         [Header("Dynamic Indicators")]
         public RectTransform PointerArrowTransform;
         public Vector3 PointerArrowTargetPosition;
 
-        [Header("Flying Coin")]
+        [Header("Emoji")]
         public List<Sprite> EmojiSprites;
 
         [Header("Flying Coin")]
         public RectTransform FlyingCoinPivot;
         public float FlyingCoinMinScale = 0.2f;
         public float FlyingCoinDuration = 0.5f;
+
+        [HideInInspector]
+        public EventBus EventBus;
+
+        private int StickIndex = -1;
 
         public void SetItemCount(ItemType itemType, int count)
         {
@@ -76,6 +83,37 @@ namespace Scripts
             rectTransform.DOJumpAnchorPos(to, Random.Range(0f, 500f), 1, 1.1f).OnComplete(() => {
                 icon.Release();
             });
+        }
+
+        public void ProcessTouch(int touchIndex, int touchId, Vector2 position) {
+            if (StickIndex == touchIndex)
+            {
+                var value = Stick.ProcessTouch(position);
+                value.x = Mathf.Clamp(value.x, -1f, 1f);
+                value.y = Mathf.Clamp(value.y, -1f, 1f);
+                value.y = Mathf.Sign(value.y) * Mathf.Max(Mathf.Abs(value.y), Mathf.Abs(value.x));
+                EventBus.CallEvent(new MovementInputEvent() { Direction = value });
+                return;
+            }
+
+            if (EventSystem.current.IsPointerOverGameObject(touchId))
+            {
+                return;
+            }
+
+            if (StickIndex < 0 && Stick.StartTouch(position))
+            {
+                StickIndex = touchIndex;
+            }
+        }
+
+        public void EndTouch(int touchIndex, int touchId, Vector2 position) {
+            if (StickIndex == touchIndex) {
+                StickIndex = -1;
+                Stick.EndTouch();
+
+                EventBus.CallEvent(new MovementInputEvent() { Direction = Vector2.zero });
+            }
         }
     }
 
