@@ -23,6 +23,7 @@ namespace Scripts
 
         private PoolCollection<Assistant> _assistantPools = new PoolCollection<Assistant>();
         private PoolCollection<Apprentice> _apprenticePools = new PoolCollection<Apprentice>();
+        private PoolCollection<Joker> _jokerPools = new PoolCollection<Joker>();
         private PoolCollection<Customer> _customerPools = new PoolCollection<Customer>();
         private PoolCollection<Mercenary> _mercenaryPools = new PoolCollection<Mercenary>();
         private UnlockQueue _unlockQueue;
@@ -53,6 +54,8 @@ namespace Scripts
         private CustomerSpawnSystem _customerSpawnSystem = new CustomerSpawnSystem();
         private CustomerBehaviorSystem _customerBehaviorSystem = new CustomerBehaviorSystem();
         private SellItemSystem _sellItemSystem = new SellItemSystem();
+        private JokerBehaviorSystem _jokerBehaviorSystem = new JokerBehaviorSystem();
+        private SmartCharacterBehaviorSystem _smartCharacterBehaviorSystem = new SmartCharacterBehaviorSystem();
         private CharacterMovementSystem _characterMovementSystem = new CharacterMovementSystem();
         private CharacterAnimationSystem _characterAnimationSystem = new CharacterAnimationSystem();
         private UISystem _uiSystem = new UISystem();
@@ -82,6 +85,7 @@ namespace Scripts
             _apprenticePools.Pools.Add(0, new ObjectPool<Apprentice>("Prefabs/Characters/Apprentice"));
             _customerPools.Pools.Add(0, new ObjectPool<Customer>("Prefabs/Characters/CustomerSoldier"));
             _customerPools.Pools.Add(1, new ObjectPool<Customer>("Prefabs/Characters/CustomerOfficial"));
+            _jokerPools.Pools.Add(0, new ObjectPool<Joker>("Prefabs/Characters/Joker"));
             _pinnedCounterViewPools.Pools.Add(0, new ObjectPool<PinnedCounterView>("Prefabs/UI/ShopCoinCounter"));
             _bubbleViewPools.Pools.Add(0, new ObjectPool<BubbleView>("Prefabs/UI/BubbleEmoji"));
             _mercenaryPools.Pools.Add(0, new ObjectPool<Mercenary>("Prefabs/Characters/Mercenary"));
@@ -112,6 +116,8 @@ namespace Scripts
             AddSystem(_customerSpawnSystem);
             AddSystem(_customerBehaviorSystem);
             AddSystem(_sellItemSystem);
+            AddSystem(_jokerBehaviorSystem);
+            AddSystem(_smartCharacterBehaviorSystem);
             AddSystem(_characterMovementSystem);
             AddSystem(_characterAnimationSystem);
             AddSystem(_uiSystem);
@@ -135,6 +141,7 @@ namespace Scripts
             _container.AddLink(_assistantPools, "AssistantPools");
             _container.AddLink(_apprenticePools, "ApprenticePools");
             _container.AddLink(_customerPools, "CustomerPools");
+            _container.AddLink(_jokerPools, "JokerPools");
             _container.AddLink(_scenario, "Scenario");
             _container.AddLink(_mercenaryPools, "MercenaryPools");
             

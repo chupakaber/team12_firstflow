@@ -27,6 +27,27 @@ namespace Scripts
                     }
                 }
             }
+
+            if (newEvent.ItemType == ItemType.HONOR && newEvent.Unit is Building)
+            {
+                var building = (Building)newEvent.Unit;
+                if (building.ProduceItemType == ItemType.HONOR)
+                {
+                    foreach (var character in Characters)
+                    {
+                        if (character.CharacterType == CharacterType.PLAYER)
+                        {
+                            var honorAmount = building.ProductionItemAmountPerCycle;
+
+                            var addItemEvent = new AddItemEvent() { ItemType = ItemType.HONOR, Count = honorAmount, Unit = character };
+                            EventBus.CallEvent(addItemEvent);
+
+                            var removeItemEvent = new RemoveItemEvent() { ItemType = ItemType.HONOR, Count = honorAmount, Unit = building };
+                            EventBus.CallEvent(removeItemEvent);
+                        }
+                    }
+                }
+            }
         }
     }
 }
