@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Local/Settings/BehaviorTree/BehaviorTreeEditor.uss?fileID=7433441132597879392&amp;guid=0189ae66718fb4a468edaaf1ecf9c1cc&amp;type=3#BehaviorTreeEditor" />
+    <uie:Toolbar>
+        <uie:ToolbarMenu tabindex="-1" display-tooltip-when-elided="true" text="Assets" />
+    </uie:Toolbar>
+    <Scripts.BehaviorGraph.SplitView fixed-pane-initial-dimension="300">
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+            <Scripts.BehaviorGraph.InspectorView />
+            <ui:Label tabindex="-1" text="Parameters" display-tooltip-when-elided="true" style="width: 295px; margin-left: 12px; margin-top: 12px;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+            <Scripts.BehaviorGraph.BehaviorGraphView focusable="true" name="BehaviorGraphView" style="flex-grow: 1;">
+                <ui:Label tabindex="-1" text="Graph" display-tooltip-when-elided="true" style="margin-left: 12px; margin-top: 12px;" />
+            </Scripts.BehaviorGraph.BehaviorGraphView>
+        </ui:VisualElement>
+    </Scripts.BehaviorGraph.SplitView>
+</ui:UXML>

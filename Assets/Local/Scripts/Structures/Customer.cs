@@ -8,8 +8,6 @@ namespace Scripts
         public int Rank = 6;
 
         [Header("Customer Runtime")]
-        public Building TargetBuilding;
-        public float FollowingOffset = 2.2f;
         public int State;
 
         public bool IsReadyToBuy()
