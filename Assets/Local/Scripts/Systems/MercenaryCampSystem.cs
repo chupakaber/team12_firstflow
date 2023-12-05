@@ -22,14 +22,17 @@ namespace Scripts
                     {
                         if (character.CharacterType == Enums.CharacterType.PLAYER)
                         {
-                            MercenaryCreate(building, character);
+                            if (MercenaryCreate(building, character))
+                            {
+                                return;
+                            }
                         }
                     }
                 }
             }
         }
 
-        public void MercenaryCreate(Building building, Character character)
+        public bool MercenaryCreate(Building building, Character character)
         {            
             if (character.NextInQueue != null)
             {
@@ -47,7 +50,10 @@ namespace Scripts
                 building.UnloadingCharacters.Remove(recrut);
                 recrut.LeaveQueue();
                 recrut.Release();
+
+                return true;
             }
+            return false;
         }
 
         public void StartRaid() 

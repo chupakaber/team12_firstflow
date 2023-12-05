@@ -51,7 +51,7 @@ namespace Scripts
         {
             foreach (var item in _items)
             {
-                if (type.Equals(item.Type))
+                if (type == item.Type)
                 {
                     return item.Amount;
                 }
