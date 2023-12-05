@@ -2,6 +2,7 @@
 using DG.Tweening;
 using Scripts.Enums;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Scripts
 {
@@ -20,6 +21,9 @@ namespace Scripts
         private Dictionary<int, PinnedCounterView> _shopCoinCounters = new Dictionary<int, PinnedCounterView>();
         private LinkedList<BubbleView> _bubbleViews = new LinkedList<BubbleView>();
         private LinkedList<TouchInputEvent> _touchInputEvents = new LinkedList<TouchInputEvent>();
+        private NavMeshPath _path;
+        private Vector3[] _pathCorners = new Vector3[100];
+        private Vector3 _targetArrowWorldPosition = Vector3.zero;
 
         public void EventCatch(StartEvent newEvent)
         {
@@ -67,7 +71,7 @@ namespace Scripts
             {
                 if (character.BagOfTriesView != null && character.BagOfTriesView.gameObject.activeSelf)
                 {
-                    var worldPosition = character.transform.position + Vector3.up * 2.5f;
+                    var worldPosition = character.transform.position + Vector3.up * 3.5f;
                     var screenPosition = Camera.WorldToScreenPoint(worldPosition);
                     var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
                     character.BagOfTriesView.Transform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
@@ -121,12 +125,42 @@ namespace Scripts
                 {
                     if (character.CharacterType == CharacterType.PLAYER)
                     {
+                        var smartCharacter = (SmartCharacter) character;
+                        
+                        var minimalMagnitude = (worldPosition - character.transform.position).magnitude;
+
+                        if (_path == null)
+                        {
+                            _path = new NavMeshPath();
+                        }
+                        smartCharacter.NavMeshAgent.enabled = true;
+                        var navMeshWorldPosition = worldPosition;
+                        if (UIView.PointerArrowTargetPositionOnNavMesh.sqrMagnitude > float.Epsilon)
+                        {
+                            navMeshWorldPosition = UIView.PointerArrowTargetPositionOnNavMesh;
+                        }
+                        if (smartCharacter.NavMeshAgent.CalculatePath(navMeshWorldPosition, _path))
+                        {
+                            var cornersCount = _path.GetCornersNonAlloc(_pathCorners);
+                            if (cornersCount > 2)
+                            {
+                                var d1 = (_path.corners[1] - _path.corners[0]).magnitude;
+                                var d2 = (_path.corners[2] - _path.corners[0]).magnitude;
+                                var d = Mathf.Clamp((d2 - d1) / d1, 0f, 1f);
+                                var w1 = d;
+                                var w2 = 1f - d;
+                                worldPosition = _path.corners[1] * w1 + _path.corners[2] * w2;
+                            }
+                        }
+                        smartCharacter.NavMeshAgent.enabled = false;
+
                         direction = worldPosition - character.transform.position;
-                        var distance = Mathf.Min(direction.magnitude, 2.5f);
+                        var distance = Mathf.Min(Mathf.Max(minimalMagnitude, direction.magnitude), 2.5f);
                         worldPosition = character.transform.position + direction.normalized * distance;
                     }
                 }
-                var screenPosition = Camera.WorldToScreenPoint(worldPosition);
+                _targetArrowWorldPosition = Vector3.Lerp(_targetArrowWorldPosition, worldPosition, Time.deltaTime * 3f);
+                var screenPosition = Camera.WorldToScreenPoint(_targetArrowWorldPosition);
                 var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
                 UIView.PointerArrowTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
                 UIView.PointerArrowTransform.localRotation = Quaternion.Euler(0f, 0f, -Quaternion.LookRotation(direction).eulerAngles.y - 45f);
