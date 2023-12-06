@@ -49,6 +49,7 @@ namespace Scripts.BehaviorTree
 
         protected override void OnStart(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
         {
+            Clear();
         }
 
         protected override void OnStop(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
@@ -138,6 +139,10 @@ namespace Scripts.BehaviorTree
                     var childInputIndex = InputTargetIndex[i];
                     child.Run(this, childInputIndex, internalState, currentEvent);
                 }
+            }
+            else
+            {
+                return State.RUNNING;
             }
 
             return State.SUCCESS;
