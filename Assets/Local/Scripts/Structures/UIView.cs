@@ -21,6 +21,7 @@ namespace Scripts
         [Header("Dynamic Indicators")]
         public RectTransform PointerArrowTransform;
         public Vector3 PointerArrowTargetPosition;
+        public Vector3 PointerArrowTargetPositionOnNavMesh;
 
         [Header("Emoji")]
         public List<Sprite> EmojiSprites;

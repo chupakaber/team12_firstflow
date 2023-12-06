@@ -132,6 +132,18 @@ namespace Scripts
                     break;
                 case ScenarioActionType.ARROW_POINTER:
                     UIView.PointerArrowTargetPosition = action.Transform != null ? action.Transform.position : Vector3.zero;
+                    UIView.PointerArrowTargetPositionOnNavMesh = Vector3.zero;
+                    if (action.Transform != null && action.Transform.gameObject.TryGetComponent<Building>(out var building))
+                    {
+                        if (building.PickingUpArea != null)
+                        {
+                            UIView.PointerArrowTargetPositionOnNavMesh = building.PickingUpArea.transform.position;
+                        }
+                        else if (building.UpgradeArea != null)
+                        {
+                            UIView.PointerArrowTargetPositionOnNavMesh = building.UpgradeArea.transform.position;
+                        }
+                    }
                     break;
                 case ScenarioActionType.SHOW_EMOJI:
                     // TODO: find character procedural
