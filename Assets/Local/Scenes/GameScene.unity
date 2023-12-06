@@ -395,24 +395,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6903037125179615531, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 2103489628118396553, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 3437000400141002643, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 3588067388108069703, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 8824385488375633792, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 5257168417547181722, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6236635777801036366, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
 --- !u!1001 &1108224694212569101
 PrefabInstance:
@@ -583,7 +565,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5670738939567171659, guid: cf7bc7efd13f61e4e93df3fba49a5dea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1801027299497660105, guid: cf7bc7efd13f61e4e93df3fba49a5dea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 7727339170177845521, guid: cf7bc7efd13f61e4e93df3fba49a5dea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 8864849978055543750, guid: cf7bc7efd13f61e4e93df3fba49a5dea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: cf7bc7efd13f61e4e93df3fba49a5dea, type: 3}
 --- !u!1001 &5080193985465256652
 PrefabInstance:
@@ -775,6 +769,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 738348867641092656, guid: c2699f90d0b62524aa590c7a473254ff, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 6.45e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 738348867641092656, guid: c2699f90d0b62524aa590c7a473254ff, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 738348867641092656, guid: c2699f90d0b62524aa590c7a473254ff, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2367154586607493605, guid: c2699f90d0b62524aa590c7a473254ff, type: 3}
       propertyPath: m_Name
       value: Light
