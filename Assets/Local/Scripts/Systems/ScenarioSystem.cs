@@ -133,7 +133,7 @@ namespace Scripts
                 case ScenarioActionType.ARROW_POINTER:
                     UIView.PointerArrowTargetPosition = action.Transform != null ? action.Transform.position : Vector3.zero;
                     UIView.PointerArrowTargetPositionOnNavMesh = Vector3.zero;
-                    if (action.Transform.gameObject.TryGetComponent<Building>(out var building))
+                    if (action.Transform != null && action.Transform.gameObject.TryGetComponent<Building>(out var building))
                     {
                         if (building.PickingUpArea != null)
                         {
