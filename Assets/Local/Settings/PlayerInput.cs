@@ -89,6 +89,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Touch"",
+                    ""type"": ""Value"",
+                    ""id"": ""4fe70812-3f3b-4d45-ade6-759db1d31072"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""TouchRelease"",
+                    ""type"": ""Button"",
+                    ""id"": ""10ee473a-613b-48ac-b261-b3d710ae0b87"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -212,6 +230,50 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""DebugReload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Touch Input"",
+                    ""id"": ""c4d9898d-70ee-4319-b3c6-d18e32bd295f"",
+                    ""path"": ""TouchInput"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Touch"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Position"",
+                    ""id"": ""6fa23dc1-32c5-43ed-9182-0c93d043967f"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Touch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""TouchId"",
+                    ""id"": ""4669acd1-7cc5-40d3-b406-1b677e4aa276"",
+                    ""path"": ""<Touchscreen>/primaryTouch/touchId"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Touch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""09acb2a1-201f-4f39-9ea5-19ffaa2b1c9f"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TouchRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +289,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Default_DebugSpeedX10 = m_Default.FindAction("DebugSpeedX10", throwIfNotFound: true);
         m_Default_DebugPause = m_Default.FindAction("DebugPause", throwIfNotFound: true);
         m_Default_DebugReload = m_Default.FindAction("DebugReload", throwIfNotFound: true);
+        m_Default_Touch = m_Default.FindAction("Touch", throwIfNotFound: true);
+        m_Default_TouchRelease = m_Default.FindAction("TouchRelease", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -295,6 +359,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Default_DebugSpeedX10;
     private readonly InputAction m_Default_DebugPause;
     private readonly InputAction m_Default_DebugReload;
+    private readonly InputAction m_Default_Touch;
+    private readonly InputAction m_Default_TouchRelease;
     public struct DefaultActions
     {
         private @PlayerInput m_Wrapper;
@@ -306,6 +372,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @DebugSpeedX10 => m_Wrapper.m_Default_DebugSpeedX10;
         public InputAction @DebugPause => m_Wrapper.m_Default_DebugPause;
         public InputAction @DebugReload => m_Wrapper.m_Default_DebugReload;
+        public InputAction @Touch => m_Wrapper.m_Default_Touch;
+        public InputAction @TouchRelease => m_Wrapper.m_Default_TouchRelease;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -336,6 +404,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @DebugReload.started += instance.OnDebugReload;
             @DebugReload.performed += instance.OnDebugReload;
             @DebugReload.canceled += instance.OnDebugReload;
+            @Touch.started += instance.OnTouch;
+            @Touch.performed += instance.OnTouch;
+            @Touch.canceled += instance.OnTouch;
+            @TouchRelease.started += instance.OnTouchRelease;
+            @TouchRelease.performed += instance.OnTouchRelease;
+            @TouchRelease.canceled += instance.OnTouchRelease;
         }
 
         private void UnregisterCallbacks(IDefaultActions instance)
@@ -361,6 +435,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @DebugReload.started -= instance.OnDebugReload;
             @DebugReload.performed -= instance.OnDebugReload;
             @DebugReload.canceled -= instance.OnDebugReload;
+            @Touch.started -= instance.OnTouch;
+            @Touch.performed -= instance.OnTouch;
+            @Touch.canceled -= instance.OnTouch;
+            @TouchRelease.started -= instance.OnTouchRelease;
+            @TouchRelease.performed -= instance.OnTouchRelease;
+            @TouchRelease.canceled -= instance.OnTouchRelease;
         }
 
         public void RemoveCallbacks(IDefaultActions instance)
@@ -387,5 +467,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnDebugSpeedX10(InputAction.CallbackContext context);
         void OnDebugPause(InputAction.CallbackContext context);
         void OnDebugReload(InputAction.CallbackContext context);
+        void OnTouch(InputAction.CallbackContext context);
+        void OnTouchRelease(InputAction.CallbackContext context);
     }
 }

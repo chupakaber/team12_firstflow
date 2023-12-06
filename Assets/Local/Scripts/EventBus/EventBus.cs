@@ -7,14 +7,18 @@ namespace Scripts
     public class EventBus
     {
         public List<ISystem> Systems = new List<ISystem>();
-        private Dictionary<Type, List<Reciever>> Recievers = new Dictionary<Type, List<Reciever>>();
+        
+        private Dictionary<Type, List<Reciever>> _recievers = new Dictionary<Type, List<Reciever>>();
+        private object[] _invokingParameters = new object[1];
+
         public void CallEvent(IEvent newEvent)
         {
-            if (Recievers.TryGetValue(newEvent.GetType(), out var recievers))
+            if (_recievers.TryGetValue(newEvent.GetType(), out var recievers))
             {
-                foreach (var reciever in recievers) 
-                { 
-                    reciever.MethodInfo.Invoke(reciever.System, new object[] { newEvent });
+                foreach (var reciever in recievers)
+                {
+                    _invokingParameters[0] = newEvent;
+                    reciever.MethodInfo.Invoke(reciever.System, _invokingParameters);
                 }
             } 
         }
@@ -34,8 +38,8 @@ namespace Scripts
                         {
                             var reciever = new Reciever() { MethodInfo = method, System = system };
                             var key = methodParams[0].ParameterType;
-                            Recievers.TryAdd(key, new List<Reciever>());
-                            Recievers[key].Add(reciever); 
+                            _recievers.TryAdd(key, new List<Reciever>());
+                            _recievers[key].Add(reciever); 
                         }
                     }
                 }
