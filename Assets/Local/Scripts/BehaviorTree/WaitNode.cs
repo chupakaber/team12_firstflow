@@ -4,6 +4,9 @@ namespace Scripts.BehaviorTree
 {
     public class WaitNode : BehaviorCompositeNode
     {
+        [HideInInspector]
+        public override Color DefaultColor { get { return new Color(0.6f, 0.6f, 0.6f, 1f); } }
+        
         public int TimerIndex = 0;
 
         public WaitNode()
@@ -23,7 +26,7 @@ namespace Scripts.BehaviorTree
         protected override State OnUpdate(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
         {
             var state = (SmartCharacterState) internalState;
-            
+
             if (Time.time > state.Timers[TimerIndex])
             {
                 for (var i = 0; i < Children.Count; i++)

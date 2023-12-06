@@ -13,7 +13,7 @@ namespace Scripts.BehaviorTree
             Output1Type = typeof(float);
         }
 
-        public float GetOutputFloat()
+        public float GetOutputFloat(int index = 0)
         {
             return _output;
         }

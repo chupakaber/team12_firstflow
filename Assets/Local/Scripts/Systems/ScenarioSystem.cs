@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Scripts.Enums;
+using Scripts.BehaviorTree;
 using UnityEngine;
 
 namespace Scripts
@@ -9,7 +9,70 @@ namespace Scripts
         public EventBus EventBus;
         public UIView UIView;
         public Scenario Scenario;
+        public List<Character> Characters;
+        public List<Building> Buildings;
 
+        private ScenarioState _scenarioState = new ScenarioState();
+
+        public void EventCatch(StartEvent newEvent)
+        {
+            _scenarioState = new ScenarioState() {
+                EventBus = EventBus,
+                Characters = Characters,
+                Buildings = Buildings,
+            };
+
+            foreach (var character in Characters)
+            {
+                if (character.CharacterType == Enums.CharacterType.PLAYER)
+                {
+                    _scenarioState.Player = (SmartCharacter) character;
+                }
+            }
+
+            Scenario.BehaviorTreeRunner.InternalState = _scenarioState;
+            Scenario.BehaviorTreeRunner.EventCatch(newEvent);
+        }
+
+        public void EventCatch(ConstructionCompleteEvent newEvent)
+        {
+            Scenario.BehaviorTreeRunner.InternalState = _scenarioState;
+            Scenario.BehaviorTreeRunner.EventCatch(newEvent);
+        }
+
+        public void EventCatch(AddItemEvent newEvent)
+        {
+            Scenario.BehaviorTreeRunner.InternalState = _scenarioState;
+            Scenario.BehaviorTreeRunner.EventCatch(newEvent);
+        }
+
+        public void EventCatch(SetArrowPointerEvent newEvent)
+        {
+            if (newEvent.TargetGameObject == null)
+            {
+                UIView.PointerArrowTargetPosition = Vector3.zero;
+                UIView.PointerArrowTargetPositionOnNavMesh = Vector3.zero;
+                return;
+            }
+
+            var transform = newEvent.TargetGameObject.transform;
+            UIView.PointerArrowTargetPosition = transform.position;
+            UIView.PointerArrowTargetPositionOnNavMesh = Vector3.zero;
+            if (transform.gameObject.TryGetComponent<Building>(out var building))
+            {
+                if (building.PickingUpArea != null)
+                {
+                    UIView.PointerArrowTargetPositionOnNavMesh = building.PickingUpArea.transform.position;
+                }
+                else if (building.UpgradeArea != null)
+                {
+                    UIView.PointerArrowTargetPositionOnNavMesh = building.UpgradeArea.transform.position;
+                }
+            }
+        }
+    
+/*
+    {
         public List<Character> Characters;
         public List<Building> Buildings;
 
@@ -165,5 +228,7 @@ namespace Scripts
             }
             return true;
         }
+
+        */
     }
 }
