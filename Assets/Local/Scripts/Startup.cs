@@ -43,7 +43,6 @@ namespace Scripts
         private BuildingConstructionSystem _buildingConstructionSystem = new BuildingConstructionSystem();
         private BuildingProgressBarSystem _buildingProgressBarSystem = new BuildingProgressBarSystem();
         private BuildingUpgradeSystem _buildingUpgradeSystem = new BuildingUpgradeSystem();
-        private BuildingUnlockSystem _buildingUnlockSystem = new BuildingUnlockSystem();
         private AlchemicSystem _alchemicSystem = new AlchemicSystem();
         private WorkerAssignSystem _workerAssignSystem = new WorkerAssignSystem();
         private WorkerSpawnSystem _workerSpawnSystem = new WorkerSpawnSystem();
@@ -105,7 +104,6 @@ namespace Scripts
             AddSystem(_buildingConstructionSystem);
             AddSystem(_buildingPickUpSystem);
             AddSystem(_buildingProgressBarSystem);
-            AddSystem(_buildingUnlockSystem);
             AddSystem(_alchemicSystem);
             AddSystem(_workerAssignSystem);
             AddSystem(_workerSpawnSystem);
@@ -154,9 +152,6 @@ namespace Scripts
             _characters[0].ResizeBagOfTries(_characters[0].BaseBagOfTriesCapacity);
 
             _eventBus.CallEvent(new StartEvent());
-
-            _eventBus.CallEvent(new AddItemEvent() { ItemType = ItemType.GOLD, Count = 50, Unit = _characters[0]});
-            //_eventBus.CallEvent(new AddItemEvent() { ItemType = ItemType.WOOD, Count = 100, Unit = _characters[0]});
         }
 
         public void Update()

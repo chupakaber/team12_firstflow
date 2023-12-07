@@ -92,53 +92,42 @@ namespace Scripts.BehaviorGraph
                             inputPortIndex = ((BehaviorDecoratorNode) parentView.Node).InputTargetIndex;
                         }
 
-                        if (outputPortIndex == -1)
+                        var inputPort = GetPortByIndex(childView, inputPortIndex, true);
+
+                        if (outputPortIndex == -1 && inputPort != null)
                         {
-                            if (inputPortIndex == 0 && childView.Input1.portType.Equals(parentView.Output1.portType))
+                            for (var j = 0; j < 6; j++)
                             {
-                                outputPortIndex = 0;
-                            }
-                            else if (inputPortIndex == 1 && childView.Input2.portType.Equals(parentView.Output1.portType))
-                            {
-                                outputPortIndex = 0;
-                            }
-                            else if (inputPortIndex == 0 && childView.Input1.portType.Equals(parentView.Output2.portType))
-                            {
-                                outputPortIndex = 1;
-                            }
-                            else if (inputPortIndex == 1 && childView.Input2.portType.Equals(parentView.Output2.portType))
-                            {
-                                outputPortIndex = 1;
+                                var supposedOutputPort = GetPortByIndex(parentView, j, false);
+                                if (inputPort.portType.Equals(supposedOutputPort.portType))
+                                {
+                                    outputPortIndex = j;
+                                    j = 6;
+                                }
                             }
                         }
 
-                        Port inputPort = null;
-                        switch (inputPortIndex)
+                        if (outputPortIndex == -1 && inputPort == null)
                         {
-                            case 0:
-                                inputPort = childView.Input1;
-                                break;
-                            case 1:
-                                inputPort = childView.Input2;
-                                break;
-                            case 2:
-                                inputPort = childView.Input3;
-                                break;
-                            case 3:
-                                inputPort = childView.Input4;
-                                break;
+                            for (var j = 0; j < 6; j++)
+                            {
+                                for (var k = 0; k < 6; k++)
+                                {
+                                    var supposedOutputPort = GetPortByIndex(parentView, j, false);
+                                    var supposedInputPort = GetPortByIndex(childView, k, true);
+                                    if (supposedInputPort.portType.Equals(supposedOutputPort.portType))
+                                    {
+                                        inputPortIndex = k;
+                                        inputPort = supposedInputPort;
+                                        outputPortIndex = j;
+                                        k = 6;
+                                        j = 6;
+                                    }
+                                }
+                            }
                         }
 
-                        Port outputPort = null;
-                        switch (outputPortIndex)
-                        {
-                            case 0:
-                                outputPort = parentView.Output1;
-                                break;
-                            case 1:
-                                outputPort = parentView.Output2;
-                                break;
-                        }
+                        var outputPort = GetPortByIndex(parentView, outputPortIndex, false);
 
                         if (inputPort != null && outputPort != null)
                         {
@@ -148,6 +137,27 @@ namespace Scripts.BehaviorGraph
                     }
                 }
             });
+        }
+
+        private Port GetPortByIndex(BehaviorNodeView nodeView, int index, bool isInput)
+        {
+            switch (index)
+            {
+                case 0:
+                    return isInput ? nodeView.Input1 : nodeView.Output1;
+                case 1:
+                    return isInput ? nodeView.Input2 : nodeView.Output2;
+                case 2:
+                    return isInput ? nodeView.Input3 : nodeView.Output3;
+                case 3:
+                    return isInput ? nodeView.Input4 : nodeView.Output4;
+                case 4:
+                    return isInput ? nodeView.Input5 : nodeView.Output5;
+                case 5:
+                    return isInput ? nodeView.Input6 : nodeView.Output6;
+            }
+
+            return null;
         }
 
         internal BehaviorNodeView FindNodeView(BehaviorNode node)
@@ -206,10 +216,34 @@ namespace Scripts.BehaviorGraph
                     {
                         inputIndex = 3;
                     }
+                    else if (edge.input.Equals(childNodeView.Input5))
+                    {
+                        inputIndex = 4;
+                    }
+                    else if (edge.input.Equals(childNodeView.Input6))
+                    {
+                        inputIndex = 5;
+                    }
 
                     if (edge.output.Equals(parentNodeView.Output2))
                     {
                         outputIndex = 1;
+                    }
+                    else if (edge.output.Equals(parentNodeView.Output3))
+                    {
+                        outputIndex = 2;
+                    }
+                    else if (edge.output.Equals(parentNodeView.Output4))
+                    {
+                        outputIndex = 3;
+                    }
+                    else if (edge.output.Equals(parentNodeView.Output5))
+                    {
+                        outputIndex = 4;
+                    }
+                    else if (edge.output.Equals(parentNodeView.Output6))
+                    {
+                        outputIndex = 5;
                     }
                     Tree.AddChild(parentNodeView.Node, outputIndex, childNodeView.Node, inputIndex);
                 }

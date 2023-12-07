@@ -31,9 +31,8 @@ namespace Scripts.BehaviorTree
 
         protected override void OnStart(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
         {
-            var characterState = (SmartCharacterState) internalState;
             var matchCount = 0;
-            foreach (var character in characterState.Characters)
+            foreach (var character in internalState.Characters)
             {
                 if (character is SmartCharacter)
                 {
@@ -46,7 +45,7 @@ namespace Scripts.BehaviorTree
             }
             var randomIndex = Random.Range(0, matchCount);
             var i = 0;
-            foreach (var character in characterState.Characters)
+            foreach (var character in internalState.Characters)
             {
                 if (character is SmartCharacter)
                 {

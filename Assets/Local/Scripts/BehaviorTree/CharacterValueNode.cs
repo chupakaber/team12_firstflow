@@ -12,6 +12,7 @@ namespace Scripts.BehaviorTree
             TARGET_POSITION = 3,
             TARGET_OFFSET = 4,
             SPAWN_POINT = 5,
+            TYPE = 6
         }
 
         public FieldNameEnum FieldName;
@@ -26,12 +27,12 @@ namespace Scripts.BehaviorTree
         public CharacterValueNode()
         {
             Input1Type = typeof(SmartCharacter);
-            Input2Type = typeof(int);
+            Input2Type = typeof(float);
             Output1Type = typeof(float);
             Output2Type = typeof(Vector3);
         }
 
-        public float GetOutputFloat()
+        public float GetOutputFloat(int index = 0)
         {
             switch (FieldName)
             {
@@ -41,6 +42,8 @@ namespace Scripts.BehaviorTree
                     return Character.ItemLimit;
                 case FieldNameEnum.TARGET_OFFSET:
                     return Character.FollowingOffset;
+                case FieldNameEnum.TYPE:
+                    return (float) Character.CharacterType;
             }
 
             return 0f;

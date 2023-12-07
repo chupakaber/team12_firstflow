@@ -9,6 +9,8 @@ namespace Scripts.BehaviorTree
             POSITION = 0,
             PICKING_UP_AREA_POSITION = 1,
             ITEMS_AMOUNT = 2,
+            LEVEL = 3,
+            ID = 4,
         }
 
         public FieldNameEnum FieldName;
@@ -27,12 +29,16 @@ namespace Scripts.BehaviorTree
             Output2Type = typeof(Vector3);
         }
 
-        public float GetOutputFloat()
+        public float GetOutputFloat(int index = 0)
         {
             switch (FieldName)
             {
                 case FieldNameEnum.ITEMS_AMOUNT:
                     return _building.Items.GetAmount();
+                case FieldNameEnum.LEVEL:
+                    return _building.Level;
+                case FieldNameEnum.ID:
+                    return _building.ID;
             }
 
             return 0f;

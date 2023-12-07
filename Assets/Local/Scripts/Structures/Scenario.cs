@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Scripts.BehaviorTree;
 using UnityEngine;
 
 namespace Scripts
@@ -10,5 +11,7 @@ namespace Scripts
         
         [Header("Runtime")]
         public int LastStageIndex;
+
+        public BehaviorTreeRunner BehaviorTreeRunner;
     }
 }
