@@ -62,6 +62,8 @@ namespace Scripts
         private CharactersStatsUpSystem _charactersStatsUpSystem = new CharactersStatsUpSystem();
         private ScenarioSystem _scenarioSystem = new ScenarioSystem();
         private MercenaryCampSystem _mercenaryCampSystem = new MercenaryCampSystem();
+        private CharacterSpawnSystem _characterSpawnSystem = new CharacterSpawnSystem();
+        private SaveLoadSystem _saveLoadSystem = new SaveLoadSystem();
 
         public void Start()
         {
@@ -123,6 +125,8 @@ namespace Scripts
             AddSystem(_charactersStatsUpSystem);
             AddSystem(_scenarioSystem);
             AddSystem(_mercenaryCampSystem);
+            AddSystem(_characterSpawnSystem);
+            AddSystem(_saveLoadSystem);
 
             _container.AddLink(_eventBus, "EventBus");
             _container.AddLink(_characters, "Characters");
