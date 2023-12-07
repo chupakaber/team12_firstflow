@@ -9,14 +9,21 @@ namespace Scripts.BehaviorTree
         [HideInInspector]
         public override Color DefaultColor { get { return new Color(0.35f, 0.5f, 0.2f, 1f); } }
 
+        public int ID = -1;
         public int MinimumLevel = 0;
+        public int MaximumLevel = 1000;
         public List<ItemType> ProduceItemTypes = new List<ItemType>();
         public List<ItemType> ConsumeItemTypes = new List<ItemType>();
         public bool ProductionAreaNeeded;
         public bool PickingUpAreaNeeded;
         public bool UnloadingAreaNeeded;
 
+        [Header("Cycle")]
+        public bool ForEach = false;
+
         private Building _output;
+        private List<Building> _outputForEach = new List<Building>();
+        private int _currentIndex;
 
         public RandomBuildingNode()
         {
@@ -26,32 +33,49 @@ namespace Scripts.BehaviorTree
 
         public Building GetOutputBuilding()
         {
+            if (ForEach)
+            {
+                return _outputForEach[_currentIndex];
+            }
+
             return _output;
         }
 
         protected override void OnStart(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
         {
-            var characterState = (SmartCharacterState) internalState;
+            _outputForEach.Clear();
+
             var activeBuildingCount = 0;
-            foreach (var building in characterState.Buildings)
+            foreach (var building in internalState.Buildings)
             {
                 if (CheckConstraints(building))
                 {
-                    activeBuildingCount++;
+                    if (ForEach)
+                    {
+                        _outputForEach.Add(building);
+                    }
+                    else
+                    {
+                        activeBuildingCount++;
+                    }
                 }
             }
-            var randomIndex = Random.Range(0, activeBuildingCount);
-            var i = 0;
-            foreach (var building in characterState.Buildings)
+
+            if (!ForEach)
             {
-                if (CheckConstraints(building))
+                var randomIndex = Random.Range(0, activeBuildingCount);
+                var i = 0;
+                foreach (var building in internalState.Buildings)
                 {
-                    if (i >= randomIndex)
+                    if (CheckConstraints(building))
                     {
-                        _output = building;
-                        break;
+                        if (i >= randomIndex)
+                        {
+                            _output = building;
+                            break;
+                        }
+                        i++;
                     }
-                    i++;
                 }
             }
         }
@@ -67,7 +91,19 @@ namespace Scripts.BehaviorTree
             {
                 var child = Children[i];
                 var childInputIndex = InputTargetIndex[i];
-                child.Run(this, childInputIndex, internalState, currentEvent);
+                if (ForEach)
+                {
+                    _currentIndex = 0;
+                    foreach (var building in _outputForEach)
+                    {
+                        child.Run(this, childInputIndex, internalState, currentEvent);
+                        _currentIndex++;
+                    }
+                }
+                else
+                {
+                    child.Run(this, childInputIndex, internalState, currentEvent);
+                }
             }
 
             return State.SUCCESS;
@@ -75,8 +111,17 @@ namespace Scripts.BehaviorTree
 
         private bool CheckConstraints(Building building)
         {
-            if (building.Level >= MinimumLevel 
-                && (!ProductionAreaNeeded || building.ProductionArea != null)
+            if (ID > -1 && building.ID != ID)
+            {
+                return false;
+            }
+
+            if (building.Level < MinimumLevel || building.Level > MaximumLevel)
+            {
+                return false;
+            }
+
+            if ((!ProductionAreaNeeded || building.ProductionArea != null)
                 && (!PickingUpAreaNeeded || building.PickingUpArea != null)
                 && (!UnloadingAreaNeeded || building.UnloadingArea != null)
                 )

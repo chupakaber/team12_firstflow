@@ -4,6 +4,9 @@ namespace Scripts.BehaviorTree
 {
     public class CooldownNode : BehaviorCompositeNode
     {
+        [HideInInspector]
+        public override Color DefaultColor { get { return new Color(0.6f, 0.6f, 0.6f, 1f); } }
+
         public float Duration = 1f;
         public int TimerIndex = 0;
 

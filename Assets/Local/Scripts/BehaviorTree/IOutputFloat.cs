@@ -2,6 +2,6 @@ namespace Scripts.BehaviorTree
 {
     public interface IOutputFloat
     {
-        float GetOutputFloat();
+        float GetOutputFloat(int index = 0);
     }
 }
