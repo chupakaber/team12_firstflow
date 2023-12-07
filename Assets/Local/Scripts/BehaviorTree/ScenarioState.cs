@@ -12,6 +12,10 @@ namespace Scripts.BehaviorTree
     {
         private const int STRUCTURE_VERSION = 1;
 
+        // Global settings
+        public float MusicVolume = 1f;
+        public float SoundVolume = 1f;
+
         // Global context
         public EventBus EventBus { get; set; }
         public List<Building> Buildings { get; set; }

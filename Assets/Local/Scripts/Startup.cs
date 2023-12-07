@@ -28,6 +28,8 @@ namespace Scripts
         private PoolCollection<Mercenary> _mercenaryPools = new PoolCollection<Mercenary>();
         private UnlockQueue _unlockQueue;
         private Scenario _scenario;
+        private AudioListener _audioListener = new AudioListener();
+        private SoundCollection _soundCollection;
 
         private PlayerInputSystem _playerInputSystem = new PlayerInputSystem();
         private CameraFollowSystem _cameraFollowSystem = new CameraFollowSystem();
@@ -64,6 +66,7 @@ namespace Scripts
         private MercenaryCampSystem _mercenaryCampSystem = new MercenaryCampSystem();
         private CharacterSpawnSystem _characterSpawnSystem = new CharacterSpawnSystem();
         private SaveLoadSystem _saveLoadSystem = new SaveLoadSystem();
+        private SoundSystem _soundSystem = new SoundSystem();
 
         public void Start()
         {
@@ -72,6 +75,8 @@ namespace Scripts
             _uiView = FindObjectOfType<UIView>();
             _unlockQueue = FindObjectOfType<UnlockQueue>();
             _scenario = FindObjectOfType<Scenario>();
+            _audioListener = new GameObject("AudioListener").AddComponent<AudioListener>();
+            _soundCollection = ScriptableObject.Instantiate(Resources.Load<SoundCollection>("Settings/Sounds"));
 
             var names = System.Enum.GetNames(typeof(ItemType));
             var values = (ItemType[])System.Enum.GetValues(typeof(ItemType));
@@ -127,6 +132,7 @@ namespace Scripts
             AddSystem(_mercenaryCampSystem);
             AddSystem(_characterSpawnSystem);
             AddSystem(_saveLoadSystem);
+            AddSystem(_soundSystem);
 
             _container.AddLink(_eventBus, "EventBus");
             _container.AddLink(_characters, "Characters");
@@ -146,6 +152,8 @@ namespace Scripts
             _container.AddLink(_jokerPools, "JokerPools");
             _container.AddLink(_scenario, "Scenario");
             _container.AddLink(_mercenaryPools, "MercenaryPools");
+            _container.AddLink(_audioListener, "AudioListener");
+            _container.AddLink(_soundCollection, "SoundCollection");
             
             _container.Init();
             _eventBus.Init();
