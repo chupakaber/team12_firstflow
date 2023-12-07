@@ -15,6 +15,7 @@
         APPRENTICE = 10,
         BOTTLE_HERO = 11,
         BOTTLE_WORKER = 12,
-        MERCENARY = 13
+        MERCENARY = 13,
+        EMPEROR_SWORD = 14
     }
 }

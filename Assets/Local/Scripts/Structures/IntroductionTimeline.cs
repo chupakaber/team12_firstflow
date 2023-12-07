@@ -1,0 +1,166 @@
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.Playables;
+
+namespace Scripts
+{
+    public class IntroductionTimeline: MonoBehaviour
+    {
+        public EventBus EventBus;
+        public List<SmartCharacter> Actors = new List<SmartCharacter>();
+        public Transform ActorWayPoint;
+        public Transform ActorSoldierWayPoint;
+        public Transform ActorPlayerWayPoint;
+        public Transform CameraWayPoint;
+        public Collider Trigger;
+        public PlayableDirector PlayableDirector;
+        public GameObject Root;
+
+        public Camera Camera;
+
+        public NavMeshPath _path;
+        public Vector3[] _pathCorners = new Vector3[128];
+
+        private int _speedAnimationKey = Animator.StringToHash("Speed");
+
+        public void Start()
+        {
+            _path = new NavMeshPath();
+        }
+
+        public void Update()
+        {
+            CameraMovement();
+        }
+
+        public void FixedUpdate()
+        {
+            Actors[0].TargetPosition = ActorWayPoint.position;
+            Actors[1].TargetPosition = ActorSoldierWayPoint.position;
+            Actors[2].TargetPosition = ActorPlayerWayPoint.position;
+
+            foreach (var character in Actors)
+            {
+                if (character.TargetPosition.sqrMagnitude > float.Epsilon * 2f && character.NavMeshAgent != null)
+                {
+                    var workerPosition = character.transform.position;
+
+                    var toTargetDelta = character.TargetPosition - workerPosition;
+                    toTargetDelta.y = 0f;
+                    var toTargetDistance = toTargetDelta.magnitude;
+
+                    if (toTargetDistance < character.FollowingOffset)
+                    {
+                        character.WorldDirection = Vector3.zero;
+                    }
+                    else
+                    {
+                        var pathPosition = character.TargetPosition;
+
+                        if (character.gameObject.activeInHierarchy)
+                        {
+                            character.NavMeshAgent.enabled = true;
+                            if (character.NavMeshAgent.CalculatePath(character.TargetPosition, _path))
+                            {
+                                var cornersCount = _path.GetCornersNonAlloc(_pathCorners);
+                                if (cornersCount > 1)
+                                {
+                                    pathPosition = _pathCorners[1];
+                                }
+                                else if (cornersCount > 0)
+                                {
+                                    pathPosition = _pathCorners[0];
+                                }
+                            }
+                            character.NavMeshAgent.enabled = false;
+                        }
+
+                        var pathDelta = pathPosition - workerPosition;
+                        // pathDelta.y = 0f;
+                        character.WorldDirection = pathDelta.normalized * Mathf.Min(Mathf.Max(pathDelta.magnitude, 0.1f), 1f);
+
+                        if (Physics.Raycast(character.transform.position + Vector3.up * 1.7f, character.WorldDirection, out var hitInfo2, 2f))
+                        {
+                            if (hitInfo2.collider is CapsuleCollider)
+                            {
+                                character.WorldDirection = Quaternion.Euler(0f, 45f, 0f) * character.WorldDirection;
+                            }
+                        }
+                    }
+                }
+
+                var worldDirection = character.WorldDirection;
+                var horizontalDirection = worldDirection;
+                horizontalDirection.y = 0f;
+
+                var origin = character.transform.position + Vector3.up * 0.75f;
+                var castDirection = horizontalDirection * 0.3f - Vector3.up * 0.75f;
+                var hasHitGround = false;
+                if (Physics.Raycast(origin, castDirection.normalized, out var hitInfo, 1.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+                {
+                    worldDirection = hitInfo.point - character.transform.position;
+                    var worldDirectionY = Mathf.Sign(worldDirection.y) * Mathf.Min(Mathf.Abs(worldDirection.y), 1f);
+                    worldDirection = worldDirection.normalized;
+                    worldDirection.y = worldDirectionY;
+                    hasHitGround = true;
+                }
+
+                var characterRigidbody = character.CharacterRigidbody;
+                var newCharacterVelocity = worldDirection * character.Speed;
+                if (!hasHitGround)
+                {
+                    newCharacterVelocity.y = characterRigidbody.velocity.y;
+                }
+
+                //newCharacterVelocity.y = Mathf.Lerp(characterRigidbody.velocity.y, newCharacterVelocity.y, 0.5f);
+                //newCharacterVelocity.y += characterRigidbody.velocity.y;
+                characterRigidbody.velocity = Vector3.Lerp(characterRigidbody.velocity, newCharacterVelocity, Time.fixedDeltaTime * 8f);
+                character.CharacterAnimator.SetFloat(_speedAnimationKey, (character.CharacterRigidbody.velocity.magnitude - 0.5f) / 4f);
+
+                if (horizontalDirection.sqrMagnitude > 0.1f)
+                {
+                    character.transform.rotation = Quaternion.Lerp(character.transform.rotation, Quaternion.LookRotation(horizontalDirection), Time.fixedDeltaTime * 10f);
+                }
+            }
+        }
+
+        public void ShowEmojiSmile(int characterIndex)
+        {
+            var character = (Character) Actors[characterIndex];
+            EventBus.CallEvent(new ShowEmojiEvent() { Character = character, SpriteIndex = 0 });
+        }
+
+        public void CameraMovement()
+        {
+            var newPosition = Vector3.Lerp(Camera.transform.position, CameraWayPoint.position, Time.deltaTime * 10f);
+            Camera.transform.position = newPosition;
+        }
+
+        public void PlayAnim(int index)
+        {
+            var anim = Actors[index].CharacterAnimator;
+            anim.SetFloat(_speedAnimationKey, 1f);
+        }
+
+        public void StartCutScene() 
+        { 
+            Root.SetActive(true);
+            PlayableDirector.Play();
+            this.enabled = true;
+            Trigger.enabled = false;
+        }
+
+        public void DeactivationCutScene()
+        {
+            Root.SetActive(false);
+            PlayableDirector.Stop();
+            this.enabled = false;
+            foreach(var actor in Actors) 
+            {
+                actor.WorldDirection = Vector3.zero;
+            }
+        }
+    }
+}
