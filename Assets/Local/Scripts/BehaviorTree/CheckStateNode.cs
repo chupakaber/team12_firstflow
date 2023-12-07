@@ -41,26 +41,24 @@ namespace Scripts.BehaviorTree
 
         protected override State OnUpdate(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
         {
-            var characterState = (SmartCharacterState) internalState;
-            
             var success = false;
 
             switch(CompareOperator)
             {
                 case CheckStateOperator.EQUAL:
-                    success = characterState.States[StateID] == Value;
+                    success = internalState.GetState(StateID) == Value;
                     break;
                 case CheckStateOperator.NOT_EQUAL:
-                    success = characterState.States[StateID] != Value;
+                    success = internalState.GetState(StateID) != Value;
                     break;
                 case CheckStateOperator.GREATER:
-                    success = characterState.States[StateID] > Value;
+                    success = internalState.GetState(StateID) > Value;
                     break;
                 case CheckStateOperator.LESS:
-                    success = characterState.States[StateID] < Value;
+                    success = internalState.GetState(StateID) < Value;
                     break;
                 case CheckStateOperator.RANGE:
-                    success = characterState.States[StateID] >= Min && characterState.States[StateID] < Max;
+                    success = internalState.GetState(StateID) >= Min && internalState.GetState(StateID) < Max;
                     break;
             }
 

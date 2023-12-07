@@ -27,6 +27,26 @@ namespace Scripts.BehaviorTree
         public float[] Timers = new float[32];
         public int[] States = new int[32];
 
+        public float GetTimer(int index)
+        {
+            return Timers[index];
+        }
+
+        public int GetState(int index)
+        {
+            return States[index];
+        }
+
+        public void SetTimer(int index, float value)
+        {
+            Timers[index] = value;
+        }
+
+        public void SetState(int index, int value)
+        {
+            States[index] = value;
+        }
+
         public void Pack(ByteBuffer buffer)
         {
             SerializationUtils.Put(buffer, STRUCTURE_VERSION);

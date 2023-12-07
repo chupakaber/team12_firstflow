@@ -33,15 +33,13 @@ namespace Scripts.BehaviorTree
 
         protected override State OnUpdate(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
         {
-            var characterState = (SmartCharacterState) internalState;
-            
             if (Method == SetStateMethod.OVERWRITE)
             {
-                characterState.States[StateID] = Value;
+                internalState.SetState(StateID, Value);
             }
             else if (Method == SetStateMethod.INCREMENT)
             {
-                characterState.States[StateID] += Value;
+                internalState.SetState(StateID, internalState.GetState(StateID) + Value);
             }
 
             for (var i = 0; i < Children.Count; i++)
