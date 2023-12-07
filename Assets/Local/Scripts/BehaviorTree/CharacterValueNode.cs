@@ -1,3 +1,4 @@
+using Scripts.Enums;
 using UnityEngine;
 
 namespace Scripts.BehaviorTree
@@ -12,35 +13,41 @@ namespace Scripts.BehaviorTree
             TARGET_POSITION = 3,
             TARGET_OFFSET = 4,
             SPAWN_POINT = 5,
+            TYPE = 6
         }
 
         public FieldNameEnum FieldName;
+        public bool IsSecondInputValueNeeded = false;
 
-        [HideInInspector]
-        public SmartCharacter Character;
-        [HideInInspector]
-        public int Index;
-
-        private bool _hasIndexValue;
+        private SmartCharacter _value1;
+        private float _value2;
+        private bool _hasValue1;
+        private bool _hasValue2;
 
         public CharacterValueNode()
         {
             Input1Type = typeof(SmartCharacter);
-            Input2Type = typeof(int);
+            Input2Type = typeof(float);
             Output1Type = typeof(float);
             Output2Type = typeof(Vector3);
         }
 
-        public float GetOutputFloat()
+        public float GetOutputFloat(int index = 0)
         {
             switch (FieldName)
             {
                 case FieldNameEnum.ITEMS_AMOUNT:
-                    return Character.Items.GetAmount();
+                    if (IsSecondInputValueNeeded && _hasValue2)
+                    {
+                        return _value1.Items.GetAmount((ItemType) _value2);
+                    }
+                    return _value1.Items.GetAmount();
                 case FieldNameEnum.ITEM_LIMIT:
-                    return Character.ItemLimit;
+                    return _value1.ItemLimit;
                 case FieldNameEnum.TARGET_OFFSET:
-                    return Character.FollowingOffset;
+                    return _value1.FollowingOffset;
+                case FieldNameEnum.TYPE:
+                    return (float) _value1.CharacterType;
             }
 
             return 0f;
@@ -51,11 +58,11 @@ namespace Scripts.BehaviorTree
             switch (FieldName)
             {
                 case FieldNameEnum.POSITION:
-                    return Character.transform.position;
+                    return _value1.transform.position;
                 case FieldNameEnum.TARGET_POSITION:
-                    return Character.TargetPosition;
+                    return _value1.TargetPosition;
                 case FieldNameEnum.SPAWN_POINT:
-                    return Character.SpawnPoint;
+                    return _value1.SpawnPoint;
             }
 
             return Vector3.zero;
@@ -64,15 +71,14 @@ namespace Scripts.BehaviorTree
         public override void Clear()
         {
             base.Clear();
-            Character = null;
-            _hasIndexValue = false;
+            _value1 = null;
+            _hasValue1 = false;
+            _hasValue2 = false;
         }
 
         private bool IsIndexRequired()
         {
-            // if (FieldName == FieldNameEnum.)
-            // return true;
-            return false;
+            return IsSecondInputValueNeeded;
         }
 
         protected override void OnStart(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
@@ -89,17 +95,18 @@ namespace Scripts.BehaviorTree
             if (inputIndex == 0 && parent is IOutputCharacter)
             {
                 var parentNode = (IOutputCharacter) parent;
-                Character = parentNode.GetOutputCharacter();
+                _value1 = parentNode.GetOutputCharacter();
+                _hasValue1 = true;
             }
 
             if (inputIndex == 1 && parent is IOutputFloat)
             {
                 var parentNode = (IOutputFloat) parent;
-                Index = (int) parentNode.GetOutputFloat();
-                _hasIndexValue = true;
+                _value2 = parentNode.GetOutputFloat();
+                _hasValue2 = true;
             }
             
-            if (Character == null || (!_hasIndexValue && IsIndexRequired()))
+            if (_value1 == null || (!_hasValue2 && IsIndexRequired()))
             {
                 return State.RUNNING;
             }

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Scripts.BehaviorTree
@@ -10,13 +9,18 @@ namespace Scripts.BehaviorTree
 
         public void EventCatch(IEvent currentEvent)
         {
-            Tree.Run(InternalState, currentEvent);
-        }
-
-        public class RunnerState : IBehaviorState
-        {
-            public Character Character;
-            public List<Building> Buildings;
+            foreach (var node in Tree.Nodes)
+            {
+                if (node is EventCatchNode)
+                {
+                    var eventNode = (EventCatchNode) node;
+                    if ($"{eventNode.EventType}Event" == currentEvent.GetType().Name)
+                    {
+                        Tree.RootNode = eventNode;
+                        Tree.Run(InternalState, currentEvent);
+                    }
+                }
+            }
         }
     }
 }

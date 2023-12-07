@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2828463222141206665}
   - component: {fileID: 5536345597310454286}
+  - component: {fileID: 6225423318760260614}
   m_Layer: 0
   m_Name: Scenario
   m_TagString: Untagged
@@ -44,5 +45,128 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b99e889c5e6bd243a6fc020d0156de4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Stages: []
+  Stages:
+  - Conditions:
+    - Type: 2
+      CompareType: 2
+      Transform: {fileID: 0}
+      Character: {fileID: 0}
+      Building: {fileID: 0}
+      Value: 0
+    Actions:
+    - Type: 1
+      Transform: {fileID: 0}
+      Character: {fileID: 0}
+      Building: {fileID: 0}
+      Value: 0
+    - Type: 1
+      Transform: {fileID: 0}
+      Character: {fileID: 0}
+      Building: {fileID: 0}
+      Value: 0
+    ReactOnEvent: 2
+    Completed: 0
+  - Conditions:
+    - Type: 2
+      CompareType: 2
+      Transform: {fileID: 0}
+      Character: {fileID: 0}
+      Building: {fileID: 0}
+      Value: 0
+    Actions:
+    - Type: 2
+      Transform: {fileID: 0}
+      Character: {fileID: 0}
+      Building: {fileID: 0}
+      Value: 0
+    ReactOnEvent: 2
+    Completed: 0
+  - Conditions:
+    - Type: 2
+      CompareType: 2
+      Transform: {fileID: 0}
+      Character: {fileID: 0}
+      Building: {fileID: 0}
+      Value: 0
+    Actions:
+    - Type: 2
+      Transform: {fileID: 0}
+      Character: {fileID: 0}
+      Building: {fileID: 0}
+      Value: 0
+    ReactOnEvent: 1
+    Completed: 0
+  - Conditions: []
+    Actions:
+    - Type: 3
+      Transform: {fileID: 0}
+      Character: {fileID: 0}
+      Building: {fileID: 0}
+      Value: 0
+    ReactOnEvent: 1
+    Completed: 0
+  - Conditions:
+    - Type: 2
+      CompareType: 2
+      Transform: {fileID: 0}
+      Character: {fileID: 0}
+      Building: {fileID: 0}
+      Value: 0
+    Actions:
+    - Type: 3
+      Transform: {fileID: 0}
+      Character: {fileID: 0}
+      Building: {fileID: 0}
+      Value: 0
+    - Type: 4
+      Transform: {fileID: 0}
+      Character: {fileID: 0}
+      Building: {fileID: 0}
+      Value: 0
+    ReactOnEvent: 2
+    Completed: 0
+  - Conditions:
+    - Type: 2
+      CompareType: 2
+      Transform: {fileID: 0}
+      Character: {fileID: 0}
+      Building: {fileID: 0}
+      Value: 0
+    Actions:
+    - Type: 3
+      Transform: {fileID: 0}
+      Character: {fileID: 0}
+      Building: {fileID: 0}
+      Value: 0
+    ReactOnEvent: 2
+    Completed: 0
+  - Conditions:
+    - Type: 2
+      CompareType: 2
+      Transform: {fileID: 0}
+      Character: {fileID: 0}
+      Building: {fileID: 0}
+      Value: 0
+    Actions:
+    - Type: 3
+      Transform: {fileID: 0}
+      Character: {fileID: 0}
+      Building: {fileID: 0}
+      Value: 0
+    ReactOnEvent: 2
+    Completed: 0
   LastStageIndex: 0
+  BehaviorTreeRunner: {fileID: 6225423318760260614}
+--- !u!114 &6225423318760260614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5214404042734049583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab1e40299ddca043b2116fc993211a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tree: {fileID: 11400000, guid: a54b334e9f4fd4642b9a38a5cf1005ae, type: 2}

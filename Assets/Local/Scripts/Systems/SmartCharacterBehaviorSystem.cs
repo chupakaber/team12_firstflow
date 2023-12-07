@@ -48,62 +48,61 @@ namespace Scripts
 
                         smartCharacter.BehaviorTree.EventCatch(newEvent);
 
+                        CharacterMoving(smartCharacter);
+                    }
+                }
+            }
+        }
 
+        private void CharacterMoving(SmartCharacter smartCharacter)
+        {
+            if (smartCharacter.TargetPosition.sqrMagnitude > float.Epsilon * 2f)
+            {
+                var workerPosition = smartCharacter.transform.position;
 
+                var toTargetDelta = smartCharacter.TargetPosition - workerPosition;
+                toTargetDelta.y = 0f;
+                var toTargetDistance = toTargetDelta.magnitude;
 
+                if (toTargetDistance < smartCharacter.FollowingOffset)
+                {
+                    smartCharacter.WorldDirection = Vector3.zero;
+                }
+                else
+                {
+                    var pathPosition = smartCharacter.TargetPosition;
 
-
-                    
-                        if (smartCharacter.TargetPosition.sqrMagnitude > float.Epsilon * 2f)
+                    smartCharacter.NavMeshAgent.enabled = true;
+                    if (smartCharacter.NavMeshAgent.CalculatePath(smartCharacter.TargetPosition, _path))
+                    {
+                        var cornersCount = _path.GetCornersNonAlloc(_pathCorners);
+                        if (cornersCount > 1)
                         {
-                            var workerPosition = smartCharacter.transform.position;
-
-                            var toTargetDelta = smartCharacter.TargetPosition - workerPosition;
-                            toTargetDelta.y = 0f;
-                            var toTargetDistance = toTargetDelta.magnitude;
-
-                            if (toTargetDistance < smartCharacter.FollowingOffset)
-                            {
-                                character.WorldDirection = Vector3.zero;
-                            }
-                            else
-                            {
-                                var pathPosition = smartCharacter.TargetPosition;
-
-                                smartCharacter.NavMeshAgent.enabled = true;
-                                if (smartCharacter.NavMeshAgent.CalculatePath(smartCharacter.TargetPosition, _path))
-                                {
-                                    var cornersCount = _path.GetCornersNonAlloc(_pathCorners);
-                                    if (cornersCount > 1)
-                                    {
-                                        pathPosition = _pathCorners[1];
-                                    }
-                                    else if (cornersCount > 0)
-                                    {
-                                        pathPosition = _pathCorners[0];
-                                    }
-                                }
-                                smartCharacter.NavMeshAgent.enabled = false;
-
-                                var pathDelta = pathPosition - workerPosition;
-                                // pathDelta.y = 0f;
-                                character.WorldDirection = pathDelta.normalized * Mathf.Min(Mathf.Max(pathDelta.magnitude, 0.1f), 1f);
-
-                                if (Physics.Raycast(character.transform.position + Vector3.up * 1.7f, character.WorldDirection, out var hitInfo, 2f))
-                                {
-                                    if (hitInfo.collider is CapsuleCollider)
-                                    {
-                                        character.WorldDirection = Quaternion.Euler(0f, 45f, 0f) * character.WorldDirection;
-                                    }
-                                }
-                            }
+                            pathPosition = _pathCorners[1];
                         }
-                        else
+                        else if (cornersCount > 0)
                         {
-                            character.WorldDirection = Vector3.zero;
+                            pathPosition = _pathCorners[0];
+                        }
+                    }
+                    smartCharacter.NavMeshAgent.enabled = false;
+
+                    var pathDelta = pathPosition - workerPosition;
+                    // pathDelta.y = 0f;
+                    smartCharacter.WorldDirection = pathDelta.normalized * Mathf.Min(Mathf.Max(pathDelta.magnitude, 0.1f), 1f);
+
+                    if (Physics.Raycast(smartCharacter.transform.position + Vector3.up * 1.7f, smartCharacter.WorldDirection, out var hitInfo, 2f))
+                    {
+                        if (hitInfo.collider is CapsuleCollider)
+                        {
+                            smartCharacter.WorldDirection = Quaternion.Euler(0f, 45f, 0f) * smartCharacter.WorldDirection;
                         }
                     }
                 }
+            }
+            else
+            {
+                smartCharacter.WorldDirection = Vector3.zero;
             }
         }
     }

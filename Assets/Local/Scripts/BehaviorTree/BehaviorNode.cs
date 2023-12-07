@@ -9,14 +9,26 @@ namespace Scripts.BehaviorTree
         public Type Input2Type;
         public Type Input3Type;
         public Type Input4Type;
+        public Type Input5Type;
+        public Type Input6Type;
         public Type Output1Type;
         public Type Output2Type;
+        public Type Output3Type;
+        public Type Output4Type;
+        public Type Output5Type;
+        public Type Output6Type;
         public virtual string Input1Name { get { return ""; } }
         public virtual string Input2Name { get { return ""; } }
         public virtual string Input3Name { get { return ""; } }
         public virtual string Input4Name { get { return ""; } }
+        public virtual string Input5Name { get { return ""; } }
+        public virtual string Input6Name { get { return ""; } }
         public virtual string Output1Name { get { return ""; } }
         public virtual string Output2Name { get { return ""; } }
+        public virtual string Output3Name { get { return ""; } }
+        public virtual string Output4Name { get { return ""; } }
+        public virtual string Output5Name { get { return ""; } }
+        public virtual string Output6Name { get { return ""; } }
 
         public string Name;
 

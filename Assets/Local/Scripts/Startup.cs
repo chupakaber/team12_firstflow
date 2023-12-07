@@ -28,6 +28,8 @@ namespace Scripts
         private PoolCollection<Mercenary> _mercenaryPools = new PoolCollection<Mercenary>();
         private UnlockQueue _unlockQueue;
         private Scenario _scenario;
+        private AudioListener _audioListener = new AudioListener();
+        private SoundCollection _soundCollection;
 
         private PlayerInputSystem _playerInputSystem = new PlayerInputSystem();
         private CameraFollowSystem _cameraFollowSystem = new CameraFollowSystem();
@@ -43,7 +45,6 @@ namespace Scripts
         private BuildingConstructionSystem _buildingConstructionSystem = new BuildingConstructionSystem();
         private BuildingProgressBarSystem _buildingProgressBarSystem = new BuildingProgressBarSystem();
         private BuildingUpgradeSystem _buildingUpgradeSystem = new BuildingUpgradeSystem();
-        private BuildingUnlockSystem _buildingUnlockSystem = new BuildingUnlockSystem();
         private AlchemicSystem _alchemicSystem = new AlchemicSystem();
         private WorkerAssignSystem _workerAssignSystem = new WorkerAssignSystem();
         private WorkerSpawnSystem _workerSpawnSystem = new WorkerSpawnSystem();
@@ -63,6 +64,9 @@ namespace Scripts
         private CharactersStatsUpSystem _charactersStatsUpSystem = new CharactersStatsUpSystem();
         private ScenarioSystem _scenarioSystem = new ScenarioSystem();
         private MercenaryCampSystem _mercenaryCampSystem = new MercenaryCampSystem();
+        private CharacterSpawnSystem _characterSpawnSystem = new CharacterSpawnSystem();
+        private SaveLoadSystem _saveLoadSystem = new SaveLoadSystem();
+        private SoundSystem _soundSystem = new SoundSystem();
         private CutSceneSystem _cutSceneSystem = new CutSceneSystem();
 
         public void Start()
@@ -72,6 +76,8 @@ namespace Scripts
             _uiView = FindObjectOfType<UIView>();
             _unlockQueue = FindObjectOfType<UnlockQueue>();
             _scenario = FindObjectOfType<Scenario>();
+            _audioListener = new GameObject("AudioListener").AddComponent<AudioListener>();
+            _soundCollection = ScriptableObject.Instantiate(Resources.Load<SoundCollection>("Settings/Sounds"));
 
             var names = System.Enum.GetNames(typeof(ItemType));
             var values = (ItemType[])System.Enum.GetValues(typeof(ItemType));
@@ -106,7 +112,6 @@ namespace Scripts
             AddSystem(_buildingConstructionSystem);
             AddSystem(_buildingPickUpSystem);
             AddSystem(_buildingProgressBarSystem);
-            AddSystem(_buildingUnlockSystem);
             AddSystem(_alchemicSystem);
             AddSystem(_workerAssignSystem);
             AddSystem(_workerSpawnSystem);
@@ -126,6 +131,9 @@ namespace Scripts
             AddSystem(_charactersStatsUpSystem);
             AddSystem(_scenarioSystem);
             AddSystem(_mercenaryCampSystem);
+            AddSystem(_characterSpawnSystem);
+            AddSystem(_saveLoadSystem);
+            AddSystem(_soundSystem);
             AddSystem(_cutSceneSystem);
 
             _container.AddLink(_eventBus, "EventBus");
@@ -146,6 +154,8 @@ namespace Scripts
             _container.AddLink(_jokerPools, "JokerPools");
             _container.AddLink(_scenario, "Scenario");
             _container.AddLink(_mercenaryPools, "MercenaryPools");
+            _container.AddLink(_audioListener, "AudioListener");
+            _container.AddLink(_soundCollection, "SoundCollection");
             
             _container.Init();
             _eventBus.Init();
@@ -156,9 +166,6 @@ namespace Scripts
             _characters[0].ResizeBagOfTries(_characters[0].BaseBagOfTriesCapacity);
 
             _eventBus.CallEvent(new StartEvent());
-
-            _eventBus.CallEvent(new AddItemEvent() { ItemType = ItemType.GOLD, Count = 50, Unit = _characters[0]});
-            //_eventBus.CallEvent(new AddItemEvent() { ItemType = ItemType.WOOD, Count = 100, Unit = _characters[0]});
         }
 
         public void Update()

@@ -11,11 +11,19 @@ namespace Scripts.BehaviorGraph
 {
     public class BehaviorGraphView : GraphView
     {
+        public class EdgeLabel
+        {
+            public Edge Edge;
+            public Label Label;
+        }
+
         public new class UxmlFactory : UxmlFactory<BehaviorGraphView, UxmlTraits> {}
 
         public Action<BehaviorNodeView> OnNodeSelected;
 
         public BehaviorTree.BehaviorTree Tree;
+        
+        private List<EdgeLabel> EdgeLabels = new List<EdgeLabel>();
 
         public BehaviorGraphView()
         {
@@ -61,6 +69,18 @@ namespace Scripts.BehaviorGraph
 
             Tree.Nodes.ForEach(n => CreateNodeView(n));
 
+            foreach (var edgeLabel in EdgeLabels)
+            {
+                if (edgeLabel != null)
+                {
+                    if (edgeLabel.Label != null)
+                    {
+                        edgeLabel.Edge.Remove(edgeLabel.Label);
+                    }
+                }
+            }
+            EdgeLabels.Clear();
+
             Tree.Nodes.ForEach(n => {
                 var children = Tree.GetChildren(n);
 
@@ -92,62 +112,124 @@ namespace Scripts.BehaviorGraph
                             inputPortIndex = ((BehaviorDecoratorNode) parentView.Node).InputTargetIndex;
                         }
 
-                        if (outputPortIndex == -1)
+                        var inputPort = GetPortByIndex(childView, inputPortIndex, true);
+
+                        if (outputPortIndex == -1 && inputPort != null)
                         {
-                            if (inputPortIndex == 0 && childView.Input1.portType.Equals(parentView.Output1.portType))
+                            for (var j = 0; j < 6; j++)
                             {
-                                outputPortIndex = 0;
-                            }
-                            else if (inputPortIndex == 1 && childView.Input2.portType.Equals(parentView.Output1.portType))
-                            {
-                                outputPortIndex = 0;
-                            }
-                            else if (inputPortIndex == 0 && childView.Input1.portType.Equals(parentView.Output2.portType))
-                            {
-                                outputPortIndex = 1;
-                            }
-                            else if (inputPortIndex == 1 && childView.Input2.portType.Equals(parentView.Output2.portType))
-                            {
-                                outputPortIndex = 1;
+                                var supposedOutputPort = GetPortByIndex(parentView, j, false);
+                                if (inputPort.portType.Equals(supposedOutputPort.portType))
+                                {
+                                    outputPortIndex = j;
+                                    j = 6;
+                                }
                             }
                         }
 
-                        Port inputPort = null;
-                        switch (inputPortIndex)
+                        if (outputPortIndex == -1 && inputPort == null)
                         {
-                            case 0:
-                                inputPort = childView.Input1;
-                                break;
-                            case 1:
-                                inputPort = childView.Input2;
-                                break;
-                            case 2:
-                                inputPort = childView.Input3;
-                                break;
-                            case 3:
-                                inputPort = childView.Input4;
-                                break;
+                            for (var j = 0; j < 6; j++)
+                            {
+                                for (var k = 0; k < 6; k++)
+                                {
+                                    var supposedOutputPort = GetPortByIndex(parentView, j, false);
+                                    var supposedInputPort = GetPortByIndex(childView, k, true);
+                                    if (supposedInputPort.portType.Equals(supposedOutputPort.portType))
+                                    {
+                                        inputPortIndex = k;
+                                        inputPort = supposedInputPort;
+                                        outputPortIndex = j;
+                                        k = 6;
+                                        j = 6;
+                                    }
+                                }
+                            }
                         }
 
-                        Port outputPort = null;
-                        switch (outputPortIndex)
-                        {
-                            case 0:
-                                outputPort = parentView.Output1;
-                                break;
-                            case 1:
-                                outputPort = parentView.Output2;
-                                break;
-                        }
+                        var outputPort = GetPortByIndex(parentView, outputPortIndex, false);
 
                         if (inputPort != null && outputPort != null)
                         {
                             var edge = outputPort.ConnectTo(inputPort);
+
+                            if (parentView.Node is BehaviorCompositeNode)
+                            {
+                                var compositeNode = (BehaviorCompositeNode) parentView.Node;
+                                if (compositeNode.Children.Count > 1)
+                                {
+                                    var edgeLabel = new Label();
+                                    var childIndex = 0;
+                                    foreach (var child2 in compositeNode.Children)
+                                    {
+                                        if (child2.Equals(childView.Node))
+                                        {
+                                            break;
+                                        }
+                                        childIndex++;
+                                    }
+                                    edgeLabel.text = childIndex.ToString();
+                                    edgeLabel.style.backgroundColor = new StyleColor() { value = new UnityEngine.Color(0.1f, 0.1f, 0.1f, 1f) };
+                                    edgeLabel.style.paddingLeft = 6;
+                                    edgeLabel.style.paddingTop = 6;
+                                    edgeLabel.style.paddingRight = 6;
+                                    edgeLabel.style.paddingBottom = 6;
+                                    edgeLabel.style.borderTopLeftRadius = 10;
+                                    edgeLabel.style.borderTopRightRadius = 10;
+                                    edgeLabel.style.borderBottomRightRadius = 10;
+                                    edgeLabel.style.borderBottomLeftRadius = 10;
+                                    EdgeLabels.Add(new EdgeLabel() { Edge = edge, Label = edgeLabel });
+                                    edge.Add(edgeLabel);
+                                }
+                            }
+
                             AddElement(edge);
                         }
                     }
                 }
             });
+        }
+
+        public override void HandleEvent(EventBase evt)
+        {
+            base.HandleEvent(evt);
+            SetEdgeLabelPosition();
+        }
+
+        private void SetEdgeLabelPosition()
+        {
+            foreach (var label in EdgeLabels)
+            {
+                if (label.Edge != null && label.Edge.input != null && label.Edge.output != null && label.Label != null)
+                {
+                    var rect = new UnityEngine.Rect();
+                    var offset = (label.Edge.input.LocalToWorld(rect).center + label.Edge.output.LocalToWorld(rect).center) / 2f;
+                    offset = label.Edge.WorldToLocal(offset);
+                    label.Label.style.left = offset.x + 50f;
+                    label.Label.style.top = offset.y - 5f;
+                }
+            }
+        }
+
+        private Port GetPortByIndex(BehaviorNodeView nodeView, int index, bool isInput)
+        {
+            switch (index)
+            {
+                case 0:
+                    return isInput ? nodeView.Input1 : nodeView.Output1;
+                case 1:
+                    return isInput ? nodeView.Input2 : nodeView.Output2;
+                case 2:
+                    return isInput ? nodeView.Input3 : nodeView.Output3;
+                case 3:
+                    return isInput ? nodeView.Input4 : nodeView.Output4;
+                case 4:
+                    return isInput ? nodeView.Input5 : nodeView.Output5;
+                case 5:
+                    return isInput ? nodeView.Input6 : nodeView.Output6;
+            }
+
+            return null;
         }
 
         internal BehaviorNodeView FindNodeView(BehaviorNode node)
@@ -206,10 +288,34 @@ namespace Scripts.BehaviorGraph
                     {
                         inputIndex = 3;
                     }
+                    else if (edge.input.Equals(childNodeView.Input5))
+                    {
+                        inputIndex = 4;
+                    }
+                    else if (edge.input.Equals(childNodeView.Input6))
+                    {
+                        inputIndex = 5;
+                    }
 
                     if (edge.output.Equals(parentNodeView.Output2))
                     {
                         outputIndex = 1;
+                    }
+                    else if (edge.output.Equals(parentNodeView.Output3))
+                    {
+                        outputIndex = 2;
+                    }
+                    else if (edge.output.Equals(parentNodeView.Output4))
+                    {
+                        outputIndex = 3;
+                    }
+                    else if (edge.output.Equals(parentNodeView.Output5))
+                    {
+                        outputIndex = 4;
+                    }
+                    else if (edge.output.Equals(parentNodeView.Output6))
+                    {
+                        outputIndex = 5;
                     }
                     Tree.AddChild(parentNodeView.Node, outputIndex, childNodeView.Node, inputIndex);
                 }

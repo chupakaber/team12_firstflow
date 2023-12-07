@@ -4,6 +4,9 @@ namespace Scripts.BehaviorTree
 {
     public class CooldownNode : BehaviorCompositeNode
     {
+        [HideInInspector]
+        public override Color DefaultColor { get { return new Color(0.6f, 0.6f, 0.6f, 1f); } }
+
         public float Duration = 1f;
         public int TimerIndex = 0;
 
@@ -23,8 +26,7 @@ namespace Scripts.BehaviorTree
 
         protected override State OnUpdate(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
         {
-            var state = (SmartCharacterState) internalState;
-            state.Timers[TimerIndex] = Time.time + Duration;
+            internalState.SetTimer(TimerIndex, Time.time + Duration);
 
             for (var i = 0; i < Children.Count; i++)
             {

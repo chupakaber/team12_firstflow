@@ -1,0 +1,2409 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8615354982603162125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  CurrentState: 2
+  Started: 0
+  Guid: 9180b9f4eef18ac4c85e807dbefa59b3
+  Position: {x: 657, y: -506.41162}
+  Child: {fileID: -7038083497428460194}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &-8555681500815899676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: FALSE
+  m_EditorClassIdentifier: 
+  Name: FALSE
+  CurrentState: 2
+  Started: 0
+  Guid: 8ae78706667b6f0428098f02ff94fd4d
+  Position: {x: 657, y: -644.4115}
+  Child: {fileID: 6981035458661905463}
+  InputTargetIndex: 1
+  Value: 0
+--- !u!114 &-8504044626230348622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  CurrentState: 0
+  Started: 0
+  Guid: bb8bd701bb13f69479ae1157c3b10aa6
+  Position: {x: 878, y: 3584}
+  Child: {fileID: -6819193382394763196}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &-7942377139524086092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Blacksmith Gun #1
+  m_EditorClassIdentifier: 
+  Name: Blacksmith Gun #1
+  CurrentState: 0
+  Started: 0
+  Guid: 276fd567d453bbf488114342e3fc3199
+  Position: {x: 878.00006, y: 4129.3154}
+  Children:
+  - {fileID: -2867610989460685401}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 1001
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &-7385179016383726324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Blacksmith Spear #2
+  m_EditorClassIdentifier: 
+  Name: Blacksmith Spear #2
+  CurrentState: 2
+  Started: 0
+  Guid: e4bed16a5721c004d9bcce61d4511d51
+  Position: {x: 1021.0001, y: 1355.1503}
+  Children:
+  - {fileID: 6291186284935950973}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 202
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &-7351338725419423206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: BUILDING ACTIVE
+  m_EditorClassIdentifier: 
+  Name: BUILDING ACTIVE
+  CurrentState: 2
+  Started: 0
+  Guid: a94519d88a17342409bd14710b55dcb6
+  Position: {x: 1119, y: 1830.2106}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
+--- !u!114 &-7206774285323040249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: is Mercenary Camp
+  m_EditorClassIdentifier: 
+  Name: is Mercenary Camp
+  CurrentState: 0
+  Started: 0
+  Guid: 999c0cdce5436d54e9f8241325fea0bb
+  Position: {x: 684, y: 3799}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 5101
+--- !u!114 &-7038083497428460194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: SET ACTIVE
+  m_EditorClassIdentifier: 
+  Name: SET ACTIVE
+  CurrentState: 2
+  Started: 0
+  Guid: b7fd6d821c83dec4a9b569fe6c89305c
+  Position: {x: 992.99994, y: -821.00006}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
+--- !u!114 &-6871581478927585218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  CurrentState: 2
+  Started: 0
+  Guid: 90c7d97b3dce1614cb1236d9a1ffba61
+  Position: {x: 869, y: 3004.2812}
+  Child: {fileID: -2849907328935770525}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &-6838554714718389571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: BUILDING ACTIVE
+  m_EditorClassIdentifier: 
+  Name: BUILDING ACTIVE
+  CurrentState: 0
+  Started: 0
+  Guid: f961533b20c976840b4cc75cab330ad9
+  Position: {x: 1085, y: 5172.3154}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
+--- !u!114 &-6819193382394763196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: BUILDING ACTIVE
+  m_EditorClassIdentifier: 
+  Name: BUILDING ACTIVE
+  CurrentState: 0
+  Started: 0
+  Guid: 4cc4dfd177444a94c93b095436d59836
+  Position: {x: 1081.0001, y: 3605.5508}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
+--- !u!114 &-6335312450085459683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Mine Iron #2
+  m_EditorClassIdentifier: 
+  Name: Mine Iron #2
+  CurrentState: 2
+  Started: 0
+  Guid: 5fab5509344859247a15eac4e1765a33
+  Position: {x: 872, y: 2590.2812}
+  Children:
+  - {fileID: 282604817448008428}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 602
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &-6132305704344402061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: is Blacksmith Gun #1
+  m_EditorClassIdentifier: 
+  Name: is Blacksmith Gun #1
+  CurrentState: 2
+  Started: 0
+  Guid: 90a418976d15e2145a741823e62b2628
+  Position: {x: 648, y: 4650.3154}
+  Children:
+  - {fileID: -4509922457177110931}
+  - {fileID: -5511809471451981528}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 1001
+--- !u!114 &-6022109954018711389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7a1e54833b1674a8da9f1f1c646da6, type: 3}
+  m_Name: UnitToBuilding
+  m_EditorClassIdentifier: 
+  Name: UnitToBuilding
+  CurrentState: 1
+  Started: 1
+  Guid: 5818b001eb551574bb5f9666d4329442
+  Position: {x: 330.98206, y: 1412.0002}
+  Children:
+  - {fileID: 7676272855183715738}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+--- !u!114 &-5924735522799399651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Blacksmith Gun #2
+  m_EditorClassIdentifier: 
+  Name: Blacksmith Gun #2
+  CurrentState: 0
+  Started: 0
+  Guid: 8f612590cf2703b4d936b702fea239bd
+  Position: {x: 872, y: 5378.3154}
+  Children:
+  - {fileID: -4715686752771279581}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 1002
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &-5805590193220071299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: BUILDING ACTIVE
+  m_EditorClassIdentifier: 
+  Name: BUILDING ACTIVE
+  CurrentState: 2
+  Started: 0
+  Guid: 5fb3ae912f379d14f9896401ae3f780d
+  Position: {x: 1181.0001, y: 136}
+  Children:
+  - {fileID: 7351110202259107777}
+  - {fileID: 79279145139786393}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+  FieldName: 1
+--- !u!114 &-5712704683948506701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: UPGRADE AREA STATE
+  m_EditorClassIdentifier: 
+  Name: UPGRADE AREA STATE
+  CurrentState: 2
+  Started: 0
+  Guid: f25a6504d2f703f4cb6ef3613684e3ea
+  Position: {x: 992.99994, y: -599.0001}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 2
+--- !u!114 &-5511809471451981528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  CurrentState: 0
+  Started: 0
+  Guid: 880d06b1cff422a49afcf2094e6b70e2
+  Position: {x: 887.99994, y: 4775.3154}
+  Child: {fileID: -2644504524328597044}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &-5403476248346368495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3ecd1aa3f3d20943b59903525ff0468, type: 3}
+  m_Name: MakeEvent
+  m_EditorClassIdentifier: 
+  Name: MakeEvent
+  CurrentState: 0
+  Started: 0
+  Guid: 18e4219c8f68c464882950ecca3e01b6
+  Position: {x: 1859, y: 3534}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  EventType: 0
+--- !u!114 &-5307251891864269748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Blacksmith Sword #2
+  m_EditorClassIdentifier: 
+  Name: Blacksmith Sword #2
+  CurrentState: 2
+  Started: 0
+  Guid: 077ae1347ad942f4cb796bf9df95cb11
+  Position: {x: 872, y: 2862.2812}
+  Children:
+  - {fileID: -2849907328935770525}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 702
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &-4831020613067529100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: is Shop Spear
+  m_EditorClassIdentifier: 
+  Name: is Shop Spear
+  CurrentState: 2
+  Started: 0
+  Guid: 87abbb1279715af45ad6a9082e4a82fc
+  Position: {x: 647.99994, y: 1856.2106}
+  Children:
+  - {fileID: 3740389130635278567}
+  - {fileID: 6729962076776007561}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 501
+--- !u!114 &-4723788988551724873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3ecd1aa3f3d20943b59903525ff0468, type: 3}
+  m_Name: SHOW TUTORIAL ARROW
+  m_EditorClassIdentifier: 
+  Name: SHOW TUTORIAL ARROW
+  CurrentState: 0
+  Started: 0
+  Guid: 0c10529170f518a49af380eb9fb6ccf6
+  Position: {x: 1081, y: 3376.3008}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  EventType: 3
+--- !u!114 &-4715686752771279581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: BUILDING ACTIVE
+  m_EditorClassIdentifier: 
+  Name: BUILDING ACTIVE
+  CurrentState: 0
+  Started: 0
+  Guid: 9b94a020f47c0694d98b4911aeb093b9
+  Position: {x: 1085, y: 5497.3154}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
+--- !u!114 &-4696284308612256312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3ecd1aa3f3d20943b59903525ff0468, type: 3}
+  m_Name: ADD ITEM TO PLAYER
+  m_EditorClassIdentifier: 
+  Name: ADD ITEM TO PLAYER
+  CurrentState: 2
+  Started: 0
+  Guid: ec4003758bbc70f4e87ac744904e77c6
+  Position: {x: 992.99994, y: -1548}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  EventType: 0
+--- !u!114 &-4546108874527560279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4e20dc7e1fd0945b6c2eead1503a7a, type: 3}
+  m_Name: Vector3Value
+  m_EditorClassIdentifier: 
+  Name: Vector3Value
+  CurrentState: 0
+  Started: 0
+  Guid: 0ba5545d8f295c346876ff25ca97bc77
+  Position: {x: 1718, y: 3356}
+  Child: {fileID: 0}
+  InputTargetIndex: 0
+  Value: {x: 0, y: 0, z: 0}
+--- !u!114 &-4509922457177110931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Mine Powder #1
+  m_EditorClassIdentifier: 
+  Name: Mine Powder #1
+  CurrentState: 0
+  Started: 0
+  Guid: 50875c828a6d21a469c535ac602114b0
+  Position: {x: 878.00006, y: 4618.3154}
+  Children:
+  - {fileID: -2644504524328597044}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 901
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &-4379030704485892277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: SET ACTIVE
+  m_EditorClassIdentifier: 
+  Name: SET ACTIVE
+  CurrentState: 2
+  Started: 0
+  Guid: 9811f2a14cff16d419260af224230752
+  Position: {x: 73.99992, y: -474.00006}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
+--- !u!114 &-3769978082065366939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: GOLD
+  m_EditorClassIdentifier: 
+  Name: GOLD
+  CurrentState: 2
+  Started: 0
+  Guid: 73343498b3fc91d46bf6f79cfa6338a4
+  Position: {x: 657, y: -1649.5}
+  Child: {fileID: -4696284308612256312}
+  InputTargetIndex: 0
+  Value: 7
+--- !u!114 &-3602858623936977405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  CurrentState: 2
+  Started: 0
+  Guid: b79da5caa5a89424ba6cdbeb3b42b0b7
+  Position: {x: 1423.0004, y: 692.00006}
+  Child: {fileID: -2347968199939557470}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &-3440944621254766887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: is Mine Iron #1
+  m_EditorClassIdentifier: 
+  Name: is Mine Iron #1
+  CurrentState: 2
+  Started: 1
+  Guid: af54b73d0b5c12348a89a4ba0c03607e
+  Position: {x: 647.99994, y: 2795.2812}
+  Children:
+  - {fileID: -6335312450085459683}
+  - {fileID: 1764043758724353252}
+  - {fileID: -5307251891864269748}
+  - {fileID: -6871581478927585218}
+  - {fileID: -1155288498380096698}
+  - {fileID: -745600396261593127}
+  - {fileID: -2259253332705084074}
+  - {fileID: -8504044626230348622}
+  InputTargetIndex: 0000000000000000000000000000000000000000000000000000000000000000
+  OutputIndex: 0000000000000000000000000000000000000000000000000000000000000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 601
+--- !u!114 &-3142044043582017051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3ecd1aa3f3d20943b59903525ff0468, type: 3}
+  m_Name: SHOW TUTORIAL ARROW
+  m_EditorClassIdentifier: 
+  Name: SHOW TUTORIAL ARROW
+  CurrentState: 2
+  Started: 0
+  Guid: a412fe676938d5a47bbfe852789cc437
+  Position: {x: 1181.0001, y: -109.35004}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  EventType: 3
+--- !u!114 &-3125669658876018545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  Name: 1
+  CurrentState: 2
+  Started: 0
+  Guid: 0eafd3ee6ab1a2c42adf3081ef41eac5
+  Position: {x: 1506.0002, y: 1129.75}
+  Child: {fileID: -2627182646546462661}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &-2867610989460685401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: BUILDING ACTIVE
+  m_EditorClassIdentifier: 
+  Name: BUILDING ACTIVE
+  CurrentState: 0
+  Started: 0
+  Guid: 36f7ab0935d525449a7bc788de3e2b9b
+  Position: {x: 1105, y: 4206.3154}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
+--- !u!114 &-2849907328935770525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: BUILDING ACTIVE
+  m_EditorClassIdentifier: 
+  Name: BUILDING ACTIVE
+  CurrentState: 2
+  Started: 0
+  Guid: b575d4304b71a824699dd165498ed3dc
+  Position: {x: 1108, y: 2942.2815}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
+--- !u!114 &-2644504524328597044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: BUILDING ACTIVE
+  m_EditorClassIdentifier: 
+  Name: BUILDING ACTIVE
+  CurrentState: 0
+  Started: 0
+  Guid: 7cda6fbc84cf5b444a796c451370abc3
+  Position: {x: 1085, y: 4677.3154}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
+--- !u!114 &-2627182646546462661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: LEVEL
+  m_EditorClassIdentifier: 
+  Name: LEVEL
+  CurrentState: 2
+  Started: 0
+  Guid: 480eccbb0f192754a92c78f35dc26045
+  Position: {x: 1691.0002, y: 1039.5001}
+  Children:
+  - {fileID: 5387108224568673116}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  FieldName: 0
+--- !u!114 &-2570218520783410759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Shop Spear
+  m_EditorClassIdentifier: 
+  Name: Shop Spear
+  CurrentState: 2
+  Started: 0
+  Guid: 691e73307533d66488dd3c86d7562c9a
+  Position: {x: 1415.0004, y: 562.00006}
+  Children:
+  - {fileID: -2347968199939557470}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 301
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &-2347968199939557470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: UPGRADE AREA STATE
+  m_EditorClassIdentifier: 
+  Name: UPGRADE AREA STATE
+  CurrentState: 2
+  Started: 0
+  Guid: e2be23460245caa4097b0e9e5b310512
+  Position: {x: 1594.0002, y: 538.00006}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 2
+--- !u!114 &-2259253332705084074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Mercenary Camp
+  m_EditorClassIdentifier: 
+  Name: Mercenary Camp
+  CurrentState: 0
+  Started: 0
+  Guid: 5806890f885048b4b97b29493c53033c
+  Position: {x: 878, y: 3439}
+  Children:
+  - {fileID: -6819193382394763196}
+  - {fileID: -4723788988551724873}
+  InputTargetIndex: 0000000003000000
+  OutputIndex: 0000000000000000
+  ID: 5101
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &-1600541308831315375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3ecd1aa3f3d20943b59903525ff0468, type: 3}
+  m_Name: SHOW TUTORIAL ARROW
+  m_EditorClassIdentifier: 
+  Name: SHOW TUTORIAL ARROW
+  CurrentState: 2
+  Started: 0
+  Guid: 29da629515dfafc47a8a01199abcc4c9
+  Position: {x: 992.99994, y: -1075.5}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  EventType: 3
+--- !u!114 &-1395450435059199204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: BUILDING ACTIVE
+  m_EditorClassIdentifier: 
+  Name: BUILDING ACTIVE
+  CurrentState: 0
+  Started: 0
+  Guid: 57ea28021dafc7343884e136d3f1b9e0
+  Position: {x: 1081, y: 3203}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
+--- !u!114 &-1155288498380096698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Shop Gun
+  m_EditorClassIdentifier: 
+  Name: Shop Gun
+  CurrentState: 0
+  Started: 0
+  Guid: 6591f45054ed30f40836e67b3b2e5f8e
+  Position: {x: 872, y: 3162}
+  Children:
+  - {fileID: -1395450435059199204}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 801
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &-1100110022450567462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Crossroad #1
+  m_EditorClassIdentifier: 
+  Name: Crossroad #1
+  CurrentState: 2
+  Started: 0
+  Guid: c27e97ff81048e24faaa038857772bd6
+  Position: {x: 890.0001, y: 468.00006}
+  Children:
+  - {fileID: 7121461475204941147}
+  - {fileID: 2411597373435249629}
+  InputTargetIndex: 0000000003000000
+  OutputIndex: 0000000000000000
+  ID: 401
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &-763362115388495133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  CurrentState: 2
+  Started: 0
+  Guid: 1782b4b916d1da14f9917c4fc1db707b
+  Position: {x: 969, y: 2312.1}
+  Child: {fileID: 6235027880062777707}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &-745600396261593127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  CurrentState: 0
+  Started: 0
+  Guid: d741d9020f7833d4591049cca369f51d
+  Position: {x: 875, y: 3292}
+  Child: {fileID: -1395450435059199204}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &-632951355717395570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  CurrentState: 2
+  Started: 0
+  Guid: 172b4345a169a684181795b39fab2d6c
+  Position: {x: 896.00006, y: 157}
+  Child: {fileID: -5805590193220071299}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86fdf436cec7b4f428f6b5071a233cce, type: 3}
+  m_Name: ScenarioBehaviorTree
+  m_EditorClassIdentifier: 
+  RootNode: {fileID: 4331154930001037049}
+  TreeState: 2
+  Nodes:
+  - {fileID: 8194394569516922978}
+  - {fileID: 8381976899621472953}
+  - {fileID: 7676272855183715738}
+  - {fileID: -6022109954018711389}
+  - {fileID: -5805590193220071299}
+  - {fileID: -632951355717395570}
+  - {fileID: 104499170500183665}
+  - {fileID: 664067203439358575}
+  - {fileID: -5712704683948506701}
+  - {fileID: 3977344426625778034}
+  - {fileID: 3399076176584746527}
+  - {fileID: -2347968199939557470}
+  - {fileID: -3602858623936977405}
+  - {fileID: 5841438738442065652}
+  - {fileID: -1100110022450567462}
+  - {fileID: 7121461475204941147}
+  - {fileID: 486145616711342820}
+  - {fileID: -2570218520783410759}
+  - {fileID: 7351110202259107777}
+  - {fileID: 79279145139786393}
+  - {fileID: 3731995567138786580}
+  - {fileID: -8555681500815899676}
+  - {fileID: 6981035458661905463}
+  - {fileID: -8615354982603162125}
+  - {fileID: -7038083497428460194}
+  - {fileID: 8886790934348301404}
+  - {fileID: 3483441604611787690}
+  - {fileID: 1339259269938326370}
+  - {fileID: 5376207450314269398}
+  - {fileID: -3125669658876018545}
+  - {fileID: 5210423880059932244}
+  - {fileID: 6291186284935950973}
+  - {fileID: -2627182646546462661}
+  - {fileID: 2145475386421349559}
+  - {fileID: -7385179016383726324}
+  - {fileID: 4130757019530632598}
+  - {fileID: -4831020613067529100}
+  - {fileID: 7654428882487584643}
+  - {fileID: 6729962076776007561}
+  - {fileID: -763362115388495133}
+  - {fileID: -7351338725419423206}
+  - {fileID: 6235027880062777707}
+  - {fileID: 3740389130635278567}
+  - {fileID: 4762523050755290468}
+  - {fileID: -1600541308831315375}
+  - {fileID: -3142044043582017051}
+  - {fileID: 3286859310765451745}
+  - {fileID: 5387108224568673116}
+  - {fileID: 2003753503639976643}
+  - {fileID: -4696284308612256312}
+  - {fileID: -3769978082065366939}
+  - {fileID: 2249674123417096679}
+  - {fileID: 4331154930001037049}
+  - {fileID: 8452333864028572562}
+  - {fileID: 2437763780295539504}
+  - {fileID: 1079081478843306395}
+  - {fileID: 8948520905379137035}
+  - {fileID: 483209171028888009}
+  - {fileID: 1987274350145776981}
+  - {fileID: 5032631864277934431}
+  - {fileID: -4379030704485892277}
+  - {fileID: 4290981172061556670}
+  - {fileID: 1027129228073164692}
+  - {fileID: -3440944621254766887}
+  - {fileID: -6335312450085459683}
+  - {fileID: 1764043758724353252}
+  - {fileID: 282604817448008428}
+  - {fileID: -6819193382394763196}
+  - {fileID: -1395450435059199204}
+  - {fileID: -2849907328935770525}
+  - {fileID: -7942377139524086092}
+  - {fileID: -2259253332705084074}
+  - {fileID: -1155288498380096698}
+  - {fileID: -5307251891864269748}
+  - {fileID: 7514026449461548579}
+  - {fileID: -8504044626230348622}
+  - {fileID: -745600396261593127}
+  - {fileID: -6871581478927585218}
+  - {fileID: -6132305704344402061}
+  - {fileID: 1254557534727570674}
+  - {fileID: -2867610989460685401}
+  - {fileID: -5924735522799399651}
+  - {fileID: 5767385486531047649}
+  - {fileID: -4509922457177110931}
+  - {fileID: 4238654646168959995}
+  - {fileID: 2566078392216431813}
+  - {fileID: -5511809471451981528}
+  - {fileID: -6838554714718389571}
+  - {fileID: -4715686752771279581}
+  - {fileID: -2644504524328597044}
+  - {fileID: 1019053537765191253}
+  - {fileID: 2411597373435249629}
+  - {fileID: -4723788988551724873}
+  - {fileID: -4546108874527560279}
+  - {fileID: -5403476248346368495}
+  - {fileID: -7206774285323040249}
+--- !u!114 &79279145139786393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Shop Spear
+  m_EditorClassIdentifier: 
+  Name: Shop Spear
+  CurrentState: 2
+  Started: 0
+  Guid: 21e070fa436b69c408040875bdc889e3
+  Position: {x: 1421.0001, y: 34.999954}
+  Children:
+  - {fileID: 5841438738442065652}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 301
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &104499170500183665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d492f90ed5558442a3b7efac521ce7a, type: 3}
+  m_Name: Start\n[ Event ]
+  m_EditorClassIdentifier: 
+  Name: Start\n[ Event ]
+  CurrentState: 2
+  Started: 0
+  Guid: 0df407c3283ba78418d5b6bc6c822b69
+  Position: {x: 524.03253, y: -1173.5001}
+  Children:
+  - {fileID: 664067203439358575}
+  - {fileID: 3977344426625778034}
+  - {fileID: 3731995567138786580}
+  - {fileID: -8555681500815899676}
+  - {fileID: -8615354982603162125}
+  - {fileID: 8886790934348301404}
+  - {fileID: 2003753503639976643}
+  - {fileID: -3769978082065366939}
+  - {fileID: 2249674123417096679}
+  InputTargetIndex: 000000000000000000000000000000000000000000000000000000000000000000000000
+  OutputIndex: 000000000000000000000000000000000000000000000000000000000000000000000000
+  EventType: 0
+--- !u!114 &282604817448008428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: BUILDING ACTIVE
+  m_EditorClassIdentifier: 
+  Name: BUILDING ACTIVE
+  CurrentState: 2
+  Started: 0
+  Guid: c3f7b77a51c34e745aa29797e6bd2ad4
+  Position: {x: 1091, y: 2637.2812}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
+--- !u!114 &483209171028888009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: HONOR
+  m_EditorClassIdentifier: 
+  Name: HONOR
+  CurrentState: 2
+  Started: 0
+  Guid: 845e07e95e7e5db41bdb6644515a4a49
+  Position: {x: -465, y: -290.5}
+  Child: {fileID: 8948520905379137035}
+  InputTargetIndex: 1
+  Value: 8
+--- !u!114 &486145616711342820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  CurrentState: 2
+  Started: 0
+  Guid: 9e5b752e486fbcf49822ed8a73d50689
+  Position: {x: 890.0001, y: 644.00006}
+  Child: {fileID: 7121461475204941147}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &664067203439358575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Sawmill #1
+  m_EditorClassIdentifier: 
+  Name: Sawmill #1
+  CurrentState: 2
+  Started: 0
+  Guid: d624cc656d685b14ab39664313db36fd
+  Position: {x: 662.99994, y: -820.99994}
+  Children:
+  - {fileID: -5712704683948506701}
+  - {fileID: -7038083497428460194}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+  ID: 101
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &1019053537765191253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: is Mine Powder #1
+  m_EditorClassIdentifier: 
+  Name: is Mine Powder #1
+  CurrentState: 2
+  Started: 0
+  Guid: d10917264c9869743a569af2b77008d4
+  Position: {x: 648, y: 5234.3154}
+  Children:
+  - {fileID: 5767385486531047649}
+  - {fileID: 4238654646168959995}
+  - {fileID: -5924735522799399651}
+  - {fileID: 2566078392216431813}
+  InputTargetIndex: 00000000000000000000000000000000
+  OutputIndex: 00000000000000000000000000000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 901
+--- !u!114 &1027129228073164692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  CurrentState: 2
+  Started: 0
+  Guid: 68d8f60015df7894189ce5f3e166f006
+  Position: {x: 1033.5, y: 1134.9998}
+  Child: {fileID: 6291186284935950973}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &1079081478843306395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: EQUAL PLAYER
+  m_EditorClassIdentifier: 
+  Name: EQUAL PLAYER
+  CurrentState: 2
+  Started: 0
+  Guid: 2f3d1df690bb58c48bc2827d1d60a86f
+  Position: {x: -644, y: -305.5}
+  Children:
+  - {fileID: 483209171028888009}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 1
+--- !u!114 &1254557534727570674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: is Shop Gun
+  m_EditorClassIdentifier: 
+  Name: is Shop Gun
+  CurrentState: 2
+  Started: 0
+  Guid: 5ddd7d095a546b24890826eacde03bea
+  Position: {x: 648, y: 4105.3154}
+  Children:
+  - {fileID: -7942377139524086092}
+  - {fileID: 7514026449461548579}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 801
+--- !u!114 &1339259269938326370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: Is Blacksmith Spear #1
+  m_EditorClassIdentifier: 
+  Name: Is Blacksmith Spear #1
+  CurrentState: 2
+  Started: 0
+  Guid: 0dc0ff825a64ea34eacb2e9dbdbcb44f
+  Position: {x: 638.0001, y: 569}
+  Children:
+  - {fileID: -1100110022450567462}
+  - {fileID: 486145616711342820}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 201
+--- !u!114 &1764043758724353252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  CurrentState: 2
+  Started: 0
+  Guid: dbcf858fdcebec247927aa3179887904
+  Position: {x: 872, y: 2730.2812}
+  Child: {fileID: 282604817448008428}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &1987274350145776981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: '> 100'
+  m_EditorClassIdentifier: 
+  Name: '> 100'
+  CurrentState: 2
+  Started: 0
+  Guid: 89f858bd8a944d84fbfa324e5b502227
+  Position: {x: -184.14996, y: -474.00006}
+  Children:
+  - {fileID: 5032631864277934431}
+  - {fileID: 4290981172061556670}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 100
+--- !u!114 &2003753503639976643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee2d23f0b3bf7d745ba48ba9bfd2aec6, type: 3}
+  m_Name: PLAYER
+  m_EditorClassIdentifier: 
+  Name: PLAYER
+  CurrentState: 2
+  Started: 0
+  Guid: c6745dd6f8ac51f439736ffcaf33b42c
+  Position: {x: 657, y: -1309.5}
+  Children:
+  - {fileID: -4696284308612256312}
+  InputTargetIndex: 02000000
+  OutputIndex: 00000000
+  CharacterType: 1
+--- !u!114 &2145475386421349559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Sawmill #2
+  m_EditorClassIdentifier: 
+  Name: Sawmill #2
+  CurrentState: 2
+  Started: 0
+  Guid: eea7a66e06a8ed647ade7be63463e5cb
+  Position: {x: 1020.99976, y: 1235.5}
+  Children:
+  - {fileID: 6291186284935950973}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 102
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &2249674123417096679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: 50
+  m_EditorClassIdentifier: 
+  Name: 50
+  CurrentState: 2
+  Started: 0
+  Guid: bc571e0a56b9fc845afcd96cceebeeae
+  Position: {x: 657, y: -1469.7097}
+  Child: {fileID: -4696284308612256312}
+  InputTargetIndex: 4
+  Value: 50
+--- !u!114 &2411597373435249629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3ecd1aa3f3d20943b59903525ff0468, type: 3}
+  m_Name: SHOW TUTORIAL ARROW
+  m_EditorClassIdentifier: 
+  Name: SHOW TUTORIAL ARROW
+  CurrentState: 2
+  Started: 0
+  Guid: 928284a139b15414fbb337c7b9515edb
+  Position: {x: 1172, y: 326.30008}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  EventType: 3
+--- !u!114 &2437763780295539504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8dbc3f8f60b59f4597b231d9828f6b3, type: 3}
+  m_Name: TYPE
+  m_EditorClassIdentifier: 
+  Name: TYPE
+  CurrentState: 2
+  Started: 0
+  Guid: cfbf4174c7a472d4b8061bbef4836ad7
+  Position: {x: -803, y: -305.5}
+  Children:
+  - {fileID: 1079081478843306395}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  FieldName: 6
+  Character: {fileID: 0}
+  Index: 0
+--- !u!114 &2566078392216431813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  CurrentState: 0
+  Started: 0
+  Guid: f3831770adef0e541be5691d59efb9c3
+  Position: {x: 885.99994, y: 5559.315}
+  Child: {fileID: -4715686752771279581}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &3286859310765451745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3ecd1aa3f3d20943b59903525ff0468, type: 3}
+  m_Name: HIDE TUTORIAL ARROW
+  m_EditorClassIdentifier: 
+  Name: HIDE TUTORIAL ARROW
+  CurrentState: 2
+  Started: 0
+  Guid: d4b7d670258383f4e8f1b9822380481e
+  Position: {x: 2071.0005, y: 1039.5001}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  EventType: 3
+--- !u!114 &3399076176584746527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Sawmill #1
+  m_EditorClassIdentifier: 
+  Name: Sawmill #1
+  CurrentState: 2
+  Started: 0
+  Guid: 042d79361e73cc84da6ba3998aad6225
+  Position: {x: 1415.0004, y: 436.00006}
+  Children:
+  - {fileID: -2347968199939557470}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 101
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &3483441604611787690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: Is Shop Spear
+  m_EditorClassIdentifier: 
+  Name: Is Shop Spear
+  CurrentState: 2
+  Started: 0
+  Guid: d66cb960982035240b16f2b1de921812
+  Position: {x: 638.00006, y: 72.999985}
+  Children:
+  - {fileID: 8381976899621472953}
+  - {fileID: -632951355717395570}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 301
+--- !u!114 &3731995567138786580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: ALL BUILDING
+  m_EditorClassIdentifier: 
+  Name: ALL BUILDING
+  CurrentState: 2
+  Started: 0
+  Guid: 84f4cd58f3997b4449c1690bbf2bd092
+  Position: {x: 652.99994, y: -1174}
+  Children:
+  - {fileID: 6981035458661905463}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: -1
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 1
+--- !u!114 &3740389130635278567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Blacksmith Sword #1
+  m_EditorClassIdentifier: 
+  Name: Blacksmith Sword #1
+  CurrentState: 2
+  Started: 0
+  Guid: ae5921e707c838f44b7f0c956e2d0a78
+  Position: {x: 888.99994, y: 1830.2106}
+  Children:
+  - {fileID: -7351338725419423206}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 701
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &3977344426625778034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: FALSE
+  m_EditorClassIdentifier: 
+  Name: FALSE
+  CurrentState: 2
+  Started: 0
+  Guid: 4204d40ea986bb549a9fb8521f6e1ca9
+  Position: {x: 657, y: -335.41156}
+  Child: {fileID: -5712704683948506701}
+  InputTargetIndex: 1
+  Value: 0
+--- !u!114 &4130757019530632598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Shop Sword
+  m_EditorClassIdentifier: 
+  Name: Shop Sword
+  CurrentState: 2
+  Started: 0
+  Guid: 678f78c407603d9408e2b17e9457219d
+  Position: {x: 1020, y: 1473.5001}
+  Children:
+  - {fileID: 6291186284935950973}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 501
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &4238654646168959995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  CurrentState: 0
+  Started: 0
+  Guid: 90a2e45e11c95c14a8ff8f1018d38d83
+  Position: {x: 902.00006, y: 5234.3154}
+  Child: {fileID: -6838554714718389571}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &4290981172061556670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  CurrentState: 2
+  Started: 0
+  Guid: a13859aefafa9104fa7dfdb3fd1f791e
+  Position: {x: -75.14997, y: -335.00006}
+  Child: {fileID: -4379030704485892277}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &4331154930001037049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d492f90ed5558442a3b7efac521ce7a, type: 3}
+  m_Name: Add Item\n[ Event ]
+  m_EditorClassIdentifier: 
+  Name: Add Item\n[ Event ]
+  CurrentState: 2
+  Started: 0
+  Guid: 70b786ccc5168fc49bd708ebd446c230
+  Position: {x: -1126, y: -502}
+  Children:
+  - {fileID: 8452333864028572562}
+  InputTargetIndex: 00000000
+  OutputIndex: 04000000
+  EventType: 3
+--- !u!114 &4762523050755290468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Mine Iron #1
+  m_EditorClassIdentifier: 
+  Name: Mine Iron #1
+  CurrentState: 2
+  Started: 0
+  Guid: 181d1e432a49f9a4890068a3d8ae3b5d
+  Position: {x: 962, y: 2174.1}
+  Children:
+  - {fileID: 6235027880062777707}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 601
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &5032631864277934431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Alchemic
+  m_EditorClassIdentifier: 
+  Name: Alchemic
+  CurrentState: 2
+  Started: 0
+  Guid: b073624c6e0db8b4f8018b78f1a0f500
+  Position: {x: -75.14997, y: -474.00006}
+  Children:
+  - {fileID: -4379030704485892277}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 5001
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &5210423880059932244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Crossroad #2
+  m_EditorClassIdentifier: 
+  Name: Crossroad #2
+  CurrentState: 2
+  Started: 0
+  Guid: d7f45587c31316e4280144e3e5e11b4e
+  Position: {x: 1013.5, y: 1012.5}
+  Children:
+  - {fileID: 6291186284935950973}
+  - {fileID: -2627182646546462661}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+  ID: 402
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &5376207450314269398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: Is Crossroad #1
+  m_EditorClassIdentifier: 
+  Name: Is Crossroad #1
+  CurrentState: 2
+  Started: 0
+  Guid: 682dd5b2357b49641bd6d493f78ac5e7
+  Position: {x: 638, y: 1052}
+  Children:
+  - {fileID: 5210423880059932244}
+  - {fileID: -3125669658876018545}
+  - {fileID: 2145475386421349559}
+  - {fileID: -7385179016383726324}
+  - {fileID: 4130757019530632598}
+  - {fileID: 1027129228073164692}
+  InputTargetIndex: 000000000000000000000000000000000000000000000000
+  OutputIndex: 000000000000000000000000000000000000000000000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 401
+--- !u!114 &5387108224568673116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4e20dc7e1fd0945b6c2eead1503a7a, type: 3}
+  m_Name: Vector3(0, 0, 0)
+  m_EditorClassIdentifier: 
+  Name: Vector3(0, 0, 0)
+  CurrentState: 2
+  Started: 0
+  Guid: de15ec722908bd84f9da60867539b097
+  Position: {x: 1895.0002, y: 1066.5002}
+  Child: {fileID: 3286859310765451745}
+  InputTargetIndex: 1
+  Value: {x: 0, y: 0, z: 0}
+--- !u!114 &5767385486531047649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Mine Powder #2
+  m_EditorClassIdentifier: 
+  Name: Mine Powder #2
+  CurrentState: 0
+  Started: 0
+  Guid: 85438e59e1fcf2a4eb3259a5e1c396c1
+  Position: {x: 872, y: 5071.3154}
+  Children:
+  - {fileID: -6838554714718389571}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 902
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &5841438738442065652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: UPGRADE AREA STATE
+  m_EditorClassIdentifier: 
+  Name: UPGRADE AREA STATE
+  CurrentState: 2
+  Started: 0
+  Guid: 6758967922fbf8d4e85074ed43b68eca
+  Position: {x: 1564.05, y: 118.49998}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 2
+--- !u!114 &6235027880062777707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: BUILDING ACTIVE
+  m_EditorClassIdentifier: 
+  Name: BUILDING ACTIVE
+  CurrentState: 2
+  Started: 0
+  Guid: c3dfef8f602d76342a1a46f0331886af
+  Position: {x: 1134, y: 2187.1}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
+--- !u!114 &6291186284935950973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: BUILDING ACTIVE
+  m_EditorClassIdentifier: 
+  Name: BUILDING ACTIVE
+  CurrentState: 2
+  Started: 0
+  Guid: 304044466063db24dbeb675877dc14f4
+  Position: {x: 1292.5001, y: 950.50006}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
+--- !u!114 &6729962076776007561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  CurrentState: 2
+  Started: 0
+  Guid: 1c0d57fed8398044b8f84d69d9e2e620
+  Position: {x: 911.9998, y: 1955.2106}
+  Child: {fileID: -7351338725419423206}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &6981035458661905463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: SET ACTIVE
+  m_EditorClassIdentifier: 
+  Name: SET ACTIVE
+  CurrentState: 2
+  Started: 0
+  Guid: 8542549d218b26f4eb317b8f903f0a05
+  Position: {x: 992.99994, y: -1299}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
+--- !u!114 &7121461475204941147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: BUILDING ACTIVE
+  m_EditorClassIdentifier: 
+  Name: BUILDING ACTIVE
+  CurrentState: 2
+  Started: 0
+  Guid: 42f16424be3c92a4a8894df1b2909c12
+  Position: {x: 1172.0001, y: 569}
+  Children:
+  - {fileID: 3399076176584746527}
+  - {fileID: -3602858623936977405}
+  - {fileID: -2570218520783410759}
+  InputTargetIndex: 000000000000000000000000
+  OutputIndex: 000000000000000000000000
+  FieldName: 1
+--- !u!114 &7351110202259107777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: FALSE
+  m_EditorClassIdentifier: 
+  Name: FALSE
+  CurrentState: 2
+  Started: 0
+  Guid: 5b1c06084d3dd3347bee846ac89acd58
+  Position: {x: 1414.0001, y: 181}
+  Child: {fileID: 5841438738442065652}
+  InputTargetIndex: 1
+  Value: 0
+--- !u!114 &7514026449461548579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  CurrentState: 0
+  Started: 0
+  Guid: 93faaf15e78aeaa4999b5d54153b4b0a
+  Position: {x: 887.99994, y: 4298.3154}
+  Child: {fileID: -2867610989460685401}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &7654428882487584643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: is Blacksmith Sword #1
+  m_EditorClassIdentifier: 
+  Name: is Blacksmith Sword #1
+  CurrentState: 2
+  Started: 0
+  Guid: 39e3587bb5c85c049bd036d54a437a08
+  Position: {x: 648.00006, y: 2250.1}
+  Children:
+  - {fileID: 4762523050755290468}
+  - {fileID: -763362115388495133}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 701
+--- !u!114 &7676272855183715738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffe549c032223648851950c2a86c679, type: 3}
+  m_Name: Building ID
+  m_EditorClassIdentifier: 
+  Name: Building ID
+  CurrentState: 2
+  Started: 1
+  Guid: 1775851076bc9d745af9da9911055c18
+  Position: {x: 527, y: 1364}
+  Children:
+  - {fileID: 3483441604611787690}
+  - {fileID: 1339259269938326370}
+  - {fileID: 5376207450314269398}
+  - {fileID: -4831020613067529100}
+  - {fileID: 7654428882487584643}
+  - {fileID: -3440944621254766887}
+  - {fileID: 1254557534727570674}
+  - {fileID: -6132305704344402061}
+  - {fileID: 1019053537765191253}
+  InputTargetIndex: 000000000000000000000000000000000000000000000000000000000000000000000000
+  OutputIndex: 000000000000000000000000000000000000000000000000000000000000000000000000
+  FieldName: 4
+  Index: 0
+--- !u!114 &8194394569516922978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d492f90ed5558442a3b7efac521ce7a, type: 3}
+  m_Name: Construction Complete\n[ Event ]
+  m_EditorClassIdentifier: 
+  Name: Construction Complete\n[ Event ]
+  CurrentState: 2
+  Started: 1
+  Guid: e163fa75810916f44855d0d6f8686a2e
+  Position: {x: 78.98207, y: 1340.0002}
+  Children:
+  - {fileID: -6022109954018711389}
+  InputTargetIndex: 00000000
+  OutputIndex: 04000000
+  EventType: 5
+--- !u!114 &8381976899621472953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Blacksmith Spear #1
+  m_EditorClassIdentifier: 
+  Name: Blacksmith Spear #1
+  CurrentState: 2
+  Started: 0
+  Guid: 61c852da4223a7e43b7ff475d365f1a8
+  Position: {x: 895.6501, y: 1.4999847}
+  Children:
+  - {fileID: -5805590193220071299}
+  - {fileID: -3142044043582017051}
+  InputTargetIndex: 0000000003000000
+  OutputIndex: 0000000000000000
+  ID: 201
+  MinimumLevel: 0
+  MaximumLevel: 0
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &8452333864028572562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4036bf1a2f7f8854fbe15218d84f78c6, type: 3}
+  m_Name: UnitToCharacter
+  m_EditorClassIdentifier: 
+  Name: UnitToCharacter
+  CurrentState: 1
+  Started: 0
+  Guid: aad3e3f0e22552749ac72954cf44243d
+  Position: {x: -977, y: -426.5}
+  Children:
+  - {fileID: 2437763780295539504}
+  - {fileID: 8948520905379137035}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+--- !u!114 &8886790934348301404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Shop Spear
+  m_EditorClassIdentifier: 
+  Name: Shop Spear
+  CurrentState: 2
+  Started: 0
+  Guid: 1081c80f16751d645bb59c6b1dee72dd
+  Position: {x: 657, y: -995.7079}
+  Children:
+  - {fileID: -7038083497428460194}
+  - {fileID: -1600541308831315375}
+  InputTargetIndex: 0000000003000000
+  OutputIndex: 0000000000000000
+  ID: 301
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &8948520905379137035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8dbc3f8f60b59f4597b231d9828f6b3, type: 3}
+  m_Name: AMOUNT
+  m_EditorClassIdentifier: 
+  Name: AMOUNT
+  CurrentState: 2
+  Started: 0
+  Guid: 099094425dc9f0b45a0d39d81c62100d
+  Position: {x: -345, y: -474.5}
+  Children:
+  - {fileID: 1987274350145776981}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  FieldName: 2
+  Character: {fileID: 0}
+  Index: 8

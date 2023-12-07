@@ -7,6 +7,7 @@ namespace Scripts
     public class Building: Unit
     {
         [Header("Building Config")]
+        public int ID = -1;
         public Collider ConstructionArea;
         public Collider ProductionArea;
         public Collider UnloadingArea;
