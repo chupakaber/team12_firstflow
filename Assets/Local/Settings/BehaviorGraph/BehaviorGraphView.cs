@@ -11,11 +11,19 @@ namespace Scripts.BehaviorGraph
 {
     public class BehaviorGraphView : GraphView
     {
+        public class EdgeLabel
+        {
+            public Edge Edge;
+            public Label Label;
+        }
+
         public new class UxmlFactory : UxmlFactory<BehaviorGraphView, UxmlTraits> {}
 
         public Action<BehaviorNodeView> OnNodeSelected;
 
         public BehaviorTree.BehaviorTree Tree;
+        
+        private List<EdgeLabel> EdgeLabels = new List<EdgeLabel>();
 
         public BehaviorGraphView()
         {
@@ -60,6 +68,18 @@ namespace Scripts.BehaviorGraph
             graphViewChanged += OnGraphViewChanged;
 
             Tree.Nodes.ForEach(n => CreateNodeView(n));
+
+            foreach (var edgeLabel in EdgeLabels)
+            {
+                if (edgeLabel != null)
+                {
+                    if (edgeLabel.Label != null)
+                    {
+                        edgeLabel.Edge.Remove(edgeLabel.Label);
+                    }
+                }
+            }
+            EdgeLabels.Clear();
 
             Tree.Nodes.ForEach(n => {
                 var children = Tree.GetChildren(n);
@@ -132,11 +152,63 @@ namespace Scripts.BehaviorGraph
                         if (inputPort != null && outputPort != null)
                         {
                             var edge = outputPort.ConnectTo(inputPort);
+
+                            if (parentView.Node is BehaviorCompositeNode)
+                            {
+                                var compositeNode = (BehaviorCompositeNode) parentView.Node;
+                                if (compositeNode.Children.Count > 1)
+                                {
+                                    var edgeLabel = new Label();
+                                    var childIndex = 0;
+                                    foreach (var child2 in compositeNode.Children)
+                                    {
+                                        if (child2.Equals(childView.Node))
+                                        {
+                                            break;
+                                        }
+                                        childIndex++;
+                                    }
+                                    edgeLabel.text = childIndex.ToString();
+                                    edgeLabel.style.backgroundColor = new StyleColor() { value = new UnityEngine.Color(0.1f, 0.1f, 0.1f, 1f) };
+                                    edgeLabel.style.paddingLeft = 6;
+                                    edgeLabel.style.paddingTop = 6;
+                                    edgeLabel.style.paddingRight = 6;
+                                    edgeLabel.style.paddingBottom = 6;
+                                    edgeLabel.style.borderTopLeftRadius = 10;
+                                    edgeLabel.style.borderTopRightRadius = 10;
+                                    edgeLabel.style.borderBottomRightRadius = 10;
+                                    edgeLabel.style.borderBottomLeftRadius = 10;
+                                    EdgeLabels.Add(new EdgeLabel() { Edge = edge, Label = edgeLabel });
+                                    edge.Add(edgeLabel);
+                                }
+                            }
+
                             AddElement(edge);
                         }
                     }
                 }
             });
+        }
+
+        public override void HandleEvent(EventBase evt)
+        {
+            base.HandleEvent(evt);
+            SetEdgeLabelPosition();
+        }
+
+        private void SetEdgeLabelPosition()
+        {
+            foreach (var label in EdgeLabels)
+            {
+                if (label.Edge != null && label.Edge.input != null && label.Edge.output != null && label.Label != null)
+                {
+                    var rect = new UnityEngine.Rect();
+                    var offset = (label.Edge.input.LocalToWorld(rect).center + label.Edge.output.LocalToWorld(rect).center) / 2f;
+                    offset = label.Edge.WorldToLocal(offset);
+                    label.Label.style.left = offset.x + 50f;
+                    label.Label.style.top = offset.y - 5f;
+                }
+            }
         }
 
         private Port GetPortByIndex(BehaviorNodeView nodeView, int index, bool isInput)
