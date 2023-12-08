@@ -116,6 +116,12 @@ namespace Scripts
                 EventBus.CallEvent(new MovementInputEvent() { Direction = Vector2.zero });
             }
         }
+
+        public void SetVolume(float soundVolume, float musicVolume)
+        {
+            // TODO: set sound sliders position
+        }
+
     }
 
     [System.Serializable]

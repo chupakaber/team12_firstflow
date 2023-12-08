@@ -12,6 +12,10 @@ namespace Scripts.BehaviorTree
     {
         private const int STRUCTURE_VERSION = 1;
 
+        // Global settings
+        public float MusicVolume = 1f;
+        public float SoundVolume = 1f;
+
         // Global context
         public EventBus EventBus { get; set; }
         public List<Building> Buildings { get; set; }
@@ -22,6 +26,26 @@ namespace Scripts.BehaviorTree
         // Entity state
         public float[] Timers = new float[32];
         public int[] States = new int[32];
+
+        public float GetTimer(int index)
+        {
+            return Timers[index];
+        }
+
+        public int GetState(int index)
+        {
+            return States[index];
+        }
+
+        public void SetTimer(int index, float value)
+        {
+            Timers[index] = value;
+        }
+
+        public void SetState(int index, int value)
+        {
+            States[index] = value;
+        }
 
         public void Pack(ByteBuffer buffer)
         {

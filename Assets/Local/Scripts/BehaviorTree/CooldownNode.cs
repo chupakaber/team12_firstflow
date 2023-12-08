@@ -26,8 +26,7 @@ namespace Scripts.BehaviorTree
 
         protected override State OnUpdate(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
         {
-            var state = (SmartCharacterState) internalState;
-            state.Timers[TimerIndex] = Time.time + Duration;
+            internalState.SetTimer(TimerIndex, Time.time + Duration);
 
             for (var i = 0; i < Children.Count; i++)
             {
