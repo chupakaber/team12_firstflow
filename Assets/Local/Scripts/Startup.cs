@@ -67,11 +67,12 @@ namespace Scripts
         private CharacterSpawnSystem _characterSpawnSystem = new CharacterSpawnSystem();
         private SaveLoadSystem _saveLoadSystem = new SaveLoadSystem();
         private SoundSystem _soundSystem = new SoundSystem();
+        private CarnivalBehaviorSystem _carnivalBehaviorSystem = new CarnivalBehaviorSystem();
 
         public void Start()
         {
             _mainCamera = Camera.main;
-            _characters.Add(FindObjectOfType<Character>());
+            _characters.Add(GameObject.Find("Character").GetComponent<SmartCharacter>());
             _uiView = FindObjectOfType<UIView>();
             _unlockQueue = FindObjectOfType<UnlockQueue>();
             _scenario = FindObjectOfType<Scenario>();
@@ -133,6 +134,7 @@ namespace Scripts
             AddSystem(_characterSpawnSystem);
             AddSystem(_saveLoadSystem);
             AddSystem(_soundSystem);
+            AddSystem(_carnivalBehaviorSystem);
 
             _container.AddLink(_eventBus, "EventBus");
             _container.AddLink(_characters, "Characters");
