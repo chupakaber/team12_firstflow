@@ -17,6 +17,7 @@ namespace Scripts
         public float DropGoldMaxTime = 5f;
         public ItemType PickUpItemConstraint = ItemType.NONE;
         public int BaseBagOfTriesCapacity = 8;
+        public bool IsCutSceneActiv;
 
         [Header("Character Runtime")]
         public Vector3 WorldDirection;

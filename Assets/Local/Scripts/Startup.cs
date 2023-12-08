@@ -67,6 +67,7 @@ namespace Scripts
         private CharacterSpawnSystem _characterSpawnSystem = new CharacterSpawnSystem();
         private SaveLoadSystem _saveLoadSystem = new SaveLoadSystem();
         private SoundSystem _soundSystem = new SoundSystem();
+        private CutSceneSystem _cutSceneSystem = new CutSceneSystem();
 
         public void Start()
         {
@@ -133,6 +134,7 @@ namespace Scripts
             AddSystem(_characterSpawnSystem);
             AddSystem(_saveLoadSystem);
             AddSystem(_soundSystem);
+            AddSystem(_cutSceneSystem);
 
             _container.AddLink(_eventBus, "EventBus");
             _container.AddLink(_characters, "Characters");

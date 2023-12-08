@@ -13,7 +13,7 @@ namespace Scripts
         {
             foreach (Character character in Characters) 
             {
-                if (character.CharacterType == Enums.CharacterType.PLAYER) 
+                if (character.CharacterType == Enums.CharacterType.PLAYER && character.IsCutSceneActiv == false) 
                 {
                     var newPosition = character.transform.position + _offSet;
                     newPosition = Vector3.Lerp(Camera.transform.position, newPosition, Time.deltaTime * 10f);
