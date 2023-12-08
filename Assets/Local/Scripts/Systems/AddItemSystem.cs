@@ -85,9 +85,19 @@ namespace Scripts.Systems
                             newEvent.Unit.ItemStackView.ToggleExclusiveItemStack(newEvent.ItemType, true);
                         }
                     }
-                    else if ((newEvent.ItemType == ItemType.BOTTLE_HERO || newEvent.ItemType == ItemType.BOTTLE_WORKER) && newEvent.Unit is Character)
+                    else if ((newEvent.ItemType == ItemType.BOTTLE_HERO || newEvent.ItemType == ItemType.BOTTLE_WORKER) && newEvent.Unit is SmartCharacter)
                     {
                         EventBus.CallEvent(new PlaySoundEvent() { SoundId = 1, IsMusic = false, AttachedTo = newEvent.Unit.transform });
+
+                        var smartCharacter = (SmartCharacter) newEvent.Unit;
+                        if (smartCharacter.LevelDecor != null)
+                        {
+                            var bottlesAmount = smartCharacter.Items.GetAmount(newEvent.ItemType);
+                            for (var j = 0; j < smartCharacter.LevelDecor.Count; j++)
+                            {
+                                smartCharacter.LevelDecor[j].SetActive(j == bottlesAmount);
+                            }
+                        }
                     }
                 }
             }

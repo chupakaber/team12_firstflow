@@ -17,10 +17,12 @@ namespace Scripts
             {
                 case CharacterType.ASSISTANT:
                     newEvent.Character = AssistantPools.Get(0);
+                    newEvent.Character.FollowingOffset = 2.2f;
                 break;
                 case CharacterType.APPRENTICE:
                     newEvent.Character = ApprenticePools.Get(0);
                     newEvent.Character.ResizeBagOfTries(newEvent.Character.BaseBagOfTriesCapacity);
+                    newEvent.Character.FollowingOffset = 2.2f;
                 break;
             }
 

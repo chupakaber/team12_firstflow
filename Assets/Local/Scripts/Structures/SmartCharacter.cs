@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using Scripts.BehaviorTree;
+using System.Collections.Generic;
 
 namespace Scripts
 {
@@ -9,6 +10,7 @@ namespace Scripts
         [Header("SmartCharacter Config")]
         public NavMeshAgent NavMeshAgent;
         public BehaviorTreeRunner BehaviorTree;
+        public List<GameObject> LevelDecor;
 
         [Header("SmartCharacter Runtime")]
         public float LastBehaviorTime;
