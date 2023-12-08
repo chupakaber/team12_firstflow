@@ -152,7 +152,7 @@ namespace Scripts.BehaviorTree
 
             foreach (var character in Characters)
             {
-                if (character.CharacterType == CharacterType.PLAYER)
+                if (character.CharacterType == CharacterType.PLAYER || character.CharacterType == CharacterType.CARNIVAL)
                 {
                     continue;
                 }
@@ -160,6 +160,12 @@ namespace Scripts.BehaviorTree
                 character.Release();
             }
             Characters.Clear();
+
+            var carnival = GameObject.FindObjectsOfType<Carnival>();
+            foreach (var character in carnival)
+            {
+                Characters.Add(character);
+            }
             
             var charactersCount = SerializationUtils.Get(buffer, 0);
             for (var i = 0; i < charactersCount; i++)
