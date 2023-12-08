@@ -14,6 +14,7 @@ namespace Scripts.BehaviorTree
 
         public override void Clear()
         {
+            base.Clear();
             foreach(var child in Children)
             {
                 child.Clear();

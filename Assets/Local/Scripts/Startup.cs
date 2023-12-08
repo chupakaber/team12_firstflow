@@ -1,5 +1,6 @@
 using Scripts.Enums;
 using Scripts.Systems;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -69,8 +70,18 @@ namespace Scripts
         private SoundSystem _soundSystem = new SoundSystem();
         private CarnivalBehaviorSystem _carnivalBehaviorSystem = new CarnivalBehaviorSystem();
 
+        private bool _initialized;
+
         public void Start()
         {
+            StartCoroutine(StartAsync());
+        }
+
+        public IEnumerator StartAsync()
+        {
+            yield return new WaitForFixedUpdate();
+            yield return new WaitForEndOfFrame();
+
             _mainCamera = Camera.main;
             _characters.Add(GameObject.Find("Character").GetComponent<SmartCharacter>());
             _uiView = FindObjectOfType<UIView>();
@@ -98,13 +109,16 @@ namespace Scripts
             _mercenaryPools.Pools.Add(0, new ObjectPool<Mercenary>("Prefabs/Characters/Mercenary"));
             
 
+            AddSystem(_buildingInitSystem);
+            AddSystem(_cameraFollowSystem);
+            AddSystem(_characterSpawnSystem);
+            AddSystem(_scenarioSystem);
+            AddSystem(_saveLoadSystem);
             AddSystem(_addItemSystem);
             AddSystem(_removeItemSystem);
             AddSystem(_addHonorSystem);
             AddSystem(_playerInputSystem);
-            AddSystem(_cameraFollowSystem);
             AddSystem(_triggerSystem);
-            AddSystem(_buildingInitSystem);
             AddSystem(_buildingTriggerSystem);
             AddSystem(_buildingProductionSystem);
             AddSystem(_buildingUpgradeSystem);
@@ -129,10 +143,7 @@ namespace Scripts
             AddSystem(_uiSystem);
             AddSystem(_environmentShaderSystem);
             AddSystem(_charactersStatsUpSystem);
-            AddSystem(_scenarioSystem);
             AddSystem(_mercenaryCampSystem);
-            AddSystem(_characterSpawnSystem);
-            AddSystem(_saveLoadSystem);
             AddSystem(_soundSystem);
             AddSystem(_carnivalBehaviorSystem);
 
@@ -166,15 +177,27 @@ namespace Scripts
             _characters[0].ResizeBagOfTries(_characters[0].BaseBagOfTriesCapacity);
 
             _eventBus.CallEvent(new StartEvent());
+
+            _initialized = true;
         }
 
         public void Update()
         {
+            if (!_initialized)
+            {
+                return;
+            }
+
             _eventBus.CallEvent(new UpdateEvent());
         }
 
         public void FixedUpdate()
         {
+            if (!_initialized)
+            {
+                return;
+            }
+            
             _eventBus.CallEvent(new FixedUpdateEvent());
         }
 

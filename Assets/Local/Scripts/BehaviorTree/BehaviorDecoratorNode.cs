@@ -11,6 +11,7 @@ namespace Scripts.BehaviorTree
 
         public override void Clear()
         {
+            base.Clear();
             if (Child != null)
             {
                 Child.Clear();

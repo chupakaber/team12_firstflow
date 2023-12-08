@@ -10,16 +10,15 @@ namespace Scripts.BehaviorTree
     [CreateAssetMenu(fileName = "BehaviorTree", menuName = "Team 12/Behavior Tree", order = 10000)]
     public class BehaviorTree : ScriptableObject
     {
-        public BehaviorNode RootNode;
         public BehaviorNode.State TreeState = BehaviorNode.State.RUNNING;
         public List<BehaviorNode> Nodes = new List<BehaviorNode>();
 
-        public BehaviorNode.State Run(IBehaviorState internalState, IEvent currentEvent)
+        public BehaviorNode.State Run(BehaviorNode rootNode, IBehaviorState internalState, IEvent currentEvent)
         {
             // if (TreeState == BehaviorNode.State.RUNNING)
             // {
-            TreeState = RootNode.Run(null, 0, internalState, currentEvent);
-            RootNode.Clear();
+            rootNode.Clear();
+            TreeState = rootNode.Run(null, 0, internalState, currentEvent);
             // }
             
             return TreeState;

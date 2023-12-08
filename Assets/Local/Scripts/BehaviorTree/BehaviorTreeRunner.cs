@@ -16,8 +16,7 @@ namespace Scripts.BehaviorTree
                     var eventNode = (EventCatchNode) node;
                     if ($"{eventNode.EventType}Event" == currentEvent.GetType().Name)
                     {
-                        Tree.RootNode = eventNode;
-                        Tree.Run(InternalState, currentEvent);
+                        Tree.Run(eventNode, InternalState, currentEvent);
                     }
                 }
             }
