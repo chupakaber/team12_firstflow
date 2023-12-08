@@ -10,14 +10,18 @@ namespace Scripts
     {
         public EventBus EventBus;
         public List<SmartCharacter> Actors = new List<SmartCharacter>();
-        public Transform ActorWayPoint;
-        public Transform ActorSoldierWayPoint;
-        public Transform ActorPlayerWayPoint;
+        public List<Transform> ActorWayPoints = new List<Transform>();
+        //public Transform ActorWayPoint;
+        //public Transform ActorSoldierWayPoint;
+        //public Transform ActorSoldierTwoWayPoin;
+        //public Transform ActorPlayerWayPoint;
+        //public Transform ActorEmperorWayPoint;
+        //public Transform ActorFirstClerkWayPoint;
+        //public Transform ActorSecondClerkWayPoint;
         public Transform CameraWayPoint;
         public Collider Trigger;
         public PlayableDirector PlayableDirector;
         public GameObject Root;
-
         public Camera Camera;
 
         public NavMeshPath _path;
@@ -37,9 +41,14 @@ namespace Scripts
 
         public void FixedUpdate()
         {
-            Actors[0].TargetPosition = ActorWayPoint.position;
-            Actors[1].TargetPosition = ActorSoldierWayPoint.position;
-            Actors[2].TargetPosition = ActorPlayerWayPoint.position;
+            for(int i = 0; i < Actors.Count; i++)
+            {
+                Actors[i].TargetPosition = ActorWayPoints[i].position;
+            }
+            //Actors[0].TargetPosition = ActorWayPoint.position;
+            //Actors[1].TargetPosition = ActorSoldierWayPoint.position;
+            //Actors[2].TargetPosition = ActorPlayerWayPoint.position;
+            //Actors[3].TargetPosition = ActorSoldierTwoWayPoin.position;
 
             foreach (var character in Actors)
             {
@@ -134,7 +143,7 @@ namespace Scripts
 
         public void CameraMovement()
         {
-            var newPosition = Vector3.Lerp(Camera.transform.position, CameraWayPoint.position, Time.deltaTime * 10f);
+            var newPosition = Vector3.Lerp(Camera.transform.position, CameraWayPoint.position, Time.deltaTime * 5f);
             Camera.transform.position = newPosition;
         }
 
@@ -160,6 +169,17 @@ namespace Scripts
             foreach(var actor in Actors) 
             {
                 actor.WorldDirection = Vector3.zero;
+            }
+        }
+
+        public void IsCatSceneActiv(bool status)
+        {
+            foreach(var actor in Actors)
+            {
+                if(actor.CharacterType == Enums.CharacterType.PLAYER)
+                {
+                    actor.IsCutSceneActiv = status;
+                }
             }
         }
     }
