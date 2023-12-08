@@ -73,10 +73,10 @@ MonoBehaviour:
   m_Name: Blacksmith Gun #1
   m_EditorClassIdentifier: 
   Name: Blacksmith Gun #1
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 276fd567d453bbf488114342e3fc3199
-  Position: {x: 878.00006, y: 4129.3154}
+  Position: {x: 878, y: 3509}
   Children:
   - {fileID: -2867610989460685401}
   InputTargetIndex: 00000000
@@ -157,7 +157,7 @@ MonoBehaviour:
   CurrentState: 2
   Started: 0
   Guid: 999c0cdce5436d54e9f8241325fea0bb
-  Position: {x: 648.00006, y: 3823.9006}
+  Position: {x: 647.99994, y: 3261.14}
   Children:
   - {fileID: -4546108874527560279}
   InputTargetIndex: 00000000
@@ -165,26 +165,6 @@ MonoBehaviour:
   ChildrenForFailure: []
   Operator: 0
   Value: 5101
---- !u!114 &-7130002219421317097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d4e20dc7e1fd0945b6c2eead1503a7a, type: 3}
-  m_Name: Vector3Value
-  m_EditorClassIdentifier: 
-  Name: Vector3Value
-  CurrentState: 2
-  Started: 0
-  Guid: 5f57476ec9b72a9439ca5852401ab761
-  Position: {x: 896, y: 324}
-  Child: {fileID: 2411597373435249629}
-  InputTargetIndex: 1
-  Value: {x: 0, y: 0, z: 0}
 --- !u!114 &-7038083497428460194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,10 +219,10 @@ MonoBehaviour:
   m_Name: BUILDING ACTIVE
   m_EditorClassIdentifier: 
   Name: BUILDING ACTIVE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: f961533b20c976840b4cc75cab330ad9
-  Position: {x: 1085, y: 5172.3154}
+  Position: {x: 1085, y: 4552}
   Children: []
   InputTargetIndex: 
   OutputIndex: 
@@ -314,7 +294,7 @@ MonoBehaviour:
   CurrentState: 2
   Started: 0
   Guid: 90a418976d15e2145a741823e62b2628
-  Position: {x: 648, y: 4650.3154}
+  Position: {x: 648, y: 4030}
   Children:
   - {fileID: -4509922457177110931}
   - {fileID: -5511809471451981528}
@@ -357,10 +337,10 @@ MonoBehaviour:
   m_Name: Blacksmith Gun #2
   m_EditorClassIdentifier: 
   Name: Blacksmith Gun #2
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 8f612590cf2703b4d936b702fea239bd
-  Position: {x: 872, y: 5378.3154}
+  Position: {x: 872, y: 4758}
   Children:
   - {fileID: -4715686752771279581}
   InputTargetIndex: 00000000
@@ -434,14 +414,14 @@ MonoBehaviour:
   CurrentState: 2
   Started: 0
   Guid: f50a8ef70b43e8b4e9012cb4b26589cc
-  Position: {x: -882.8502, y: -122.00004}
+  Position: {x: -884.15, y: -122.000046}
   Children:
   - {fileID: 6849234718002281224}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
   ChildrenForFailure: []
   Operator: 1
-  Value: 100
+  Value: 400
 --- !u!114 &-5511809471451981528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,10 +435,10 @@ MonoBehaviour:
   m_Name: TRUE
   m_EditorClassIdentifier: 
   Name: TRUE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 880d06b1cff422a49afcf2094e6b70e2
-  Position: {x: 887.99994, y: 4775.3154}
+  Position: {x: 888, y: 4155}
   Child: {fileID: -2644504524328597044}
   InputTargetIndex: 1
   Value: 1
@@ -476,9 +456,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: HIDE TUTORIAL ARROW
   CurrentState: 0
-  Started: 0
+  Started: 1
   Guid: 18e4219c8f68c464882950ecca3e01b6
-  Position: {x: 1192.0002, y: 3799}
+  Position: {x: 1192, y: 3236.14}
   Children: []
   InputTargetIndex: 
   OutputIndex: 
@@ -594,10 +574,10 @@ MonoBehaviour:
   m_Name: BUILDING ACTIVE
   m_EditorClassIdentifier: 
   Name: BUILDING ACTIVE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 9b94a020f47c0694d98b4911aeb093b9
-  Position: {x: 1085, y: 5497.3154}
+  Position: {x: 1085, y: 4877}
   Children: []
   InputTargetIndex: 
   OutputIndex: 
@@ -615,8 +595,8 @@ MonoBehaviour:
   m_Name: ADD ITEM TO PLAYER
   m_EditorClassIdentifier: 
   Name: ADD ITEM TO PLAYER
-  CurrentState: 0
-  Started: 1
+  CurrentState: 2
+  Started: 0
   Guid: ec4003758bbc70f4e87ac744904e77c6
   Position: {x: 992.99994, y: -1548}
   Children: []
@@ -636,10 +616,10 @@ MonoBehaviour:
   m_Name: Vector3Value
   m_EditorClassIdentifier: 
   Name: Vector3Value
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 0ba5545d8f295c346876ff25ca97bc77
-  Position: {x: 958.0001, y: 3834.4}
+  Position: {x: 957.99994, y: 3271.14}
   Child: {fileID: -5403476248346368495}
   InputTargetIndex: 1
   Value: {x: 0, y: 0, z: 0}
@@ -656,10 +636,10 @@ MonoBehaviour:
   m_Name: Mine Powder #1
   m_EditorClassIdentifier: 
   Name: Mine Powder #1
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 50875c828a6d21a469c535ac602114b0
-  Position: {x: 878.00006, y: 4618.3154}
+  Position: {x: 878, y: 3998}
   Children:
   - {fileID: -2644504524328597044}
   InputTargetIndex: 00000000
@@ -708,8 +688,8 @@ MonoBehaviour:
   m_Name: CheckState
   m_EditorClassIdentifier: 
   Name: CheckState
-  CurrentState: 0
-  Started: 1
+  CurrentState: 2
+  Started: 0
   Guid: e1b82e1f25c6aa5498a95629f218e50f
   Position: {x: -776, y: -544}
   Children:
@@ -827,7 +807,7 @@ MonoBehaviour:
   CurrentState: 2
   Started: 0
   Guid: 0eafd3ee6ab1a2c42adf3081ef41eac5
-  Position: {x: 1473.3607, y: 1135}
+  Position: {x: 1408.4999, y: 1135}
   Child: {fileID: -2627182646546462661}
   InputTargetIndex: 1
   Value: 1
@@ -874,10 +854,10 @@ MonoBehaviour:
   m_Name: BUILDING ACTIVE
   m_EditorClassIdentifier: 
   Name: BUILDING ACTIVE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 36f7ab0935d525449a7bc788de3e2b9b
-  Position: {x: 1105, y: 4206.3154}
+  Position: {x: 1105, y: 3586}
   Children: []
   InputTargetIndex: 
   OutputIndex: 
@@ -916,7 +896,7 @@ MonoBehaviour:
   m_Name: SetState
   m_EditorClassIdentifier: 
   Name: SetState
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 2543b449acde28f42b7f0e289968c855
   Position: {x: -219.32259, y: -692.0002}
@@ -939,10 +919,10 @@ MonoBehaviour:
   m_Name: BUILDING ACTIVE
   m_EditorClassIdentifier: 
   Name: BUILDING ACTIVE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 7cda6fbc84cf5b444a796c451370abc3
-  Position: {x: 1085, y: 4677.3154}
+  Position: {x: 1085, y: 4057}
   Children: []
   InputTargetIndex: 
   OutputIndex: 
@@ -963,7 +943,7 @@ MonoBehaviour:
   CurrentState: 2
   Started: 0
   Guid: 480eccbb0f192754a92c78f35dc26045
-  Position: {x: 1689.8502, y: 1040.0002}
+  Position: {x: 1663.7648, y: 1040}
   Children:
   - {fileID: 5387108224568673116}
   InputTargetIndex: 00000000
@@ -1143,8 +1123,9 @@ MonoBehaviour:
   Position: {x: 896.0001, y: 461}
   Children:
   - {fileID: 7121461475204941147}
-  InputTargetIndex: 00000000
-  OutputIndex: 00000000
+  - {fileID: 2411597373435249629}
+  InputTargetIndex: 0000000003000000
+  OutputIndex: 0000000000000000
   ID: 401
   MinimumLevel: 0
   MaximumLevel: 1000
@@ -1350,7 +1331,6 @@ MonoBehaviour:
   - {fileID: -7206774285323040249}
   - {fileID: 7103346676938041634}
   - {fileID: 8635350185415230375}
-  - {fileID: -7130002219421317097}
   - {fileID: -3094677957354988740}
   - {fileID: 3849519636383376511}
   - {fileID: -5541444084895029324}
@@ -1433,7 +1413,7 @@ MonoBehaviour:
   m_Name: SetState
   m_EditorClassIdentifier: 
   Name: SetState
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 51175f0777ce21945b7a0b54e69139d1
   Position: {x: 364.40985, y: 138.19247}
@@ -1478,7 +1458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: HONOR
   CurrentState: 2
-  Started: 1
+  Started: 0
   Guid: 845e07e95e7e5db41bdb6644515a4a49
   Position: {x: -1176, y: -370.5}
   Child: {fileID: 8948520905379137035}
@@ -1551,7 +1531,7 @@ MonoBehaviour:
   CurrentState: 2
   Started: 0
   Guid: d10917264c9869743a569af2b77008d4
-  Position: {x: 648, y: 5234.3154}
+  Position: {x: 648, y: 4614}
   Children:
   - {fileID: 5767385486531047649}
   - {fileID: 4238654646168959995}
@@ -1578,7 +1558,7 @@ MonoBehaviour:
   CurrentState: 2
   Started: 0
   Guid: 68d8f60015df7894189ce5f3e166f006
-  Position: {x: 1033.5, y: 1134.9998}
+  Position: {x: 1054.0002, y: 1135}
   Child: {fileID: 6291186284935950973}
   InputTargetIndex: 1
   Value: 1
@@ -1596,7 +1576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: EQUAL PLAYER
   CurrentState: 2
-  Started: 1
+  Started: 0
   Guid: 2f3d1df690bb58c48bc2827d1d60a86f
   Position: {x: -1411.9523, y: -343.50003}
   Children:
@@ -1622,7 +1602,7 @@ MonoBehaviour:
   CurrentState: 2
   Started: 0
   Guid: 5ddd7d095a546b24890826eacde03bea
-  Position: {x: 648, y: 4105.3154}
+  Position: {x: 648, y: 3485}
   Children:
   - {fileID: -7942377139524086092}
   - {fileID: 7514026449461548579}
@@ -1649,11 +1629,10 @@ MonoBehaviour:
   Guid: 0dc0ff825a64ea34eacb2e9dbdbcb44f
   Position: {x: 637.99994, y: 562.00006}
   Children:
-  - {fileID: -7130002219421317097}
   - {fileID: -1100110022450567462}
   - {fileID: 486145616711342820}
-  InputTargetIndex: 000000000000000000000000
-  OutputIndex: 000000000000000000000000
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
   ChildrenForFailure: []
   Operator: 0
   Value: 201
@@ -1691,7 +1670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: '> 100'
   CurrentState: 2
-  Started: 1
+  Started: 0
   Guid: 89f858bd8a944d84fbfa324e5b502227
   Position: {x: -867, y: -544.5}
   Children:
@@ -1786,8 +1765,8 @@ MonoBehaviour:
   m_Name: SHOW TUTORIAL ARROW
   m_EditorClassIdentifier: 
   Name: SHOW TUTORIAL ARROW
-  CurrentState: 0
-  Started: 1
+  CurrentState: 2
+  Started: 0
   Guid: 928284a139b15414fbb337c7b9515edb
   Position: {x: 1156.5109, y: 324.1451}
   Children: []
@@ -1808,7 +1787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: TYPE
   CurrentState: 2
-  Started: 1
+  Started: 0
   Guid: cfbf4174c7a472d4b8061bbef4836ad7
   Position: {x: -1570.9524, y: -348.50003}
   Children:
@@ -1830,10 +1809,10 @@ MonoBehaviour:
   m_Name: TRUE
   m_EditorClassIdentifier: 
   Name: TRUE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: f3831770adef0e541be5691d59efb9c3
-  Position: {x: 885.99994, y: 5559.315}
+  Position: {x: 886, y: 4939}
   Child: {fileID: -4715686752771279581}
   InputTargetIndex: 1
   Value: 1
@@ -2063,10 +2042,10 @@ MonoBehaviour:
   m_Name: TRUE
   m_EditorClassIdentifier: 
   Name: TRUE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 90a2e45e11c95c14a8ff8f1018d38d83
-  Position: {x: 902.00006, y: 5234.3154}
+  Position: {x: 902, y: 4614}
   Child: {fileID: -6838554714718389571}
   InputTargetIndex: 1
   Value: 1
@@ -2104,7 +2083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Add Item\n[ Event ]
   CurrentState: 2
-  Started: 1
+  Started: 0
   Guid: 70b786ccc5168fc49bd708ebd446c230
   Position: {x: -1893.9523, y: -545.5}
   Children:
@@ -2220,7 +2199,7 @@ MonoBehaviour:
   CurrentState: 2
   Started: 0
   Guid: 682dd5b2357b49641bd6d493f78ac5e7
-  Position: {x: 648, y: 1188}
+  Position: {x: 671.35004, y: 1292.5}
   Children:
   - {fileID: 5210423880059932244}
   - {fileID: -3125669658876018545}
@@ -2266,10 +2245,10 @@ MonoBehaviour:
   m_Name: Mine Powder #2
   m_EditorClassIdentifier: 
   Name: Mine Powder #2
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 85438e59e1fcf2a4eb3259a5e1c396c1
-  Position: {x: 872, y: 5071.3154}
+  Position: {x: 872, y: 4451}
   Children:
   - {fileID: -6838554714718389571}
   InputTargetIndex: 00000000
@@ -2341,7 +2320,7 @@ MonoBehaviour:
   CurrentState: 2
   Started: 0
   Guid: 304044466063db24dbeb675877dc14f4
-  Position: {x: 1292.5001, y: 950.50006}
+  Position: {x: 1355.0002, y: 1274.5}
   Children: []
   InputTargetIndex: 
   OutputIndex: 
@@ -2379,7 +2358,7 @@ MonoBehaviour:
   m_Name: CheckState
   m_EditorClassIdentifier: 
   Name: CheckState
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: cd3752e8a9832d8428c0c1479d60eafb
   Position: {x: -735.0002, y: -122.000084}
@@ -2491,10 +2470,10 @@ MonoBehaviour:
   m_Name: TRUE
   m_EditorClassIdentifier: 
   Name: TRUE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 93faaf15e78aeaa4999b5d54153b4b0a
-  Position: {x: 887.99994, y: 4298.3154}
+  Position: {x: 888, y: 3678}
   Child: {fileID: -2867610989460685401}
   InputTargetIndex: 1
   Value: 1
@@ -2624,7 +2603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: UnitToCharacter
   CurrentState: 1
-  Started: 1
+  Started: 0
   Guid: aad3e3f0e22552749ac72954cf44243d
   Position: {x: -1744.9523, y: -469.50003}
   Children:
