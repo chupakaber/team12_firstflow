@@ -1,11 +1,15 @@
 ﻿using Scripts.Enums;
+using UnityEngine;
 
 namespace Scripts
 {
     public class RemoveItemSystem: ISystem
     {
+        public EventBus EventBus;
         public UIView UIView;
         public PoolCollection<IconView> IconViewPools;
+
+        private float _lastSoundTime;
 
         public void EventCatch(RemoveItemEvent newEvent)
         {
@@ -15,6 +19,11 @@ namespace Scripts
             {
                 if (newEvent.Unit is Character && ((Character) newEvent.Unit).CharacterType == CharacterType.PLAYER)
                 {
+                    if (CheckLastSoundTime())
+                    {
+                        EventBus.CallEvent(new PlaySoundEvent() { SoundId = 9, IsMusic = false, AttachedTo = newEvent.Unit.transform });
+                    }
+
                     var icon = IconViewPools.Get(0);
                     UIView.FlyCoin(icon, false);
                 }
@@ -27,6 +36,18 @@ namespace Scripts
             {
                 newEvent.Unit.ItemStackView.RemoveItem(newEvent.ItemType, newEvent.Count);
             }
+        }
+
+        private bool CheckLastSoundTime()
+        {
+            if (Time.time > _lastSoundTime + 0.06f)
+            {
+                _lastSoundTime = Time.time;
+
+                return true;
+            }
+
+            return false;
         }
     }
 }

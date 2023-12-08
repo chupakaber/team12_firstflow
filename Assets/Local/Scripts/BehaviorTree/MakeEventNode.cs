@@ -9,7 +9,8 @@ namespace Scripts.BehaviorTree
             ADD_ITEM_TO_CHARACTER = 0,
             REMOVE_ITEM_FROM_CHARACTER = 1,
             REMOVE_ALL_ITEMS_FROM_CHARACTER = 2,
-            SET_ARROW_POINTER = 3
+            SET_ARROW_POINTER = 3,
+            PLAY_SOUND = 4,
         }
 
         public EventTypeEnum EventType;
@@ -127,6 +128,13 @@ namespace Scripts.BehaviorTree
                         {
                             internalState.EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null });
                         }
+                    }
+                    break;
+                case EventTypeEnum.PLAY_SOUND:
+                    if (_hasValue1 && (_hasValue3 || _hasValue4))
+                    {
+                        success = true;
+                        internalState.EventBus.CallEvent(new PlaySoundEvent() { SoundId = (int) _value1, IsMusic = false, AttachedTo = ((Unit) (_hasValue3 ? _value3 : _value4)).transform });
                     }
                     break;
             }

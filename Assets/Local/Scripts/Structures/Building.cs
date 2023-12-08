@@ -38,6 +38,7 @@ namespace Scripts
         public List<Character> AssignedPickingUpCharacters = new List<Character>();
         public float LastProductionTime;
         public float ProductionEndTime;
+        public float LastProductionSoundTime;
         public int Level
         {
             get

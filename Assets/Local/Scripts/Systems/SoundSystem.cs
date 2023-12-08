@@ -17,6 +17,8 @@ namespace Scripts
 
         private LinkedList<AudioSourceHolder> SourceCollection = new LinkedList<AudioSourceHolder>();
         private Character _player = null;
+        private float _fadeMusicStart;
+        private float _fadeMusicEnd;
         
         public void EventCatch(StartEvent newEvent)
         {
@@ -32,6 +34,17 @@ namespace Scripts
         }
 
         public void EventCatch(FixedUpdateEvent newEvent) {
+            var fadeMusic = false;
+            var musicVolume = 1f;
+            
+            if (Time.time < _fadeMusicEnd)
+            {
+                var internalState = (ScenarioState) Scenario.BehaviorTreeRunner.InternalState;
+                musicVolume = Mathf.Max(0f, Mathf.Max(1f - Mathf.Abs(_fadeMusicEnd - Time.time), 1f - Mathf.Abs(_fadeMusicStart - Time.time)));
+                musicVolume *= internalState.MusicVolume;
+                fadeMusic = true;
+            }
+
             var node = SourceCollection.First;
             while (node != null)
             {
@@ -40,6 +53,13 @@ namespace Scripts
                 if (source.AttachedTo != null)
                 {
                     source.Source.transform.position = source.AttachedTo.position;
+                }
+                if (source.IsMusic)
+                {
+                    if (fadeMusic || source.Source.volume < musicVolume)
+                    {
+                        source.Source.volume = musicVolume;
+                    }
                 }
                 node = nodeNext;
             }
@@ -113,6 +133,12 @@ namespace Scripts
             newSource.Source.spatialBlend = newSource.IsMusic ? 0f : 1f;
             newSource.Source.Play();
             SourceCollection.AddLast(newSource);
+
+            if (newEvent.FadeMusic)
+            {
+                _fadeMusicStart = Time.time;
+                _fadeMusicEnd = _fadeMusicStart + clipDescription.Clip.length;
+            }
         }
 
         public void EventCatch(RemoveAttachedSoundsEvent newEvent)

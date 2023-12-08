@@ -82,6 +82,8 @@ namespace Scripts
                                 }
 
                                 UpdateUpgradeProgressViewSettings(building);
+
+                                EventBus.CallEvent(new PlaySoundEvent() { SoundId = 8, IsMusic = false, AttachedTo = building.transform });
                             }
                         }
 

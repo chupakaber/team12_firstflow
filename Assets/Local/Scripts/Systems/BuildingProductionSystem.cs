@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Scripts.Enums;
 using UnityEngine;
 
 namespace Scripts
@@ -7,6 +8,7 @@ namespace Scripts
     {
         public EventBus EventBus;
         public List<Building> Buildings;
+        public List<Character> Characters;
 
         public void EventCatch(EnterTriggerEvent newEvent)
         {
@@ -94,6 +96,11 @@ namespace Scripts
                             success = nextValue;
                         }
 
+                        if (!success)
+                        {
+                            EventBus.CallEvent(new PlaySoundEvent() { SoundId = 6, IsMusic = false, AttachedTo = character.transform });
+                        }
+
                         TryRestoreTries(building);
                     }
 
@@ -110,9 +117,52 @@ namespace Scripts
                         EventBus.CallEvent(removeItemEvent);
                     }
 
+                    if (building.ProduceItemType == ItemType.SPEAR || building.ProduceItemType == ItemType.SWORD || building.ProduceItemType == ItemType.GUN)
+                    {
+                        if (CheckSoundTime(building, 5f))
+                        {
+                            EventBus.CallEvent(new PlaySoundEvent() { SoundId = 2, IsMusic = false, AttachedTo = building.transform });
+                        }
+                    }
+                    else if (building.ProduceItemType == ItemType.IRON || building.ProduceItemType == ItemType.POWDER)
+                    {
+                        if (CheckSoundTime(building, 8f))
+                        {
+                            EventBus.CallEvent(new PlaySoundEvent() { SoundId = 12, IsMusic = false, AttachedTo = building.transform });
+                        }
+                    }
+                    else if (building.ProduceItemType == ItemType.WOOD)
+                    {
+                        if (CheckSoundTime(building, 19f))
+                        {
+                            EventBus.CallEvent(new PlaySoundEvent() { SoundId = 14, IsMusic = false, AttachedTo = building.transform });
+                        }
+                    }
+                    else if (building.ProduceItemType == ItemType.GOLD && building.ProductionArea == null)
+                    {
+                        foreach (var character in Characters)
+                        {
+                            if (character.CharacterType == CharacterType.PLAYER)
+                            {
+                                EventBus.CallEvent(new PlaySoundEvent() { SoundId = 15, IsMusic = false, AttachedTo = character.transform, FadeMusic = true });
+                            }
+                        }
+                    }
+
                     building.LastProductionTime = Time.time;
                 }
             }
+        }
+
+        private bool CheckSoundTime(Building building, float cooldown = 1f)
+        {
+            if (Time.time > building.LastProductionSoundTime + cooldown)
+            {
+                building.LastProductionSoundTime = Time.time;
+                return true;
+            }
+
+            return false;
         }
 
         private void TryRestoreTries(Building building)

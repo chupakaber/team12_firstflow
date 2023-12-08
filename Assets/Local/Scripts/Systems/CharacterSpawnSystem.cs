@@ -20,6 +20,7 @@ namespace Scripts
                 break;
                 case CharacterType.APPRENTICE:
                     newEvent.Character = ApprenticePools.Get(0);
+                    newEvent.Character.ResizeBagOfTries(newEvent.Character.BaseBagOfTriesCapacity);
                 break;
             }
 
