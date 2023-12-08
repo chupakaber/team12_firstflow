@@ -159,15 +159,14 @@ MonoBehaviour:
   Actors:
   - {fileID: 6995259634175424448}
   - {fileID: 1001157333228427239}
-  - {fileID: 0}
-  ActorWayPoint: {fileID: 4338333035115910987}
-  ActorSoldierWayPoint: {fileID: 584369032192018717}
-  ActorPlayerWayPoint: {fileID: 7864308300142834647}
+  ActorWayPoints:
+  - {fileID: 4338333035115910987}
+  - {fileID: 584369032192018717}
+  - {fileID: 7864308300142834647}
   CameraWayPoint: {fileID: 922666347603869343}
   Trigger: {fileID: 8341825484255333147}
   PlayableDirector: {fileID: 2451475830874492067}
   Root: {fileID: 8187273707604146001}
-  Camera: {fileID: 0}
   _pathCorners:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -297,6 +296,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
+  _camera: {fileID: 0}
 --- !u!320 &2451475830874492067
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -326,6 +326,14 @@ PlayableDirector:
     value: {fileID: 4794194823886929045}
   - key: {fileID: 7956336263447331935, guid: bb0a0387cab159c498b9d7b9e4cea3dd, type: 2}
     value: {fileID: 3937202928249109074}
+  - key: {fileID: -739077376585047690, guid: bb0a0387cab159c498b9d7b9e4cea3dd, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -7309332152926573636, guid: bb0a0387cab159c498b9d7b9e4cea3dd, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 4584852241564172728, guid: bb0a0387cab159c498b9d7b9e4cea3dd, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6445566155104113659, guid: bb0a0387cab159c498b9d7b9e4cea3dd, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &3937202928249109074
@@ -344,6 +352,8 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: 67366c663a3450544910a901297c6998, type: 2}
     - {fileID: 11400000, guid: c86754e06c6758b4ebab955690d6c8c5, type: 2}
+    - {fileID: 11400000, guid: 0e313773b2c3dc54e8336f9f20b3a535, type: 2}
+    - {fileID: 11400000, guid: 267215fc23826e448aec5c995723d70a, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -351,6 +361,34 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: Scripts.IntroductionTimeline, Assembly-CSharp
           m_MethodName: ShowEmojiSmile
           m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6541956134312242506}
+          m_TargetAssemblyTypeName: Scripts.IntroductionTimeline, Assembly-CSharp
+          m_MethodName: ShowEmojiSmile
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6541956134312242506}
+          m_TargetAssemblyTypeName: Scripts.IntroductionTimeline, Assembly-CSharp
+          m_MethodName: DeactivationCutScene
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -443,7 +481,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4420690631171312386}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -655,7 +693,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6716917639539273755}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -760,7 +798,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6915068377652714336}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

@@ -39,6 +39,10 @@ namespace Scripts.BehaviorTree
         {
             if (ForEach)
             {
+                if (_dynamicIndexList == null)
+                {
+                    _dynamicIndexList = new List<int>();
+                }
                 _dynamicIndexList.Clear();
             }
 

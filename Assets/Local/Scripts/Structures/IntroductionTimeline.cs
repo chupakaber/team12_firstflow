@@ -22,16 +22,27 @@ namespace Scripts
         public Collider Trigger;
         public PlayableDirector PlayableDirector;
         public GameObject Root;
-        public Camera Camera;
 
         public NavMeshPath _path;
         public Vector3[] _pathCorners = new Vector3[128];
 
         private int _speedAnimationKey = Animator.StringToHash("Speed");
 
+        public Camera _camera;
+
         public void Start()
         {
+            _camera = Camera.main;
             _path = new NavMeshPath();
+            
+            var characters = FindObjectsOfType<SmartCharacter>();
+            foreach (var character in characters)
+            {
+                if (character.CharacterType == Enums.CharacterType.PLAYER)
+                {
+                    Actors.Add(character);
+                }
+            }
         }
 
         public void Update()
@@ -143,8 +154,8 @@ namespace Scripts
 
         public void CameraMovement()
         {
-            var newPosition = Vector3.Lerp(Camera.transform.position, CameraWayPoint.position, Time.deltaTime * 5f);
-            Camera.transform.position = newPosition;
+            var newPosition = Vector3.Lerp(_camera.transform.position, CameraWayPoint.position, Time.deltaTime * 5f);
+            _camera.transform.position = newPosition;
         }
 
         public void PlayAnim(int index)

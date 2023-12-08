@@ -24,6 +24,10 @@ namespace Scripts.UnityComponents
         private void OnLogCallback(string condition, string stackTrace, LogType type)
         {
             LogLabel.text += $"[{type}] {condition}\n";
+            if (type == LogType.Error || type == LogType.Exception)
+            {
+                LogLabel.text += $"{stackTrace}\n";
+            }
         }
 
         public void SwitchLogPanel()
