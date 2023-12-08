@@ -63,9 +63,12 @@ namespace Scripts
                             }
                             else
                             {
-                                var waypoint = customer.Route.Waypoints[customer.CurrentRouteWaypointIndex];
-                                targetPosition = waypoint.Transform.position;
-                                customer.FollowingOffset = 0.3f;
+                                if (customer.CurrentRouteWaypointIndex < customer.Route.Waypoints.Count)
+                                {
+                                    var waypoint = customer.Route.Waypoints[customer.CurrentRouteWaypointIndex];
+                                    targetPosition = waypoint.Transform.position;
+                                    customer.FollowingOffset = 0.3f;
+                                }
                             }
                         }
                         else
