@@ -30,7 +30,7 @@ namespace Scripts
 
                 foreach (var building in Buildings)
                 {
-                    if (building.ProduceItemType == ItemType.GOLD && building.Level > 0)
+                    if (building.ProduceItemType == ItemType.GOLD && building.ProductionArea != null && building.Level > 0)
                     {
                         if (_customerRoutes.TryGetValue(building.ConsumeItemType, out var route))
                         {

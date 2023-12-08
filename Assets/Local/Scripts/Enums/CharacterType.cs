@@ -10,5 +10,6 @@ namespace Scripts.Enums
         JOKER = 5,
         IMPERATOR = 6,
         MERCENARY = 7,
+        CARNIVAL = 8,
     }
 }

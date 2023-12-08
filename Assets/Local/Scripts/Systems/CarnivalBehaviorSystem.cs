@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 namespace Scripts
 {
-    public class CustomerBehaviorSystem: ISystem
+    public class CarnivalBehaviorSystem: ISystem
     {
         public EventBus EventBus;
         public List<Character> Characters;
@@ -16,29 +16,13 @@ namespace Scripts
         public void EventCatch(StartEvent newEvent)
         {
             _path = new NavMeshPath();
-        }
 
-        public void EventCatch(CustomerReachKeyEvent newEvent)
-        {
-            var customer = newEvent.Customer;
-            customer.State++;
-
-            if (customer.State >= 3)
+            var carnival = GameObject.FindObjectsOfType<Carnival>();
+            foreach (var character in carnival)
             {
-                customer.State = 0;
-                foreach (var item in customer.Items)
-                {
-                    customer.ItemStackView.RemoveItem(item.Type, item.Amount);
-                }
-                customer.Items.Clear();
-                Characters.Remove(customer);
-                customer.CurrentRouteWaypointIndex = 0;
-                customer.CharacterCollisions.Clear();
-                customer.ExitColliders.Clear();
-                customer.EnterColliders.Clear();
-                customer.NavMeshAgent.enabled = false;
-                customer.LeaveQueue();
-                customer.Release();
+                Characters.Add(character);
+
+                EventBus.CallEvent(new AddItemEvent() { Unit = character, Count = 1, ItemType = Enums.ItemType.WOOD });
             }
         }
 
@@ -46,61 +30,67 @@ namespace Scripts
         {
             foreach (var character in Characters)
             {
-                if (character is Customer)
+                if (character is Carnival)
                 {
-                    var customer = (Customer) character;
+                    var carnival = (Carnival) character;
                     var targetPosition = Vector3.zero;
                     
-                    if (Time.time > customer.LastBehaviorTime + 0.1f)
+                    if (Time.time > carnival.LastBehaviorTime + 0.1f)
                     {
-                        customer.LastBehaviorTime = Time.time;
-                        if (customer.State == 1)
+                        carnival.LastBehaviorTime = Time.time;
+                        if (carnival.State == 1)
                         {
-                            if (customer.PreviousInQueue != null)
+                            if (carnival.PreviousInQueue != null)
                             {
-                                targetPosition = customer.PreviousInQueue.transform.position;
-                                customer.FollowingOffset = 2.2f;
+                                targetPosition = carnival.PreviousInQueue.transform.position;
+                                //carnival.FollowingOffset = 2.2f;
                             }
                             else
                             {
-                                if (customer.CurrentRouteWaypointIndex < customer.Route.Waypoints.Count)
-                                {
-                                    var waypoint = customer.Route.Waypoints[customer.CurrentRouteWaypointIndex];
-                                    targetPosition = waypoint.Transform.position;
-                                    customer.FollowingOffset = 0.3f;
-                                }
+                                var waypoint = carnival.Route.Waypoints[carnival.CurrentRouteWaypointIndex];
+                                targetPosition = waypoint.Transform.position;
+                                //carnival.FollowingOffset = 0.3f;
                             }
                         }
                         else
                         {
-                            if (customer.CurrentRouteWaypointIndex < customer.Route.Waypoints.Count)
+                            if (carnival.CurrentRouteWaypointIndex < carnival.Route.Waypoints.Count)
                             {
-                                var waypoint = customer.Route.Waypoints[customer.CurrentRouteWaypointIndex];
+                                var waypoint = carnival.Route.Waypoints[carnival.CurrentRouteWaypointIndex];
                                 targetPosition = waypoint.Transform.position;
-                                customer.FollowingOffset = 0.3f;
+                                //carnival.FollowingOffset = 0.3f;
 
-                                if ((customer.transform.position - targetPosition).magnitude < 0.5f)
+                                if ((carnival.transform.position - targetPosition).magnitude < 0.5f)
                                 {
-                                    customer.CurrentRouteWaypointIndex++;
+                                    carnival.CurrentRouteWaypointIndex++;
 
                                     if (waypoint.IsKeyPoint)
                                     {
-                                        EventBus.CallEvent(new CustomerReachKeyEvent() { Customer = customer });
+                                        carnival.CurrentRouteWaypointIndex = 0;
                                         break;
                                     }
                                 }
                             }
                         }
+
+                        if (carnival.NextInQueue != null)
+                        {
+                            if ((carnival.NextInQueue.transform.position - carnival.transform.position).magnitude > 3.5f)
+                            {
+                                targetPosition = carnival.transform.position;
+                                carnival.WorldDirection = Vector3.zero;
+                            }
+                        }
                         
                         if (targetPosition.sqrMagnitude > float.Epsilon * 2f)
                         {
-                            var workerPosition = customer.transform.position;
+                            var workerPosition = carnival.transform.position;
 
                             var toTargetDelta = targetPosition - workerPosition;
                             toTargetDelta.y = 0f;
                             var toTargetDistance = toTargetDelta.magnitude;
 
-                            if (toTargetDistance < customer.FollowingOffset)
+                            if (toTargetDistance < carnival.FollowingOffset)
                             {
                                 character.WorldDirection = Vector3.zero;
                             }
@@ -108,8 +98,8 @@ namespace Scripts
                             {
                                 var pathPosition = targetPosition;
 
-                                customer.NavMeshAgent.enabled = true;
-                                if (customer.NavMeshAgent.CalculatePath(targetPosition, _path))
+                                carnival.NavMeshAgent.enabled = true;
+                                if (carnival.NavMeshAgent.CalculatePath(targetPosition, _path))
                                 {
                                     var cornersCount = _path.GetCornersNonAlloc(_pathCorners);
                                     if (cornersCount > 1)
@@ -121,7 +111,7 @@ namespace Scripts
                                         pathPosition = _pathCorners[0];
                                     }
                                 }
-                                customer.NavMeshAgent.enabled = false;
+                                carnival.NavMeshAgent.enabled = false;
 
                                 var pathDelta = pathPosition - workerPosition;
                                 // pathDelta.y = 0f;
@@ -129,7 +119,7 @@ namespace Scripts
 
                                 if (Physics.Raycast(character.transform.position + Vector3.up * 1.7f, character.WorldDirection, out var hitInfo, 2f))
                                 {
-                                    if (hitInfo.collider is CapsuleCollider)
+                                    if (hitInfo.collider is CapsuleCollider && hitInfo.collider.name.CompareTo("Carnival") != 0)
                                     {
                                         character.WorldDirection = Quaternion.Euler(0f, 45f, 0f) * character.WorldDirection;
                                     }

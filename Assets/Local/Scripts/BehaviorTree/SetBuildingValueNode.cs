@@ -24,6 +24,14 @@ namespace Scripts.BehaviorTree
             Output1Type = typeof(bool);
         }
 
+        public override void Clear()
+        {
+            base.Clear();
+            _inputValue1 = null;
+            _hasValue1 = false;
+            _hasValue2 = false;
+        }
+
         protected override void OnStart(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
         {
         }

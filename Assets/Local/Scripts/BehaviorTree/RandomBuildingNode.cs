@@ -22,8 +22,7 @@ namespace Scripts.BehaviorTree
         public bool ForEach = false;
 
         private Building _output;
-        private List<Building> _outputForEach = new List<Building>();
-        private int _currentIndex;
+        private List<int> _dynamicIndexList;
 
         public RandomBuildingNode()
         {
@@ -33,26 +32,25 @@ namespace Scripts.BehaviorTree
 
         public Building GetOutputBuilding()
         {
-            if (ForEach)
-            {
-                return _outputForEach[_currentIndex];
-            }
-
             return _output;
         }
 
         protected override void OnStart(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
         {
-            _outputForEach.Clear();
+            if (ForEach)
+            {
+                _dynamicIndexList.Clear();
+            }
 
             var activeBuildingCount = 0;
-            foreach (var building in internalState.Buildings)
+            for (var i = 0; i < internalState.Buildings.Count; i++)
             {
+                var building = internalState.Buildings[i];
                 if (CheckConstraints(building))
                 {
                     if (ForEach)
                     {
-                        _outputForEach.Add(building);
+                        _dynamicIndexList.Add(i);
                     }
                     else
                     {
@@ -60,7 +58,7 @@ namespace Scripts.BehaviorTree
                     }
                 }
             }
-
+            
             if (!ForEach)
             {
                 var randomIndex = Random.Range(0, activeBuildingCount);
@@ -93,11 +91,10 @@ namespace Scripts.BehaviorTree
                 var childInputIndex = InputTargetIndex[i];
                 if (ForEach)
                 {
-                    _currentIndex = 0;
-                    foreach (var building in _outputForEach)
+                    foreach (var buildingIndex in _dynamicIndexList)
                     {
+                        _output = internalState.Buildings[buildingIndex];
                         child.Run(this, childInputIndex, internalState, currentEvent);
-                        _currentIndex++;
                     }
                 }
                 else
