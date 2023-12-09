@@ -275,6 +275,17 @@ namespace Scripts.BehaviorTree
                             break;
                         }
                     }
+
+                    if ((character.CharacterType == CharacterType.ASSISTANT || character.CharacterType == CharacterType.APPRENTICE) && character.TargetBuilding == null)
+                    {
+                        foreach (var otherCharacter in Characters)
+                        {
+                            if (otherCharacter.CharacterType == CharacterType.PLAYER)
+                            {
+                                otherCharacter.AddLastInQueue(character);
+                            }
+                        }
+                    }
                 }
 
                 var itemsCount = SerializationUtils.Get(buffer, 0);
