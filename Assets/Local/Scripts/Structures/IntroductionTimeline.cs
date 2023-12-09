@@ -191,7 +191,10 @@ namespace Scripts
                 actor.WorldDirection = Vector3.zero;
             }
 
-            EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = Vector3.zero });
+            if (EventBus != null)
+            {
+                EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = Vector3.zero });
+            }
         }
 
         public void IsCatSceneActiv(bool status)
