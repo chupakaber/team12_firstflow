@@ -11,5 +11,6 @@ namespace Scripts.Enums
         IMPERATOR = 6,
         MERCENARY = 7,
         CARNIVAL = 8,
+        ALCHEMIST = 9,
     }
 }

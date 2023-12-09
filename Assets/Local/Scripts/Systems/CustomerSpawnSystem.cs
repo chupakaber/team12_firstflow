@@ -49,7 +49,8 @@ namespace Scripts
 
                             if (customersCount < 5)
                             {
-                                var customer = CustomerPools.Get(Random.Range(0f, 1f) > 0.3f ? 0 : 1);
+                                var random = Random.Range(0f, 1f);
+                                var customer = CustomerPools.Get(random < 0.2f ? 1 : (random > 0.8f ? 2 : 0));
                                 Characters.Add(customer);
 
                                 customer.Route = route;

@@ -104,6 +104,7 @@ namespace Scripts
             _apprenticePools.Pools.Add(0, new ObjectPool<Apprentice>("Prefabs/Characters/Apprentice"));
             _customerPools.Pools.Add(0, new ObjectPool<Customer>("Prefabs/Characters/CustomerSoldier"));
             _customerPools.Pools.Add(1, new ObjectPool<Customer>("Prefabs/Characters/CustomerOfficial"));
+            _customerPools.Pools.Add(2, new ObjectPool<Customer>("Prefabs/Characters/CustomerWoman"));
             _jokerPools.Pools.Add(0, new ObjectPool<Joker>("Prefabs/Characters/Joker"));
             _pinnedCounterViewPools.Pools.Add(0, new ObjectPool<PinnedCounterView>("Prefabs/UI/ShopCoinCounter"));
             _bubbleViewPools.Pools.Add(0, new ObjectPool<BubbleView>("Prefabs/UI/BubbleEmoji"));
