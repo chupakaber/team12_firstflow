@@ -27,6 +27,7 @@ namespace Scripts
         private PoolCollection<Joker> _jokerPools = new PoolCollection<Joker>();
         private PoolCollection<Customer> _customerPools = new PoolCollection<Customer>();
         private PoolCollection<Mercenary> _mercenaryPools = new PoolCollection<Mercenary>();
+        private PoolCollection<SmartCharacter> _alchemistPools = new PoolCollection<SmartCharacter>();
         private UnlockQueue _unlockQueue;
         private Scenario _scenario;
         private AudioListener _audioListener = new AudioListener();
@@ -109,6 +110,7 @@ namespace Scripts
             _pinnedCounterViewPools.Pools.Add(0, new ObjectPool<PinnedCounterView>("Prefabs/UI/ShopCoinCounter"));
             _bubbleViewPools.Pools.Add(0, new ObjectPool<BubbleView>("Prefabs/UI/BubbleEmoji"));
             _mercenaryPools.Pools.Add(0, new ObjectPool<Mercenary>("Prefabs/Characters/Mercenary"));
+            _alchemistPools.Pools.Add(0, new ObjectPool<SmartCharacter>("Prefabs/Characters/Alchemist"));
             
 
             AddSystem(_buildingInitSystem);
@@ -166,6 +168,7 @@ namespace Scripts
             _container.AddLink(_apprenticePools, "ApprenticePools");
             _container.AddLink(_customerPools, "CustomerPools");
             _container.AddLink(_jokerPools, "JokerPools");
+            _container.AddLink(_alchemistPools, "AlchemistPools");
             _container.AddLink(_scenario, "Scenario");
             _container.AddLink(_mercenaryPools, "MercenaryPools");
             _container.AddLink(_audioListener, "AudioListener");

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Scripts.Enums;
+using UnityEngine;
 
 namespace Scripts
 {
@@ -9,17 +10,26 @@ namespace Scripts
         public List<Character> Characters;
         public List<Building> Buildings;
 
+        public PoolCollection<SmartCharacter> AlchemistPools;
+
         public void EventCatch(ConstructionCompleteEvent newEvent)
         {
             if (newEvent.Building.ProduceItemType == ItemType.BOTTLE_HERO)
             {
-                foreach (var building in Buildings)
+                var character = AlchemistPools.Get(0);
+                Characters.Add(character);
+
+                var routes = Object.FindObjectsOfType<CustomerRoute>();
+                foreach (var route in routes)
                 {
-                    if (building.ProduceItemType == ItemType.BOTTLE_WORKER)
+                    if (route.ProductionType == ItemType.SPEAR)
                     {
-                        building.transform.SetParent(newEvent.Building.transform.parent);
+                        character.transform.position = route.Waypoints[0].Transform.position;
                     }
                 }
+
+                character.TargetBuilding = newEvent.Building;
+                character.TargetPosition = newEvent.Building.transform.position;
 
                 var availableCraftBottle = CheckAvailableCraftBottle();
                 SwitchProductionBuilding(ItemType.BOTTLE_WORKER, availableCraftBottle);

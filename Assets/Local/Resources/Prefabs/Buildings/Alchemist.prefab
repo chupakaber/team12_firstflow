@@ -100,6 +100,7 @@ MonoBehaviour:
   - {fileID: 8372636061771006664}
   - {fileID: 6384100091593960963}
   - {fileID: 7365026780547731937}
+  ID: -1
   ConstructionArea: {fileID: 9115113445415105110}
   ProductionArea: {fileID: 4393688851089369503}
   UnloadingArea: {fileID: 4663743435672481389}
@@ -137,6 +138,7 @@ MonoBehaviour:
   AssignedPickingUpCharacters: []
   LastProductionTime: -200
   ProductionEndTime: -100
+  LastProductionSoundTime: 0
 --- !u!1 &2338370658575162834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,6 +1750,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 11eeaa893fc2e7b40981e863c47ef89b, type: 3}
       propertyPath: m_Name
       value: tent
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 11eeaa893fc2e7b40981e863c47ef89b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

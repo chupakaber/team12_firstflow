@@ -12,6 +12,7 @@ namespace Scripts.BehaviorTree
             SET_ARROW_POINTER = 3,
             PLAY_SOUND = 4,
             START_CUTSCENE = 5,
+            CONSTRUCTION_COMPLETE = 6,
         }
 
         public EventTypeEnum EventType;
@@ -127,6 +128,7 @@ namespace Scripts.BehaviorTree
                     {
                         if (_value2.magnitude <= float.Epsilon)
                         {
+                            success = true;
                             internalState.EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null });
                         }
                     }
@@ -141,7 +143,15 @@ namespace Scripts.BehaviorTree
                 case EventTypeEnum.START_CUTSCENE:
                     if (_hasValue1)
                     {
+                        success = true;
                         internalState.EventBus.CallEvent(new StartCutSceneEvent() { CutSceneIndex = (int) _value1 });
+                    }
+                    break;
+                case EventTypeEnum.CONSTRUCTION_COMPLETE:
+                    if (_hasValue4)
+                    {
+                        success = true;
+                        internalState.EventBus.CallEvent(new ConstructionCompleteEvent() { Building = _value4});
                     }
                     break;
             }
