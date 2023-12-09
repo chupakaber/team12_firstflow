@@ -54,7 +54,6 @@ namespace Scripts
                                 worker.FollowingOffset = 2.2f;
 
                                 building.UnloadingCharacters.Remove(player);
-                                Debug.Log($"Remove player from unloading: {building.name}");
                                 return true;
                             }
                         }

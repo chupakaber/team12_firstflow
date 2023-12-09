@@ -29,7 +29,8 @@ Transform:
   m_LocalPosition: {x: 0.03399992, y: -0.35, z: 0.051000357}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4192815879000262136}
   m_Father: {fileID: 3562037354291000952}
   m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
 --- !u!114 &2663115326534723076
@@ -45,7 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
-  _exclusiveStacks: []
+  _exclusiveStacks:
+  - ItemType: 3
+    Transform: {fileID: 4192815879000262136}
 --- !u!1 &866461290152350341
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,6 +612,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2841445803215695769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4192815879000262136}
+  m_Layer: 0
+  m_Name: ResourceStack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4192815879000262136
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2841445803215695769}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.21, y: 0, z: -1.65}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4725848792785683644}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3000299781217324539
 GameObject:
   m_ObjectHideFlags: 0
@@ -2156,6 +2190,7 @@ MonoBehaviour:
   AssignedPickingUpCharacters: []
   LastProductionTime: -200
   ProductionEndTime: -100
+  LastProductionSoundTime: 0
 --- !u!1 &8825995206749473632
 GameObject:
   m_ObjectHideFlags: 0

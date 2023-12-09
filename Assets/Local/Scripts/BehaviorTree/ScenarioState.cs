@@ -230,7 +230,7 @@ namespace Scripts.BehaviorTree
                             if (building.ID == characterResourceBuildingID)
                             {
                                 assistant.ResourceBuilding = building;
-                                assistant.ResourceBuilding.AssignedProductionCharacters.Add(assistant);
+                                assistant.ResourceBuilding.AssignedPickingUpCharacters.Add(assistant);
                                 break;
                             }
                         }
