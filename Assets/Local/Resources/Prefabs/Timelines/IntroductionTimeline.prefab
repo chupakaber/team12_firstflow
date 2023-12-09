@@ -354,6 +354,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c86754e06c6758b4ebab955690d6c8c5, type: 2}
     - {fileID: 11400000, guid: 0e313773b2c3dc54e8336f9f20b3a535, type: 2}
     - {fileID: 11400000, guid: 267215fc23826e448aec5c995723d70a, type: 2}
+    - {fileID: 11400000, guid: d9143359a804f3540888df6e280df256, type: 2}
+    - {fileID: 11400000, guid: 76c0cd609ae34a14bae2dbd3a62288f5, type: 2}
+    - {fileID: 11400000, guid: 39550f5adeea67d48a651a71ec0fa679, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -407,6 +410,36 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls: []
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6541956134312242506}
+          m_TargetAssemblyTypeName: Scripts.IntroductionTimeline, Assembly-CSharp
+          m_MethodName: ShowEmojiSmile
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6541956134312242506}
+          m_TargetAssemblyTypeName: Scripts.IntroductionTimeline, Assembly-CSharp
+          m_MethodName: ShowEmojiSmile
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -618,7 +651,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 10, y: 10, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 12, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4327114900308695862}

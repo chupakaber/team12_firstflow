@@ -30,7 +30,7 @@ namespace Scripts
 
         public Camera _camera;
 
-        public void Start()
+        public void Awake()
         {
             _camera = Camera.main;
             _path = new NavMeshPath();
@@ -156,6 +156,7 @@ namespace Scripts
         {
             var newPosition = Vector3.Lerp(_camera.transform.position, CameraWayPoint.position, Time.deltaTime * 5f);
             _camera.transform.position = newPosition;
+            _camera.orthographicSize = CameraWayPoint.localScale.x;
         }
 
         public void PlayAnim(int index)
@@ -172,6 +173,14 @@ namespace Scripts
             Trigger.enabled = false;
         }
 
+        public void Activation()
+        {
+            gameObject.SetActive(true);
+            Trigger.enabled = true;
+
+            EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = Trigger.bounds.center });
+        }
+
         public void DeactivationCutScene()
         {
             Root.SetActive(false);
@@ -181,6 +190,8 @@ namespace Scripts
             {
                 actor.WorldDirection = Vector3.zero;
             }
+
+            EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = Vector3.zero });
         }
 
         public void IsCatSceneActiv(bool status)

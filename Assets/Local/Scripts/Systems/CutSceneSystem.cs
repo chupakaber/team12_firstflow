@@ -22,6 +22,14 @@ namespace Scripts
             }
         }
 
+        public void EventCatch(StartCutSceneEvent newEvent)
+        {
+            if (newEvent.CutSceneIndex >= 0 && newEvent.CutSceneIndex < _introductionTimelines.Count)
+            {
+                _introductionTimelines[newEvent.CutSceneIndex].Activation();
+            }
+        }
+
         public void EventCatch(EnterTriggerEvent newEvent)
         {
             if (newEvent.Character.CharacterType == CharacterType.PLAYER)

@@ -51,8 +51,8 @@ namespace Scripts
         {
             if (newEvent.TargetGameObject == null)
             {
-                UIView.PointerArrowTargetPosition = Vector3.zero;
-                UIView.PointerArrowTargetPositionOnNavMesh = Vector3.zero;
+                UIView.PointerArrowTargetPosition = newEvent.TargetPosition;
+                UIView.PointerArrowTargetPositionOnNavMesh = UIView.PointerArrowTargetPosition;
                 return;
             }
 

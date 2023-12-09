@@ -11,6 +11,7 @@ namespace Scripts.BehaviorTree
             REMOVE_ALL_ITEMS_FROM_CHARACTER = 2,
             SET_ARROW_POINTER = 3,
             PLAY_SOUND = 4,
+            START_CUTSCENE = 5,
         }
 
         public EventTypeEnum EventType;
@@ -135,6 +136,12 @@ namespace Scripts.BehaviorTree
                     {
                         success = true;
                         internalState.EventBus.CallEvent(new PlaySoundEvent() { SoundId = (int) _value1, IsMusic = false, AttachedTo = ((Unit) (_hasValue3 ? _value3 : _value4)).transform });
+                    }
+                    break;
+                case EventTypeEnum.START_CUTSCENE:
+                    if (_hasValue1)
+                    {
+                        internalState.EventBus.CallEvent(new StartCutSceneEvent() { CutSceneIndex = (int) _value1 });
                     }
                     break;
             }
