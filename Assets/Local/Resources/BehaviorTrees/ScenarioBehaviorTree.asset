@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Name: Vector3Value
   m_EditorClassIdentifier: 
   Name: Vector3Value
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 0ba5545d8f295c346876ff25ca97bc77
   Position: {x: 957.99994, y: 3271.14}
@@ -671,7 +671,7 @@ MonoBehaviour:
   Guid: 9811f2a14cff16d419260af224230752
   Position: {x: -386, y: -704.6501}
   Children:
-  - {fileID: -2749920320444965207}
+  - {fileID: 2488966504275464276}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
   FieldName: 1
@@ -736,7 +736,7 @@ MonoBehaviour:
   m_Name: TRUE
   m_EditorClassIdentifier: 
   Name: TRUE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: b79da5caa5a89424ba6cdbeb3b42b0b7
   Position: {x: 1458, y: 842}
@@ -899,7 +899,7 @@ MonoBehaviour:
   CurrentState: 0
   Started: 0
   Guid: 2543b449acde28f42b7f0e289968c855
-  Position: {x: -219.32259, y: -692.0002}
+  Position: {x: 160, y: -672}
   Children: []
   InputTargetIndex: 
   OutputIndex: 
@@ -962,7 +962,7 @@ MonoBehaviour:
   m_Name: Shop Spear
   m_EditorClassIdentifier: 
   Name: Shop Spear
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 691e73307533d66488dd3c86d7562c9a
   Position: {x: 1450, y: 712}
@@ -992,7 +992,7 @@ MonoBehaviour:
   m_Name: UPGRADE AREA STATE
   m_EditorClassIdentifier: 
   Name: UPGRADE AREA STATE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: e2be23460245caa4097b0e9e5b310512
   Position: {x: 1629, y: 688}
@@ -1031,6 +1031,28 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &-1883030177353805219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: SET ACTIVE
+  m_EditorClassIdentifier: 
+  Name: SET ACTIVE
+  CurrentState: 0
+  Started: 0
+  Guid: cceae214e1d05fc4480227165bbccae6
+  Position: {x: -25, y: -681}
+  Children:
+  - {fileID: -2749920320444965207}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  FieldName: 1
 --- !u!114 &-1600541308831315375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1117,7 +1139,7 @@ MonoBehaviour:
   m_Name: Crossroad #1
   m_EditorClassIdentifier: 
   Name: Crossroad #1
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: c27e97ff81048e24faaa038857772bd6
   Position: {x: 896.0001, y: 461}
@@ -1339,6 +1361,9 @@ MonoBehaviour:
   - {fileID: -4155006625130604367}
   - {fileID: 6849234718002281224}
   - {fileID: 206456240511327896}
+  - {fileID: 2488966504275464276}
+  - {fileID: -1883030177353805219}
+  - {fileID: 5610417700878566325}
 --- !u!114 &79279145139786393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1476,7 +1501,7 @@ MonoBehaviour:
   m_Name: TRUE
   m_EditorClassIdentifier: 
   Name: TRUE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 9e5b752e486fbcf49822ed8a73d50689
   Position: {x: 904, y: 666}
@@ -1574,7 +1599,7 @@ MonoBehaviour:
   m_Name: EQUAL PLAYER
   m_EditorClassIdentifier: 
   Name: EQUAL PLAYER
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 2f3d1df690bb58c48bc2827d1d60a86f
   Position: {x: -1411.9523, y: -343.50003}
@@ -1764,7 +1789,7 @@ MonoBehaviour:
   m_Name: SHOW TUTORIAL ARROW
   m_EditorClassIdentifier: 
   Name: SHOW TUTORIAL ARROW
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 928284a139b15414fbb337c7b9515edb
   Position: {x: 1156.5109, y: 324.1451}
@@ -1785,7 +1810,7 @@ MonoBehaviour:
   m_Name: TYPE
   m_EditorClassIdentifier: 
   Name: TYPE
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: cfbf4174c7a472d4b8061bbef4836ad7
   Position: {x: -1570.9524, y: -348.50003}
@@ -1795,6 +1820,37 @@ MonoBehaviour:
   OutputIndex: 00000000
   FieldName: 6
   IsSecondInputValueNeeded: 0
+--- !u!114 &2488966504275464276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Alchemist #2
+  m_EditorClassIdentifier: 
+  Name: Alchemist #2
+  CurrentState: 0
+  Started: 0
+  Guid: 14b0d4f50b28f6d438a1d4da7c033c9e
+  Position: {x: -200, y: -695}
+  Children:
+  - {fileID: -1883030177353805219}
+  - {fileID: 5610417700878566325}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+  ID: -1
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
 --- !u!114 &2566078392216431813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1849,7 +1905,7 @@ MonoBehaviour:
   m_Name: Sawmill #1
   m_EditorClassIdentifier: 
   Name: Sawmill #1
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 042d79361e73cc84da6ba3998aad6225
   Position: {x: 1450, y: 586}
@@ -2065,7 +2121,7 @@ MonoBehaviour:
   Started: 0
   Guid: a13859aefafa9104fa7dfdb3fd1f791e
   Position: {x: -613, y: -520}
-  Child: {fileID: -4379030704485892277}
+  Child: {fileID: -1883030177353805219}
   InputTargetIndex: 1
   Value: 1
 --- !u!114 &4331154930001037049
@@ -2130,9 +2186,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
-  m_Name: Alchemic
+  m_Name: Alchemist #1
   m_EditorClassIdentifier: 
-  Name: Alchemic
+  Name: Alchemist #1
   CurrentState: 0
   Started: 0
   Guid: b073624c6e0db8b4f8018b78f1a0f500
@@ -2231,6 +2287,27 @@ MonoBehaviour:
   Child: {fileID: 3286859310765451745}
   InputTargetIndex: 1
   Value: {x: 0, y: 0, z: 0}
+--- !u!114 &5610417700878566325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: LEVEL
+  m_EditorClassIdentifier: 
+  Name: LEVEL
+  CurrentState: 0
+  Started: 0
+  Guid: fc2dfe8a88b2d1243a718fa8624b8b83
+  Position: {x: -35, y: -478.5}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 0
 --- !u!114 &5767385486531047649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2425,7 +2502,7 @@ MonoBehaviour:
   m_Name: BUILDING ACTIVE
   m_EditorClassIdentifier: 
   Name: BUILDING ACTIVE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 42f16424be3c92a4a8894df1b2909c12
   Position: {x: 1172, y: 562}
@@ -2627,7 +2704,7 @@ MonoBehaviour:
   Started: 0
   Guid: a4ccbfd6cfab64c498f6da6353ece475
   Position: {x: -613, y: -386}
-  Child: {fileID: 7103346676938041634}
+  Child: {fileID: 5610417700878566325}
   InputTargetIndex: 1
   Value: 1
 --- !u!114 &8886790934348301404

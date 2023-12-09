@@ -54,6 +54,7 @@ namespace Scripts
                 {
                     source.Source.transform.position = source.AttachedTo.position;
                 }
+
                 if (source.IsMusic)
                 {
                     if (fadeMusic || source.Source.volume < musicVolume)
@@ -107,6 +108,8 @@ namespace Scripts
                     source.Source.transform.position = newEvent.Position;
                     source.AttachedTo = newEvent.AttachedTo;
                     source.Source.Play();
+
+                    FadeMusic(newEvent.FadeMusic, source.Source.clip.length);
                     return;
                 }
                 node = nodeNext;
@@ -134,16 +137,21 @@ namespace Scripts
             newSource.Source.Play();
             SourceCollection.AddLast(newSource);
 
-            if (newEvent.FadeMusic)
-            {
-                _fadeMusicStart = Time.time;
-                _fadeMusicEnd = _fadeMusicStart + clipDescription.Clip.length;
-            }
+            FadeMusic(newEvent.FadeMusic, clipDescription.Clip.length);
         }
 
         public void EventCatch(RemoveAttachedSoundsEvent newEvent)
         {
             ClearAttachedSounds(newEvent.AttachedTo);
+        }
+
+        private void FadeMusic(bool value, float length)
+        {
+            if (value)
+            {
+                _fadeMusicStart = Time.time;
+                _fadeMusicEnd = _fadeMusicStart + length;
+            }
         }
 
         private void ClearAttachedSounds(Transform transform)

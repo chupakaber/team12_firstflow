@@ -211,6 +211,7 @@ namespace Scripts.BehaviorTree
                     break;
                     case CharacterType.ASSISTANT:
                     case CharacterType.APPRENTICE:
+                    case CharacterType.MERCENARY:
                         var spawnEvent = new SpawnCharacterEvent() { CharacterType = characterType, Position = characterPosition, Character = null };
                         EventBus.CallEvent(spawnEvent);
                         character = spawnEvent.Character;

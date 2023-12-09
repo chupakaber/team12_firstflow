@@ -10,6 +10,7 @@ namespace Scripts
 
         public PoolCollection<Assistant> AssistantPools;
         public PoolCollection<Apprentice> ApprenticePools;
+        public PoolCollection<Mercenary> MercenaryPools;
 
         public void EventCatch(SpawnCharacterEvent newEvent)
         {
@@ -22,6 +23,10 @@ namespace Scripts
                 case CharacterType.APPRENTICE:
                     newEvent.Character = ApprenticePools.Get(0);
                     newEvent.Character.ResizeBagOfTries(newEvent.Character.BaseBagOfTriesCapacity);
+                    newEvent.Character.FollowingOffset = 2.2f;
+                break;
+                case CharacterType.MERCENARY:
+                    newEvent.Character = MercenaryPools.Get(0);
                     newEvent.Character.FollowingOffset = 2.2f;
                 break;
             }
