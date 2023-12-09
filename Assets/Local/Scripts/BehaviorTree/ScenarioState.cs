@@ -218,6 +218,22 @@ namespace Scripts.BehaviorTree
                     break;
                 }
 
+                if (characterType == CharacterType.MERCENARY && character != null)
+                {
+                    foreach (var building in Buildings)
+                    {
+                        if (building.ProduceItemType == ItemType.GOLD && building.ConsumeItemType == ItemType.NONE)
+                        {
+                            if (character is Mercenary)
+                            {
+                                var mercenary = (Mercenary) character;
+                                building.ProductionItemAmountPerCycle += mercenary.ProductionAmount;
+                                building.ProductionLimit = building.ProductionItemAmountPerCycle;
+                            }
+                        }
+                    }
+                }
+
                 if (character != null)
                 {
                     Characters.Add(character);

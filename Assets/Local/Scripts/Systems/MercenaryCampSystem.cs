@@ -36,9 +36,6 @@ namespace Scripts
         {            
             if (character.NextInQueue != null)
             {
-                building.ProductionItemAmountPerCycle += 25;
-                building.ProductionLimit = building.ProductionItemAmountPerCycle;
-
                 var recrut = character.NextInQueue;
 
                 var mercenary = MercenaryPools.Get(0);
@@ -50,6 +47,9 @@ namespace Scripts
                 building.UnloadingCharacters.Remove(recrut);
                 recrut.LeaveQueue();
                 recrut.Release();
+
+                building.ProductionItemAmountPerCycle += mercenary.ProductionAmount;
+                building.ProductionLimit = building.ProductionItemAmountPerCycle;
 
                 return true;
             }
