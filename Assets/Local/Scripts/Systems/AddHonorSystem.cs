@@ -33,8 +33,9 @@ namespace Scripts
                 var building = (Building)newEvent.Unit;
                 if (building.ProduceItemType == ItemType.HONOR)
                 {
-                    foreach (var character in Characters)
+                    for (var i = 0; i < Characters.Count; i++)
                     {
+                        var character = Characters[i];
                         if (character.CharacterType == CharacterType.PLAYER)
                         {
                             var honorAmount = building.ProductionItemAmountPerCycle;

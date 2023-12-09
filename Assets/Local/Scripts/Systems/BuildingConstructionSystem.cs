@@ -73,7 +73,7 @@ namespace Scripts
 
                                 foreach (var teleportingCharacter in building.ConstructionCharacters)
                                 {
-                                    teleportingCharacter.transform.position = building.PickingUpArea.transform.position;
+                                    teleportingCharacter.transform.position = building.PickingUpArea == null ? building.ConstructionArea.transform.position : building.PickingUpArea.transform.position;
                                 }
 
                                 foreach (var item in building.Items)
