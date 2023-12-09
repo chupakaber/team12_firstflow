@@ -90,6 +90,26 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &-7765529790420944821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  Name: 1
+  CurrentState: 0
+  Started: 0
+  Guid: d9c7cc58f38adc640b13fcdd73d70bae
+  Position: {x: -222.99998, y: -381.99988}
+  Child: {fileID: 5610417700878566325}
+  InputTargetIndex: 1
+  Value: 1
 --- !u!114 &-7385179016383726324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -696,8 +716,10 @@ MonoBehaviour:
   - {fileID: 5032631864277934431}
   - {fileID: 8635350185415230375}
   - {fileID: 4290981172061556670}
-  InputTargetIndex: 000000000000000000000000
-  OutputIndex: 000000000000000000000000
+  - {fileID: -941750605319033980}
+  - {fileID: -7765529790420944821}
+  InputTargetIndex: 0000000000000000000000000000000000000000
+  OutputIndex: 0000000000000000000000000000000000000000
   CompareOperator: 0
   Value: 0
   Min: 0
@@ -1045,9 +1067,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: SET ACTIVE
   CurrentState: 0
-  Started: 0
+  Started: 1
   Guid: cceae214e1d05fc4480227165bbccae6
-  Position: {x: -25, y: -681}
+  Position: {x: -9.5, y: -681}
   Children:
   - {fileID: -2749920320444965207}
   InputTargetIndex: 00000000
@@ -1157,6 +1179,26 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &-941750605319033980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  CurrentState: 0
+  Started: 0
+  Guid: 1152f3c907dc8fe4ea90cbca9d32b729
+  Position: {x: -223, y: -507}
+  Child: {fileID: -1883030177353805219}
+  InputTargetIndex: 1
+  Value: 1
 --- !u!114 &-763362115388495133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1364,6 +1406,8 @@ MonoBehaviour:
   - {fileID: 2488966504275464276}
   - {fileID: -1883030177353805219}
   - {fileID: 5610417700878566325}
+  - {fileID: -941750605319033980}
+  - {fileID: -7765529790420944821}
 --- !u!114 &79279145139786393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1842,7 +1886,7 @@ MonoBehaviour:
   - {fileID: 5610417700878566325}
   InputTargetIndex: 0000000000000000
   OutputIndex: 0000000000000000
-  ID: -1
+  ID: 5002
   MinimumLevel: 0
   MaximumLevel: 1000
   ProduceItemTypes: 
@@ -2121,7 +2165,7 @@ MonoBehaviour:
   Started: 0
   Guid: a13859aefafa9104fa7dfdb3fd1f791e
   Position: {x: -613, y: -520}
-  Child: {fileID: -1883030177353805219}
+  Child: {fileID: -4379030704485892277}
   InputTargetIndex: 1
   Value: 1
 --- !u!114 &4331154930001037049
@@ -2482,7 +2526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: LEVEL
   CurrentState: 0
-  Started: 0
+  Started: 1
   Guid: 1f22874ffeee57d4c8a7ed1eb9bb54a7
   Position: {x: -375.99997, y: -507.4501}
   Children: []
@@ -2704,7 +2748,7 @@ MonoBehaviour:
   Started: 0
   Guid: a4ccbfd6cfab64c498f6da6353ece475
   Position: {x: -613, y: -386}
-  Child: {fileID: 5610417700878566325}
+  Child: {fileID: 7103346676938041634}
   InputTargetIndex: 1
   Value: 1
 --- !u!114 &8886790934348301404
@@ -2752,7 +2796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AMOUNT
   CurrentState: 0
-  Started: 1
+  Started: 0
   Guid: 099094425dc9f0b45a0d39d81c62100d
   Position: {x: -1036, y: -544.5}
   Children:
