@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GetTargetCharacter
   m_EditorClassIdentifier: 
   Name: GetTargetCharacter
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 063acea6dd72ec245b8a07a22fba3d15
   Position: {x: 1951, y: 269}
@@ -34,7 +34,7 @@ MonoBehaviour:
   m_Name: SetTargetPosition
   m_EditorClassIdentifier: 
   Name: SetTargetPosition
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: ab2698224f98c69429a371197b6ef6c0
   Position: {x: 2172, y: 52}
@@ -56,7 +56,7 @@ MonoBehaviour:
   m_Name: Cooldown
   m_EditorClassIdentifier: 
   Name: Cooldown
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 105806a8d29db45479ccbe385e235f3a
   Position: {x: 1454, y: 1771}
@@ -64,7 +64,7 @@ MonoBehaviour:
   - {fileID: 3651031054424191107}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
-  Duration: 5
+  Duration: 10
   TimerIndex: 0
 --- !u!114 &-8601298414192235192
 MonoBehaviour:
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: Set Stage 2
   m_EditorClassIdentifier: 
   Name: Set Stage 2
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 107f78c613d1bf24fafbd389806de8ea
   Position: {x: 1631, y: 2084}
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: Distance to target
   m_EditorClassIdentifier: 
   Name: Distance to target
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: d2159fe9dd463ae4d8f3d81d83282388
   Position: {x: 1506, y: 1088}
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: Self
   m_EditorClassIdentifier: 
   Name: Self
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 45aae3da8c3ca0a43be1ea0ecd4767bf
   Position: {x: 952, y: 1025}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: RandomBuilding
   m_EditorClassIdentifier: 
   Name: RandomBuilding
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: eb0b7e5c43a3e7341888d09cf7007f6f
   Position: {x: 1625, y: 873}
@@ -156,11 +156,13 @@ MonoBehaviour:
   OutputIndex: 00000000
   ID: -1
   MinimumLevel: 1
+  MaximumLevel: 1000
   ProduceItemTypes: 05000000040000000600000002000000
   ConsumeItemTypes: 
   ProductionAreaNeeded: 0
   PickingUpAreaNeeded: 1
   UnloadingAreaNeeded: 0
+  ForEach: 0
 --- !u!114 &-7909932631716273841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +176,7 @@ MonoBehaviour:
   m_Name: FloatValue
   m_EditorClassIdentifier: 
   Name: FloatValue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: bf5c759ad5adb9b4f8d1951f086be026
   Position: {x: 915, y: 1237}
@@ -194,15 +196,15 @@ MonoBehaviour:
   m_Name: WorkerPrank
   m_EditorClassIdentifier: 
   Name: WorkerPrank
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 72e76cb17b3cf494bb1a6091d2a6d165
   Position: {x: 722, y: 205}
   Children:
-  - {fileID: -6689484446580831944}
   - {fileID: 3480666352394624696}
   - {fileID: 238070740715046413}
   - {fileID: -1261593211622649093}
+  - {fileID: -6689484446580831944}
   InputTargetIndex: 00000000000000000000000000000000
   OutputIndex: 00000000000000000000000000000000
   CompareOperator: 4
@@ -223,7 +225,7 @@ MonoBehaviour:
   m_Name: Set Stage 2
   m_EditorClassIdentifier: 
   Name: Set Stage 2
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: cb73aae26c695074b96b8b5feabce62c
   Position: {x: 2098, y: 1113}
@@ -246,7 +248,7 @@ MonoBehaviour:
   m_Name: Fixed Update\n[ Event ]
   m_EditorClassIdentifier: 
   Name: Fixed Update\n[ Event ]
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: b5f44740b7100ea4faf0dec96df8cb3f
   Position: {x: 203, y: 542}
@@ -268,7 +270,7 @@ MonoBehaviour:
   m_Name: Stage 2
   m_EditorClassIdentifier: 
   Name: Stage 2
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 17ad72641dc907b4cab7d9f9fbbb4e62
   Position: {x: 755, y: 1189}
@@ -294,7 +296,7 @@ MonoBehaviour:
   m_Name: CompareFloat
   m_EditorClassIdentifier: 
   Name: CompareFloat
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: d04255d1aff3b6f4a9b36fdbf0f1ee13
   Position: {x: 986, y: -467}
@@ -318,8 +320,8 @@ MonoBehaviour:
   m_Name: CompareFloat
   m_EditorClassIdentifier: 
   Name: CompareFloat
-  CurrentState: 2
-  Started: 0
+  CurrentState: 0
+  Started: 1
   Guid: 223951519d77d124f99d7cc1a0a6c0b4
   Position: {x: 1358, y: -374}
   Children:
@@ -342,7 +344,7 @@ MonoBehaviour:
   m_Name: LeaveQueue
   m_EditorClassIdentifier: 
   Name: LeaveQueue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 46b1bc206a2f59b488fa87b869762579
   Position: {x: 959, y: 2365}
@@ -363,7 +365,7 @@ MonoBehaviour:
   m_Name: CharacterValue
   m_EditorClassIdentifier: 
   Name: CharacterValue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 176ce36e98945894594674bc04a5bfb5
   Position: {x: 1983, y: 50}
@@ -372,8 +374,7 @@ MonoBehaviour:
   InputTargetIndex: 00000000
   OutputIndex: 01000000
   FieldName: 0
-  Character: {fileID: 0}
-  Index: 0
+  IsSecondInputValueNeeded: 0
 --- !u!114 &-7087413739591114785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,7 +388,7 @@ MonoBehaviour:
   m_Name: SetTargetPosition
   m_EditorClassIdentifier: 
   Name: SetTargetPosition
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 3a5b1dd3e7e6413469a9c588d4e178fc
   Position: {x: 2015, y: 885}
@@ -409,7 +410,7 @@ MonoBehaviour:
   m_Name: Cooldown
   m_EditorClassIdentifier: 
   Name: Cooldown
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 0f4a17ad2d8fab349ba24bc060dd3c82
   Position: {x: 1933, y: 1113}
@@ -432,7 +433,7 @@ MonoBehaviour:
   m_Name: Stage 1
   m_EditorClassIdentifier: 
   Name: Stage 1
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 6384845055cd16d439c0b8036602fd6a
   Position: {x: 812, y: 2084}
@@ -458,7 +459,7 @@ MonoBehaviour:
   m_Name: End
   m_EditorClassIdentifier: 
   Name: End
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: b3846d6afdb75fd4c88d0e4f233bcf8a
   Position: {x: 1758, y: 2466}
@@ -481,7 +482,7 @@ MonoBehaviour:
   m_Name: Stage 1
   m_EditorClassIdentifier: 
   Name: Stage 1
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: d17a559bd66e5da46b0134ceae69510a
   Position: {x: 877, y: 24}
@@ -507,7 +508,7 @@ MonoBehaviour:
   m_Name: JoinQueue
   m_EditorClassIdentifier: 
   Name: JoinQueue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 9d64b72137b73384aa54b4e666dc510b
   Position: {x: 1253, y: 2084}
@@ -529,7 +530,7 @@ MonoBehaviour:
   m_Name: Self
   m_EditorClassIdentifier: 
   Name: Self
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 30f636389477b50478d90f49e1227a76
   Position: {x: 915, y: 1448}
@@ -551,7 +552,7 @@ MonoBehaviour:
   m_Name: ShopPrank
   m_EditorClassIdentifier: 
   Name: ShopPrank
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 34f1f0ca0369d7b42952ac85b3dd568e
   Position: {x: 601, y: 2314}
@@ -578,7 +579,7 @@ MonoBehaviour:
   m_Name: Set BuildingPrank
   m_EditorClassIdentifier: 
   Name: Set BuildingPrank
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 4d0d05a16f2221947a98e0abddffa811
   Position: {x: 1146, y: -540}
@@ -602,7 +603,7 @@ MonoBehaviour:
   m_Name: 0.1
   m_EditorClassIdentifier: 
   Name: 0.1
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 847c58e50ee59934e97df9514cda0d3f
   Position: {x: 1324, y: 935}
@@ -622,7 +623,7 @@ MonoBehaviour:
   m_Name: Vector3Magnitude
   m_EditorClassIdentifier: 
   Name: Vector3Magnitude
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 316f29cf946d9514fa2d19c2c4a47614
   Position: {x: 1272, y: 808}
@@ -643,7 +644,7 @@ MonoBehaviour:
   m_Name: End
   m_EditorClassIdentifier: 
   Name: End
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: b2664696018adff478d38c829af3ac08
   Position: {x: 1666, y: 656}
@@ -666,7 +667,7 @@ MonoBehaviour:
   m_Name: Cooldown
   m_EditorClassIdentifier: 
   Name: Cooldown
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 6e917170a1660fa4985bc9de0c9815e4
   Position: {x: 2579, y: 629}
@@ -688,7 +689,7 @@ MonoBehaviour:
   m_Name: Cooldown
   m_EditorClassIdentifier: 
   Name: Cooldown
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: c6a0c37b783488e4eb534a2e7007d4b7
   Position: {x: 2134, y: 405}
@@ -711,7 +712,7 @@ MonoBehaviour:
   m_Name: Less
   m_EditorClassIdentifier: 
   Name: Less
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 086dce85a4c5c9241a051f18aff26370
   Position: {x: 1468, y: 861}
@@ -734,7 +735,7 @@ MonoBehaviour:
   m_Name: SwitchPrankType
   m_EditorClassIdentifier: 
   Name: SwitchPrankType
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: d7642419b474fd54790840d50325aa67
   Position: {x: 550, y: -251}
@@ -763,7 +764,7 @@ MonoBehaviour:
   m_Name: Cooldown
   m_EditorClassIdentifier: 
   Name: Cooldown
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 1174417073b01fb448cbd83f3265aa61
   Position: {x: 1609, y: 2458}
@@ -771,7 +772,7 @@ MonoBehaviour:
   - {fileID: -6779424356670744733}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
-  Duration: 5
+  Duration: 10
   TimerIndex: 0
 --- !u!114 &-3972365410238148102
 MonoBehaviour:
@@ -786,7 +787,7 @@ MonoBehaviour:
   m_Name: SetCharacterValue
   m_EditorClassIdentifier: 
   Name: SetCharacterValue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 7147967e319aba4488afdb07c2c5d603
   Position: {x: 1066, y: 1323}
@@ -808,7 +809,7 @@ MonoBehaviour:
   m_Name: Cooldown
   m_EditorClassIdentifier: 
   Name: Cooldown
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 2f410a8c044fadb45b67fde3fff1c1b3
   Position: {x: 1521, y: 632}
@@ -816,7 +817,7 @@ MonoBehaviour:
   - {fileID: -5088483506595003814}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
-  Duration: 1
+  Duration: 10
   TimerIndex: 0
 --- !u!114 &-3786757800523209352
 MonoBehaviour:
@@ -831,7 +832,7 @@ MonoBehaviour:
   m_Name: Set ShopPrank
   m_EditorClassIdentifier: 
   Name: Set ShopPrank
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: d6fc47ad6498de545a0eb10ea2f8f783
   Position: {x: 1595, y: -300}
@@ -855,7 +856,7 @@ MonoBehaviour:
   m_Name: RandomCharacter
   m_EditorClassIdentifier: 
   Name: RandomCharacter
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 0a4dca440fb8da045a6267c8a3fc5c02
   Position: {x: 1018, y: 2084}
@@ -878,7 +879,7 @@ MonoBehaviour:
   m_Name: Cooldown
   m_EditorClassIdentifier: 
   Name: Cooldown
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 266ae4c216998834eb76d8470aacf524
   Position: {x: 1717, y: -641}
@@ -900,7 +901,7 @@ MonoBehaviour:
   m_Name: Target position
   m_EditorClassIdentifier: 
   Name: Target position
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: e5f2bed9a5790cf46bb221943a54bddf
   Position: {x: 1114, y: 915}
@@ -910,8 +911,7 @@ MonoBehaviour:
   InputTargetIndex: 0000000000000000
   OutputIndex: 
   FieldName: 3
-  Character: {fileID: 0}
-  Index: 0
+  IsSecondInputValueNeeded: 0
 --- !u!114 &-2736729242776647161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,7 +925,7 @@ MonoBehaviour:
   m_Name: SetTargetPosition
   m_EditorClassIdentifier: 
   Name: SetTargetPosition
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: d7fa0d0005539314eb39918f667b16ff
   Position: {x: 1380, y: 2225}
@@ -947,7 +947,7 @@ MonoBehaviour:
   m_Name: TargetPosition
   m_EditorClassIdentifier: 
   Name: TargetPosition
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: da34ac78180a3164c97245bab150ebe1
   Position: {x: 1213, y: -24}
@@ -957,8 +957,7 @@ MonoBehaviour:
   InputTargetIndex: 0000000000000000
   OutputIndex: 0100000001000000
   FieldName: 3
-  Character: {fileID: 0}
-  Index: 0
+  IsSecondInputValueNeeded: 0
 --- !u!114 &-2339415438059904109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,7 +971,7 @@ MonoBehaviour:
   m_Name: Self
   m_EditorClassIdentifier: 
   Name: Self
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 77045837e911c39458c8650b1e191784
   Position: {x: 1031, y: 76}
@@ -995,7 +994,7 @@ MonoBehaviour:
   m_Name: SetCharacterValue
   m_EditorClassIdentifier: 
   Name: SetCharacterValue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 1d3e64bbf25e7f549924f7dcebe4a49a
   Position: {x: 860, y: -641}
@@ -1020,12 +1019,12 @@ MonoBehaviour:
   CurrentState: 0
   Started: 1
   Guid: 48e27c875594d3747a3769d09848b5ab
-  Position: {x: 424, y: 580}
+  Position: {x: 460.7083, y: 581.50006}
   Children:
-  - {fileID: 3502806182071802588}
-  - {fileID: -7889062763675277692}
-  - {fileID: -6169056407516904982}
   - {fileID: -4345040912108292830}
+  - {fileID: -7889062763675277692}
+  - {fileID: 3502806182071802588}
+  - {fileID: -6169056407516904982}
   InputTargetIndex: 00000000000000000000000000000000
   OutputIndex: 00000000000000000000000000000000
   TimerIndex: 0
@@ -1042,7 +1041,7 @@ MonoBehaviour:
   m_Name: SetCharacterValue
   m_EditorClassIdentifier: 
   Name: SetCharacterValue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 1c852e1604c073d4f8a1866f5ab93c13
   Position: {x: 2163, y: 232}
@@ -1063,7 +1062,7 @@ MonoBehaviour:
   m_Name: FloatValue
   m_EditorClassIdentifier: 
   Name: FloatValue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 4ed0c9fc01bde82448f1e566748075b8
   Position: {x: 792, y: -318}
@@ -1083,7 +1082,7 @@ MonoBehaviour:
   m_Name: SetTargetPosition
   m_EditorClassIdentifier: 
   Name: SetTargetPosition
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 08ac7cd67179cd145a4b162684df308a
   Position: {x: 1429, y: 2434}
@@ -1106,7 +1105,7 @@ MonoBehaviour:
   m_Name: CharacterValue
   m_EditorClassIdentifier: 
   Name: CharacterValue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: f480a0b46555ddd4da5278a6286ccc74
   Position: {x: 1267, y: 2392}
@@ -1115,8 +1114,7 @@ MonoBehaviour:
   InputTargetIndex: 00000000
   OutputIndex: 01000000
   FieldName: 5
-  Character: {fileID: 0}
-  Index: 0
+  IsSecondInputValueNeeded: 0
 --- !u!114 &-1261593211622649093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1130,7 +1128,7 @@ MonoBehaviour:
   m_Name: Stage 2
   m_EditorClassIdentifier: 
   Name: Stage 2
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 35bb147d9fffda54880d27af81a8b7f7
   Position: {x: 842, y: 430}
@@ -1156,7 +1154,7 @@ MonoBehaviour:
   m_Name: CharacterValue
   m_EditorClassIdentifier: 
   Name: CharacterValue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 95174e4bf9c2c5d4c9f67f5d1f039e44
   Position: {x: 1066, y: 1547}
@@ -1165,8 +1163,7 @@ MonoBehaviour:
   InputTargetIndex: 00000000
   OutputIndex: 01000000
   FieldName: 5
-  Character: {fileID: 0}
-  Index: 0
+  IsSecondInputValueNeeded: 0
 --- !u!114 &-1044431132311776820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1180,7 +1177,7 @@ MonoBehaviour:
   m_Name: SetTargetPosition
   m_EditorClassIdentifier: 
   Name: SetTargetPosition
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: ff4be5dc5a91e7a4caf84c94f0ab6262
   Position: {x: 2368, y: 605}
@@ -1203,7 +1200,7 @@ MonoBehaviour:
   m_Name: SetTargetPosition
   m_EditorClassIdentifier: 
   Name: SetTargetPosition
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: c819acc2f18933c4ca92047aa858eb86
   Position: {x: 1236, y: 1696}
@@ -1226,8 +1223,8 @@ MonoBehaviour:
   m_Name: Less
   m_EditorClassIdentifier: 
   Name: Less
-  CurrentState: 2
-  Started: 0
+  CurrentState: 0
+  Started: 1
   Guid: d0b332a3ca26f904e94f2cb5785dcac5
   Position: {x: 1806, y: 381}
   Children:
@@ -1251,7 +1248,7 @@ MonoBehaviour:
   m_Name: FloatValue
   m_EditorClassIdentifier: 
   Name: FloatValue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 9b5225bd85d7a5f4ca339fd5a0aaf4ea
   Position: {x: 1146, y: -288}
@@ -1271,7 +1268,7 @@ MonoBehaviour:
   m_Name: SetTargetPosition
   m_EditorClassIdentifier: 
   Name: SetTargetPosition
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 6396ce5600c31bd488545c24429688d9
   Position: {x: 1333, y: 607}
@@ -1294,7 +1291,7 @@ MonoBehaviour:
   m_Name: Less
   m_EditorClassIdentifier: 
   Name: Less
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 36199e0022a950141980de076cc2123c
   Position: {x: 1714, y: 1088}
@@ -1316,7 +1313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86fdf436cec7b4f428f6b5071a233cce, type: 3}
   m_Name: BehaviorTree
   m_EditorClassIdentifier: 
-  RootNode: {fileID: -7634414785731514838}
   TreeState: 0
   Nodes:
   - {fileID: 3307189747733207150}
@@ -1424,7 +1420,7 @@ MonoBehaviour:
   m_Name: FloatValue
   m_EditorClassIdentifier: 
   Name: FloatValue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: fa3b164bd2e04cf40851dccd770cbfda
   Position: {x: 1628, y: 480}
@@ -1444,7 +1440,7 @@ MonoBehaviour:
   m_Name: Self
   m_EditorClassIdentifier: 
   Name: Self
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 4e7643ca3ca886a488f395091dee59dc
   Position: {x: 1051, y: -691}
@@ -1466,7 +1462,7 @@ MonoBehaviour:
   m_Name: ShowEmoji
   m_EditorClassIdentifier: 
   Name: ShowEmoji
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: cda14edc14451394abd0b819462c41dd
   Position: {x: 1951, y: 405}
@@ -1488,7 +1484,7 @@ MonoBehaviour:
   m_Name: Cooldown
   m_EditorClassIdentifier: 
   Name: Cooldown
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: ef4cca305af39aa49ac7cb1cfad1556a
   Position: {x: 1417, y: 1424}
@@ -1511,7 +1507,7 @@ MonoBehaviour:
   m_Name: Self
   m_EditorClassIdentifier: 
   Name: Self
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 587aba35cab44ea4fbd342dff79b3314
   Position: {x: 990, y: 506}
@@ -1533,7 +1529,7 @@ MonoBehaviour:
   m_Name: CharacterValue
   m_EditorClassIdentifier: 
   Name: CharacterValue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 60f4371836ec1ee439150fcb358b42af
   Position: {x: 1146, y: 557}
@@ -1542,8 +1538,7 @@ MonoBehaviour:
   InputTargetIndex: 00000000
   OutputIndex: 01000000
   FieldName: 5
-  Character: {fileID: 0}
-  Index: 0
+  IsSecondInputValueNeeded: 0
 --- !u!114 &2459226389173382051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1557,7 +1552,7 @@ MonoBehaviour:
   m_Name: Set WorkerPrank
   m_EditorClassIdentifier: 
   Name: Set WorkerPrank
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 9e1a09776729ccd429702df5e706abf3
   Position: {x: 1535, y: -489}
@@ -1581,7 +1576,7 @@ MonoBehaviour:
   m_Name: Stage 2
   m_EditorClassIdentifier: 
   Name: Stage 2
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 12c25ca3e45929f4cb670666d19cc95e
   Position: {x: 812, y: 2365}
@@ -1607,7 +1602,7 @@ MonoBehaviour:
   m_Name: Self
   m_EditorClassIdentifier: 
   Name: Self
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 5dfcbfc8984595349b4af0f5d7c046a7
   Position: {x: 1116, y: 2416}
@@ -1629,7 +1624,7 @@ MonoBehaviour:
   m_Name: 5
   m_EditorClassIdentifier: 
   Name: 5
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 4530f97814452184bb09f377de25465d
   Position: {x: 1521, y: 1271}
@@ -1649,7 +1644,7 @@ MonoBehaviour:
   m_Name: BuildingValue
   m_EditorClassIdentifier: 
   Name: BuildingValue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 7a075a6f7edf688438cbf047e935e68f
   Position: {x: 1835, y: 861}
@@ -1672,7 +1667,7 @@ MonoBehaviour:
   m_Name: FloatValue
   m_EditorClassIdentifier: 
   Name: FloatValue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: de615194d128a4245835e7a39a2e3a54
   Position: {x: 1455, y: 177}
@@ -1692,7 +1687,7 @@ MonoBehaviour:
   m_Name: BuildingPrank
   m_EditorClassIdentifier: 
   Name: BuildingPrank
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 89b12344dca818c4a8afbbe586452d1a
   Position: {x: 603, y: 1038}
@@ -1720,7 +1715,7 @@ MonoBehaviour:
   m_Name: End
   m_EditorClassIdentifier: 
   Name: End
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 0c73d8ff55cf2484f97afeb857d23503
   Position: {x: 1583, y: 1821}
@@ -1743,7 +1738,7 @@ MonoBehaviour:
   m_Name: Position
   m_EditorClassIdentifier: 
   Name: Position
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 1c62437131601ca4d85c2abf216c029b
   Position: {x: 1114, y: 1126}
@@ -1752,8 +1747,7 @@ MonoBehaviour:
   InputTargetIndex: 01000000
   OutputIndex: 
   FieldName: 0
-  Character: {fileID: 0}
-  Index: 0
+  IsSecondInputValueNeeded: 0
 --- !u!114 &3914910690546091459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1767,7 +1761,7 @@ MonoBehaviour:
   m_Name: RandomCharacter
   m_EditorClassIdentifier: 
   Name: RandomCharacter
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: ef0ae73ab7e4efc43b02fdb0e574edb5
   Position: {x: 1780, y: 78}
@@ -1790,7 +1784,7 @@ MonoBehaviour:
   m_Name: Distance to target
   m_EditorClassIdentifier: 
   Name: Distance to target
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 83c8e3da43d3c294baf5c4da2b41f97f
   Position: {x: 1609, y: 354}
@@ -1811,7 +1805,7 @@ MonoBehaviour:
   m_Name: MakeEvent
   m_EditorClassIdentifier: 
   Name: MakeEvent
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: bc8851089598534419a0855c9bc9b975
   Position: {x: 1215, y: -790}
@@ -1832,7 +1826,7 @@ MonoBehaviour:
   m_Name: Vector3Value
   m_EditorClassIdentifier: 
   Name: Vector3Value
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 8d2fb4c2bc0b0df40b4130cdceea6b6b
   Position: {x: 692, y: -617}
@@ -1852,7 +1846,7 @@ MonoBehaviour:
   m_Name: GetTargetCharacter
   m_EditorClassIdentifier: 
   Name: GetTargetCharacter
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 7ca9bcbb559455a4999baffa368ff767
   Position: {x: 1951, y: 555}
@@ -1873,7 +1867,7 @@ MonoBehaviour:
   m_Name: Stage 1
   m_EditorClassIdentifier: 
   Name: Stage 1
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 538711afff45ede42873c7eb4601feef
   Position: {x: 755, y: 1037}
@@ -1901,7 +1895,7 @@ MonoBehaviour:
   m_Name: SetCharacterValue
   m_EditorClassIdentifier: 
   Name: SetCharacterValue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 9ee099eb8ab34e74c8cc0085fae920d2
   Position: {x: 1983, y: -127}
@@ -1922,7 +1916,7 @@ MonoBehaviour:
   m_Name: CharacterValue
   m_EditorClassIdentifier: 
   Name: CharacterValue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: a5f29ece84ae55a48ba5d45b16112beb
   Position: {x: 2163, y: 581}
@@ -1931,8 +1925,7 @@ MonoBehaviour:
   InputTargetIndex: 00000000
   OutputIndex: 01000000
   FieldName: 0
-  Character: {fileID: 0}
-  Index: 0
+  IsSecondInputValueNeeded: 0
 --- !u!114 &5990628395267221558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1946,7 +1939,7 @@ MonoBehaviour:
   m_Name: CharacterValue
   m_EditorClassIdentifier: 
   Name: CharacterValue
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 5cce01f189e95b14f97fce9d9ae2b1d0
   Position: {x: 1200, y: 2201}
@@ -1955,8 +1948,7 @@ MonoBehaviour:
   InputTargetIndex: 00000000
   OutputIndex: 01000000
   FieldName: 0
-  Character: {fileID: 0}
-  Index: 0
+  IsSecondInputValueNeeded: 0
 --- !u!114 &6462393765226416537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1970,7 +1962,7 @@ MonoBehaviour:
   m_Name: Cooldown
   m_EditorClassIdentifier: 
   Name: Cooldown
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 852749dd318a12e46a1ecf7aa6edc104
   Position: {x: 1445, y: 2084}
@@ -1993,7 +1985,7 @@ MonoBehaviour:
   m_Name: RandomFloat
   m_EditorClassIdentifier: 
   Name: RandomFloat
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: aa5d91405095f3f43b7fc2db56a8ec70
   Position: {x: 1156, y: -410}
@@ -2014,7 +2006,7 @@ MonoBehaviour:
   m_Name: Set Stage 2
   m_EditorClassIdentifier: 
   Name: Set Stage 2
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 678f2148559a0ff4bb3c60e9b0475375
   Position: {x: 2272, y: 405}
@@ -2037,8 +2029,8 @@ MonoBehaviour:
   m_Name: Less
   m_EditorClassIdentifier: 
   Name: Less
-  CurrentState: 2
-  Started: 0
+  CurrentState: 0
+  Started: 1
   Guid: e30d0753c746a9141bd47fb040513c23
   Position: {x: 1647, y: 65}
   Children:
@@ -2060,7 +2052,7 @@ MonoBehaviour:
   m_Name: RandomFloat
   m_EditorClassIdentifier: 
   Name: RandomFloat
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: c52669ac592401c4590fb0b515f87af7
   Position: {x: 845, y: -452}
@@ -2081,7 +2073,7 @@ MonoBehaviour:
   m_Name: Vector3Difference
   m_EditorClassIdentifier: 
   Name: Vector3Difference
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 557cf7873cc94b749a09260f1c9fdbf7
   Position: {x: 1410, y: 330}
@@ -2103,7 +2095,7 @@ MonoBehaviour:
   m_Name: Stage 3
   m_EditorClassIdentifier: 
   Name: Stage 3
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: d3be4fff43456ef4eadfeab352627402
   Position: {x: 755, y: 1373}
@@ -2129,7 +2121,7 @@ MonoBehaviour:
   m_Name: Position
   m_EditorClassIdentifier: 
   Name: Position
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 523bcf16525b1584f9cfd4e34b201f82
   Position: {x: 1213, y: 306}
@@ -2138,8 +2130,7 @@ MonoBehaviour:
   InputTargetIndex: 01000000
   OutputIndex: 01000000
   FieldName: 0
-  Character: {fileID: 0}
-  Index: 0
+  IsSecondInputValueNeeded: 0
 --- !u!114 &8545479668648045420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2153,7 +2144,7 @@ MonoBehaviour:
   m_Name: Vector3Difference
   m_EditorClassIdentifier: 
   Name: Vector3Difference
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 5c58487c23f4af2439ed54dd2e78319d
   Position: {x: 1324, y: 1064}
@@ -2175,7 +2166,7 @@ MonoBehaviour:
   m_Name: Vector3Magnitude
   m_EditorClassIdentifier: 
   Name: Vector3Magnitude
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 7b79efc4bf41ffa479f498b46266cf03
   Position: {x: 1432, y: 50}
@@ -2196,7 +2187,7 @@ MonoBehaviour:
   m_Name: Set Stage 3
   m_EditorClassIdentifier: 
   Name: Set Stage 3
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 6f908a26b0c137049a14d63a40922aeb
   Position: {x: 1559, y: 1474}
@@ -2219,7 +2210,7 @@ MonoBehaviour:
   m_Name: ShowEmoji
   m_EditorClassIdentifier: 
   Name: ShowEmoji
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 2e6edea150a3db446a2e9d47d39b43e1
   Position: {x: 1270, y: 1373}
