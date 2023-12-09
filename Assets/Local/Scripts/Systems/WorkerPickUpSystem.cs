@@ -16,18 +16,21 @@ namespace Scripts
             {
                 if (building.ProduceItemType == ItemType.ASSISTANT || building.ProduceItemType == ItemType.APPRENTICE)
                 {
-                    foreach (var character in building.PickingUpCharacters)
+                    foreach (var character in building.UnloadingCharacters)
                     {
                         if (character.CharacterType == CharacterType.PLAYER)
                         {
-                            PickUp(building, character);
+                            if (PickUp(building, character))
+                            {
+                                break;
+                            }
                         }
                     }
                 }
             }
         }
 
-        private void PickUp(Building building, Character player)
+        private bool PickUp(Building building, Character player)
         {
             if (Time.time >= player.LastPickUpItemTime + 0.1f)
             {
@@ -49,11 +52,17 @@ namespace Scripts
                                 worker.TargetBuilding = null;
                                 player.AddLastInQueue(worker);
                                 worker.FollowingOffset = 2.2f;
+
+                                building.UnloadingCharacters.Remove(player);
+                                Debug.Log($"Remove player from unloading: {building.name}");
+                                return true;
                             }
                         }
                     }
                 }
             }
+
+            return false;
         }
     }
 }

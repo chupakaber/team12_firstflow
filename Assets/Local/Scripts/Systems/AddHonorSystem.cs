@@ -13,7 +13,7 @@ namespace Scripts
             if (newEvent.ItemType == ItemType.GOLD && newEvent.Unit is Building)
             {
                 var building = (Building) newEvent.Unit;
-                if (building.ProduceItemType == ItemType.GOLD)
+                if (building.ProduceItemType == ItemType.GOLD && building.Level > 0)
                 {
                     foreach (var character in Characters)
                     {

@@ -20,7 +20,7 @@ namespace Scripts
                 
                 foreach (var character in building.UnloadingCharacters)
                 {
-                    Collecting(building,character);
+                    Collecting(building, character);
                 }
             }
         }
