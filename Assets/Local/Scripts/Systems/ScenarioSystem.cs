@@ -20,6 +20,7 @@ namespace Scripts
                 EventBus = EventBus,
                 Characters = Characters,
                 Buildings = Buildings,
+                UIView = UIView,
             };
 
             foreach (var character in Characters)

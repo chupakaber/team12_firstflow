@@ -20,6 +20,7 @@ namespace Scripts.BehaviorTree
         public EventBus EventBus { get; set; }
         public List<Building> Buildings { get; set; }
         public List<Character> Characters { get; set; }
+        public UIView UIView { get; set; }
 
         public SmartCharacter Player;
 
@@ -111,6 +112,8 @@ namespace Scripts.BehaviorTree
                     SerializationUtils.Put(buffer, item.Amount);
                 }
             }
+
+            SerializationUtils.Put(buffer, Vector3Serializer<Vector3>.Instance, UIView.PointerArrowTargetPositionOnNavMesh);
         }
 
         public void Unpack(ByteBuffer buffer)
@@ -269,6 +272,9 @@ namespace Scripts.BehaviorTree
                     }
                 }
             }
+
+            UIView.PointerArrowTargetPositionOnNavMesh = SerializationUtils.Get(buffer, Vector3Serializer<Vector3>.Instance);
+            UIView.PointerArrowTargetPosition = UIView.PointerArrowTargetPositionOnNavMesh;
         }
 
         public int GetStructureLength()
@@ -322,6 +328,8 @@ namespace Scripts.BehaviorTree
                 bytesCount += SerializationUtils.SIZE_OF_INT;
                 bytesCount += itemsCount * 2 * SerializationUtils.SIZE_OF_INT;
             }
+
+            bytesCount += Vector3Serializer<Vector3>.SIZE_OF_STRUCTURE;
 
             return bytesCount;
         }
