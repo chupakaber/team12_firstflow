@@ -156,7 +156,7 @@ namespace Scripts
         {
             var newPosition = Vector3.Lerp(_camera.transform.position, CameraWayPoint.position, Time.deltaTime * 5f);
             _camera.transform.position = newPosition;
-            _camera.orthographicSize = CameraWayPoint.localScale.x;
+            //_camera.orthographicSize = CameraWayPoint.localScale.x;
         }
 
         public void PlayAnim(int index)
