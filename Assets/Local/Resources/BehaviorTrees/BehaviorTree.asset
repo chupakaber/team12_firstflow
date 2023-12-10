@@ -59,12 +59,12 @@ MonoBehaviour:
   CurrentState: 0
   Started: 0
   Guid: 105806a8d29db45479ccbe385e235f3a
-  Position: {x: 1454, y: 1771}
+  Position: {x: 1455, y: 1770.5}
   Children:
   - {fileID: 3651031054424191107}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
-  Duration: 10
+  Duration: 30
   TimerIndex: 0
 --- !u!114 &-8601298414192235192
 MonoBehaviour:
@@ -82,7 +82,7 @@ MonoBehaviour:
   CurrentState: 0
   Started: 0
   Guid: 107f78c613d1bf24fafbd389806de8ea
-  Position: {x: 1631, y: 2084}
+  Position: {x: 1841, y: 2067}
   Children: []
   InputTargetIndex: 
   OutputIndex: 
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: Distance to target
   m_EditorClassIdentifier: 
   Name: Distance to target
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: d2159fe9dd463ae4d8f3d81d83282388
   Position: {x: 1506, y: 1088}
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: Self
   m_EditorClassIdentifier: 
   Name: Self
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 45aae3da8c3ca0a43be1ea0ecd4767bf
   Position: {x: 952, y: 1025}
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: WorkerPrank
   m_EditorClassIdentifier: 
   Name: WorkerPrank
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 72e76cb17b3cf494bb1a6091d2a6d165
   Position: {x: 722, y: 205}
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Name: Stage 2
   m_EditorClassIdentifier: 
   Name: Stage 2
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 17ad72641dc907b4cab7d9f9fbbb4e62
   Position: {x: 755, y: 1189}
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: GooseMessage
   CurrentState: 0
-  Started: 1
+  Started: 0
   Guid: a9e103a018ad8d540bbb45a850b2027d
   Position: {x: 2401, y: 1084}
   Children: []
@@ -345,9 +345,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: CompareFloat
   CurrentState: 0
-  Started: 1
+  Started: 0
   Guid: 223951519d77d124f99d7cc1a0a6c0b4
-  Position: {x: 1358, y: -374}
+  Position: {x: 1358, y: -374.5}
   Children:
   - {fileID: 2459226389173382051}
   - {fileID: -3786757800523209352}
@@ -371,7 +371,7 @@ MonoBehaviour:
   CurrentState: 0
   Started: 0
   Guid: 46b1bc206a2f59b488fa87b869762579
-  Position: {x: 959, y: 2365}
+  Position: {x: 1140.9999, y: 2439.4995}
   Children:
   - {fileID: 2544330741308243306}
   InputTargetIndex: 00000000
@@ -442,7 +442,7 @@ MonoBehaviour:
   - {fileID: -7820650251355302233}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
-  Duration: 5
+  Duration: 1
   TimerIndex: 0
 --- !u!114 &-6852375558131617864
 MonoBehaviour:
@@ -486,7 +486,7 @@ MonoBehaviour:
   CurrentState: 0
   Started: 0
   Guid: b3846d6afdb75fd4c88d0e4f233bcf8a
-  Position: {x: 1758, y: 2466}
+  Position: {x: 2034.9998, y: 2489.9993}
   Children: []
   InputTargetIndex: 
   OutputIndex: 
@@ -537,7 +537,7 @@ MonoBehaviour:
   Guid: 9d64b72137b73384aa54b4e666dc510b
   Position: {x: 1253, y: 2084}
   Children:
-  - {fileID: 6462393765226416537}
+  - {fileID: -2204804534289369048}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
   AtLast: 1
@@ -576,7 +576,7 @@ MonoBehaviour:
   m_Name: ShopPrank
   m_EditorClassIdentifier: 
   Name: ShopPrank
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 34f1f0ca0369d7b42952ac85b3dd568e
   Position: {x: 601, y: 2314}
@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Name: Self
   m_EditorClassIdentifier: 
   Name: Self
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 08fd9c82234e20b4f9ab230b629d7fde
   Position: {x: 2247, y: 1237}
@@ -649,7 +649,7 @@ MonoBehaviour:
   m_Name: 0.1
   m_EditorClassIdentifier: 
   Name: 0.1
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 847c58e50ee59934e97df9514cda0d3f
   Position: {x: 1324, y: 935}
@@ -669,7 +669,7 @@ MonoBehaviour:
   m_Name: Vector3Magnitude
   m_EditorClassIdentifier: 
   Name: Vector3Magnitude
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 316f29cf946d9514fa2d19c2c4a47614
   Position: {x: 1272, y: 808}
@@ -738,12 +738,12 @@ MonoBehaviour:
   CurrentState: 0
   Started: 0
   Guid: c6a0c37b783488e4eb534a2e7007d4b7
-  Position: {x: 2134, y: 405}
+  Position: {x: 2137, y: 405}
   Children:
   - {fileID: 6570474368379886664}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
-  Duration: 2
+  Duration: 6
   TimerIndex: 0
 --- !u!114 &-4407492856555679325
 MonoBehaviour:
@@ -758,7 +758,7 @@ MonoBehaviour:
   m_Name: Less
   m_EditorClassIdentifier: 
   Name: Less
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 086dce85a4c5c9241a051f18aff26370
   Position: {x: 1468, y: 861}
@@ -781,7 +781,7 @@ MonoBehaviour:
   m_Name: SwitchPrankType
   m_EditorClassIdentifier: 
   Name: SwitchPrankType
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: d7642419b474fd54790840d50325aa67
   Position: {x: 550, y: -251}
@@ -813,12 +813,12 @@ MonoBehaviour:
   CurrentState: 0
   Started: 0
   Guid: 1174417073b01fb448cbd83f3265aa61
-  Position: {x: 1609, y: 2458}
+  Position: {x: 1885.9999, y: 2481.9993}
   Children:
   - {fileID: -6779424356670744733}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
-  Duration: 10
+  Duration: 30
   TimerIndex: 0
 --- !u!114 &-3972365410238148102
 MonoBehaviour:
@@ -863,7 +863,7 @@ MonoBehaviour:
   - {fileID: -5088483506595003814}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
-  Duration: 10
+  Duration: 30
   TimerIndex: 0
 --- !u!114 &-3786757800523209352
 MonoBehaviour:
@@ -928,7 +928,7 @@ MonoBehaviour:
   CurrentState: 0
   Started: 0
   Guid: 266ae4c216998834eb76d8470aacf524
-  Position: {x: 1717, y: -641}
+  Position: {x: 1717, y: -640.5}
   Children: []
   InputTargetIndex: 
   OutputIndex: 
@@ -947,10 +947,10 @@ MonoBehaviour:
   m_Name: Target position
   m_EditorClassIdentifier: 
   Name: Target position
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: e5f2bed9a5790cf46bb221943a54bddf
-  Position: {x: 1114, y: 915}
+  Position: {x: 1114, y: 873}
   Children:
   - {fileID: 8545479668648045420}
   - {fileID: -5130207746914065097}
@@ -958,6 +958,28 @@ MonoBehaviour:
   OutputIndex: 
   FieldName: 3
   IsSecondInputValueNeeded: 0
+--- !u!114 &-2912988569995229601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 363f6b0f559c8ba43a2c1ceea643abe1, type: 3}
+  m_Name: ShowEmoji
+  m_EditorClassIdentifier: 
+  Name: ShowEmoji
+  CurrentState: 0
+  Started: 0
+  Guid: 2a254b8c7e50ed94ba071fdf09123087
+  Position: {x: 963.49994, y: 2415.9995}
+  Children:
+  - {fileID: -7178186295682777531}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  IconIndex: 0
 --- !u!114 &-2736729242776647161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1062,8 +1084,8 @@ MonoBehaviour:
   m_Name: Wait
   m_EditorClassIdentifier: 
   Name: Wait
-  CurrentState: 2
-  Started: 0
+  CurrentState: 0
+  Started: 1
   Guid: 48e27c875594d3747a3769d09848b5ab
   Position: {x: 460.7083, y: 581.50006}
   Children:
@@ -1074,6 +1096,28 @@ MonoBehaviour:
   InputTargetIndex: 00000000000000000000000000000000
   OutputIndex: 00000000000000000000000000000000
   TimerIndex: 0
+--- !u!114 &-2204804534289369048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 363f6b0f559c8ba43a2c1ceea643abe1, type: 3}
+  m_Name: ShowEmoji
+  m_EditorClassIdentifier: 
+  Name: ShowEmoji
+  CurrentState: 0
+  Started: 0
+  Guid: cf3d75b0055212a46a5ca71d4d26b608
+  Position: {x: 1464, y: 2067}
+  Children:
+  - {fileID: -302035989539398441}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  IconIndex: 0
 --- !u!114 &-1994909892216080540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1114,7 +1158,7 @@ MonoBehaviour:
   Position: {x: 792, y: -318}
   Child: {fileID: -7544636023563235547}
   InputTargetIndex: 1
-  Value: 1.33
+  Value: 0.33
 --- !u!114 &-1665823872486235936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1131,7 +1175,7 @@ MonoBehaviour:
   CurrentState: 0
   Started: 0
   Guid: 08ac7cd67179cd145a4b162684df308a
-  Position: {x: 1429, y: 2434}
+  Position: {x: 1705.9999, y: 2457.999}
   Children:
   - {fileID: -4213131742754869834}
   InputTargetIndex: 00000000
@@ -1154,7 +1198,7 @@ MonoBehaviour:
   CurrentState: 0
   Started: 0
   Guid: f480a0b46555ddd4da5278a6286ccc74
-  Position: {x: 1267, y: 2392}
+  Position: {x: 1543.9998, y: 2415.9993}
   Children:
   - {fileID: -1665823872486235936}
   InputTargetIndex: 00000000
@@ -1324,6 +1368,29 @@ MonoBehaviour:
   OutputIndex: 00000000
   FollowingOffset: 1.7
   SaveLastTargetPosition: 0
+--- !u!114 &-302035989539398441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df6e08930443d742b61462ca17f7aba, type: 3}
+  m_Name: Cooldown
+  m_EditorClassIdentifier: 
+  Name: Cooldown
+  CurrentState: 0
+  Started: 0
+  Guid: 369d7e601641b0945a78430bc66ac50f
+  Position: {x: 1690.0511, y: 2067}
+  Children:
+  - {fileID: -8601298414192235192}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  Duration: 15
+  TimerIndex: 0
 --- !u!114 &-110013083006344411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1337,7 +1404,7 @@ MonoBehaviour:
   m_Name: Less
   m_EditorClassIdentifier: 
   Name: Less
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 36199e0022a950141980de076cc2123c
   Position: {x: 1714, y: 1088}
@@ -1442,7 +1509,6 @@ MonoBehaviour:
   - {fileID: -6852375558131617864}
   - {fileID: -3782807609804642422}
   - {fileID: -6671501041071846404}
-  - {fileID: 6462393765226416537}
   - {fileID: 2525125706594545607}
   - {fileID: -6779424356670744733}
   - {fileID: -7178186295682777531}
@@ -1455,6 +1521,9 @@ MonoBehaviour:
   - {fileID: -7634414785731514838}
   - {fileID: -6053571057169884046}
   - {fileID: -7588175035588174391}
+  - {fileID: -2204804534289369048}
+  - {fileID: -302035989539398441}
+  - {fileID: -2912988569995229601}
 --- !u!114 &238070740715046413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1629,7 +1698,7 @@ MonoBehaviour:
   Guid: 12c25ca3e45929f4cb670666d19cc95e
   Position: {x: 812, y: 2365}
   Children:
-  - {fileID: -7178186295682777531}
+  - {fileID: -2912988569995229601}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
   CompareOperator: 0
@@ -1653,7 +1722,7 @@ MonoBehaviour:
   CurrentState: 0
   Started: 0
   Guid: 5dfcbfc8984595349b4af0f5d7c046a7
-  Position: {x: 1116, y: 2416}
+  Position: {x: 1340, y: 2440}
   Children:
   - {fileID: -1594638990212348599}
   InputTargetIndex: 00000000
@@ -1672,7 +1741,7 @@ MonoBehaviour:
   m_Name: 5
   m_EditorClassIdentifier: 
   Name: 5
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 4530f97814452184bb09f377de25465d
   Position: {x: 1521, y: 1271}
@@ -1735,7 +1804,7 @@ MonoBehaviour:
   m_Name: BuildingPrank
   m_EditorClassIdentifier: 
   Name: BuildingPrank
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 89b12344dca818c4a8afbbe586452d1a
   Position: {x: 603, y: 1038}
@@ -1786,7 +1855,7 @@ MonoBehaviour:
   m_Name: Position
   m_EditorClassIdentifier: 
   Name: Position
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 1c62437131601ca4d85c2abf216c029b
   Position: {x: 1114, y: 1126}
@@ -1915,7 +1984,7 @@ MonoBehaviour:
   m_Name: Stage 1
   m_EditorClassIdentifier: 
   Name: Stage 1
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 538711afff45ede42873c7eb4601feef
   Position: {x: 755, y: 1037}
@@ -1997,29 +2066,6 @@ MonoBehaviour:
   OutputIndex: 01000000
   FieldName: 0
   IsSecondInputValueNeeded: 0
---- !u!114 &6462393765226416537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1df6e08930443d742b61462ca17f7aba, type: 3}
-  m_Name: Cooldown
-  m_EditorClassIdentifier: 
-  Name: Cooldown
-  CurrentState: 0
-  Started: 0
-  Guid: 852749dd318a12e46a1ecf7aa6edc104
-  Position: {x: 1445, y: 2084}
-  Children:
-  - {fileID: -8601298414192235192}
-  InputTargetIndex: 00000000
-  OutputIndex: 00000000
-  Duration: 15
-  TimerIndex: 0
 --- !u!114 &6504456511571809069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2103,7 +2149,7 @@ MonoBehaviour:
   CurrentState: 0
   Started: 0
   Guid: c52669ac592401c4590fb0b515f87af7
-  Position: {x: 845, y: -452}
+  Position: {x: 837.5, y: -452}
   Child: {fileID: -7544636023563235547}
   InputTargetIndex: 0
   Min: 0
@@ -2143,7 +2189,7 @@ MonoBehaviour:
   m_Name: Stage 3
   m_EditorClassIdentifier: 
   Name: Stage 3
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: d3be4fff43456ef4eadfeab352627402
   Position: {x: 755, y: 1373}
@@ -2192,7 +2238,7 @@ MonoBehaviour:
   m_Name: Vector3Difference
   m_EditorClassIdentifier: 
   Name: Vector3Difference
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 5c58487c23f4af2439ed54dd2e78319d
   Position: {x: 1324, y: 1064}

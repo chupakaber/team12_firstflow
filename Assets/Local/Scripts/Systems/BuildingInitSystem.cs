@@ -10,18 +10,26 @@ namespace Scripts
 
         public List<Building> Buildings;
         public List<ProgressBarView> ProgressBarViews;
+        
+        private ProgressBarView _progressBarPrefab;
+
+        public void EventCatch(InitEvent newEvent)
+        {
+            var buildingsArray = Object.FindObjectsOfType<Building>();
+            _progressBarPrefab = Resources.Load<ProgressBarView>("Prefabs/UI/ProgressBar");
+
+            foreach (var building in buildingsArray)
+            {
+                Buildings.Add(building);
+                building.Level = building.Level;
+            }
+        }
 
         public void EventCatch(StartEvent newEvent)
         {
-            var buildingsArray = Object.FindObjectsOfType<Building>();
-            var progressBarPrefab = Resources.Load<ProgressBarView>("Prefabs/UI/ProgressBar");
-
-            foreach (Building building in buildingsArray)
+            foreach (var building in Buildings)
             {
-                building.Level = building.Level;
-                Buildings.Add(building);
-
-                var progressBar = Object.Instantiate(progressBarPrefab);
+                var progressBar = Object.Instantiate(_progressBarPrefab);
                 progressBar.transform.SetParent(UIView.WorldSpaceTransform);
                 progressBar.transform.localScale = Vector3.one;
                 ProgressBarViews.Add(progressBar);
@@ -39,7 +47,7 @@ namespace Scripts
                 {
                     foreach (var requirement in levelConfig.Cost)
                     {
-                        if (requirement.Type == progressBar.ItemType && progressBar.gameObject.activeInHierarchy)
+                        if (requirement.Type == progressBar.ItemType)
                         {
                             progressBar.Capacity = requirement.Amount;
                             progressBar.FillValues();

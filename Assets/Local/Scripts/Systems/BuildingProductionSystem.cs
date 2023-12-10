@@ -12,6 +12,14 @@ namespace Scripts
 
         private const float PRODUCTION_CHECK_COOLDOWN = 0.04f;
 
+        public void EventCatch(StartEvent newEvent)
+        {
+            foreach (var building in Buildings)
+            {
+                UpdateProductionStateIcon(building);
+            }
+        }
+
         public void EventCatch(EnterTriggerEvent newEvent)
         {
             foreach (var building in Buildings)
@@ -78,14 +86,14 @@ namespace Scripts
                     continue;
                 }
 
-                building.IsWork = false;
-
-                UpdateProductionStateIcon(building);
-
                 if (building.Level < 1)
                 {
                     continue;
                 }
+
+                building.IsWork = false;
+
+                UpdateProductionStateIcon(building);
 
                 if(building.ProductionArea != null && building.ProductionCharacters.Count < 1)
                 {
@@ -179,12 +187,12 @@ namespace Scripts
 
         private void UpdateProductionStateIcon(Building building)
         {
-            var inProgress = building.ProductionCharacters.Count > 0 && building.ProductionLimit > building.Items.GetAmount(building.ProduceItemType);
-            var noResource = building.Items.GetAmount(building.ConsumeItemType) < building.ItemCost;
+            var inProgress = building.Level > 0 && building.ProductionCharacters.Count > 0 && building.ProductionLimit > building.Items.GetAmount(building.ProduceItemType);
+            var noResource = building.Level > 0 && building.Items.GetAmount(building.ConsumeItemType) < building.ItemCost;
 
             if (building.StopProductionIcon != null)
             {
-                building.StopProductionIcon.SetActive(!inProgress && !noResource);
+                building.StopProductionIcon.SetActive(!inProgress && !noResource && building.Level > 0);
             }
 
             if (building.NoResourceIcon != null)

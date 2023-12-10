@@ -167,6 +167,7 @@ namespace Scripts
 
         public void StartCutScene() 
         { 
+            gameObject.SetActive(true);
             Root.SetActive(true);
             PlayableDirector.Play();
             this.enabled = true;
@@ -175,7 +176,6 @@ namespace Scripts
 
         public void Activation()
         {
-            gameObject.SetActive(true);
             Trigger.enabled = true;
 
             EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = Trigger.bounds.center });
@@ -185,6 +185,7 @@ namespace Scripts
         {
             Root.SetActive(false);
             PlayableDirector.Stop();
+            Trigger.enabled = false;
             this.enabled = false;
             foreach(var actor in Actors) 
             {

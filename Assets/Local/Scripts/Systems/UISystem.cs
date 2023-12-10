@@ -26,6 +26,7 @@ namespace Scripts
         private NavMeshPath _path;
         private Vector3[] _pathCorners = new Vector3[100];
         private Vector3 _targetArrowWorldPosition = Vector3.zero;
+        private int _currentRank = 6;
 
         public void EventCatch(StartEvent newEvent)
         {
@@ -146,12 +147,12 @@ namespace Scripts
                             var cornersCount = _path.GetCornersNonAlloc(_pathCorners);
                             if (cornersCount > 2)
                             {
-                                var d1 = (_path.corners[1] - _path.corners[0]).magnitude;
-                                var d2 = (_path.corners[2] - _path.corners[0]).magnitude;
+                                var d1 = (_pathCorners[1] - _pathCorners[0]).magnitude;
+                                var d2 = (_pathCorners[2] - _pathCorners[0]).magnitude;
                                 var d = Mathf.Clamp((d2 - d1) / d1, 0f, 1f);
                                 var w1 = d;
                                 var w2 = 1f - d;
-                                worldPosition = _path.corners[1] * w1 + _path.corners[2] * w2;
+                                worldPosition = _pathCorners[1] * w1 + _pathCorners[2] * w2;
                             }
                         }
                         smartCharacter.NavMeshAgent.enabled = false;
@@ -287,7 +288,24 @@ namespace Scripts
                 if (character.CharacterType == CharacterType.PLAYER)
                 {
                     var itemCount = character.Items.GetAmount(itemType);
-                    UIView.SetItemCount(itemType, itemCount);
+                    if (itemType == ItemType.HONOR)
+                    {
+                        character.GetRank(out var rank, out var currentPoints, out var rankPoints);
+                        if (_currentRank != rank)
+                        {
+                            _currentRank = rank;
+
+                            EventBus.CallEvent(new PlaySoundEvent() { SoundId = 7, IsMusic = false, FadeMusic = true, AttachedTo = character.transform, Position = character.transform.position });
+
+                            // TODO: make visual effect
+                        }
+
+                        UIView.SetRank(rank, rank - 1, currentPoints, (float) currentPoints / rankPoints);
+                    }
+                    else
+                    {
+                        UIView.SetItemCount(itemType, itemCount);
+                    }
                 }
             }
             else if (unit is Building)
