@@ -285,8 +285,10 @@ MonoBehaviour:
   PickingUpArea: {fileID: 5086938148076077555}
   UpgradeArea: {fileID: 0}
   ProgressBarPivot: {fileID: 2603531392982331363}
+  StopProductionIcon: {fileID: 0}
+  NoResourceIcon: {fileID: 0}
   ProductionLimit: 1
-  ResourceLimit: 100
+  ResourceLimit: 50
   ItemCost: 50
   ProductionItemAmountPerCycle: 1
   ProductionCooldown: 3
@@ -317,6 +319,7 @@ MonoBehaviour:
   LastProductionTime: -200
   ProductionEndTime: -100
   LastProductionSoundTime: 0
+  LastProductionCheckTime: 0
 --- !u!1 &1512480444928991952
 GameObject:
   m_ObjectHideFlags: 0

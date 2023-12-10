@@ -125,6 +125,17 @@ namespace Scripts
                     }
                 }
             }
+            else if (building.Level > 0)
+            {
+                foreach (var progressBar in building.CollectingProgressBars)
+                {
+                    if (progressBar.ItemType == building.ConsumeItemType)
+                    {
+                        progressBar.Capacity = building.ItemCost;
+                        progressBar.FillValues();
+                    }
+                }
+            }
         }
     }
 }
