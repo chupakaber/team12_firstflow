@@ -126,11 +126,8 @@ namespace Scripts.BehaviorTree
                     }
                     else if (_hasValue2)
                     {
-                        if (_value2.magnitude <= float.Epsilon)
-                        {
-                            success = true;
-                            internalState.EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null });
-                        }
+                        success = true;
+                        internalState.EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = _value2 });
                     }
                     break;
                 case EventTypeEnum.PLAY_SOUND:

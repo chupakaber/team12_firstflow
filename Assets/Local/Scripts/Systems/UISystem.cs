@@ -108,7 +108,16 @@ namespace Scripts
                 }   
             }
 
-            if (UIView.PointerArrowTargetPosition.sqrMagnitude <= float.Epsilon)
+            SmartCharacter player = null;
+            foreach (var character in Characters)
+            {
+                if (character.CharacterType == CharacterType.PLAYER)
+                {
+                    player = (SmartCharacter) character;
+                }
+            }
+
+            if (UIView.PointerArrowTargetPosition.sqrMagnitude <= float.Epsilon || (player.transform.position - UIView.PointerArrowTargetPosition).magnitude < 3f)
             {
                 if (UIView.PointerArrowTransform.gameObject.activeSelf)
                 {
@@ -124,44 +133,38 @@ namespace Scripts
 
                 var direction = Vector3.forward;
                 var worldPosition = UIView.PointerArrowTargetPosition;
-                foreach (var character in Characters)
+
+                var minimalMagnitude = (worldPosition - player.transform.position).magnitude;
+
+                if (_path == null)
                 {
-                    if (character.CharacterType == CharacterType.PLAYER)
+                    _path = new NavMeshPath();
+                }
+                player.NavMeshAgent.enabled = true;
+                var navMeshWorldPosition = worldPosition;
+                if (UIView.PointerArrowTargetPositionOnNavMesh.sqrMagnitude > float.Epsilon)
+                {
+                    navMeshWorldPosition = UIView.PointerArrowTargetPositionOnNavMesh;
+                }
+                if (player.NavMeshAgent.CalculatePath(navMeshWorldPosition, _path))
+                {
+                    var cornersCount = _path.GetCornersNonAlloc(_pathCorners);
+                    if (cornersCount > 2)
                     {
-                        var smartCharacter = (SmartCharacter) character;
-                        
-                        var minimalMagnitude = (worldPosition - character.transform.position).magnitude;
-
-                        if (_path == null)
-                        {
-                            _path = new NavMeshPath();
-                        }
-                        smartCharacter.NavMeshAgent.enabled = true;
-                        var navMeshWorldPosition = worldPosition;
-                        if (UIView.PointerArrowTargetPositionOnNavMesh.sqrMagnitude > float.Epsilon)
-                        {
-                            navMeshWorldPosition = UIView.PointerArrowTargetPositionOnNavMesh;
-                        }
-                        if (smartCharacter.NavMeshAgent.CalculatePath(navMeshWorldPosition, _path))
-                        {
-                            var cornersCount = _path.GetCornersNonAlloc(_pathCorners);
-                            if (cornersCount > 2)
-                            {
-                                var d1 = (_pathCorners[1] - _pathCorners[0]).magnitude;
-                                var d2 = (_pathCorners[2] - _pathCorners[0]).magnitude;
-                                var d = Mathf.Clamp((d2 - d1) / d1, 0f, 1f);
-                                var w1 = d;
-                                var w2 = 1f - d;
-                                worldPosition = _pathCorners[1] * w1 + _pathCorners[2] * w2;
-                            }
-                        }
-                        smartCharacter.NavMeshAgent.enabled = false;
-
-                        direction = worldPosition - character.transform.position;
-                        var distance = Mathf.Min(Mathf.Max(minimalMagnitude, direction.magnitude), 2.5f);
-                        worldPosition = character.transform.position + direction.normalized * distance;
+                        var d1 = (_pathCorners[1] - _pathCorners[0]).magnitude;
+                        var d2 = (_pathCorners[2] - _pathCorners[0]).magnitude;
+                        var d = Mathf.Clamp((d2 - d1) / d1, 0f, 1f);
+                        var w1 = d;
+                        var w2 = 1f - d;
+                        worldPosition = _pathCorners[1] * w1 + _pathCorners[2] * w2;
                     }
                 }
+                player.NavMeshAgent.enabled = false;
+
+                direction = worldPosition - player.transform.position;
+                var distance = Mathf.Min(Mathf.Max(minimalMagnitude, direction.magnitude), 2.5f);
+                worldPosition = player.transform.position + direction.normalized * distance;
+
                 _targetArrowWorldPosition = Vector3.Lerp(_targetArrowWorldPosition, worldPosition, Time.deltaTime * 3f);
                 var screenPosition = Camera.WorldToScreenPoint(_targetArrowWorldPosition);
                 var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;

@@ -301,8 +301,12 @@ namespace Scripts.BehaviorTree
                 }
             }
 
-            UIView.PointerArrowTargetPositionOnNavMesh = SerializationUtils.Get(buffer, Vector3Serializer<Vector3>.Instance);
-            UIView.PointerArrowTargetPosition = UIView.PointerArrowTargetPositionOnNavMesh;
+            var storedTargetPosition = SerializationUtils.Get(buffer, Vector3Serializer<Vector3>.Instance);
+            if (storedTargetPosition.sqrMagnitude > float.Epsilon)
+            {
+                UIView.PointerArrowTargetPositionOnNavMesh = storedTargetPosition;
+                UIView.PointerArrowTargetPosition = UIView.PointerArrowTargetPositionOnNavMesh;
+            }
         }
 
         public int GetStructureLength()
