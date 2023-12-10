@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: Distance to target
   m_EditorClassIdentifier: 
   Name: Distance to target
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: d2159fe9dd463ae4d8f3d81d83282388
   Position: {x: 1506, y: 1088}
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: Self
   m_EditorClassIdentifier: 
   Name: Self
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 45aae3da8c3ca0a43be1ea0ecd4767bf
   Position: {x: 952, y: 1025}
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: WorkerPrank
   m_EditorClassIdentifier: 
   Name: WorkerPrank
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 72e76cb17b3cf494bb1a6091d2a6d165
   Position: {x: 722, y: 205}
@@ -228,10 +228,12 @@ MonoBehaviour:
   CurrentState: 0
   Started: 0
   Guid: cb73aae26c695074b96b8b5feabce62c
-  Position: {x: 2098, y: 1113}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
+  Position: {x: 2065, y: 1108}
+  Children:
+  - {fileID: -7588175035588174391}
+  - {fileID: -6053571057169884046}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
   Method: 0
   Value: 101
   StateID: 0
@@ -270,7 +272,7 @@ MonoBehaviour:
   m_Name: Stage 2
   m_EditorClassIdentifier: 
   Name: Stage 2
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 17ad72641dc907b4cab7d9f9fbbb4e62
   Position: {x: 755, y: 1189}
@@ -283,6 +285,28 @@ MonoBehaviour:
   Min: 0
   Max: 0
   StateID: 0
+--- !u!114 &-7588175035588174391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ee1f38057e55c4bb62f549a1af79fb, type: 3}
+  m_Name: GooseMessage
+  m_EditorClassIdentifier: 
+  Name: GooseMessage
+  CurrentState: 0
+  Started: 1
+  Guid: a9e103a018ad8d540bbb45a850b2027d
+  Position: {x: 2401, y: 1084}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  Message: "\u0410 \u0447\u0442\u043E \u044D\u0442\u043E \u0442\u0443\u0442 \u0443
+    \u043D\u0430\u0441?"
 --- !u!114 &-7544636023563235547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: CompareFloat
   CurrentState: 0
-  Started: 0
+  Started: 1
   Guid: 223951519d77d124f99d7cc1a0a6c0b4
   Position: {x: 1358, y: -374}
   Children:
@@ -413,7 +437,7 @@ MonoBehaviour:
   CurrentState: 0
   Started: 0
   Guid: 0f4a17ad2d8fab349ba24bc060dd3c82
-  Position: {x: 1933, y: 1113}
+  Position: {x: 1900, y: 1108}
   Children:
   - {fileID: -7820650251355302233}
   InputTargetIndex: 00000000
@@ -552,7 +576,7 @@ MonoBehaviour:
   m_Name: ShopPrank
   m_EditorClassIdentifier: 
   Name: ShopPrank
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 34f1f0ca0369d7b42952ac85b3dd568e
   Position: {x: 601, y: 2314}
@@ -566,6 +590,28 @@ MonoBehaviour:
   Min: 300
   Max: 399
   StateID: 0
+--- !u!114 &-6053571057169884046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777c5230a4158b2448ae2b76f003cbd5, type: 3}
+  m_Name: Self
+  m_EditorClassIdentifier: 
+  Name: Self
+  CurrentState: 2
+  Started: 0
+  Guid: 08fd9c82234e20b4f9ab230b629d7fde
+  Position: {x: 2247, y: 1237}
+  Children:
+  - {fileID: -7588175035588174391}
+  InputTargetIndex: 01000000
+  OutputIndex: 00000000
+  Output: {fileID: 0}
 --- !u!114 &-5846920363717246864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,7 +649,7 @@ MonoBehaviour:
   m_Name: 0.1
   m_EditorClassIdentifier: 
   Name: 0.1
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 847c58e50ee59934e97df9514cda0d3f
   Position: {x: 1324, y: 935}
@@ -623,7 +669,7 @@ MonoBehaviour:
   m_Name: Vector3Magnitude
   m_EditorClassIdentifier: 
   Name: Vector3Magnitude
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 316f29cf946d9514fa2d19c2c4a47614
   Position: {x: 1272, y: 808}
@@ -712,7 +758,7 @@ MonoBehaviour:
   m_Name: Less
   m_EditorClassIdentifier: 
   Name: Less
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 086dce85a4c5c9241a051f18aff26370
   Position: {x: 1468, y: 861}
@@ -735,7 +781,7 @@ MonoBehaviour:
   m_Name: SwitchPrankType
   m_EditorClassIdentifier: 
   Name: SwitchPrankType
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: d7642419b474fd54790840d50325aa67
   Position: {x: 550, y: -251}
@@ -901,7 +947,7 @@ MonoBehaviour:
   m_Name: Target position
   m_EditorClassIdentifier: 
   Name: Target position
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: e5f2bed9a5790cf46bb221943a54bddf
   Position: {x: 1114, y: 915}
@@ -1016,8 +1062,8 @@ MonoBehaviour:
   m_Name: Wait
   m_EditorClassIdentifier: 
   Name: Wait
-  CurrentState: 0
-  Started: 1
+  CurrentState: 2
+  Started: 0
   Guid: 48e27c875594d3747a3769d09848b5ab
   Position: {x: 460.7083, y: 581.50006}
   Children:
@@ -1068,7 +1114,7 @@ MonoBehaviour:
   Position: {x: 792, y: -318}
   Child: {fileID: -7544636023563235547}
   InputTargetIndex: 1
-  Value: 0.33
+  Value: 1.33
 --- !u!114 &-1665823872486235936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1291,7 +1337,7 @@ MonoBehaviour:
   m_Name: Less
   m_EditorClassIdentifier: 
   Name: Less
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 36199e0022a950141980de076cc2123c
   Position: {x: 1714, y: 1088}
@@ -1407,6 +1453,8 @@ MonoBehaviour:
   - {fileID: 5990628395267221558}
   - {fileID: -2736729242776647161}
   - {fileID: -7634414785731514838}
+  - {fileID: -6053571057169884046}
+  - {fileID: -7588175035588174391}
 --- !u!114 &238070740715046413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1624,7 +1672,7 @@ MonoBehaviour:
   m_Name: 5
   m_EditorClassIdentifier: 
   Name: 5
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 4530f97814452184bb09f377de25465d
   Position: {x: 1521, y: 1271}
@@ -1687,7 +1735,7 @@ MonoBehaviour:
   m_Name: BuildingPrank
   m_EditorClassIdentifier: 
   Name: BuildingPrank
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 89b12344dca818c4a8afbbe586452d1a
   Position: {x: 603, y: 1038}
@@ -1738,7 +1786,7 @@ MonoBehaviour:
   m_Name: Position
   m_EditorClassIdentifier: 
   Name: Position
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 1c62437131601ca4d85c2abf216c029b
   Position: {x: 1114, y: 1126}
@@ -1867,7 +1915,7 @@ MonoBehaviour:
   m_Name: Stage 1
   m_EditorClassIdentifier: 
   Name: Stage 1
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 538711afff45ede42873c7eb4601feef
   Position: {x: 755, y: 1037}
@@ -2095,7 +2143,7 @@ MonoBehaviour:
   m_Name: Stage 3
   m_EditorClassIdentifier: 
   Name: Stage 3
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: d3be4fff43456ef4eadfeab352627402
   Position: {x: 755, y: 1373}
@@ -2144,7 +2192,7 @@ MonoBehaviour:
   m_Name: Vector3Difference
   m_EditorClassIdentifier: 
   Name: Vector3Difference
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 5c58487c23f4af2439ed54dd2e78319d
   Position: {x: 1324, y: 1064}

@@ -151,7 +151,7 @@ namespace Scripts.BehaviorTree
                     if (_hasValue4)
                     {
                         success = true;
-                        internalState.EventBus.CallEvent(new ConstructionCompleteEvent() { Building = _value4});
+                        internalState.EventBus.CallEvent(new ConstructionCompleteEvent() { Building = _value4 });
                     }
                     break;
             }

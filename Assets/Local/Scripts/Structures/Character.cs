@@ -9,6 +9,7 @@ namespace Scripts
         [Header("Character Config")]
         public Rigidbody CharacterRigidbody;
         public Animator CharacterAnimator;
+        public Transform MessageEmitterPivot;
         public float Speed;
         public CharacterType CharacterType;
         public int ItemLimit;

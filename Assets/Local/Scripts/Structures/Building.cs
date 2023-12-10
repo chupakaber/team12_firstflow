@@ -14,6 +14,8 @@ namespace Scripts
         public Collider PickingUpArea;
         public Collider UpgradeArea;
         public Transform ProgressBarPivot;
+        public GameObject StopProductionIcon;
+        public GameObject NoResourceIcon;
         public int ProductionLimit;
         public int ResourceLimit;
         public int ItemCost;
@@ -39,6 +41,7 @@ namespace Scripts
         public float LastProductionTime;
         public float ProductionEndTime;
         public float LastProductionSoundTime;
+        public float LastProductionCheckTime;
         public int Level
         {
             get
@@ -75,6 +78,7 @@ namespace Scripts
                 }
             }
         }
+        public bool IsWork { get; set; } = true;
 
         public int GetLastCustomerHonor()
         {
@@ -83,6 +87,11 @@ namespace Scripts
 
         public float ProductionProgress()
         {
+            if (!IsWork)
+            {
+                return 0f;
+            }
+
             var currentProductionTime = ProductionEndTime > LastProductionTime ? ProductionEndTime - LastProductionTime : Time.time - LastProductionTime;
             if (currentProductionTime >= ProductionCooldown)
             {

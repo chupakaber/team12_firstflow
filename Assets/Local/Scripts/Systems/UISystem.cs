@@ -17,9 +17,11 @@ namespace Scripts
         public PoolCollection<BagOfTriesView> BagOfTriesViewPools;
         public PoolCollection<PinnedCounterView> PinnedCounterViewPools;
         public PoolCollection<BubbleView> BubbleViewPools;
+        public PoolCollection<MessageBubbleView> MessageBubbleViewPools;
 
         private Dictionary<int, PinnedCounterView> _shopCoinCounters = new Dictionary<int, PinnedCounterView>();
         private LinkedList<BubbleView> _bubbleViews = new LinkedList<BubbleView>();
+        private LinkedList<MessageBubbleView> _messageBubbleViews = new LinkedList<MessageBubbleView>();
         private LinkedList<TouchInputEvent> _touchInputEvents = new LinkedList<TouchInputEvent>();
         private NavMeshPath _path;
         private Vector3[] _pathCorners = new Vector3[100];
@@ -174,6 +176,11 @@ namespace Scripts
                 bubble.transform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
             }
 
+            foreach (var bubble in _messageBubbleViews)
+            {
+                bubble.SetWorldAnchor(bubble.RelatedTransform.position + bubble.WorldOffset);
+            }
+
             foreach (var touchInputEvent in _touchInputEvents)
             {
                 foreach (var character in Characters)
@@ -232,6 +239,34 @@ namespace Scripts
                 bubble.transform.DOScale(1f, 3f).OnComplete(() => {
                     bubble.transform.DOScale(0.1f, 0.3f).OnComplete(() => {
                         _bubbleViews.Remove(bubble);
+                        bubble.Release();
+                    });
+                });
+            });
+        }
+
+        public void EventCatch(ShowMessageEvent newEvent)
+        {
+            var bubble = MessageBubbleViewPools.Get(0);
+            _messageBubbleViews.AddLast(bubble);
+            if (newEvent.Character.MessageEmitterPivot != null)
+            {
+                bubble.RelatedTransform = newEvent.Character.MessageEmitterPivot;
+                bubble.WorldOffset = new Vector3(0f, 0f, 0f);
+            }
+            else
+            {
+                bubble.RelatedTransform = newEvent.Character.transform;
+                bubble.WorldOffset = new Vector3(0f, 1.2f, 0f);
+            }
+            bubble.Init(Camera);
+            bubble.SetMessage(newEvent.Message);
+            bubble.transform.SetParent(UIView.WorldSpaceTransform);
+            bubble.transform.localScale = Vector3.one * 0.1f;
+            bubble.transform.DOScale(1f, 0.3f).OnComplete(() => {
+                bubble.transform.DOScale(1f, 4f).OnComplete(() => {
+                    bubble.transform.DOScale(0.1f, 0.3f).OnComplete(() => {
+                        _messageBubbleViews.Remove(bubble);
                         bubble.Release();
                     });
                 });

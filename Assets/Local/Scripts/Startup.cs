@@ -21,6 +21,7 @@ namespace Scripts
         private PoolCollection<BagOfTriesView> _bagOfTriesViewPools = new PoolCollection<BagOfTriesView>();
         private PoolCollection<PinnedCounterView> _pinnedCounterViewPools = new PoolCollection<PinnedCounterView>();
         private PoolCollection<BubbleView> _bubbleViewPools = new PoolCollection<BubbleView>();
+        private PoolCollection<MessageBubbleView> _messageBubbleViewPools = new PoolCollection<MessageBubbleView>();
 
         private PoolCollection<Assistant> _assistantPools = new PoolCollection<Assistant>();
         private PoolCollection<Apprentice> _apprenticePools = new PoolCollection<Apprentice>();
@@ -109,6 +110,7 @@ namespace Scripts
             _jokerPools.Pools.Add(0, new ObjectPool<Joker>("Prefabs/Characters/Joker"));
             _pinnedCounterViewPools.Pools.Add(0, new ObjectPool<PinnedCounterView>("Prefabs/UI/ShopCoinCounter"));
             _bubbleViewPools.Pools.Add(0, new ObjectPool<BubbleView>("Prefabs/UI/BubbleEmoji"));
+            _messageBubbleViewPools.Pools.Add(0, new ObjectPool<MessageBubbleView>("Prefabs/UI/MessageBubble"));
             _mercenaryPools.Pools.Add(0, new ObjectPool<Mercenary>("Prefabs/Characters/Mercenary"));
             _alchemistPools.Pools.Add(0, new ObjectPool<SmartCharacter>("Prefabs/Characters/Alchemist"));
             
@@ -164,6 +166,7 @@ namespace Scripts
             _container.AddLink(_bagOfTriesViewPools, "BagOfTriesViewPools");
             _container.AddLink(_pinnedCounterViewPools, "PinnedCounterViewPools");
             _container.AddLink(_bubbleViewPools, "BubbleViewPools");
+            _container.AddLink(_messageBubbleViewPools, "MessageBubbleViewPools");
             _container.AddLink(_assistantPools, "AssistantPools");
             _container.AddLink(_apprenticePools, "ApprenticePools");
             _container.AddLink(_customerPools, "CustomerPools");
