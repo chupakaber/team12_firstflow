@@ -17,6 +17,8 @@ namespace Scripts
         [Header("Permanent Indicators")]
         public List<ItemCounter> ItemCounters;
         public UIStickView Stick;
+        public TMP_Text RankCurrentLabel;
+        public TMP_Text RankNextLabel;
 
         [Header("Dynamic Indicators")]
         public RectTransform PointerArrowTransform;
@@ -35,12 +37,13 @@ namespace Scripts
         public EventBus EventBus;
 
         private int StickIndex = -1;
+        private int _currentRank;
 
         public void SetItemCount(ItemType itemType, int count)
         {
             foreach (var counter in ItemCounters)
             {
-                if (counter.ItemType == itemType) 
+                if (counter.ItemType == itemType && itemType != ItemType.HONOR)
                 {
                     counter.Counter.text = count.ToString();
 
@@ -53,6 +56,35 @@ namespace Scripts
                     {
                         var isActive = count > 0;
                         counter.RootObject.SetActive(isActive);
+                    }
+                }
+            }
+        }
+
+        public void SetRank(int currentRank, int nextRank, int count, float value)
+        {
+            foreach (var counter in ItemCounters)
+            {
+                if (counter.ItemType == ItemType.HONOR)
+                {
+                    counter.Counter.text = count.ToString();
+
+                    if (counter.ProgressBarImage != null)
+                    {
+                        counter.ProgressBarImage.fillAmount = value;
+                    }
+
+                    if (counter.RootObject != null) 
+                    {
+                        var isActive = count > 0;
+                        counter.RootObject.SetActive(isActive);
+                    }
+
+                    if (_currentRank != currentRank)
+                    {
+                        _currentRank = currentRank;
+                        RankCurrentLabel.text = currentRank.ToString();
+                        RankNextLabel.text = nextRank.ToString();
                     }
                 }
             }

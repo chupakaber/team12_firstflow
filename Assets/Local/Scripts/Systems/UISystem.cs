@@ -26,6 +26,7 @@ namespace Scripts
         private NavMeshPath _path;
         private Vector3[] _pathCorners = new Vector3[100];
         private Vector3 _targetArrowWorldPosition = Vector3.zero;
+        private int _currentRank = 6;
 
         public void EventCatch(StartEvent newEvent)
         {
@@ -287,7 +288,24 @@ namespace Scripts
                 if (character.CharacterType == CharacterType.PLAYER)
                 {
                     var itemCount = character.Items.GetAmount(itemType);
-                    UIView.SetItemCount(itemType, itemCount);
+                    if (itemType == ItemType.HONOR)
+                    {
+                        character.GetRank(out var rank, out var currentPoints, out var rankPoints);
+                        if (_currentRank != rank)
+                        {
+                            _currentRank = rank;
+
+                            EventBus.CallEvent(new PlaySoundEvent() { SoundId = 7, IsMusic = false, FadeMusic = true, AttachedTo = character.transform, Position = character.transform.position });
+
+                            // TODO: make visual effect
+                        }
+
+                        UIView.SetRank(rank, rank - 1, currentPoints, (float) currentPoints / rankPoints);
+                    }
+                    else
+                    {
+                        UIView.SetItemCount(itemType, itemCount);
+                    }
                 }
             }
             else if (unit is Building)
