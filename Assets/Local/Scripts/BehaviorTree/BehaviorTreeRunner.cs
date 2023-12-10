@@ -35,7 +35,7 @@ namespace Scripts.BehaviorTree
                     var eventNode = (EventCatchNode) node;
                     if (_eventTypes.TryGetValue(eventNode.EventType, out var type))
                     {
-                        if (type.Equals(currentEvent))
+                        if (type.Equals(currentEvent.GetType()))
                         {
                             Tree.Run(eventNode, InternalState, currentEvent);
                         }
