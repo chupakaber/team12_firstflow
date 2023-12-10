@@ -146,12 +146,12 @@ namespace Scripts
                             var cornersCount = _path.GetCornersNonAlloc(_pathCorners);
                             if (cornersCount > 2)
                             {
-                                var d1 = (_path.corners[1] - _path.corners[0]).magnitude;
-                                var d2 = (_path.corners[2] - _path.corners[0]).magnitude;
+                                var d1 = (_pathCorners[1] - _pathCorners[0]).magnitude;
+                                var d2 = (_pathCorners[2] - _pathCorners[0]).magnitude;
                                 var d = Mathf.Clamp((d2 - d1) / d1, 0f, 1f);
                                 var w1 = d;
                                 var w2 = 1f - d;
-                                worldPosition = _path.corners[1] * w1 + _path.corners[2] * w2;
+                                worldPosition = _pathCorners[1] * w1 + _pathCorners[2] * w2;
                             }
                         }
                         smartCharacter.NavMeshAgent.enabled = false;
