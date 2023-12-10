@@ -196,7 +196,8 @@ namespace Scripts
                         else
                         {
                             UIView.ProcessTouch(touchInputEvent.Index, touchInputEvent.TouchID, touchInputEvent.Position);
-                            character.WorldDirection = Quaternion.Euler(0f, Camera.transform.eulerAngles.y, 0f) * new Vector3(UIView.Stick.Value.x, 0f, UIView.Stick.Value.y).normalized;
+                            character.WorldDirection = Quaternion.Euler(0f, Camera.transform.eulerAngles.y, 0f) * new Vector3(UIView.Stick.Value.x, 0f, UIView.Stick.Value.y);
+                            character.WorldDirection = character.WorldDirection.normalized * (0.2f + character.WorldDirection.magnitude * 0.8f);
                         }
                     }
                 }

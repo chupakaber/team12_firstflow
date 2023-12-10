@@ -22,7 +22,7 @@ namespace Scripts
                 {
                     worldDirection = hitInfo.point - character.transform.position;
                     var worldDirectionY = Mathf.Sign(worldDirection.y) * Mathf.Min(Mathf.Abs(worldDirection.y), 1f);
-                    worldDirection = worldDirection.normalized;
+                    worldDirection = worldDirection.normalized * Mathf.Min(character.WorldDirection.magnitude, 1f);
                     worldDirection.y = worldDirectionY;
                     hasHitGround = true;
                 }
