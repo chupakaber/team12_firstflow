@@ -61,13 +61,20 @@ namespace Scripts
             }
         }
 
-        public void SetRank(int currentRank, int nextRank, int count, float value)
+        public void SetRank(int currentRank, int nextRank, int count, int rangeCount, float value)
         {
             foreach (var counter in ItemCounters)
             {
                 if (counter.ItemType == ItemType.HONOR)
                 {
-                    counter.Counter.text = count.ToString();
+                    if (currentRank <= 1)
+                    {
+                        counter.Counter.text = $"{count}";
+                    }
+                    else
+                    {
+                        counter.Counter.text = $"{count} / {rangeCount}";
+                    }
 
                     if (counter.ProgressBarImage != null)
                     {
@@ -84,7 +91,7 @@ namespace Scripts
                     {
                         _currentRank = currentRank;
                         RankCurrentLabel.text = currentRank.ToString();
-                        RankNextLabel.text = nextRank.ToString();
+                        RankNextLabel.text = nextRank > 0 ? nextRank.ToString() : "";
                     }
                 }
             }

@@ -79,9 +79,12 @@ namespace Scripts
 
                                 EventBus.CallEvent(new ConstructionCompleteEvent() { Building = building });
 
+                                var i = 0;
                                 foreach (var teleportingCharacter in building.ConstructionCharacters)
                                 {
-                                    teleportingCharacter.transform.position = building.PickingUpArea == null ? building.ConstructionArea.transform.position : building.PickingUpArea.transform.position;
+                                    var moveDirection = new Vector3(1f, 0f, -1f);
+                                    teleportingCharacter.transform.position = building.PickingUpArea == null ? building.ConstructionArea.transform.position + moveDirection * (i + 3) * 1f : building.PickingUpArea.transform.position + moveDirection * i;
+                                    i++;
                                 }
 
                                 foreach (var item in building.Items)
