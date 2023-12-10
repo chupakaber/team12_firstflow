@@ -77,14 +77,6 @@ namespace Scripts
 
         public void Start()
         {
-            StartCoroutine(StartAsync());
-        }
-
-        public IEnumerator StartAsync()
-        {
-            yield return new WaitForFixedUpdate();
-            yield return new WaitForEndOfFrame();
-
             _mainCamera = Camera.main;
             _characters.Add(GameObject.Find("Character").GetComponent<SmartCharacter>());
             _uiView = FindObjectOfType<UIView>();
@@ -118,8 +110,8 @@ namespace Scripts
             AddSystem(_buildingInitSystem);
             AddSystem(_cameraFollowSystem);
             AddSystem(_characterSpawnSystem);
-            AddSystem(_scenarioSystem);
             AddSystem(_saveLoadSystem);
+            AddSystem(_scenarioSystem);
             AddSystem(_addItemSystem);
             AddSystem(_removeItemSystem);
             AddSystem(_addHonorSystem);
@@ -185,6 +177,7 @@ namespace Scripts
             _characters[0].Items.AddItem(ItemType.HONOR, 0);
             _characters[0].ResizeBagOfTries(_characters[0].BaseBagOfTriesCapacity);
 
+            _eventBus.CallEvent(new InitEvent());
             _eventBus.CallEvent(new StartEvent());
 
             _initialized = true;

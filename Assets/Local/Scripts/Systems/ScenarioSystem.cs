@@ -14,7 +14,7 @@ namespace Scripts
 
         private ScenarioState _scenarioState = new ScenarioState();
 
-        public void EventCatch(StartEvent newEvent)
+        public void EventCatch(InitEvent newEvent)
         {
             _scenarioState = new ScenarioState() {
                 EventBus = EventBus,
@@ -32,6 +32,12 @@ namespace Scripts
             }
 
             Scenario.BehaviorTreeRunner.InternalState = _scenarioState;
+
+            Scenario.BehaviorTreeRunner.EventCatch(newEvent);
+        }
+
+        public void EventCatch(StartEvent newEvent)
+        {
             Scenario.BehaviorTreeRunner.EventCatch(newEvent);
         }
 

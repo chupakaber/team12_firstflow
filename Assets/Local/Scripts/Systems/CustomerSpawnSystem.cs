@@ -14,7 +14,7 @@ namespace Scripts
         private float _lastCheckTime = -3f;
         private Dictionary<ItemType, CustomerRoute> _customerRoutes = new Dictionary<ItemType, CustomerRoute>();
 
-        public void EventCatch(StartEvent newEvent)
+        public void EventCatch(InitEvent newEvent)
         {
             var routes = Object.FindObjectsOfType<CustomerRoute>();
             foreach (var route in routes)

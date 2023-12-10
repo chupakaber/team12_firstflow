@@ -9,6 +9,14 @@ namespace Scripts
         public List<Character> Characters;
         public List<Building> Buildings;
 
+        public void EventCatch(StartEvent newEvent)
+        {
+            foreach (var building in Buildings)
+            {
+                UpdateUpgradeProgressViewSettings(building);
+            }
+        }
+
         public void EventCatch(FixedUpdateEvent newEvent) 
         {
             foreach (var building in Buildings)
@@ -101,7 +109,7 @@ namespace Scripts
 
         public void UpdateUpgradeProgressViewSettings(Building building)
         {
-            if (building.Levels.Count > building.Level + 1)
+            if (building.UpgradeStorage != null && building.Levels.Count > building.Level + 1)
             {
                 var levelConfig = building.Levels[building.Level + 1];
                 
