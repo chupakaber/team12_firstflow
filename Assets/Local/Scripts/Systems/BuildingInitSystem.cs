@@ -21,6 +21,7 @@ namespace Scripts
             foreach (var building in buildingsArray)
             {
                 Buildings.Add(building);
+                building.Level = building.Level;
             }
         }
 
@@ -28,8 +29,6 @@ namespace Scripts
         {
             foreach (var building in Buildings)
             {
-                building.Level = building.Level;
-
                 var progressBar = Object.Instantiate(_progressBarPrefab);
                 progressBar.transform.SetParent(UIView.WorldSpaceTransform);
                 progressBar.transform.localScale = Vector3.one;

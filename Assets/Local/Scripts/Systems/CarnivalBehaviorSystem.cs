@@ -52,7 +52,7 @@ namespace Scripts
                                 //carnival.FollowingOffset = 0.3f;
                             }
                         }
-                        else
+                        else if (carnival.State == 0)
                         {
                             if (carnival.CurrentRouteWaypointIndex < carnival.Route.Waypoints.Count)
                             {
@@ -71,6 +71,12 @@ namespace Scripts
                                     }
                                 }
                             }
+                        }
+                        else
+                        {
+                            carnival.CurrentRouteWaypointIndex = 0;
+                            var waypoint = carnival.Route.Waypoints[carnival.CurrentRouteWaypointIndex];
+                            targetPosition = waypoint.Transform.position;
                         }
 
                         if (carnival.NextInQueue != null)
