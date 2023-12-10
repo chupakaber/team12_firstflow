@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Scripts.Enums;
+using UnityEngine.UIElements;
 
 namespace Scripts
 {
@@ -20,6 +21,17 @@ namespace Scripts
         public int BaseBagOfTriesCapacity = 8;
         public bool IsCutSceneActiv;
 
+        [Header("Ranks Config (6, 5, 4, 3, 2, 1)")]
+        public List<int> RankHonor = new List<int> {
+            0,
+            100,
+            300,
+            600,
+            1000,
+            1500,
+            1000000
+        };
+
         [Header("Character Runtime")]
         public Vector3 WorldDirection;
         public float LastDropItemTime;
@@ -32,10 +44,33 @@ namespace Scripts
         public Character NextInQueue;
         public Character PreviousInQueue;
 
+
         private const float MIN_COOLDOWN = 0.06f;
 
         private int _loadedAnimationKey = Animator.StringToHash("Loaded");
         private int _speedAnimationKey = Animator.StringToHash("Speed");
+
+        public void GetRank(out int rank, out int currentPoints, out int rankPoints)
+        {
+            var itemCount = Items.GetAmount(ItemType.HONOR);
+            
+            for (var i = 0; i < RankHonor.Count - 1; i++)
+            {
+                var rankHonor = RankHonor[i];
+                var nextRankHonor = RankHonor[i + 1];
+                if (itemCount < nextRankHonor)
+                {
+                    rank = 6 - i;
+                    currentPoints = itemCount - rankHonor;
+                    rankPoints = nextRankHonor - rankHonor;
+                    return;
+                }
+            }
+
+            rank = 6;
+            currentPoints = 0;
+            rankPoints = 0;
+        }
 
         public void OnTriggerEnter(Collider other)
         {
