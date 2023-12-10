@@ -16,7 +16,15 @@ namespace Scripts
             var timelines = GameObject.FindObjectsOfType<IntroductionTimeline>();
             foreach (var timeline in timelines)
             {
-                _introductionTimelines.Add(timeline);
+                if (timeline.Index >= _introductionTimelines.Count)
+                {
+                    _introductionTimelines.Add(timeline);
+                }
+                else
+                {
+                    _introductionTimelines.Insert(timeline.Index, timeline);
+                }
+                
                 timeline.DeactivationCutScene();
                 timeline.EventBus = EventBus;
             }

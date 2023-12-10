@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Playables;
@@ -8,6 +7,7 @@ namespace Scripts
 {
     public class IntroductionTimeline: MonoBehaviour
     {
+        public int Index = 0;
         public EventBus EventBus;
         public List<SmartCharacter> Actors = new List<SmartCharacter>();
         public List<Transform> ActorWayPoints = new List<Transform>();

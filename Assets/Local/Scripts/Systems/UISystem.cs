@@ -300,7 +300,7 @@ namespace Scripts
                             // TODO: make visual effect
                         }
 
-                        UIView.SetRank(rank, rank - 1, currentPoints, (float) currentPoints / rankPoints);
+                        UIView.SetRank(rank, rank - 1, currentPoints, rankPoints, (float) currentPoints / rankPoints);
                     }
                     else
                     {
