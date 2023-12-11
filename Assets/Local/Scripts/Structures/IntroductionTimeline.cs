@@ -10,6 +10,7 @@ namespace Scripts
         public int Index = 0;
         public EventBus EventBus;
         public Scenario Scenario;
+        public UIView UIView;
         public List<SmartCharacter> Actors = new List<SmartCharacter>();
         public List<Transform> ActorWayPoints = new List<Transform>();
         //public Transform ActorWayPoint;
@@ -220,6 +221,15 @@ namespace Scripts
                     actor.IsCutSceneActiv = status;
                 }
             }
+        }
+
+        public void InvokeFinal()
+        {
+            UIView.MenuScreen.gameObject.SetActive(true);
+            UIView.SettingsPanel.gameObject.SetActive(false);
+            UIView.TitlesPanel.gameObject.SetActive(true);
+            DeactivationCutScene();
+            Actors[Actors.Count -1].IsCutSceneActiv = false;
         }
     }
 }
