@@ -19,6 +19,9 @@ namespace Scripts
         public UIStickView Stick;
         public TMP_Text RankCurrentLabel;
         public TMP_Text RankNextLabel;
+        public Animation RankEffect;
+        public TMP_Text RankEffectCurrentLabel;
+        public TMP_Text RankEffectNextLabel;
 
         [Header("Dynamic Indicators")]
         public RectTransform PointerArrowTransform;
@@ -159,6 +162,17 @@ namespace Scripts
                         _currentRank = currentRank;
                         RankCurrentLabel.text = currentRank.ToString();
                         RankNextLabel.text = nextRank > 0 ? nextRank.ToString() : "";
+
+                        if (currentRank < 6)
+                        {
+                            RankEffectCurrentLabel.text = (currentRank + 1).ToString();
+                            RankEffectNextLabel.text = currentRank > 0 ? currentRank.ToString() : "";
+                            RankEffect.gameObject.SetActive(true);
+                            RankEffect.Play();
+                            RankEffect.transform.DOScale(1f, 5f).OnComplete(() => {
+                                RankEffect.gameObject.SetActive(false);
+                            });
+                        }
                     }
                 }
             }
