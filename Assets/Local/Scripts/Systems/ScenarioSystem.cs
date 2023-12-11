@@ -53,6 +53,12 @@ namespace Scripts
             Scenario.BehaviorTreeRunner.EventCatch(newEvent);
         }
 
+        public void EventCatch(RemoveItemEvent newEvent)
+        {
+            Scenario.BehaviorTreeRunner.InternalState = _scenarioState;
+            Scenario.BehaviorTreeRunner.EventCatch(newEvent);
+        }
+
         public void EventCatch(SetArrowPointerEvent newEvent)
         {
             if (newEvent.TargetGameObject == null)
