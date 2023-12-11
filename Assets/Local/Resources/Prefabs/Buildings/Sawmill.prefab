@@ -1033,7 +1033,7 @@ Transform:
   m_GameObject: {fileID: 2324549927248601614}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.164, y: 0, z: 1.387}
+  m_LocalPosition: {x: 4.222, y: 0, z: 2.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1059,8 +1059,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1.29
+  m_Center: {x: 0, y: 0, z: -0.58090305}
 --- !u!1 &2534118765479521115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,12 +1286,15 @@ MonoBehaviour:
   CollectingProgressBars:
   - {fileID: 8103356901240190824}
   - {fileID: 3715861428668984366}
+  ID: -1
   ConstructionArea: {fileID: 9172551543834899356}
   ProductionArea: {fileID: 0}
   UnloadingArea: {fileID: 0}
   PickingUpArea: {fileID: 1583323114164913259}
   UpgradeArea: {fileID: 1640408718590355610}
   ProgressBarPivot: {fileID: 2027503695333976660}
+  StopProductionIcon: {fileID: 0}
+  NoResourceIcon: {fileID: 0}
   ProductionLimit: 30
   ResourceLimit: 0
   ItemCost: 0
@@ -1350,6 +1353,8 @@ MonoBehaviour:
   AssignedPickingUpCharacters: []
   LastProductionTime: -200
   ProductionEndTime: -100
+  LastProductionSoundTime: 0
+  LastProductionCheckTime: 0
 --- !u!1 &3450635310539207272
 GameObject:
   m_ObjectHideFlags: 0
