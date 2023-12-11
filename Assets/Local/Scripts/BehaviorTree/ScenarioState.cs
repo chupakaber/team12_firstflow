@@ -114,6 +114,9 @@ namespace Scripts.BehaviorTree
             }
 
             SerializationUtils.Put(buffer, Vector3Serializer<Vector3>.Instance, UIView.PointerArrowTargetPositionOnNavMesh);
+            
+            SerializationUtils.Put(buffer, SoundVolume);
+            SerializationUtils.Put(buffer, MusicVolume);
         }
 
         public void Unpack(ByteBuffer buffer)
@@ -307,6 +310,10 @@ namespace Scripts.BehaviorTree
                 UIView.PointerArrowTargetPositionOnNavMesh = storedTargetPosition;
                 UIView.PointerArrowTargetPosition = UIView.PointerArrowTargetPositionOnNavMesh;
             }
+
+            SoundVolume = SerializationUtils.Get(buffer, 1f);
+            MusicVolume = SerializationUtils.Get(buffer, 1f);
+            UIView.SetVolume(SoundVolume, MusicVolume);
         }
 
         public int GetStructureLength()
