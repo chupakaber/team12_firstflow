@@ -89,7 +89,7 @@ namespace Scripts
                     if (_shopCoinCounters.TryGetValue(building.GetHashCode(), out var counter))
                     {
                         var worldPosition = building.ItemStackView.GetTopPosition(building.ProduceItemType);
-                        if (worldPosition.sqrMagnitude > float.Epsilon)
+                        if (building.Items.GetAmount(building.ProduceItemType) > 0 && worldPosition.sqrMagnitude > float.Epsilon)
                         {
                             if (!counter.gameObject.activeSelf)
                             {
