@@ -33,11 +33,41 @@ namespace Scripts
         public float FlyingCoinMinScale = 0.2f;
         public float FlyingCoinDuration = 0.5f;
 
+        [Header("Menu")]
+        public Button SettingsButton;
+        public Button MenuCloseButton;
+        public Button TitlesCloseButton;
+        public Button TitlesOpenButton;
+        public RectTransform MenuScreen;
+        public RectTransform SettingsPanel;
+        public RectTransform TitlesPanel;
+
+
         [HideInInspector]
         public EventBus EventBus;
 
         private int StickIndex = -1;
         private int _currentRank;
+
+        public void Awake()
+        {
+            SettingsButton.onClick.AddListener(() => {
+                SettingsPanel.gameObject.SetActive(true);
+                MenuScreen.gameObject.SetActive(true);
+            });
+            MenuCloseButton.onClick.AddListener(() => {
+                SettingsPanel.gameObject.SetActive(false);
+                MenuScreen.gameObject.SetActive(false);
+            });
+            TitlesOpenButton.onClick.AddListener(() => {
+                SettingsPanel.gameObject.SetActive(false);
+                TitlesPanel.gameObject.SetActive(true);
+            });
+            TitlesCloseButton.onClick.AddListener(() => {
+                SettingsPanel.gameObject.SetActive(true);
+                TitlesPanel.gameObject.SetActive(false);
+            });
+        }
 
         public void SetItemCount(ItemType itemType, int count)
         {
