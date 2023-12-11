@@ -24,6 +24,11 @@ namespace Scripts
 
                             var addItemEvent = new AddItemEvent() { ItemType = ItemType.HONOR, Count = honorAmount, Unit = character };
                             EventBus.CallEvent(addItemEvent);
+
+                            if (building.HonorIconAnimation != null)
+                            {
+                                building.HonorIconAnimation.Play();
+                            }
                         }
                     }
                 }
@@ -46,6 +51,11 @@ namespace Scripts
 
                             var removeItemEvent = new RemoveItemEvent() { ItemType = ItemType.HONOR, Count = honorAmount, Unit = building };
                             EventBus.CallEvent(removeItemEvent);
+
+                            if (building.HonorIconAnimation != null)
+                            {
+                                building.HonorIconAnimation.Play();
+                            }
                         }
                     }
                 }
