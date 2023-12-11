@@ -36,27 +36,39 @@ namespace Scripts
         [Header("Menu")]
         public Button SettingsButton;
         public Button MenuCloseButton;
+        public Button BackgroundButton;
         public Button TitlesCloseButton;
         public Button TitlesOpenButton;
+        public Button ResetButton;
+        public Button ResetConfirmButton;
+        public Button QuitGameButton;
         public RectTransform MenuScreen;
         public RectTransform SettingsPanel;
         public RectTransform TitlesPanel;
-
+        public Slider SoundSlider;
+        public Slider MusicSlider;
 
         [HideInInspector]
         public EventBus EventBus;
 
         private int StickIndex = -1;
         private int _currentRank;
+        private bool _externalSoundChange;
 
         public void Awake()
         {
             SettingsButton.onClick.AddListener(() => {
                 SettingsPanel.gameObject.SetActive(true);
+                TitlesPanel.gameObject.SetActive(false);
                 MenuScreen.gameObject.SetActive(true);
+                ResetButton.gameObject.SetActive(true);
+                ResetConfirmButton.gameObject.SetActive(false);
             });
             MenuCloseButton.onClick.AddListener(() => {
                 SettingsPanel.gameObject.SetActive(false);
+                MenuScreen.gameObject.SetActive(false);
+            });
+            BackgroundButton.onClick.AddListener(() => {
                 MenuScreen.gameObject.SetActive(false);
             });
             TitlesOpenButton.onClick.AddListener(() => {
@@ -67,6 +79,18 @@ namespace Scripts
                 SettingsPanel.gameObject.SetActive(true);
                 TitlesPanel.gameObject.SetActive(false);
             });
+            ResetButton.onClick.AddListener(() => {
+                ResetButton.gameObject.SetActive(false);
+                ResetConfirmButton.gameObject.SetActive(true);
+            });
+            ResetConfirmButton.onClick.AddListener(() => {
+                EventBus.CallEvent(new ClearGameProgressEvent() {});
+            });
+            QuitGameButton.onClick.AddListener(() => {
+                MenuScreen.gameObject.SetActive(false);
+            });
+            SoundSlider.onValueChanged.AddListener(OnSoundChanged);
+            MusicSlider.onValueChanged.AddListener(OnMusicChanged);
         }
 
         public void SetItemCount(ItemType itemType, int count)
@@ -188,9 +212,27 @@ namespace Scripts
 
         public void SetVolume(float soundVolume, float musicVolume)
         {
-            // TODO: set sound sliders position
+            _externalSoundChange = true;
+            SoundSlider.value = soundVolume;
+            MusicSlider.value = musicVolume;
+            _externalSoundChange = false;
         }
 
+        private void OnSoundChanged(float value)
+        {
+            if (EventBus != null && !_externalSoundChange)
+            {
+                EventBus.CallEvent(new SetSoundVolumeEvent() { Volume = value, IsMusic = false });
+            }
+        }
+
+        private void OnMusicChanged(float value)
+        {
+            if (EventBus != null && !_externalSoundChange)
+            {
+                EventBus.CallEvent(new SetSoundVolumeEvent() { Volume = value, IsMusic = true });
+            }
+        }
     }
 
     [System.Serializable]
