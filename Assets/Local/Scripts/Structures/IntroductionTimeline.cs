@@ -9,6 +9,7 @@ namespace Scripts
     {
         public int Index = 0;
         public EventBus EventBus;
+        public Scenario Scenario;
         public List<SmartCharacter> Actors = new List<SmartCharacter>();
         public List<Transform> ActorWayPoints = new List<Transform>();
         //public Transform ActorWayPoint;
@@ -152,11 +153,23 @@ namespace Scripts
             EventBus.CallEvent(new ShowEmojiEvent() { Character = character, SpriteIndex = 0 });
         }
 
+        public void ShowPlayerEmoji(int spriteIndex)
+        {
+            var character = (Character) Actors[3];
+            EventBus.CallEvent(new ShowCartoonEvent() { Character = character, SpriteIndex = spriteIndex });
+        }
+
+        public void ShowOpponentEmoji(int spriteIndex)
+        {
+            var character = (Character) Actors[0];
+            EventBus.CallEvent(new ShowCartoonEvent() { Character = character, SpriteIndex = spriteIndex });
+        }
+
         public void CameraMovement()
         {
-            var newPosition = Vector3.Lerp(_camera.transform.position, CameraWayPoint.position, Time.deltaTime * 5f);
+            var newPosition = Vector3.Lerp(_camera.transform.position, CameraWayPoint.position + Scenario.BaseCameraOffset, Time.deltaTime * 5f);
             _camera.transform.position = newPosition;
-            //_camera.orthographicSize = CameraWayPoint.localScale.x;
+            _camera.orthographicSize = CameraWayPoint.localScale.x;
         }
 
         public void PlayAnim(int index)

@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Scripts
 {
@@ -17,6 +18,8 @@ namespace Scripts
         private RectTransform[] _arrows;
         [SerializeField]
         private TMP_Text _label;
+        [SerializeField]
+        private Image _icon;
         
         private Camera _mainCamera;
 
@@ -29,6 +32,11 @@ namespace Scripts
         {
             _label.text = value;
             StartCoroutine(UpdateAsync());
+        }
+
+        public void SetIcon(Sprite sprite)
+        {
+            _icon.sprite = sprite;
         }
 
         public void SetWorldAnchor(Vector3 position)

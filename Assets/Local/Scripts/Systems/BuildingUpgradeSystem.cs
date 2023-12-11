@@ -132,6 +132,7 @@ namespace Scripts
                         {
                             progressBar.Capacity = requirement.Amount;
                             progressBar.FillValues();
+                            // Debug.Log($"Change UPGRADE capacity {building.name} [{building.Level}] | {progressBar.ItemType} | {requirement.Amount}");
                         }
                     }
                 }

@@ -7,6 +7,7 @@ namespace Scripts
     public class CutSceneSystem : ISystem
     {
         public EventBus EventBus;
+        public Scenario Scenario;
         public List<Character> Characters;
 
         private List<IntroductionTimeline> _introductionTimelines = new List<IntroductionTimeline>();
@@ -27,6 +28,7 @@ namespace Scripts
                 
                 timeline.DeactivationCutScene();
                 timeline.EventBus = EventBus;
+                timeline.Scenario = Scenario;
             }
         }
 

@@ -103,6 +103,7 @@ namespace Scripts
             _pinnedCounterViewPools.Pools.Add(0, new ObjectPool<PinnedCounterView>("Prefabs/UI/ShopCoinCounter"));
             _bubbleViewPools.Pools.Add(0, new ObjectPool<BubbleView>("Prefabs/UI/BubbleEmoji"));
             _messageBubbleViewPools.Pools.Add(0, new ObjectPool<MessageBubbleView>("Prefabs/UI/MessageBubble"));
+            _messageBubbleViewPools.Pools.Add(1, new ObjectPool<MessageBubbleView>("Prefabs/UI/CartoonBubble"));
             _mercenaryPools.Pools.Add(0, new ObjectPool<Mercenary>("Prefabs/Characters/Mercenary"));
             _alchemistPools.Pools.Add(0, new ObjectPool<SmartCharacter>("Prefabs/Characters/Alchemist"));
             

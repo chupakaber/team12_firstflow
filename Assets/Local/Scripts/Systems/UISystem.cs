@@ -22,6 +22,7 @@ namespace Scripts
         private Dictionary<int, PinnedCounterView> _shopCoinCounters = new Dictionary<int, PinnedCounterView>();
         private LinkedList<BubbleView> _bubbleViews = new LinkedList<BubbleView>();
         private LinkedList<MessageBubbleView> _messageBubbleViews = new LinkedList<MessageBubbleView>();
+        private LinkedList<MessageBubbleView> _cartoonBubbleViews = new LinkedList<MessageBubbleView>();
         private LinkedList<TouchInputEvent> _touchInputEvents = new LinkedList<TouchInputEvent>();
         private NavMeshPath _path;
         private Vector3[] _pathCorners = new Vector3[100];
@@ -270,6 +271,34 @@ namespace Scripts
             bubble.transform.localScale = Vector3.one * 0.1f;
             bubble.transform.DOScale(1f, 0.3f).OnComplete(() => {
                 bubble.transform.DOScale(1f, 4f).OnComplete(() => {
+                    bubble.transform.DOScale(0.1f, 0.3f).OnComplete(() => {
+                        _messageBubbleViews.Remove(bubble);
+                        bubble.Release();
+                    });
+                });
+            });
+        }
+
+        public void EventCatch(ShowCartoonEvent newEvent)
+        {
+            var bubble = MessageBubbleViewPools.Get(1);
+            _messageBubbleViews.AddLast(bubble);
+            if (newEvent.Character.MessageEmitterPivot != null)
+            {
+                bubble.RelatedTransform = newEvent.Character.MessageEmitterPivot;
+                bubble.WorldOffset = new Vector3(0f, 0f, 0f);
+            }
+            else
+            {
+                bubble.RelatedTransform = newEvent.Character.transform;
+                bubble.WorldOffset = new Vector3(0f, 1.2f, 0f);
+            }
+            bubble.Init(Camera);
+            bubble.SetIcon(UIView.EmojiSprites[newEvent.SpriteIndex]);
+            bubble.transform.SetParent(UIView.WorldSpaceTransform);
+            bubble.transform.localScale = Vector3.one * 0.1f;
+            bubble.transform.DOScale(1f, 0.3f).OnComplete(() => {
+                bubble.transform.DOScale(1f, 2f).OnComplete(() => {
                     bubble.transform.DOScale(0.1f, 0.3f).OnComplete(() => {
                         _messageBubbleViews.Remove(bubble);
                         bubble.Release();
