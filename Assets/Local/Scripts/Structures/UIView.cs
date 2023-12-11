@@ -42,6 +42,7 @@ namespace Scripts
         public Button ResetButton;
         public Button ResetConfirmButton;
         public Button QuitGameButton;
+        public Button LanguageButton;
         public RectTransform MenuScreen;
         public RectTransform SettingsPanel;
         public RectTransform TitlesPanel;
@@ -51,6 +52,8 @@ namespace Scripts
         [HideInInspector]
         public EventBus EventBus;
 
+        private LocalizationLabelView[] _localizedLabels = new LocalizationLabelView[0];
+        private int _currentLangID = -1;
         private int StickIndex = -1;
         private int _currentRank;
         private bool _externalSoundChange;
@@ -88,9 +91,19 @@ namespace Scripts
             });
             QuitGameButton.onClick.AddListener(() => {
                 MenuScreen.gameObject.SetActive(false);
+                EventBus.CallEvent(new SaveEvent() {});
+                Application.Quit();
             });
             SoundSlider.onValueChanged.AddListener(OnSoundChanged);
             MusicSlider.onValueChanged.AddListener(OnMusicChanged);
+            LanguageButton.onClick.AddListener(() => {
+                SwitchLanguage(_currentLangID == 1 ? 0 : 1);
+            });
+
+            _localizedLabels = FindObjectsOfType<LocalizationLabelView>();
+            SwitchLanguage(Application.systemLanguage == SystemLanguage.Russian ? 1 : 0);
+
+            MenuScreen.gameObject.SetActive(false);
         }
 
         public void SetItemCount(ItemType itemType, int count)
@@ -216,6 +229,21 @@ namespace Scripts
             SoundSlider.value = soundVolume;
             MusicSlider.value = musicVolume;
             _externalSoundChange = false;
+        }
+
+        public void SwitchLanguage(int langID)
+        {
+            if (_currentLangID == langID)
+            {
+                return;
+            }
+
+            _currentLangID = langID;
+
+            foreach (var label in _localizedLabels)
+            {
+                label.SwitchLanguage(_currentLangID);
+            }
         }
 
         private void OnSoundChanged(float value)
