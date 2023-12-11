@@ -636,7 +636,7 @@ PrefabInstance:
       objectReference: {fileID: 8531396969278424671}
     - target: {fileID: 1104001336324792509, guid: a3b1a620ab769b14bad6c44e29a99fd5, type: 3}
       propertyPath: FollowingOffset
-      value: 2.2
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 1104001336324792509, guid: a3b1a620ab769b14bad6c44e29a99fd5, type: 3}
       propertyPath: PreviousInQueue
@@ -730,7 +730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1104001336324792509, guid: a3b1a620ab769b14bad6c44e29a99fd5, type: 3}
       propertyPath: State
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1104001336324792509, guid: a3b1a620ab769b14bad6c44e29a99fd5, type: 3}
       propertyPath: NextInQueue
@@ -738,7 +738,7 @@ PrefabInstance:
       objectReference: {fileID: 1142728363256826859}
     - target: {fileID: 1104001336324792509, guid: a3b1a620ab769b14bad6c44e29a99fd5, type: 3}
       propertyPath: FollowingOffset
-      value: 0.3
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6241234220929486248, guid: a3b1a620ab769b14bad6c44e29a99fd5, type: 3}
       propertyPath: m_Name
@@ -778,6 +778,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3152274043853168051}
     m_Modifications:
+    - target: {fileID: -8754127581365388166, guid: bc1cb08d46e17694abca4e1c836d6008, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ff952236bf9f57a45882205006178c3d, type: 2}
     - target: {fileID: -8679921383154817045, guid: bc1cb08d46e17694abca4e1c836d6008, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.4628944
@@ -842,6 +846,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 683812930457410258, guid: bc1cb08d46e17694abca4e1c836d6008, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5282963738426452891, guid: bc1cb08d46e17694abca4e1c836d6008, type: 3}
     - target: {fileID: 683812930457410258, guid: bc1cb08d46e17694abca4e1c836d6008, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -976,7 +984,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 75
+  m_Radius: 45
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!145 &4231348937471500081
 SpringJoint:
@@ -989,7 +997,7 @@ SpringJoint:
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00016958316, y: 208.70271, z: 0.00011610985}
+  m_ConnectedAnchor: {x: -0.00007272607, y: 70.53734, z: 0.7483071}
   serializedVersion: 2
   m_Spring: 400
   m_Damper: 200
@@ -1053,7 +1061,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 75
+  m_Radius: 45
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!145 &1018420653686257099
 SpringJoint:
@@ -1066,7 +1074,7 @@ SpringJoint:
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00016922287, y: 177.11075, z: 0.00019204617}
+  m_ConnectedAnchor: {x: -0.00013962245, y: 57.78575, z: 0.7584829}
   serializedVersion: 2
   m_Spring: 400
   m_Damper: 200
@@ -1130,7 +1138,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 75
+  m_Radius: 60
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!144 &2531023744338209288
 CharacterJoint:
@@ -1144,12 +1152,12 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 42.319, y: 2.9651642, z: 1.2629974}
+  m_ConnectedAnchor: {x: -0.040999733, y: 2.9411643, z: -0.077009074}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
     spring: 500
-    damper: 200
+    damper: 50
   m_LowTwistLimit:
     limit: -10
     bounciness: 0
@@ -1160,7 +1168,7 @@ CharacterJoint:
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 500
-    damper: 200
+    damper: 50
   m_Swing1Limit:
     limit: 10
     bounciness: 0
@@ -1229,7 +1237,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 75
+  m_Radius: 60
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!144 &1221226777915751999
 CharacterJoint:
@@ -1243,12 +1251,12 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 42.319, y: 2.970655, z: 3.8022914}
+  m_ConnectedAnchor: {x: -0.041006707, y: 2.946655, z: 0.42229298}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
     spring: 500
-    damper: 200
+    damper: 50
   m_LowTwistLimit:
     limit: -10
     bounciness: 0
@@ -1259,7 +1267,7 @@ CharacterJoint:
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 500
-    damper: 200
+    damper: 50
   m_Swing1Limit:
     limit: 10
     bounciness: 0
@@ -1333,7 +1341,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 75
+  m_Radius: 60
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!144 &6966956345361553738
 CharacterJoint:
@@ -1347,12 +1355,12 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 42.319, y: 3.253409, z: 5.4850883}
+  m_ConnectedAnchor: {x: -0.04100632, y: 3.229409, z: 2.10509}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
     spring: 500
-    damper: 200
+    damper: 50
   m_LowTwistLimit:
     limit: -10
     bounciness: 0
@@ -1363,7 +1371,7 @@ CharacterJoint:
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 500
-    damper: 200
+    damper: 50
   m_Swing1Limit:
     limit: 10
     bounciness: 0
@@ -1432,7 +1440,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 75
+  m_Radius: 60
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!144 &8860522480029385255
 CharacterJoint:
@@ -1446,12 +1454,12 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 42.319, y: 2.9404566, z: -1.0237403}
+  m_ConnectedAnchor: {x: -0.041020736, y: 2.9164567, z: 0.10626046}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
     spring: 500
-    damper: 200
+    damper: 50
   m_LowTwistLimit:
     limit: -10
     bounciness: 0
@@ -1462,7 +1470,7 @@ CharacterJoint:
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 500
-    damper: 200
+    damper: 50
   m_Swing1Limit:
     limit: 10
     bounciness: 0
@@ -1534,7 +1542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1104001336324792509, guid: a3b1a620ab769b14bad6c44e29a99fd5, type: 3}
       propertyPath: FollowingOffset
-      value: 2.7
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1104001336324792509, guid: a3b1a620ab769b14bad6c44e29a99fd5, type: 3}
       propertyPath: PreviousInQueue
