@@ -18,7 +18,8 @@ namespace Scripts.BehaviorTree
             EnterTrigger = 6,
             ExitTrigger = 7,
             MovementInput = 8,
-            RollBagOfTries = 9
+            RollBagOfTries = 9,
+            Init = 10,
         }
 
         public EventTypeEnum EventType = EventTypeEnum.Start;
@@ -117,6 +118,12 @@ namespace Scripts.BehaviorTree
                         _output2 = (float) removeItemEvent.ItemType;
                         _output3 = removeItemEvent.Count;
                         _output5 = removeItemEvent.Unit;
+                        success = true;
+                    }
+                    break;
+                case EventTypeEnum.Init:
+                    if (currentEvent is InitEvent)
+                    {
                         success = true;
                     }
                     break;

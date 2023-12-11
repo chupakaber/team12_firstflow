@@ -23,7 +23,7 @@ namespace Scripts
                     var trigger = newEvent.Trigger;
                     if (trigger == building.ProductionArea || trigger == building.PickingUpArea || trigger == building.UnloadingArea || trigger == building.UpgradeArea)
                     {
-                        if (building.ProduceItemType != ItemType.NONE && building.ProduceItemType != ItemType.ASSISTANT && building.ProduceItemType != ItemType.APPRENTICE && building.ProduceItemType != ItemType.BOTTLE_WORKER)
+                        if (building.ProduceItemType != ItemType.NONE && building.ProduceItemType != ItemType.ASSISTANT && building.ProduceItemType != ItemType.APPRENTICE && building.ProduceItemType != ItemType.BOTTLE_HERO && building.ProduceItemType != ItemType.BOTTLE_WORKER && building.ProduceItemType != ItemType.EMPEROR_SWORD)
                         {
                             if ((building.AssignedPickingUpCharacters.Count == 0 && building.PickingUpArea != null) || (building.AssignedProductionCharacters.Count == 0 && building.ProductionArea != null))
                             {

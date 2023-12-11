@@ -35,7 +35,7 @@ namespace Scripts
 
         public void EventCatch(FixedUpdateEvent newEvent) {
             var fadeMusic = false;
-            var musicVolume = 1f;
+            var musicVolume = ((ScenarioState) Scenario.BehaviorTreeRunner.InternalState).MusicVolume;
             
             if (Time.time < _fadeMusicEnd)
             {
@@ -81,7 +81,7 @@ namespace Scripts
                 internalState.SoundVolume = newEvent.Volume;
             }
 
-            UIView.SetVolume(internalState.SoundVolume, internalState.MusicVolume);
+            // UIView.SetVolume(internalState.SoundVolume, internalState.MusicVolume);
 
             var node = SourceCollection.First;
             while (node != null)

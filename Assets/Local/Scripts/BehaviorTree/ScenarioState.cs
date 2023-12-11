@@ -114,6 +114,9 @@ namespace Scripts.BehaviorTree
             }
 
             SerializationUtils.Put(buffer, Vector3Serializer<Vector3>.Instance, UIView.PointerArrowTargetPositionOnNavMesh);
+            
+            SerializationUtils.Put(buffer, SoundVolume);
+            SerializationUtils.Put(buffer, MusicVolume);
         }
 
         public void Unpack(ByteBuffer buffer)
@@ -275,6 +278,17 @@ namespace Scripts.BehaviorTree
                             break;
                         }
                     }
+
+                    if ((character.CharacterType == CharacterType.ASSISTANT || character.CharacterType == CharacterType.APPRENTICE) && character.TargetBuilding == null)
+                    {
+                        foreach (var otherCharacter in Characters)
+                        {
+                            if (otherCharacter.CharacterType == CharacterType.PLAYER)
+                            {
+                                otherCharacter.AddLastInQueue(character);
+                            }
+                        }
+                    }
                 }
 
                 var itemsCount = SerializationUtils.Get(buffer, 0);
@@ -290,8 +304,16 @@ namespace Scripts.BehaviorTree
                 }
             }
 
-            UIView.PointerArrowTargetPositionOnNavMesh = SerializationUtils.Get(buffer, Vector3Serializer<Vector3>.Instance);
-            UIView.PointerArrowTargetPosition = UIView.PointerArrowTargetPositionOnNavMesh;
+            var storedTargetPosition = SerializationUtils.Get(buffer, Vector3Serializer<Vector3>.Instance);
+            if (storedTargetPosition.sqrMagnitude > float.Epsilon)
+            {
+                UIView.PointerArrowTargetPositionOnNavMesh = storedTargetPosition;
+                UIView.PointerArrowTargetPosition = UIView.PointerArrowTargetPositionOnNavMesh;
+            }
+
+            SoundVolume = SerializationUtils.Get(buffer, 1f);
+            MusicVolume = SerializationUtils.Get(buffer, 1f);
+            UIView.SetVolume(SoundVolume, MusicVolume);
         }
 
         public int GetStructureLength()

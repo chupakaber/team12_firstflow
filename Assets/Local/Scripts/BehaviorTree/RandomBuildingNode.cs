@@ -35,7 +35,27 @@ namespace Scripts.BehaviorTree
             return _output;
         }
 
+        public override void Clear()
+        {
+            base.Clear();
+            _output = null;
+            if (_dynamicIndexList != null)
+            {
+                _dynamicIndexList.Clear();
+            }
+        }
+
         protected override void OnStart(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
+        {
+            
+        }
+
+        protected override void OnStop(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
+        {
+            
+        }
+
+        protected override State OnUpdate(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
         {
             if (ForEach)
             {
@@ -80,15 +100,7 @@ namespace Scripts.BehaviorTree
                     }
                 }
             }
-        }
-
-        protected override void OnStop(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
-        {
             
-        }
-
-        protected override State OnUpdate(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
-        {
             for (var i = 0; i < Children.Count; i++)
             {
                 var child = Children[i];

@@ -11,6 +11,7 @@ namespace Scripts
         
         [Header("Runtime")]
         public int LastStageIndex;
+        public Vector3 BaseCameraOffset;
 
         public BehaviorTreeRunner BehaviorTreeRunner;
     }

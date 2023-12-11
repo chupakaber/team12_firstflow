@@ -6,8 +6,8 @@ namespace Scripts
     public class CameraFollowSystem: ISystem
     {
         public Camera Camera;
+        public Scenario Scenario;
         public List<Character> Characters;
-        private Vector3 _offSet;
 
         public void EventCatch(UpdateEvent newEvent)
         {
@@ -15,7 +15,7 @@ namespace Scripts
             {
                 if (character.CharacterType == Enums.CharacterType.PLAYER && character.IsCutSceneActiv == false) 
                 {
-                    var newPosition = character.transform.position + _offSet;
+                    var newPosition = character.transform.position + Scenario.BaseCameraOffset;
                     newPosition = Vector3.Lerp(Camera.transform.position, newPosition, Time.deltaTime * 10f);
                     Camera.transform.position = newPosition;
                 }
@@ -24,7 +24,7 @@ namespace Scripts
 
         public void EventCatch(StartEvent newEvent)
         {
-            _offSet = Camera.transform.position;
+            Scenario.BaseCameraOffset = Camera.transform.position;
         }
     }
 }

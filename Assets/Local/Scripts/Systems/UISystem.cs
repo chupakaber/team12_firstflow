@@ -17,13 +17,17 @@ namespace Scripts
         public PoolCollection<BagOfTriesView> BagOfTriesViewPools;
         public PoolCollection<PinnedCounterView> PinnedCounterViewPools;
         public PoolCollection<BubbleView> BubbleViewPools;
+        public PoolCollection<MessageBubbleView> MessageBubbleViewPools;
 
         private Dictionary<int, PinnedCounterView> _shopCoinCounters = new Dictionary<int, PinnedCounterView>();
         private LinkedList<BubbleView> _bubbleViews = new LinkedList<BubbleView>();
+        private LinkedList<MessageBubbleView> _messageBubbleViews = new LinkedList<MessageBubbleView>();
+        private LinkedList<MessageBubbleView> _cartoonBubbleViews = new LinkedList<MessageBubbleView>();
         private LinkedList<TouchInputEvent> _touchInputEvents = new LinkedList<TouchInputEvent>();
         private NavMeshPath _path;
         private Vector3[] _pathCorners = new Vector3[100];
         private Vector3 _targetArrowWorldPosition = Vector3.zero;
+        private int _currentRank = 6;
 
         public void EventCatch(StartEvent newEvent)
         {
@@ -86,7 +90,7 @@ namespace Scripts
                     if (_shopCoinCounters.TryGetValue(building.GetHashCode(), out var counter))
                     {
                         var worldPosition = building.ItemStackView.GetTopPosition(building.ProduceItemType);
-                        if (worldPosition.sqrMagnitude > float.Epsilon)
+                        if (building.Items.GetAmount(building.ProduceItemType) > 0 && worldPosition.sqrMagnitude > float.Epsilon)
                         {
                             if (!counter.gameObject.activeSelf)
                             {
@@ -105,7 +109,16 @@ namespace Scripts
                 }   
             }
 
-            if (UIView.PointerArrowTargetPosition.sqrMagnitude <= float.Epsilon)
+            SmartCharacter player = null;
+            foreach (var character in Characters)
+            {
+                if (character.CharacterType == CharacterType.PLAYER)
+                {
+                    player = (SmartCharacter) character;
+                }
+            }
+
+            if (UIView.PointerArrowTargetPosition.sqrMagnitude <= float.Epsilon || (player.transform.position - UIView.PointerArrowTargetPosition).magnitude < 3f)
             {
                 if (UIView.PointerArrowTransform.gameObject.activeSelf)
                 {
@@ -121,44 +134,38 @@ namespace Scripts
 
                 var direction = Vector3.forward;
                 var worldPosition = UIView.PointerArrowTargetPosition;
-                foreach (var character in Characters)
+
+                var minimalMagnitude = (worldPosition - player.transform.position).magnitude;
+
+                if (_path == null)
                 {
-                    if (character.CharacterType == CharacterType.PLAYER)
+                    _path = new NavMeshPath();
+                }
+                player.NavMeshAgent.enabled = true;
+                var navMeshWorldPosition = worldPosition;
+                if (UIView.PointerArrowTargetPositionOnNavMesh.sqrMagnitude > float.Epsilon)
+                {
+                    navMeshWorldPosition = UIView.PointerArrowTargetPositionOnNavMesh;
+                }
+                if (player.NavMeshAgent.CalculatePath(navMeshWorldPosition, _path))
+                {
+                    var cornersCount = _path.GetCornersNonAlloc(_pathCorners);
+                    if (cornersCount > 2)
                     {
-                        var smartCharacter = (SmartCharacter) character;
-                        
-                        var minimalMagnitude = (worldPosition - character.transform.position).magnitude;
-
-                        if (_path == null)
-                        {
-                            _path = new NavMeshPath();
-                        }
-                        smartCharacter.NavMeshAgent.enabled = true;
-                        var navMeshWorldPosition = worldPosition;
-                        if (UIView.PointerArrowTargetPositionOnNavMesh.sqrMagnitude > float.Epsilon)
-                        {
-                            navMeshWorldPosition = UIView.PointerArrowTargetPositionOnNavMesh;
-                        }
-                        if (smartCharacter.NavMeshAgent.CalculatePath(navMeshWorldPosition, _path))
-                        {
-                            var cornersCount = _path.GetCornersNonAlloc(_pathCorners);
-                            if (cornersCount > 2)
-                            {
-                                var d1 = (_path.corners[1] - _path.corners[0]).magnitude;
-                                var d2 = (_path.corners[2] - _path.corners[0]).magnitude;
-                                var d = Mathf.Clamp((d2 - d1) / d1, 0f, 1f);
-                                var w1 = d;
-                                var w2 = 1f - d;
-                                worldPosition = _path.corners[1] * w1 + _path.corners[2] * w2;
-                            }
-                        }
-                        smartCharacter.NavMeshAgent.enabled = false;
-
-                        direction = worldPosition - character.transform.position;
-                        var distance = Mathf.Min(Mathf.Max(minimalMagnitude, direction.magnitude), 2.5f);
-                        worldPosition = character.transform.position + direction.normalized * distance;
+                        var d1 = (_pathCorners[1] - _pathCorners[0]).magnitude;
+                        var d2 = (_pathCorners[2] - _pathCorners[0]).magnitude;
+                        var d = Mathf.Clamp((d2 - d1) / d1, 0f, 1f);
+                        var w1 = d;
+                        var w2 = 1f - d;
+                        worldPosition = _pathCorners[1] * w1 + _pathCorners[2] * w2;
                     }
                 }
+                player.NavMeshAgent.enabled = false;
+
+                direction = worldPosition - player.transform.position;
+                var distance = Mathf.Min(Mathf.Max(minimalMagnitude, direction.magnitude), 2.5f);
+                worldPosition = player.transform.position + direction.normalized * distance;
+
                 _targetArrowWorldPosition = Vector3.Lerp(_targetArrowWorldPosition, worldPosition, Time.deltaTime * 3f);
                 var screenPosition = Camera.WorldToScreenPoint(_targetArrowWorldPosition);
                 var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
@@ -172,6 +179,11 @@ namespace Scripts
                 var screenPosition = Camera.WorldToScreenPoint(worldPosition);
                 var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
                 bubble.transform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
+            }
+
+            foreach (var bubble in _messageBubbleViews)
+            {
+                bubble.SetWorldAnchor(bubble.RelatedTransform.position + bubble.WorldOffset);
             }
 
             foreach (var touchInputEvent in _touchInputEvents)
@@ -188,7 +200,8 @@ namespace Scripts
                         else
                         {
                             UIView.ProcessTouch(touchInputEvent.Index, touchInputEvent.TouchID, touchInputEvent.Position);
-                            character.WorldDirection = Quaternion.Euler(0f, Camera.transform.eulerAngles.y, 0f) * new Vector3(UIView.Stick.Value.x, 0f, UIView.Stick.Value.y).normalized;
+                            character.WorldDirection = Quaternion.Euler(0f, Camera.transform.eulerAngles.y, 0f) * new Vector3(UIView.Stick.Value.x, 0f, UIView.Stick.Value.y);
+                            character.WorldDirection = character.WorldDirection.normalized * (0.2f + character.WorldDirection.magnitude * 0.8f);
                         }
                     }
                 }
@@ -238,6 +251,62 @@ namespace Scripts
             });
         }
 
+        public void EventCatch(ShowMessageEvent newEvent)
+        {
+            var bubble = MessageBubbleViewPools.Get(0);
+            _messageBubbleViews.AddLast(bubble);
+            if (newEvent.Character.MessageEmitterPivot != null)
+            {
+                bubble.RelatedTransform = newEvent.Character.MessageEmitterPivot;
+                bubble.WorldOffset = new Vector3(0f, 0f, 0f);
+            }
+            else
+            {
+                bubble.RelatedTransform = newEvent.Character.transform;
+                bubble.WorldOffset = new Vector3(0f, 1.2f, 0f);
+            }
+            bubble.Init(Camera);
+            bubble.SetMessage(newEvent.Message);
+            bubble.transform.SetParent(UIView.WorldSpaceTransform);
+            bubble.transform.localScale = Vector3.one * 0.1f;
+            bubble.transform.DOScale(1f, 0.3f).OnComplete(() => {
+                bubble.transform.DOScale(1f, 4f).OnComplete(() => {
+                    bubble.transform.DOScale(0.1f, 0.3f).OnComplete(() => {
+                        _messageBubbleViews.Remove(bubble);
+                        bubble.Release();
+                    });
+                });
+            });
+        }
+
+        public void EventCatch(ShowCartoonEvent newEvent)
+        {
+            var bubble = MessageBubbleViewPools.Get(1);
+            _messageBubbleViews.AddLast(bubble);
+            if (newEvent.Character.MessageEmitterPivot != null)
+            {
+                bubble.RelatedTransform = newEvent.Character.MessageEmitterPivot;
+                bubble.WorldOffset = new Vector3(0f, 0f, 0f);
+            }
+            else
+            {
+                bubble.RelatedTransform = newEvent.Character.transform;
+                bubble.WorldOffset = new Vector3(0f, 1.2f, 0f);
+            }
+            bubble.Init(Camera);
+            bubble.SetIcon(UIView.EmojiSprites[newEvent.SpriteIndex]);
+            bubble.transform.SetParent(UIView.WorldSpaceTransform);
+            bubble.transform.localScale = Vector3.one * 0.1f;
+            bubble.transform.DOScale(1f, 0.3f).OnComplete(() => {
+                bubble.transform.DOScale(1f, 2f).OnComplete(() => {
+                    bubble.transform.DOScale(0.1f, 0.3f).OnComplete(() => {
+                        _messageBubbleViews.Remove(bubble);
+                        bubble.Release();
+                    });
+                });
+            });
+        }
+
         public void EventCatch(TouchInputEvent currentEvent)
         {
             _touchInputEvents.AddLast(currentEvent);
@@ -252,7 +321,24 @@ namespace Scripts
                 if (character.CharacterType == CharacterType.PLAYER)
                 {
                     var itemCount = character.Items.GetAmount(itemType);
-                    UIView.SetItemCount(itemType, itemCount);
+                    if (itemType == ItemType.HONOR)
+                    {
+                        character.GetRank(out var rank, out var currentPoints, out var rankPoints);
+                        if (_currentRank != rank)
+                        {
+                            _currentRank = rank;
+
+                            EventBus.CallEvent(new PlaySoundEvent() { SoundId = 7, IsMusic = false, FadeMusic = true, AttachedTo = character.transform, Position = character.transform.position });
+
+                            // TODO: make visual effect
+                        }
+
+                        UIView.SetRank(rank, rank - 1, currentPoints, rankPoints, (float) currentPoints / rankPoints);
+                    }
+                    else
+                    {
+                        UIView.SetItemCount(itemType, itemCount);
+                    }
                 }
             }
             else if (unit is Building)

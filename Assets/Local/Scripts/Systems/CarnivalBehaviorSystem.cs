@@ -22,7 +22,7 @@ namespace Scripts
             {
                 Characters.Add(character);
 
-                EventBus.CallEvent(new AddItemEvent() { Unit = character, Count = 1, ItemType = Enums.ItemType.WOOD });
+                EventBus.CallEvent(new AddItemEvent() { Unit = character, Count = 1, ItemType = Enums.ItemType.NONE });
             }
         }
 
@@ -35,7 +35,7 @@ namespace Scripts
                     var carnival = (Carnival) character;
                     var targetPosition = Vector3.zero;
                     
-                    if (Time.time > carnival.LastBehaviorTime + 0.1f)
+                    if (Time.time > carnival.LastBehaviorTime + 0.05f)
                     {
                         carnival.LastBehaviorTime = Time.time;
                         if (carnival.State == 1)
@@ -52,7 +52,7 @@ namespace Scripts
                                 //carnival.FollowingOffset = 0.3f;
                             }
                         }
-                        else
+                        else if (carnival.State == 0)
                         {
                             if (carnival.CurrentRouteWaypointIndex < carnival.Route.Waypoints.Count)
                             {
@@ -71,6 +71,12 @@ namespace Scripts
                                     }
                                 }
                             }
+                        }
+                        else
+                        {
+                            carnival.CurrentRouteWaypointIndex = 0;
+                            var waypoint = carnival.Route.Waypoints[carnival.CurrentRouteWaypointIndex];
+                            targetPosition = waypoint.Transform.position;
                         }
 
                         if (carnival.NextInQueue != null)

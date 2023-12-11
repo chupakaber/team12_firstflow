@@ -9,6 +9,14 @@ namespace Scripts
         public List<Character> Characters;
         public List<Building> Buildings;
 
+        public void EventCatch(StartEvent newEvent)
+        {
+            foreach (var building in Buildings)
+            {
+                UpdateUpgradeProgressViewSettings(building);
+            }
+        }
+
         public void EventCatch(FixedUpdateEvent newEvent) 
         {
             foreach (var building in Buildings)
@@ -71,9 +79,12 @@ namespace Scripts
 
                                 EventBus.CallEvent(new ConstructionCompleteEvent() { Building = building });
 
+                                var i = 0;
                                 foreach (var teleportingCharacter in building.ConstructionCharacters)
                                 {
-                                    teleportingCharacter.transform.position = building.PickingUpArea == null ? building.ConstructionArea.transform.position : building.PickingUpArea.transform.position;
+                                    var moveDirection = new Vector3(1f, 0f, -1f);
+                                    teleportingCharacter.transform.position = building.PickingUpArea == null ? building.ConstructionArea.transform.position + moveDirection * (i + 3) * 1f : building.PickingUpArea.transform.position + moveDirection * i;
+                                    i++;
                                 }
 
                                 foreach (var item in building.Items)
@@ -101,7 +112,7 @@ namespace Scripts
 
         public void UpdateUpgradeProgressViewSettings(Building building)
         {
-            if (building.Levels.Count > building.Level + 1)
+            if (building.UpgradeStorage != null && building.Levels.Count > building.Level + 1)
             {
                 var levelConfig = building.Levels[building.Level + 1];
                 
@@ -114,6 +125,17 @@ namespace Scripts
                             progressBar.Capacity = requirement.Amount;
                             progressBar.FillValues();
                         }
+                    }
+                }
+            }
+            else if (building.Level > 0)
+            {
+                foreach (var progressBar in building.CollectingProgressBars)
+                {
+                    if (progressBar.ItemType == building.ConsumeItemType)
+                    {
+                        progressBar.Capacity = building.ItemCost;
+                        progressBar.FillValues();
                     }
                 }
             }

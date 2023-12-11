@@ -7,6 +7,7 @@ namespace Scripts
     public class CutSceneSystem : ISystem
     {
         public EventBus EventBus;
+        public Scenario Scenario;
         public List<Character> Characters;
 
         private List<IntroductionTimeline> _introductionTimelines = new List<IntroductionTimeline>();
@@ -16,9 +17,18 @@ namespace Scripts
             var timelines = GameObject.FindObjectsOfType<IntroductionTimeline>();
             foreach (var timeline in timelines)
             {
-                _introductionTimelines.Add(timeline);
+                if (timeline.Index >= _introductionTimelines.Count)
+                {
+                    _introductionTimelines.Add(timeline);
+                }
+                else
+                {
+                    _introductionTimelines.Insert(timeline.Index, timeline);
+                }
+                
                 timeline.DeactivationCutScene();
                 timeline.EventBus = EventBus;
+                timeline.Scenario = Scenario;
             }
         }
 

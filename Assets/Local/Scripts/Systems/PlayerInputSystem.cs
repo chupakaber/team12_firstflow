@@ -10,6 +10,7 @@ namespace Scripts
     public class PlayerInputSystem: ISystem
     {
         public EventBus EventBus;
+        public UIView UIView;
         public List<Character> Characters;
 
         private PlayerInput _playerInput;
@@ -55,6 +56,11 @@ namespace Scripts
 
         private void InputTouch(InputAction.CallbackContext callbackContext)
         {
+            if (callbackContext.phase != InputActionPhase.Canceled && callbackContext.phase != InputActionPhase.Disabled && UIView.MenuScreen.gameObject.activeSelf)
+            {
+                return;
+            }
+            
             var o = callbackContext.ReadValue<TouchInput>();
             var touchEvent = new TouchInputEvent();
             touchEvent.Index = 0;
