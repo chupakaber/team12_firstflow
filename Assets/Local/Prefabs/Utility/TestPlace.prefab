@@ -544,7 +544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6582488479843648235
 Transform:
   m_ObjectHideFlags: 0
@@ -916,6 +916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 1
   Scenario: {fileID: 0}
+  UIView: {fileID: 0}
   Actors:
   - {fileID: 1395630387862465114}
   - {fileID: 9063389580204752140}
@@ -1134,6 +1135,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 76c0cd609ae34a14bae2dbd3a62288f5, type: 2}
     - {fileID: 11400000, guid: 39550f5adeea67d48a651a71ec0fa679, type: 2}
     - {fileID: 11400000, guid: 0e313773b2c3dc54e8336f9f20b3a535, type: 2}
+    - {fileID: 11400000, guid: 85007fc705cfef64f8fcd10eded568c1, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -1182,6 +1184,20 @@ MonoBehaviour:
         - m_Target: {fileID: 6462171667983042133}
           m_TargetAssemblyTypeName: Scripts.IntroductionTimeline, Assembly-CSharp
           m_MethodName: DeactivationCutScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6462171667983042133}
+          m_TargetAssemblyTypeName: Scripts.IntroductionTimeline, Assembly-CSharp
+          m_MethodName: InvokeFinal
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1559,6 +1575,18 @@ PrefabInstance:
     - target: {fileID: 1011283211173142925, guid: 817f88c88deeb6e48865cba50fd0d13e, type: 3}
       propertyPath: m_Name
       value: Sword_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113394804812753697, guid: 817f88c88deeb6e48865cba50fd0d13e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113394804812753697, guid: 817f88c88deeb6e48865cba50fd0d13e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113394804812753697, guid: 817f88c88deeb6e48865cba50fd0d13e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
