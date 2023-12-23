@@ -26,6 +26,7 @@ namespace Scripts
         public ItemType ConsumeItemType;
         public List<BuildingLevel> Levels;
         public Unit UpgradeStorage;
+        public Animation HonorIconAnimation;
 
         [SerializeField] private int _level;
 
