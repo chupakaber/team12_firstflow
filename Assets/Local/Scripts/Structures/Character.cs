@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Scripts.Enums;
-using UnityEngine.UIElements;
 
 namespace Scripts
 {
@@ -19,6 +18,7 @@ namespace Scripts
         public float DropGoldMaxTime = 5f;
         public ItemType PickUpItemConstraint = ItemType.NONE;
         public int BaseBagOfTriesCapacity = 8;
+        public bool IsWork;
         public bool IsCutSceneActiv;
 
         [Header("Ranks Config (6, 5, 4, 3, 2, 1)")]
@@ -49,6 +49,7 @@ namespace Scripts
 
         private int _loadedAnimationKey = Animator.StringToHash("Loaded");
         private int _speedAnimationKey = Animator.StringToHash("Speed");
+        private int _isWorkingAnimationKey = Animator.StringToHash("Working");
 
         public void GetRank(out int rank, out int currentPoints, out int rankPoints)
         {
@@ -122,6 +123,7 @@ namespace Scripts
 
         public void ShowBagOfTries()
         {
+            IsWork = true;
             if (BagOfTriesView != null)
             {
                 BagOfTriesView.Show();
@@ -130,6 +132,7 @@ namespace Scripts
 
         public void HideBagOfTries()
         {
+            IsWork = false;
             if (BagOfTriesView != null)
             {
                 BagOfTriesView.Hide();
@@ -140,6 +143,7 @@ namespace Scripts
         {
             CharacterAnimator.SetBool(_loadedAnimationKey, Items.GetAmount() > 0);
             CharacterAnimator.SetFloat(_speedAnimationKey, (CharacterRigidbody.velocity.magnitude - 0.5f) / 4f);
+            CharacterAnimator.SetBool(_isWorkingAnimationKey, IsWork);
         }
 
         public virtual void LevelUp()
