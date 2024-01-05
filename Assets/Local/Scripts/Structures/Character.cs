@@ -152,6 +152,13 @@ namespace Scripts
 
         public void AddLastInQueue(Character newCharacter)
         {
+            if (Equals(newCharacter))
+            {
+                return;
+            }
+
+            newCharacter.LeaveQueue();
+
             if (newCharacter == this)
             {
                 throw new UnityException("Trying to add in character queue itself.");
@@ -169,6 +176,13 @@ namespace Scripts
 
         public void AddFirstInQueue(Character newCharacter)
         {
+            if (Equals(newCharacter))
+            {
+                return;
+            }
+
+            newCharacter.LeaveQueue();
+
             var character = this;
             while (character.PreviousInQueue != null)
             {
