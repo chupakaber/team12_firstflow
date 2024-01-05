@@ -187,6 +187,11 @@ namespace Scripts
 
         private void UpdateProductionStateIcon(Building building)
         {
+            if (building.ProductionAreaIndicator != null)
+            {
+                building.IsWorkAreaIndicatorEnabled = building.AssignedProductionCharacters.Count < 1;
+            }
+
             var inProgress = building.Level > 0 && building.ProductionCharacters.Count > 0 && building.ProductionLimit > building.Items.GetAmount(building.ProduceItemType);
             var noResource = building.Level > 0 && building.Items.GetAmount(building.ConsumeItemType) < building.ItemCost;
 

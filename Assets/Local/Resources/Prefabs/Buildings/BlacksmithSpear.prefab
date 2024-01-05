@@ -1782,6 +1782,11 @@ MonoBehaviour:
   UnloadingArea: {fileID: 7884412061970080319}
   PickingUpArea: {fileID: 6976099072048434408}
   UpgradeArea: {fileID: 4968041387574208746}
+  ConstructionAreaIndicator: {fileID: 0}
+  ProductionAreaIndicator: {fileID: 7963766790858136287}
+  UnloadingAreaIndicator: {fileID: 0}
+  PickingUpAreaIndicator: {fileID: 0}
+  UpgradeAreaIndicator: {fileID: 0}
   ProgressBarPivot: {fileID: 5138824756507073033}
   StopProductionIcon: {fileID: 8287131910901222915}
   NoResourceIcon: {fileID: 3123652491580621033}
@@ -1832,6 +1837,7 @@ MonoBehaviour:
     - Type: 1
       Value: 0.8
   UpgradeStorage: {fileID: 4870775315968118031}
+  HonorIconAnimation: {fileID: 0}
   _level: 0
   ConstructionCharacters: []
   ProductionCharacters: []
@@ -3242,6 +3248,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f205decfbc4ff19449c08880f70a133f, type: 3}
+--- !u!1 &7963766790858136287 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1824767714165342040, guid: f205decfbc4ff19449c08880f70a133f, type: 3}
+  m_PrefabInstance: {fileID: 8635119171514656135}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9221593647192135263 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 589889855952597976, guid: f205decfbc4ff19449c08880f70a133f, type: 3}

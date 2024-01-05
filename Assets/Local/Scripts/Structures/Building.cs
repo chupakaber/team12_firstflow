@@ -13,6 +13,11 @@ namespace Scripts
         public Collider UnloadingArea;
         public Collider PickingUpArea;
         public Collider UpgradeArea;
+        public GameObject ConstructionAreaIndicator;
+        public GameObject ProductionAreaIndicator;
+        public GameObject UnloadingAreaIndicator;
+        public GameObject PickingUpAreaIndicator;
+        public GameObject UpgradeAreaIndicator;
         public Transform ProgressBarPivot;
         public GameObject StopProductionIcon;
         public GameObject NoResourceIcon;
@@ -80,6 +85,11 @@ namespace Scripts
             }
         }
         public bool IsWork { get; set; } = true;
+        public bool IsWorkAreaIndicatorEnabled { get {
+            return ProductionAreaIndicator.activeSelf;
+        } set {
+            ProductionAreaIndicator.SetActive(value);
+        } }
 
         public int GetLastCustomerHonor()
         {
