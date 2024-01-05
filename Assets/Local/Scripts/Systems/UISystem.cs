@@ -118,11 +118,16 @@ namespace Scripts
                 }
             }
 
-            if (UIView.PointerArrowTargetPosition.sqrMagnitude <= float.Epsilon || (player.transform.position - UIView.PointerArrowTargetPosition).magnitude < 3f)
+            if (UIView.PointerArrowTargetPosition.sqrMagnitude <= float.Epsilon || (player.transform.position - UIView.PointerArrowTargetPosition).magnitude < 7.5f)
             {
                 if (UIView.PointerArrowTransform.gameObject.activeSelf)
                 {
-                    UIView.PointerArrowTransform.gameObject.SetActive(false);
+                    var screenPosition = Camera.WorldToScreenPoint(UIView.PointerArrowTargetPosition + Vector3.up * 1.5f);
+                    var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
+                    UIView.PointerArrowTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
+                    UIView.PointerArrowTransform.localRotation = Quaternion.Euler(0f, 0f, 180f);
+
+                    // UIView.PointerArrowTransform.gameObject.SetActive(false);
                 }
             }
             else
