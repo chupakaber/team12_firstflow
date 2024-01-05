@@ -230,6 +230,7 @@ namespace Scripts
 
             character.BagOfTriesView.Roll(newEvent.NextIndex, 0.2f);
             character.BagOfTriesView.SetValue(newEvent.LastIndex, newEvent.ChangedValue);
+            character.BagOfTriesView.ShowResult(newEvent.NextValue);
         }
 
         public void EventCatch(ShowEmojiEvent newEvent)

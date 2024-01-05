@@ -9,6 +9,9 @@ namespace Scripts
     {
         public RectTransform Transform;
         public RectTransform Circle;
+        public Image RegularIcon;
+        public Image SuccessIcon;
+        public Image FailIcon;
         public List<RectTransform> Points;
         public List<Image> PointImages;
         public int PointsCount;
@@ -18,7 +21,7 @@ namespace Scripts
 
         public void Roll(int index, float duration)
         {
-            var stopAngle = 360f * index / Points.Count;
+            var stopAngle = 360f * index / PointsCount;
             Circle.DOLocalRotate(new Vector3(0f, 0f, stopAngle), duration, RotateMode.Fast);
         }
 
@@ -64,12 +67,28 @@ namespace Scripts
 
             Transform.gameObject.SetActive(true);
             Transform.DOScale(1f, 0.2f);
+            RegularIcon.enabled = true;
+            SuccessIcon.enabled = false;
+            FailIcon.enabled = false;
         }
 
         public void Hide()
         {
             Transform.DOScale(0f, 0.2f).OnComplete(() => {
                 Transform.gameObject.SetActive(false);
+            });
+        }
+
+        public void ShowResult(bool value)
+        {
+            var resultIcon = value ? SuccessIcon : FailIcon;
+            RegularIcon.enabled = false;
+            resultIcon.enabled = true;
+            resultIcon.transform.DOScale(1f, 0.25f).OnComplete(() => {
+                resultIcon.transform.DOScale(0.01f, 0.25f).OnComplete(() => {
+                    RegularIcon.enabled = true;
+                    resultIcon.enabled = false;
+                });
             });
         }
     }
