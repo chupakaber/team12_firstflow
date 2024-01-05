@@ -95,6 +95,8 @@ namespace Scripts
                                     building.UpgradeArea.gameObject.SetActive(false);
                                     building.UpgradeArea = null;
                                 }
+
+                                character.ClearDropItemCooldown();
                             }
                         }
                     }

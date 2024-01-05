@@ -184,6 +184,7 @@ MonoBehaviour:
   CollectingProgressBars: []
   CharacterRigidbody: {fileID: 1853636807648437890}
   CharacterAnimator: {fileID: 4467938525098955354}
+  MessageEmitterPivot: {fileID: 0}
   Speed: 5.5
   CharacterType: 4
   ItemLimit: 1
@@ -192,7 +193,9 @@ MonoBehaviour:
   DropGoldMaxTime: 5
   PickUpItemConstraint: 0
   BaseBagOfTriesCapacity: 8
+  IsWork: 0
   IsCutSceneActiv: 0
+  RankHonor: 00000000640000002c01000058020000e8030000dc05000040420f00
   WorldDirection: {x: 0, y: 0, z: 0}
   LastDropItemTime: 0
   LastPickUpItemTime: 0
@@ -246,7 +249,7 @@ MonoBehaviour:
     - 0
     - 0
     States: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  Rank: 6
+  Rank: 3
   State: 0
 --- !u!136 &4316870479836977008
 CapsuleCollider:
