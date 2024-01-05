@@ -50,6 +50,8 @@ namespace Scripts
         private int _loadedAnimationKey = Animator.StringToHash("Loaded");
         private int _speedAnimationKey = Animator.StringToHash("Speed");
         private int _isWorkingAnimationKey = Animator.StringToHash("Working");
+        
+        private float _dropItemStartTimestamp = -1f;
 
         public void GetRank(out int rank, out int currentPoints, out int rankPoints)
         {
@@ -228,19 +230,28 @@ namespace Scripts
 
         public float GetDropCooldown(ItemType itemType, out int batchCount, int capacity = 1)
         {
+            if (_dropItemStartTimestamp < 0f)
+            {
+                _dropItemStartTimestamp = Time.time;
+            }
+
             batchCount = 1;
 
             if (itemType == ItemType.GOLD)
             {
-                var count = Mathf.Max(1, capacity);
-                var cooldown = DropGoldMaxTime / count;
-                cooldown = Mathf.Min(PickUpCooldown, cooldown);
+                var dropTime = Mathf.Clamp(Time.time - _dropItemStartTimestamp, 0f, DropGoldMaxTime);
+                var cooldown = Mathf.Pow((DropGoldMaxTime - dropTime) / DropGoldMaxTime, 8f) * DropGoldMaxTime;
+                cooldown = Mathf.Max(cooldown, 0.0001f);
                 batchCount = (int) Mathf.Ceil(Mathf.Max(1f, MIN_COOLDOWN / cooldown));
-
                 return cooldown;
             }
             
             return PickUpCooldown;
+        }
+
+        public void ClearDropItemCooldown()
+        {
+            _dropItemStartTimestamp = -1f;
         }
     }
 }
