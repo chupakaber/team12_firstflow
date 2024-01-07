@@ -18,6 +18,8 @@ namespace Scripts
         public GameObject UnloadingAreaIndicator;
         public GameObject PickingUpAreaIndicator;
         public GameObject UpgradeAreaIndicator;
+        public GameObject ProductionAreaHelper;
+        public GameObject PickingUpAreaHelper;
         public Transform ProgressBarPivot;
         public GameObject StopProductionIcon;
         public GameObject NoResourceIcon;
