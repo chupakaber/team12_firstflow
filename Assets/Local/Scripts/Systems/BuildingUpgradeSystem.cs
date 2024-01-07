@@ -26,8 +26,9 @@ namespace Scripts
         {
             foreach (var building in Buildings)
             {
-                foreach (var character in building.UpgradeCharacters)
+                for (var i = 0; i < building.UpgradeCharacters.Count; i++)
                 {
+                    var character = building.UpgradeCharacters[i];
                     Collecting(building, character);
                 }
             }
@@ -95,6 +96,9 @@ namespace Scripts
                                     building.UpgradeArea.gameObject.SetActive(false);
                                     building.UpgradeArea = null;
                                 }
+
+                                // character.ClearDropItemCooldown();
+                                building.UpgradeCharacters.Remove(character);
                             }
                         }
                     }

@@ -41,6 +41,7 @@ namespace Scripts
                 if (horizontalDirection.sqrMagnitude > 0.1f)
                 {
                     character.transform.rotation = Quaternion.Lerp(character.transform.rotation, Quaternion.LookRotation(horizontalDirection), Time.fixedDeltaTime * 10f);
+                    character.ClearDropItemCooldown();
                 }
             }
         }

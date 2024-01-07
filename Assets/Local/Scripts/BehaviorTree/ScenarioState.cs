@@ -370,6 +370,8 @@ namespace Scripts.BehaviorTree
 
             bytesCount += Vector3Serializer<Vector3>.SIZE_OF_STRUCTURE;
 
+            bytesCount += SerializationUtils.SIZE_OF_FLOAT;
+
             return bytesCount;
         }
     }
