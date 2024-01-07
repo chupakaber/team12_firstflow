@@ -133,7 +133,8 @@ namespace Scripts
                 }
                 if (building.ProductionAreaHelper != null)
                 {
-                    building.ProductionAreaHelper.SetActive(building.AssignedProductionCharacters.Count == 0 && hasApprentice);
+                    building.ProductionAreaHelper.SetActive((building.AssignedProductionCharacters.Count == 0 && hasApprentice)
+                        || ((hasApprentice || hasAssistant) && building.ConsumeItemType == ItemType.NONE && building.ProduceItemType == ItemType.GOLD));
                 }
             }
         }
