@@ -650,7 +650,7 @@ MonoBehaviour:
   m_Name: '>0'
   m_EditorClassIdentifier: 
   Name: '>0'
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: c844e944630b41e429a1e1cadfba73dc
   Position: {x: 1211.0002, y: -1879.2504}
@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Name: CONSTRUCTION COMPLETE
   m_EditorClassIdentifier: 
   Name: CONSTRUCTION COMPLETE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: f21778dd4dcacbe46b0b5aa699414bc2
   Position: {x: 1567.6002, y: -1879.0002}
@@ -1293,7 +1293,7 @@ MonoBehaviour:
   m_Name: ASSISTANT
   m_EditorClassIdentifier: 
   Name: ASSISTANT
-  CurrentState: 2
+  CurrentState: 1
   Started: 0
   Guid: 082eeb017b7b6f841934e715c35a9ef1
   Position: {x: -2369.001, y: -1807.0002}
@@ -1439,7 +1439,7 @@ MonoBehaviour:
   m_Name: HIDE TUTORIAL ARROW
   m_EditorClassIdentifier: 
   Name: HIDE TUTORIAL ARROW
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 2cc92ee14b69b8f4893cde8cf5cfd035
   Position: {x: 1556, y: -2185.5}
@@ -2740,6 +2740,7 @@ MonoBehaviour:
   - {fileID: 6636173489944011427}
   - {fileID: 2837349674971270667}
   - {fileID: -6504208972497899536}
+  - {fileID: 6350908388584011014}
 --- !u!114 &79279145139786393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2797,8 +2798,9 @@ MonoBehaviour:
   - {fileID: 3731995567138786580}
   - {fileID: 8886790934348301404}
   - {fileID: 664067203439358575}
-  InputTargetIndex: 000000000000000000000000000000000000000000000000000000000000000000000000
-  OutputIndex: 000000000000000000000000000000000000000000000000000000000000000000000000
+  - {fileID: 6350908388584011014}
+  InputTargetIndex: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  OutputIndex: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   EventType: 10
 --- !u!114 &206456240511327896
 MonoBehaviour:
@@ -3672,7 +3674,7 @@ MonoBehaviour:
   m_Name: LEVEL
   m_EditorClassIdentifier: 
   Name: LEVEL
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: ec9ad58be7a607b43a5e4800c6546c23
   Position: {x: 1058, y: -1894.5}
@@ -4752,6 +4754,36 @@ MonoBehaviour:
   InputTargetIndex: 
   OutputIndex: 
   FieldName: 1
+--- !u!114 &6350908388584011014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Quarry #1
+  m_EditorClassIdentifier: 
+  Name: Quarry #1
+  CurrentState: 0
+  Started: 0
+  Guid: ec00b76ad1e500e43988b84e52334600
+  Position: {x: 961, y: -1026.5}
+  Children:
+  - {fileID: -7038083497428460194}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 1
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
 --- !u!114 &6414907773302938100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4811,7 +4843,7 @@ MonoBehaviour:
   m_Name: Alchemist #1
   m_EditorClassIdentifier: 
   Name: Alchemist #1
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: a6b8bd31292574b42943abb1347ab294
   Position: {x: 1354, y: -1866.1504}
@@ -4862,7 +4894,7 @@ MonoBehaviour:
   m_Name: Alchemist #2
   m_EditorClassIdentifier: 
   Name: Alchemist #2
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: f2356e2be9864e64f84f658dfb64010f
   Position: {x: 881, y: -1846}
@@ -5290,7 +5322,7 @@ MonoBehaviour:
   m_Name: Vector3Value
   m_EditorClassIdentifier: 
   Name: Vector3Value
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: a8612e3ca6d445142b6394cba1cd20f7
   Position: {x: 1354, y: -2110}
@@ -5376,8 +5408,8 @@ MonoBehaviour:
   m_Name: AMOUNT
   m_EditorClassIdentifier: 
   Name: AMOUNT
-  CurrentState: 2
-  Started: 0
+  CurrentState: 0
+  Started: 1
   Guid: b396d547235915f438e824acaa636693
   Position: {x: -1656, y: -1934}
   Children:
@@ -5423,7 +5455,7 @@ MonoBehaviour:
   m_Name: '>0'
   m_EditorClassIdentifier: 
   Name: '>0'
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: eadcfbe867369e843bfe060c9741ec7e
   Position: {x: -1420, y: -2025}
