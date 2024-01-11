@@ -18,8 +18,9 @@ namespace Scripts
                     building.UnloadingCharacters.Clear();
                 }
                 
-                foreach (var character in building.UnloadingCharacters)
+                for (var i = 0; i < building.UnloadingCharacters.Count; i++)
                 {
+                    var character = building.UnloadingCharacters[i];
                     Collecting(building, character);
                 }
             }
@@ -34,12 +35,12 @@ namespace Scripts
                 character.LastDropItemTime = Time.time;
             }
 
-            var dropCooldown = character.GetDropCooldown(building.ConsumeItemType, out var itemsMovingAmount, building.ResourceLimit);
+            var storageAmount = building.Items.GetAmount(building.ConsumeItemType);
+            var requiredAmount = building.ResourceLimit - storageAmount;
+            var dropCooldown = character.GetDropCooldown(building.ConsumeItemType, out var itemsMovingAmount, requiredAmount);
 
             if (Time.time >= character.LastDropItemTime + dropCooldown)
             {
-                var storageAmount = building.Items.GetAmount(building.ConsumeItemType);
-                var requiredAmount = building.ResourceLimit - storageAmount;
                 var availableAmount = character.Items.GetAmount(building.ConsumeItemType);
                 itemsMovingAmount = Mathf.Min(itemsMovingAmount, Mathf.Min(requiredAmount, availableAmount));
                 if (itemsMovingAmount > 0)
@@ -50,6 +51,16 @@ namespace Scripts
                     EventBus.CallEvent(removeItemEvent);
                     EventBus.CallEvent(addItemEvent);
                     character.LastDropItemTime = Time.time;
+
+                    if (building.ConsumeItemType == Enums.ItemType.GOLD)
+                    {
+                        storageAmount = building.Items.GetAmount(building.ConsumeItemType);
+                        requiredAmount = building.ResourceLimit - storageAmount;
+                        if (requiredAmount <= 0)
+                        {
+                            building.UnloadingCharacters.Remove(character);
+                        }
+                    }
                 }
             }            
         }
