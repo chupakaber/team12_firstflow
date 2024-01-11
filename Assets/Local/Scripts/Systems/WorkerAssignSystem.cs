@@ -16,14 +16,14 @@ namespace Scripts
 
         public void EventCatch(EnterTriggerEvent newEvent)
         {
-            if (newEvent.Character.CharacterType == CharacterType.PLAYER)
+            if (newEvent.Character.CharacterType == CharacterType.PLAYER && newEvent.Character.NextInQueue != null)
             {
                 foreach (var building in Buildings)
                 {
                     var trigger = newEvent.Trigger;
                     if (trigger == building.ProductionArea || trigger == building.PickingUpArea || trigger == building.UnloadingArea || trigger == building.UpgradeArea)
                     {
-                        if (building.ProduceItemType != ItemType.NONE && building.ProduceItemType != ItemType.ASSISTANT && building.ProduceItemType != ItemType.APPRENTICE)
+                        if (building.ProduceItemType != ItemType.NONE && building.ProduceItemType != ItemType.ASSISTANT && building.ProduceItemType != ItemType.APPRENTICE && building.ProduceItemType != ItemType.BOTTLE_HERO && building.ProduceItemType != ItemType.BOTTLE_WORKER && building.ProduceItemType != ItemType.EMPEROR_SWORD)
                         {
                             if ((building.AssignedPickingUpCharacters.Count == 0 && building.PickingUpArea != null) || (building.AssignedProductionCharacters.Count == 0 && building.ProductionArea != null))
                             {
@@ -32,7 +32,7 @@ namespace Scripts
                                     if (character.CharacterType == CharacterType.ASSISTANT && building.AssignedPickingUpCharacters.Count == 0 && building.PickingUpArea != null && building.ProduceItemType != ItemType.GOLD)
                                     {
                                         var assistant = (Assistant) character;
-                                        if (assistant.ResourceBuilding == null && assistant.TargetCharacter != null)
+                                        if (assistant.ResourceBuilding == null && assistant.PreviousInQueue != null)
                                         {
                                             foreach (var building2 in Buildings)
                                             {
@@ -63,7 +63,9 @@ namespace Scripts
                                                     EventBus.CallEvent(removeItemEvent);
                                                 }
 
-                                                assistant.TargetCharacter = null;
+                                                assistant.LeaveQueue();
+
+                                                UpdateAssignmentHelper();
                                             }
                                         }
                                     }
@@ -71,18 +73,68 @@ namespace Scripts
                                     if (character.CharacterType == CharacterType.APPRENTICE && building.AssignedProductionCharacters.Count == 0 && building.ProductionArea != null)
                                     {
                                         var apprentice = (Worker) character;
-                                        if (apprentice.TargetBuilding == null && apprentice.TargetCharacter != null)
+                                        if (apprentice.TargetBuilding == null && apprentice.PreviousInQueue != null)
                                         {
                                             apprentice.TargetBuilding = building;
                                             building.AssignedProductionCharacters.Add(apprentice);
 
-                                            apprentice.TargetCharacter = null;
+                                            apprentice.LeaveQueue();
                                         }
                                     }
                                 }
                             }
                         }
                     }
+                }
+            }
+        }
+
+        public void EventCatch(StartEvent newEvent)
+        {
+            UpdateAssignmentHelper();
+        }
+
+        public void EventCatch(ConstructionCompleteEvent newEvent)
+        {
+            UpdateAssignmentHelper();
+        }
+
+        public void EventCatch(RemoveItemEvent newEvent)
+        {
+            UpdateAssignmentHelper();
+        }
+
+        private void UpdateAssignmentHelper()
+        {
+            var hasAssistant = false;
+            var hasApprentice = false;
+            foreach (var character in Characters)
+            {
+                var member = character.NextInQueue;
+                while (member != null)
+                {
+                    if (character.NextInQueue.CharacterType == CharacterType.ASSISTANT)
+                    {
+                        hasAssistant = true;
+                    }
+                    else if (character.NextInQueue.CharacterType == CharacterType.APPRENTICE)
+                    {
+                        hasApprentice = true;
+                    }
+
+                    member = member.NextInQueue;
+                }
+            }
+            foreach (var building in Buildings)
+            {
+                if (building.PickingUpAreaHelper != null)
+                {
+                    building.PickingUpAreaHelper.SetActive(building.AssignedPickingUpCharacters.Count == 0 && hasAssistant);
+                }
+                if (building.ProductionAreaHelper != null)
+                {
+                    building.ProductionAreaHelper.SetActive((building.AssignedProductionCharacters.Count == 0 && hasApprentice)
+                        || ((hasApprentice || hasAssistant) && building.ConsumeItemType == ItemType.NONE && building.ProduceItemType == ItemType.GOLD));
                 }
             }
         }

@@ -22,7 +22,7 @@ namespace Scripts
                 {
                     worldDirection = hitInfo.point - character.transform.position;
                     var worldDirectionY = Mathf.Sign(worldDirection.y) * Mathf.Min(Mathf.Abs(worldDirection.y), 1f);
-                    worldDirection = worldDirection.normalized;
+                    worldDirection = worldDirection.normalized * Mathf.Min(character.WorldDirection.magnitude, 1f);
                     worldDirection.y = worldDirectionY;
                     hasHitGround = true;
                 }
@@ -41,6 +41,7 @@ namespace Scripts
                 if (horizontalDirection.sqrMagnitude > 0.1f)
                 {
                     character.transform.rotation = Quaternion.Lerp(character.transform.rotation, Quaternion.LookRotation(horizontalDirection), Time.fixedDeltaTime * 10f);
+                    character.ClearDropItemCooldown();
                 }
             }
         }

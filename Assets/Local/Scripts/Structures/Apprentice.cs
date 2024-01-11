@@ -6,15 +6,27 @@ namespace Scripts
     {
         [Header("Apprentice Config")]
         public int TriesCapacityBoostAmount = 4;
+        public int ProduceItemPerCicleBust = 1;
         
         [Header("Apprentice Runtime")]
         public float LastApprenticeBehaviorTime;
 
         public override void LevelUp()
         {
-            BaseBagOfTriesCapacity += TriesCapacityBoostAmount;
-            BagOfTries.Resize(BaseBagOfTriesCapacity);
-            BagOfTriesView.Resize(BaseBagOfTriesCapacity);
+            if (this.TargetBuilding.ProduceItemType == Enums.ItemType.GOLD)
+            {
+                this.TargetBuilding.ProductionItemAmountPerCycle += ProduceItemPerCicleBust;
+            }
+            else
+            {
+                BaseBagOfTriesCapacity += TriesCapacityBoostAmount;
+                BagOfTries.Resize(BaseBagOfTriesCapacity);
+                if (BagOfTriesView != null)
+                {
+                    BagOfTriesView.Resize(BaseBagOfTriesCapacity);
+                }
+            }
+
         }
     }
 }

@@ -5,6 +5,7 @@ namespace Scripts
 {
     public class ProgressBarView: MonoBehaviour
     {
+        [SerializeField] private Image _background;
         [SerializeField] private Image _image;
 
         public float Progress 
@@ -21,6 +22,8 @@ namespace Scripts
                 {
                     _image.enabled = true;
                 }
+
+                _background.enabled = _image.enabled;
             } 
         }
     }

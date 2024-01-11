@@ -28,8 +28,17 @@ namespace Scripts
 
         private void PickUp(Building building, Character character)
         {
-            var itemsMoveAmount = 1;
-            if (Time.time >= character.LastPickUpItemTime + character.PickUpCooldown)
+            var availableAmount = building.Items.GetAmount(building.ProduceItemType);
+
+            if (availableAmount < 1)
+            {
+                return;
+            }
+
+            var storageAmount = character.Items.GetAmount();
+            var pickUpCooldown = character.GetPickUpCooldown(building.ProduceItemType, out var itemsMovingAmount, availableAmount);
+
+            if (Time.time >= character.LastPickUpItemTime + pickUpCooldown)
             {
                 if (building.ProduceItemType == ItemType.ASSISTANT || building.ProduceItemType == ItemType.APPRENTICE)
                 {
@@ -43,17 +52,15 @@ namespace Scripts
 
                 if (character.PickUpItemConstraint == ItemType.NONE || character.PickUpItemConstraint == building.ProduceItemType)
                 {
-                    if (character.ItemLimit >= character.Items.GetAmount() + character.Items.GetItemVolume(building.ProduceItemType) * itemsMoveAmount)
+                    itemsMovingAmount = Mathf.Min(itemsMovingAmount, availableAmount);
+                    if (itemsMovingAmount > 0 && character.ItemLimit >= storageAmount + character.Items.GetItemVolume(building.ProduceItemType) * itemsMovingAmount)
                     {
-                        if (building.Items.GetAmount(building.ProduceItemType) >= itemsMoveAmount)
-                        {
-                            var sourcePileTopPosition = building.GetStackTopPosition(building.ProduceItemType);
-                            var removeItemEvent = new RemoveItemEvent() { ItemType = building.ProduceItemType, Count = itemsMoveAmount, Unit = building };
-                            var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = itemsMoveAmount, Unit = character, FromPosition = sourcePileTopPosition };
-                            EventBus.CallEvent(removeItemEvent);
-                            EventBus.CallEvent(addItemEvent);
-                            character.LastPickUpItemTime = Time.time;
-                        }
+                        var sourcePileTopPosition = building.GetStackTopPosition(building.ProduceItemType);
+                        var removeItemEvent = new RemoveItemEvent() { ItemType = building.ProduceItemType, Count = itemsMovingAmount, Unit = building };
+                        var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = itemsMovingAmount, Unit = character, FromPosition = sourcePileTopPosition };
+                        EventBus.CallEvent(removeItemEvent);
+                        EventBus.CallEvent(addItemEvent);
+                        character.LastPickUpItemTime = Time.time;
                     }
                 }
             }

@@ -13,27 +13,23 @@ namespace Scripts
         {
             foreach (var building in Buildings)
             {
-                if (newEvent.Trigger.Equals(building.ConstructionArea))
+                if (newEvent.Trigger.Equals(building.ConstructionArea) && !building.ConstructionCharacters.Contains(newEvent.Character))
                 {
                     building.ConstructionCharacters.Add(newEvent.Character);
                 }
-
-                if (newEvent.Trigger.Equals(building.UnloadingArea))
+                else if (newEvent.Trigger.Equals(building.UnloadingArea) && !building.UnloadingCharacters.Contains(newEvent.Character))
                 {
                     building.UnloadingCharacters.Add(newEvent.Character);
                 }
-
-                if (newEvent.Trigger.Equals(building.PickingUpArea))
+                else if (newEvent.Trigger.Equals(building.PickingUpArea) && !building.PickingUpCharacters.Contains(newEvent.Character))
                 {
                     building.PickingUpCharacters.Add(newEvent.Character);
                 }
-
-                if (newEvent.Trigger.Equals(building.ProductionArea))
+                else if (newEvent.Trigger.Equals(building.ProductionArea) && !building.ProductionCharacters.Contains(newEvent.Character))
                 {
                     building.ProductionCharacters.Add(newEvent.Character);
                 }
-
-                if (newEvent.Trigger.Equals(building.UpgradeArea))
+                else if (newEvent.Trigger.Equals(building.UpgradeArea) && !building.UpgradeCharacters.Contains(newEvent.Character))
                 {
                     building.UpgradeCharacters.Add(newEvent.Character);
                 }

@@ -7,12 +7,22 @@ namespace Scripts
     public class Building: Unit
     {
         [Header("Building Config")]
+        public int ID = -1;
         public Collider ConstructionArea;
         public Collider ProductionArea;
         public Collider UnloadingArea;
         public Collider PickingUpArea;
         public Collider UpgradeArea;
+        public GameObject ConstructionAreaIndicator;
+        public GameObject ProductionAreaIndicator;
+        public GameObject UnloadingAreaIndicator;
+        public GameObject PickingUpAreaIndicator;
+        public GameObject UpgradeAreaIndicator;
+        public GameObject ProductionAreaHelper;
+        public GameObject PickingUpAreaHelper;
         public Transform ProgressBarPivot;
+        public GameObject StopProductionIcon;
+        public GameObject NoResourceIcon;
         public int ProductionLimit;
         public int ResourceLimit;
         public int ItemCost;
@@ -23,6 +33,7 @@ namespace Scripts
         public ItemType ConsumeItemType;
         public List<BuildingLevel> Levels;
         public Unit UpgradeStorage;
+        public Animation HonorIconAnimation;
 
         [SerializeField] private int _level;
 
@@ -37,6 +48,8 @@ namespace Scripts
         public List<Character> AssignedPickingUpCharacters = new List<Character>();
         public float LastProductionTime;
         public float ProductionEndTime;
+        public float LastProductionSoundTime;
+        public float LastProductionCheckTime;
         public int Level
         {
             get
@@ -73,6 +86,12 @@ namespace Scripts
                 }
             }
         }
+        public bool IsWork { get; set; } = true;
+        public bool IsWorkAreaIndicatorEnabled { get {
+            return ProductionAreaIndicator.activeSelf;
+        } set {
+            ProductionAreaIndicator.SetActive(value);
+        } }
 
         public int GetLastCustomerHonor()
         {
@@ -81,6 +100,11 @@ namespace Scripts
 
         public float ProductionProgress()
         {
+            if (!IsWork)
+            {
+                return 0f;
+            }
+
             var currentProductionTime = ProductionEndTime > LastProductionTime ? ProductionEndTime - LastProductionTime : Time.time - LastProductionTime;
             if (currentProductionTime >= ProductionCooldown)
             {

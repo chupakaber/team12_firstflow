@@ -42,7 +42,11 @@ namespace Scripts
                         {
                             if (collisionCharacter.CharacterType == CharacterType.ASSISTANT || collisionCharacter.CharacterType == CharacterType.APPRENTICE)
                             {
-                                GiveBoostBottle(character, collisionCharacter);
+                                var worker = (Worker)collisionCharacter;
+                                if (worker.TargetBuilding != null && worker.TargetBuilding.ProduceItemType != ItemType.ASSISTANT && worker.TargetBuilding.ProduceItemType != ItemType.APPRENTICE)
+                                {
+                                    GiveBoostBottle(character, collisionCharacter);
+                                }
                             }
                         }
                         

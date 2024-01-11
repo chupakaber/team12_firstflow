@@ -9,6 +9,9 @@ namespace Scripts
         public List<Character> Characters;
         public List<Building> Buildings;
 
+        public PoolCollection<Assistant> AssistantPools;
+        public PoolCollection<Apprentice> ApprenticePools;
+
         private float _lastCheckTime = -3f;
         private Vector3 _workerSpawnPoint;
 
@@ -52,15 +55,9 @@ namespace Scripts
                     {
                         if (building.ProduceItemType == ItemType.ASSISTANT && building.Level > 0)
                         {
-                            var prefab = Resources.Load<GameObject>("Prefabs/Characters/Assistant");
-                            var instance = Object.Instantiate(prefab);
-                            var character = instance.GetComponent<Character>();
-                            Characters.Add(character);
-
-                            character.transform.position = _workerSpawnPoint;
-
-                            var assistant = (Assistant) character;
-
+                            var assistant = AssistantPools.Get(0);
+                            Characters.Add(assistant);
+                            assistant.transform.position = _workerSpawnPoint;
                             assistant.TargetBuilding = building;
                             assistant.FollowingOffset = 0.3f;
                         }
@@ -73,16 +70,10 @@ namespace Scripts
                     {
                         if (building.ProduceItemType == ItemType.APPRENTICE && building.Level > 0)
                         {
-                            var prefab = Resources.Load<GameObject>("Prefabs/Characters/Apprentice");
-                            var instance = Object.Instantiate(prefab);
-                            var character = instance.GetComponent<Character>();
-                            Characters.Add(character);
-
-                            character.transform.position = _workerSpawnPoint;
-                            character.ResizeBagOfTries(character.BaseBagOfTriesCapacity);
-
-                            var apprentice = (Apprentice) character;
-
+                            var apprentice = ApprenticePools.Get(0);
+                            Characters.Add(apprentice);
+                            apprentice.transform.position = _workerSpawnPoint;
+                            apprentice.ResizeBagOfTries(apprentice.BaseBagOfTriesCapacity);
                             apprentice.TargetBuilding = building;
                             apprentice.FollowingOffset = 0.3f;
                         }

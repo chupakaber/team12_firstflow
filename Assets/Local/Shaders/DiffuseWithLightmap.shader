@@ -3,11 +3,11 @@ Shader "Team12/DiffuseWithLightmap" {
         _MainTex ("Base (RGB)", 2D) = "white" {}
         _AOBrightness ("AO Brightness", Range(0, 3)) = 0.1
         _AOPreMultiply ("AO Pre Multiply", Range(0, 3)) = 1.5
-        _PreMultiply ("Pre Multiply", Range(0.5, 2)) = 1
+        // _PreMultiply ("Pre Multiply", Range(0.5, 2)) = 1
         _Multiply ("Multiply", Range(0.5, 2)) = 1
-        _PreBrightness ("Pre Brightness", Range(-3, 3)) = 0
+        // _PreBrightness ("Pre Brightness", Range(-3, 3)) = 0
         _Brightness ("Brightness", Range(-3, 3)) = 0
-        _PreIntensity ("Pre Intencity", Range(-5, 5)) = 2.5
+        // _PreIntensity ("Pre Intencity", Range(-5, 5)) = 2.5
         _Intensity ("Intencity", Range(-5, 5)) = 1
 
         _SaturationBase ("Saturation Base", Range(0, 1)) = 0.6
@@ -66,11 +66,11 @@ Shader "Team12/DiffuseWithLightmap" {
             uniform float _AOSaturation;
             uniform float _Saturation;
             uniform float _Lighten;
-            uniform float _PreMultiply;
+            // uniform float _PreMultiply;
             uniform float _Multiply;
-            uniform float _PreBrightness;
+            // uniform float _PreBrightness;
             uniform float _Brightness;
-            uniform float _PreIntensity;
+            // uniform float _PreIntensity;
             uniform float _Intensity;
             uniform float4 _LightColor;
             uniform float4 _ShadowColor;
@@ -122,10 +122,10 @@ Shader "Team12/DiffuseWithLightmap" {
                 half saturationBaseDiff = ao - _SaturationBase;
                 half saturation = saturationBaseDiff * _AOSaturation + _Saturation;
                 ao = ao * _AOPreMultiply + _AOBrightness;
-                color += _PreBrightness;
-                color *= _PreIntensity;
+                // color += _PreBrightness;
+                // color *= _PreIntensity;
                 color *= ao;
-                color = mul(color, _PreMultiply);
+                // color = mul(color, _PreMultiply);
                 // half minColor = min(color.r, min(color.b, color.g));
                 half midColor = (color.r + color.b + color.g) * 0.333;
                 color.r += (color.r - midColor) * saturation;

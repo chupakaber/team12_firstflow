@@ -25,13 +25,13 @@ namespace Scripts
                 if (character is Worker)
                 {
                     var worker = (Worker) character;
+                    
                     if (Time.time > worker.LastBehaviorTime + 0.1f)
                     {
                         worker.LastBehaviorTime = Time.time;
-
-                        if (worker.TargetCharacter != null)
+                        if (worker.PreviousInQueue != null)
                         {
-                            worker.TargetPosition = worker.TargetCharacter.transform.position;
+                            worker.TargetPosition = worker.PreviousInQueue.transform.position;
                         }
                         else if (worker.TargetBuilding != null)
                         {
@@ -76,6 +76,14 @@ namespace Scripts
                                 var pathDelta = pathPosition - workerPosition;
                                 // pathDelta.y = 0f;
                                 character.WorldDirection = pathDelta.normalized * Mathf.Min(Mathf.Max(pathDelta.magnitude, 0.1f), 1f);
+
+                                if (Physics.Raycast(character.transform.position + Vector3.up * 1.7f, character.WorldDirection, out var hitInfo, 2f))
+                                {
+                                    if (hitInfo.collider is CapsuleCollider)
+                                    {
+                                        character.WorldDirection = Quaternion.Euler(0f, 45f, 0f) * character.WorldDirection;
+                                    }
+                                }
                             }
                         }
                     }

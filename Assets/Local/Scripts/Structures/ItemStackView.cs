@@ -95,6 +95,14 @@ namespace Scripts
             }
         }
 
+        public void ToggleExclusiveItemStack(ItemType itemType, bool value)
+        {
+            if (_exclusiveStacksDictionary.TryGetValue(itemType, out var exclusiveStack))
+            {
+                exclusiveStack.Transform.gameObject.SetActive(value);
+            }
+        }
+
         public Vector3 GetTopPosition(ItemType itemType)
         {
             var position = transform.position;
@@ -103,6 +111,11 @@ namespace Scripts
             {
                 if (_exclusiveStacksDictionary.TryGetValue(itemType, out var exclusiveStack))
                 {
+                    if (!exclusiveStack.Transform.gameObject.activeSelf)
+                    {
+                        return Vector3.zero;
+                    }
+                    
                     position = exclusiveStack.Transform.position;
                 }
 

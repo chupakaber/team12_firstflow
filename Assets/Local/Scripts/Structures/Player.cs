@@ -1,10 +1,8 @@
 using UnityEngine;
-using System.Collections.Generic;
-using Scripts.Enums;
 
 namespace Scripts
 {
-    public class Player: Character
+    public class Player: SmartCharacter
     {
         [Header("Player Config")]
         public float PlayerSpeedBoostAmount = 2f;

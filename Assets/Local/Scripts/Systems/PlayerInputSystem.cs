@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Scripts.CustomCompositeInput;
 using Scripts.Enums;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,7 +9,10 @@ namespace Scripts
 {
     public class PlayerInputSystem: ISystem
     {
+        public EventBus EventBus;
+        public UIView UIView;
         public List<Character> Characters;
+
         private PlayerInput _playerInput;
         private Transform _cameraTransform;
 
@@ -18,6 +22,8 @@ namespace Scripts
             _playerInput.Enable();
             _playerInput.Default.Movement.performed += OnMovement;
             _playerInput.Default.Movement.canceled += OnMovement;
+            _playerInput.Default.Touch.performed += InputTouch;
+            _playerInput.Default.TouchRelease.canceled += InputTouch;
             _cameraTransform = Camera.main.transform;
 
             InitDebug();
@@ -46,6 +52,22 @@ namespace Scripts
                     character.WorldDirection = Quaternion.Euler(0, _cameraTransform.rotation.eulerAngles.y, 0) * character.WorldDirection;
                } 
             }
+        }
+
+        private void InputTouch(InputAction.CallbackContext callbackContext)
+        {
+            if (callbackContext.phase != InputActionPhase.Canceled && callbackContext.phase != InputActionPhase.Disabled && UIView.MenuScreen.gameObject.activeSelf)
+            {
+                return;
+            }
+            
+            var o = callbackContext.ReadValue<TouchInput>();
+            var touchEvent = new TouchInputEvent();
+            touchEvent.Index = 0;
+            touchEvent.TouchID = o.TouchId;
+            touchEvent.End = callbackContext.phase == InputActionPhase.Canceled || callbackContext.phase == InputActionPhase.Disabled;
+            touchEvent.Position = touchEvent.End ? Vector2.zero : o.Position;
+            EventBus.CallEvent(touchEvent);
         }
 
 #region DEBUG

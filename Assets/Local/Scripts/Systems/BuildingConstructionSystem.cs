@@ -9,6 +9,14 @@ namespace Scripts
         public List<Character> Characters;
         public List<Building> Buildings;
 
+        public void EventCatch(StartEvent newEvent)
+        {
+            foreach (var building in Buildings)
+            {
+                UpdateUpgradeProgressViewSettings(building);
+            }
+        }
+
         public void EventCatch(FixedUpdateEvent newEvent) 
         {
             foreach (var building in Buildings)
@@ -25,8 +33,6 @@ namespace Scripts
 
         private void Collecting(Building building, Character character)
         {
-            var itemsMovingAmount = 1;
-
             var characterHorizontalVelocity = character.CharacterRigidbody.velocity;
             characterHorizontalVelocity.y = 0f;
             if (characterHorizontalVelocity.sqrMagnitude > 0.1f)
@@ -34,66 +40,79 @@ namespace Scripts
                 character.LastDropItemTime = Time.time;
             }
 
-            if (Time.time >= character.LastDropItemTime + 0.06f)
+            var requiredItemIndex = 0;
+            foreach (var requiredItem in building.Levels[1].Cost)
             {
-                var requirementItemIndex = 0;
-                foreach (var requirementItem in building.Levels[1].Cost)
+                var storageAmount = building.Items.GetAmount(requiredItem.Type);
+                var requiredAmount = requiredItem.Amount - storageAmount;
+                var availableAmount = character.Items.GetAmount(requiredItem.Type);
+                var dropCooldown = character.GetDropCooldown(requiredItem.Type, out var itemsMovingAmount, requiredAmount);
+
+                if (Time.time >= character.LastDropItemTime + dropCooldown)
                 {
-                    if (character.Items.GetAmount(requirementItem.Type) >= itemsMovingAmount)
+                    itemsMovingAmount = Mathf.Min(itemsMovingAmount, Mathf.Min(requiredAmount, availableAmount));
+
+                    if (itemsMovingAmount > 0)
                     {
-                        if (building.Items.GetAmount(requirementItem.Type) < requirementItem.Amount)
+                        var sourcePileTopPosition = character.GetStackTopPosition(requiredItem.Type);
+                        var removeItemEvent = new RemoveItemEvent() { ItemType = requiredItem.Type, Count = itemsMovingAmount, Unit = character };
+                        var addItemEvent = new AddItemEvent() { ItemType = requiredItem.Type, Count = itemsMovingAmount, Unit = building, FromPosition = sourcePileTopPosition };
+                        EventBus.CallEvent(removeItemEvent);
+                        EventBus.CallEvent(addItemEvent);
+
+                        var amount = building.Items.GetAmount(requiredItem.Type);
+
+                        if (amount >= requiredItem.Amount)
                         {
-                            var sourcePileTopPosition = character.GetStackTopPosition(requirementItem.Type);
-                            var removeItemEvent = new RemoveItemEvent() { ItemType = requirementItem.Type, Count = itemsMovingAmount, Unit = character };
-                            var addItemEvent = new AddItemEvent() { ItemType = requirementItem.Type, Count = itemsMovingAmount, Unit = building, FromPosition = sourcePileTopPosition };
-                            EventBus.CallEvent(removeItemEvent);
-                            EventBus.CallEvent(addItemEvent);
-
-                            var amount = building.Items.GetAmount(requirementItem.Type);
-
-                            if (amount >= requirementItem.Amount)
+                            var levelUp = true;
+                            foreach (var requirement in building.Levels[1].Cost)
                             {
-                                var levelUp = true;
-                                foreach (var requirement in building.Levels[1].Cost)
+                                if (building.Items.GetAmount(requirement.Type) < requirement.Amount)
                                 {
-                                    if (building.Items.GetAmount(requirement.Type) < requirement.Amount)
-                                    {
-                                        levelUp = false;
-                                    }
-                                }
-
-                                if (levelUp)
-                                {
-                                    building.Level = building.Level + 1;
-
-                                    EventBus.CallEvent(new ConstructionCompleteEvent() { Building = building });
-
-                                    foreach (var teleportingCharacter in building.ConstructionCharacters)
-                                    {
-                                        teleportingCharacter.transform.position = building.PickingUpArea.transform.position;
-                                    }
-
-                                    foreach (var item in building.Items)
-                                    {
-                                        EventBus.CallEvent(new RemoveItemEvent() { ItemType = item.Type, Count = item.Amount, Unit = building });
-                                    }
-
-                                    UpdateUpgradeProgressViewSettings(building);
+                                    levelUp = false;
                                 }
                             }
 
-                            character.LastDropItemTime = Time.time;
-                            break;
+                            if (levelUp)
+                            {
+                                building.Level = building.Level + 1;
+
+                                EventBus.CallEvent(new ConstructionCompleteEvent() { Building = building });
+
+                                var i = 0;
+                                foreach (var teleportingCharacter in building.ConstructionCharacters)
+                                {
+                                    var moveDirection = new Vector3(1f, 0f, -1f);
+                                    teleportingCharacter.transform.position = building.PickingUpArea == null ? building.ConstructionArea.transform.position + moveDirection * (i + 3) * 1f : building.PickingUpArea.transform.position + moveDirection * i;
+                                    i++;
+                                }
+
+                                foreach (var item in building.Items)
+                                {
+                                    EventBus.CallEvent(new RemoveItemEvent() { ItemType = item.Type, Count = item.Amount, Unit = building });
+                                }
+
+                                UpdateUpgradeProgressViewSettings(building);
+
+                                EventBus.CallEvent(new PlaySoundEvent() { SoundId = 8, IsMusic = false, AttachedTo = building.transform });
+                            }
                         }
+
+                        character.LastDropItemTime = Time.time;
+                        break;
                     }
-                    requirementItemIndex++;
+                    requiredItemIndex++;
+                }
+                else if (availableAmount > 0 && requiredAmount > 0)
+                {
+                    break;
                 }
             }            
         }
 
         public void UpdateUpgradeProgressViewSettings(Building building)
         {
-            if (building.Levels.Count > building.Level + 1)
+            if (building.UpgradeStorage != null && building.Levels.Count > building.Level + 1)
             {
                 var levelConfig = building.Levels[building.Level + 1];
                 
@@ -106,6 +125,17 @@ namespace Scripts
                             progressBar.Capacity = requirement.Amount;
                             progressBar.FillValues();
                         }
+                    }
+                }
+            }
+            else if (building.Level > 0)
+            {
+                foreach (var progressBar in building.CollectingProgressBars)
+                {
+                    if (progressBar.ItemType == building.ConsumeItemType)
+                    {
+                        progressBar.Capacity = building.ItemCost;
+                        progressBar.FillValues();
                     }
                 }
             }

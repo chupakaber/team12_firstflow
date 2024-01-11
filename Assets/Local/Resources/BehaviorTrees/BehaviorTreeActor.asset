@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86fdf436cec7b4f428f6b5071a233cce, type: 3}
+  m_Name: BehaviorTreeActor
+  m_EditorClassIdentifier: 
+  RootNode: {fileID: 854355867980672212}
+  TreeState: 0
+  Nodes:
+  - {fileID: 854355867980672212}
+--- !u!114 &854355867980672212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf400fba94a0b1644ab4bc55b9f5f672, type: 3}
+  m_Name: Wait
+  m_EditorClassIdentifier: 
+  Name: Wait
+  CurrentState: 0
+  Started: 0
+  Guid: 6fad363f9f376a74fa42a7ff071f996f
+  Position: {x: 0, y: 0}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  TimerIndex: 0

@@ -16,18 +16,21 @@ namespace Scripts
             {
                 if (building.ProduceItemType == ItemType.ASSISTANT || building.ProduceItemType == ItemType.APPRENTICE)
                 {
-                    foreach (var character in building.PickingUpCharacters)
+                    foreach (var character in building.UnloadingCharacters)
                     {
                         if (character.CharacterType == CharacterType.PLAYER)
                         {
-                            PickUp(building, character);
+                            if (PickUp(building, character))
+                            {
+                                break;
+                            }
                         }
                     }
                 }
             }
         }
 
-        private void PickUp(Building building, Character player)
+        private bool PickUp(Building building, Character player)
         {
             if (Time.time >= player.LastPickUpItemTime + 0.1f)
             {
@@ -40,20 +43,25 @@ namespace Scripts
                         || (character.CharacterType == CharacterType.APPRENTICE && building.ProduceItemType == ItemType.APPRENTICE))
                     {
                         var worker = (Worker) character;
-                        if (worker.TargetBuilding == building && worker.TargetCharacter == null)
+                        if (worker.TargetBuilding == building && worker.PreviousInQueue == null)
                         {
                             if (building.Items.GetAmount(building.ProduceItemType) > 0)
                             {
                                 EventBus.CallEvent(new RemoveItemEvent() { Unit = building, ItemType = building.ProduceItemType, Count = 1 });
 
                                 worker.TargetBuilding = null;
-                                worker.TargetCharacter = player;
-                                worker.FollowingOffset = 2f;
+                                player.AddLastInQueue(worker);
+                                worker.FollowingOffset = 2.2f;
+
+                                building.UnloadingCharacters.Remove(player);
+                                return true;
                             }
                         }
                     }
                 }
             }
+
+            return false;
         }
     }
 }

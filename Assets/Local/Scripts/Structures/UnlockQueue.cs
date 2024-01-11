@@ -6,7 +6,7 @@ namespace Scripts
     public class UnlockQueue : MonoBehaviour
     {
         [Header("Unlock Config")]
-        public List<UnlockStage> Stages = new List<UnlockStage>();
+        public List<UnlockStage> Stages;
 
     }
 }

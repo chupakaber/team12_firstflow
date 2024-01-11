@@ -1,9 +1,9 @@
 ﻿using DG.Tweening;
 using Scripts.Enums;
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Scripts
@@ -15,18 +15,105 @@ namespace Scripts
         public RectTransform FrontSpaceTransform;
 
         [Header("Permanent Indicators")]
-        public List<ItemCounter> ItemCounters; 
+        public List<ItemCounter> ItemCounters;
+        public UIStickView Stick;
+        public TMP_Text RankCurrentLabel;
+        public TMP_Text RankNextLabel;
+        public Animation RankEffect;
+        public TMP_Text RankEffectCurrentLabel;
+        public TMP_Text RankEffectNextLabel;
+
+        [Header("Dynamic Indicators")]
+        public RectTransform PointerArrowTransform;
+        public Vector3 PointerArrowTargetPosition;
+        public Vector3 PointerArrowTargetPositionOnNavMesh;
+
+        [Header("Emoji")]
+        public List<Sprite> EmojiSprites;
 
         [Header("Flying Coin")]
         public RectTransform FlyingCoinPivot;
         public float FlyingCoinMinScale = 0.2f;
         public float FlyingCoinDuration = 0.5f;
 
+        [Header("Menu")]
+        public Button SettingsButton;
+        public Button MenuCloseButton;
+        public Button BackgroundButton;
+        public Button TitlesCloseButton;
+        public Button TitlesOpenButton;
+        public Button ResetButton;
+        public Button ResetConfirmButton;
+        public Button QuitGameButton;
+        public Button LanguageButton;
+        public RectTransform MenuScreen;
+        public RectTransform SettingsPanel;
+        public RectTransform TitlesPanel;
+        public Slider SoundSlider;
+        public Slider MusicSlider;
+
+        [HideInInspector]
+        public EventBus EventBus;
+
+        private LocalizationLabelView[] _localizedLabels = new LocalizationLabelView[0];
+        private int _currentLangID = -1;
+        private int StickIndex = -1;
+        private int _currentRank;
+        private bool _externalSoundChange;
+
+        public void Awake()
+        {
+            SettingsButton.onClick.AddListener(() => {
+                SettingsPanel.gameObject.SetActive(true);
+                TitlesPanel.gameObject.SetActive(false);
+                MenuScreen.gameObject.SetActive(true);
+                ResetButton.gameObject.SetActive(true);
+                ResetConfirmButton.gameObject.SetActive(false);
+            });
+            MenuCloseButton.onClick.AddListener(() => {
+                SettingsPanel.gameObject.SetActive(false);
+                MenuScreen.gameObject.SetActive(false);
+            });
+            BackgroundButton.onClick.AddListener(() => {
+                MenuScreen.gameObject.SetActive(false);
+            });
+            TitlesOpenButton.onClick.AddListener(() => {
+                SettingsPanel.gameObject.SetActive(false);
+                TitlesPanel.gameObject.SetActive(true);
+            });
+            TitlesCloseButton.onClick.AddListener(() => {
+                SettingsPanel.gameObject.SetActive(true);
+                TitlesPanel.gameObject.SetActive(false);
+            });
+            ResetButton.onClick.AddListener(() => {
+                ResetButton.gameObject.SetActive(false);
+                ResetConfirmButton.gameObject.SetActive(true);
+            });
+            ResetConfirmButton.onClick.AddListener(() => {
+                EventBus.CallEvent(new ClearGameProgressEvent() {});
+            });
+            QuitGameButton.onClick.AddListener(() => {
+                MenuScreen.gameObject.SetActive(false);
+                EventBus.CallEvent(new SaveEvent() {});
+                Application.Quit();
+            });
+            SoundSlider.onValueChanged.AddListener(OnSoundChanged);
+            MusicSlider.onValueChanged.AddListener(OnMusicChanged);
+            LanguageButton.onClick.AddListener(() => {
+                SwitchLanguage(_currentLangID == 1 ? 0 : 1);
+            });
+
+            _localizedLabels = FindObjectsOfType<LocalizationLabelView>();
+            SwitchLanguage(Application.systemLanguage == SystemLanguage.Russian ? 1 : 0);
+
+            MenuScreen.gameObject.SetActive(false);
+        }
+
         public void SetItemCount(ItemType itemType, int count)
         {
             foreach (var counter in ItemCounters)
             {
-                if (counter.ItemType == itemType) 
+                if (counter.ItemType == itemType && itemType != ItemType.HONOR)
                 {
                     counter.Counter.text = count.ToString();
 
@@ -39,6 +126,53 @@ namespace Scripts
                     {
                         var isActive = count > 0;
                         counter.RootObject.SetActive(isActive);
+                    }
+                }
+            }
+        }
+
+        public void SetRank(int currentRank, int nextRank, int count, int rangeCount, float value)
+        {
+            foreach (var counter in ItemCounters)
+            {
+                if (counter.ItemType == ItemType.HONOR)
+                {
+                    if (currentRank <= 1)
+                    {
+                        counter.Counter.text = $"{count}";
+                    }
+                    else
+                    {
+                        counter.Counter.text = $"{count} / {rangeCount}";
+                    }
+
+                    if (counter.ProgressBarImage != null)
+                    {
+                        counter.ProgressBarImage.fillAmount = value;
+                    }
+
+                    if (counter.RootObject != null) 
+                    {
+                        var isActive = count > 0;
+                        counter.RootObject.SetActive(isActive);
+                    }
+
+                    if (_currentRank != currentRank)
+                    {
+                        _currentRank = currentRank;
+                        RankCurrentLabel.text = currentRank.ToString();
+                        RankNextLabel.text = nextRank > 0 ? nextRank.ToString() : "";
+
+                        if (currentRank < 6)
+                        {
+                            RankEffectCurrentLabel.text = (currentRank + 1).ToString();
+                            RankEffectNextLabel.text = currentRank > 0 ? currentRank.ToString() : "";
+                            RankEffect.gameObject.SetActive(true);
+                            RankEffect.Play();
+                            RankEffect.transform.DOScale(1f, 5f).OnComplete(() => {
+                                RankEffect.gameObject.SetActive(false);
+                            });
+                        }
                     }
                 }
             }
@@ -64,16 +198,86 @@ namespace Scripts
 
             rectTransform.anchoredPosition = from;
             rectTransform.DOScale(startScale, 0f).OnComplete(() => {
-                rectTransform.DOScale(endScale, 0.5f);
+                rectTransform.DOScale(endScale, 1.1f);
             });
 
-            rectTransform.DOAnchorPos(to, 0.5f).OnComplete(() => {
+            rectTransform.DOJumpAnchorPos(to, Random.Range(0f, 500f), 1, 1.1f).OnComplete(() => {
                 icon.Release();
             });
         }
+
+        public void ProcessTouch(int touchIndex, int touchId, Vector2 position) {
+            if (StickIndex == touchIndex)
+            {
+                var value = Stick.ProcessTouch(position);
+                value.x = Mathf.Clamp(value.x, -1f, 1f);
+                value.y = Mathf.Clamp(value.y, -1f, 1f);
+                value.y = Mathf.Sign(value.y) * Mathf.Max(Mathf.Abs(value.y), Mathf.Abs(value.x));
+                EventBus.CallEvent(new MovementInputEvent() { Direction = value });
+                return;
+            }
+
+            if (EventSystem.current.IsPointerOverGameObject(touchId))
+            {
+                return;
+            }
+
+            if (StickIndex < 0 && Stick.StartTouch(position))
+            {
+                StickIndex = touchIndex;
+            }
+        }
+
+        public void EndTouch(int touchIndex, int touchId, Vector2 position) {
+            if (StickIndex == touchIndex) {
+                StickIndex = -1;
+                Stick.EndTouch();
+
+                EventBus.CallEvent(new MovementInputEvent() { Direction = Vector2.zero });
+            }
+        }
+
+        public void SetVolume(float soundVolume, float musicVolume)
+        {
+            _externalSoundChange = true;
+            SoundSlider.value = soundVolume;
+            MusicSlider.value = musicVolume;
+            _externalSoundChange = false;
+        }
+
+        public void SwitchLanguage(int langID)
+        {
+            if (_currentLangID == langID)
+            {
+                return;
+            }
+
+            _currentLangID = langID;
+
+            foreach (var label in _localizedLabels)
+            {
+                label.SwitchLanguage(_currentLangID);
+            }
+        }
+
+        private void OnSoundChanged(float value)
+        {
+            if (EventBus != null && !_externalSoundChange)
+            {
+                EventBus.CallEvent(new SetSoundVolumeEvent() { Volume = value, IsMusic = false });
+            }
+        }
+
+        private void OnMusicChanged(float value)
+        {
+            if (EventBus != null && !_externalSoundChange)
+            {
+                EventBus.CallEvent(new SetSoundVolumeEvent() { Volume = value, IsMusic = true });
+            }
+        }
     }
 
-    [Serializable]
+    [System.Serializable]
     public class ItemCounter
     {
         public TMP_Text Counter;
