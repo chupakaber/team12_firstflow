@@ -67,7 +67,21 @@ namespace Scripts.BehaviorTree
                 switch (FieldName)
                 {
                     case FieldNameEnum.ACTIVE:
-                        _inputValue1.SetActive(_inputValue2 > 0.5f);
+                        if (_inputValue1.TryGetComponent<PoolableObject>(out var poolableObject))
+                        {
+                            if (_inputValue2 > 0.5f)
+                            {
+                                internalState.EventBus.CallEvent(new ActivateObjectEvent() { Target = poolableObject });
+                            }
+                            else
+                            {
+                                internalState.EventBus.CallEvent(new DeactivateObjectEvent() { Target = poolableObject });
+                            }
+                        }
+                        else
+                        {
+                            _inputValue1.SetActive(_inputValue2 > 0.5f);
+                        }
                     break;
                 }
 

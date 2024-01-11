@@ -70,9 +70,17 @@ namespace Scripts.BehaviorTree
                 {
                     case FieldNameEnum.LEVEL:
                         _inputValue1.Level = (int) Mathf.Round(_inputValue2);
+                        internalState.EventBus.CallEvent(new LevelUpEvent() { Target = _inputValue1 });
                     break;
                     case FieldNameEnum.ACTIVE:
-                        _inputValue1.gameObject.SetActive(_inputValue2 > 0.5f);
+                        if (_inputValue2 > 0.5f)
+                        {
+                            internalState.EventBus.CallEvent(new ActivateObjectEvent() { Target = _inputValue1 });
+                        }
+                        else
+                        {
+                            internalState.EventBus.CallEvent(new DeactivateObjectEvent() { Target = _inputValue1 });
+                        }
                     break;
                     case FieldNameEnum.UPGRADE_AREA_STATE:
                         if (_inputValue1.UpgradeArea != null)
