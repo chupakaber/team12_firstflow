@@ -31,6 +31,24 @@ namespace Scripts
             }
         }
 
+        public void EventCatch(ActivateObjectEvent newEvent)
+        {
+            if (newEvent.Target is Building)
+            {
+                var building = (Building) newEvent.Target;
+                UpdateUpgradeProgressViewSettings(building);
+            }
+        }
+
+        public void EventCatch(LevelUpEvent newEvent)
+        {
+            if (newEvent.Target is Building)
+            {
+                var building = (Building) newEvent.Target;
+                UpdateUpgradeProgressViewSettings(building);
+            }
+        }
+
         private void Collecting(Building building, Character character)
         {
             var characterHorizontalVelocity = character.CharacterRigidbody.velocity;
@@ -128,7 +146,7 @@ namespace Scripts
                     }
                 }
             }
-            else if (building.Level > 0)
+            if (building.Level > 0)
             {
                 foreach (var progressBar in building.CollectingProgressBars)
                 {

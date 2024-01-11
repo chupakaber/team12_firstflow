@@ -13,9 +13,14 @@ namespace Scripts
             transform.SetParent(null);
         }
 
-        public void Activate()
+        public virtual void Activate()
         {
             gameObject.SetActive(true);
+        }
+
+        public virtual void Deactivate()
+        {
+            gameObject.SetActive(false);
         }
     }
 }
