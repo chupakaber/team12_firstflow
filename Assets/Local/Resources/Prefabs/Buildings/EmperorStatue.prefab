@@ -242,14 +242,21 @@ MonoBehaviour:
   UnloadingArea: {fileID: 0}
   PickingUpArea: {fileID: 0}
   UpgradeArea: {fileID: 5528417392498983897}
+  ConstructionAreaIndicator: {fileID: 0}
+  ProductionAreaIndicator: {fileID: 0}
+  UnloadingAreaIndicator: {fileID: 0}
+  PickingUpAreaIndicator: {fileID: 0}
+  UpgradeAreaIndicator: {fileID: 0}
+  ProductionAreaHelper: {fileID: 0}
+  PickingUpAreaHelper: {fileID: 0}
   ProgressBarPivot: {fileID: 7313957227912897089}
   StopProductionIcon: {fileID: 0}
   NoResourceIcon: {fileID: 0}
   ProductionLimit: 30
   ResourceLimit: 0
   ItemCost: 0
-  ProductionItemAmountPerCycle: 5
-  ProductionCooldown: 60
+  ProductionItemAmountPerCycle: 1
+  ProductionCooldown: 12
   ProductionUseBagOfTries: 0
   ProduceItemType: 8
   ConsumeItemType: 0
