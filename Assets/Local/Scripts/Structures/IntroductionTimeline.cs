@@ -29,6 +29,7 @@ namespace Scripts
         public Vector3[] _pathCorners = new Vector3[128];
 
         private int _speedAnimationKey = Animator.StringToHash("Speed");
+        private Vector3 _storedArrowPointer = Vector3.zero;
 
         public Camera _camera;
 
@@ -186,12 +187,15 @@ namespace Scripts
             PlayableDirector.Play();
             this.enabled = true;
             Trigger.enabled = false;
+            
+            EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = Vector3.zero });
         }
 
         public void Activation()
         {
             Trigger.enabled = true;
 
+            _storedArrowPointer = UIView.PointerArrowTargetPosition;
             EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = Trigger.bounds.center });
         }
 
@@ -208,7 +212,8 @@ namespace Scripts
 
             if (EventBus != null)
             {
-                EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = Vector3.zero });
+                EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = _storedArrowPointer });
+                _storedArrowPointer = Vector3.zero;
             }
         }
 
