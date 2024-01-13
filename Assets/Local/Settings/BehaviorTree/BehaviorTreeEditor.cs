@@ -47,6 +47,7 @@ public class BehaviorTreeEditor : EditorWindow
         InspectorView = root.Q<InspectorView>();
 
         TreeView.OnNodeSelected = OnNodeSelectionChanged;
+        TreeView.OnLabelSelected = OnLabelSelectionChanged;
     }
 
     public void OnSelectionChange()
@@ -61,6 +62,11 @@ public class BehaviorTreeEditor : EditorWindow
     private void OnNodeSelectionChanged(BehaviorNodeView nodeView)
     {
         InspectorView.UpdateSelection(nodeView);
+    }
+    
+    private void OnLabelSelectionChanged(BehaviorLabelView labelView)
+    {
+        InspectorView.UpdateLabelSelection(labelView);
     }
 }
 #endif

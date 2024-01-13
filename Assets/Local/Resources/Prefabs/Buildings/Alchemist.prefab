@@ -106,7 +106,16 @@ MonoBehaviour:
   UnloadingArea: {fileID: 4663743435672481389}
   PickingUpArea: {fileID: 832715412852585989}
   UpgradeArea: {fileID: 0}
+  ConstructionAreaIndicator: {fileID: 0}
+  ProductionAreaIndicator: {fileID: 0}
+  UnloadingAreaIndicator: {fileID: 0}
+  PickingUpAreaIndicator: {fileID: 0}
+  UpgradeAreaIndicator: {fileID: 0}
+  ProductionAreaHelper: {fileID: 0}
+  PickingUpAreaHelper: {fileID: 0}
   ProgressBarPivot: {fileID: 1856449883228854383}
+  StopProductionIcon: {fileID: 0}
+  NoResourceIcon: {fileID: 0}
   ProductionLimit: 1
   ResourceLimit: 25
   ItemCost: 25
@@ -122,11 +131,12 @@ MonoBehaviour:
   - Visual: {fileID: 2834133233212791249}
     Cost:
     - Amount: 5
-      Type: 2
+      Type: 15
     - Amount: 5
       Type: 7
     Boost: []
   UpgradeStorage: {fileID: 0}
+  HonorIconAnimation: {fileID: 0}
   _level: 0
   ConstructionCharacters: []
   ProductionCharacters: []
@@ -139,6 +149,7 @@ MonoBehaviour:
   LastProductionTime: -200
   ProductionEndTime: -100
   LastProductionSoundTime: 0
+  LastProductionCheckTime: 0
 --- !u!1 &2338370658575162834
 GameObject:
   m_ObjectHideFlags: 0

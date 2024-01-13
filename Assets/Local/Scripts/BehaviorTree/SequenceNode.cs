@@ -1,7 +1,12 @@
+using UnityEngine;
+
 namespace Scripts.BehaviorTree
 {
     public class SequenceNode : BehaviorCompositeNode
     {
+        [HideInInspector]
+        public override string Section { get { return "Logic"; } }
+
         public SequenceNode()
         {
             var type = typeof(bool);

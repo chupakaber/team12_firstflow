@@ -58,6 +58,13 @@ MonoBehaviour:
   UnloadingArea: {fileID: 7303509738157911393}
   PickingUpArea: {fileID: 8959664874224565201}
   UpgradeArea: {fileID: 0}
+  ConstructionAreaIndicator: {fileID: 0}
+  ProductionAreaIndicator: {fileID: 0}
+  UnloadingAreaIndicator: {fileID: 0}
+  PickingUpAreaIndicator: {fileID: 0}
+  UpgradeAreaIndicator: {fileID: 0}
+  ProductionAreaHelper: {fileID: 0}
+  PickingUpAreaHelper: {fileID: 0}
   ProgressBarPivot: {fileID: 1174219040544635739}
   StopProductionIcon: {fileID: 0}
   NoResourceIcon: {fileID: 0}
@@ -76,14 +83,14 @@ MonoBehaviour:
   - Visual: {fileID: 1025493819810564900}
     Cost:
     - Amount: 7
-      Type: 2
+      Type: 15
     - Amount: 500
       Type: 7
     Boost: []
   - Visual: {fileID: 5063232739298675182}
     Cost:
     - Amount: 7
-      Type: 2
+      Type: 15
     - Amount: 500
       Type: 7
     Boost:
@@ -92,7 +99,7 @@ MonoBehaviour:
   - Visual: {fileID: 2027851193945335633}
     Cost:
     - Amount: 8
-      Type: 2
+      Type: 15
     - Amount: 100
       Type: 7
     Boost:
@@ -101,13 +108,14 @@ MonoBehaviour:
   - Visual: {fileID: 4775274504657022701}
     Cost:
     - Amount: 9
-      Type: 2
+      Type: 15
     - Amount: 150
       Type: 7
     Boost:
     - Type: 1
       Value: 0.84
   UpgradeStorage: {fileID: 1311857227824445043}
+  HonorIconAnimation: {fileID: 0}
   _level: 1
   ConstructionCharacters: []
   ProductionCharacters: []

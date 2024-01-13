@@ -50,6 +50,8 @@ namespace Scripts
         private int _loadedAnimationKey = Animator.StringToHash("Loaded");
         private int _speedAnimationKey = Animator.StringToHash("Speed");
         private int _isWorkingAnimationKey = Animator.StringToHash("Working");
+        private int _bowAnimationKey = Animator.StringToHash("Bow");
+        private int _talkAnimationKey = Animator.StringToHash("Talk");
         
         private float _dropItemStartTimestamp = -1f;
 
@@ -146,6 +148,16 @@ namespace Scripts
             CharacterAnimator.SetBool(_loadedAnimationKey, Items.GetAmount() > 0);
             CharacterAnimator.SetFloat(_speedAnimationKey, (CharacterRigidbody.velocity.magnitude - 0.5f) / 4f);
             CharacterAnimator.SetBool(_isWorkingAnimationKey, IsWork);
+        }
+
+        public void Bow()
+        {
+            CharacterAnimator.SetTrigger(_bowAnimationKey);
+        }
+
+        public void Talk()
+        {
+            CharacterAnimator.SetTrigger(_talkAnimationKey);
         }
 
         public virtual void LevelUp()

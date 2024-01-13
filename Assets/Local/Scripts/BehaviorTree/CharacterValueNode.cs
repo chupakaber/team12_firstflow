@@ -5,6 +5,9 @@ namespace Scripts.BehaviorTree
 {
     public class CharacterValueNode : BehaviorCompositeNode, IOutputFloat, IOutputVector3
     {
+        [HideInInspector]
+        public override string Section { get { return "Get"; } }
+
         public enum FieldNameEnum
         {
             POSITION = 0,

@@ -4,6 +4,9 @@ namespace Scripts.BehaviorTree
 {
     public class SetCharacterValueNode : BehaviorCompositeNode
     {
+        [HideInInspector]
+        public override string Section { get { return "Action"; } }
+
         public enum FieldNameEnum {
             FOLLOWING_OFFSET = 0,
             TARGET_POSITION = 1,

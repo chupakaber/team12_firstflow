@@ -29,6 +29,7 @@ namespace Scripts
         public Vector3[] _pathCorners = new Vector3[128];
 
         private int _speedAnimationKey = Animator.StringToHash("Speed");
+        private Vector3 _storedArrowPointer = Vector3.zero;
 
         public Camera _camera;
 
@@ -56,7 +57,10 @@ namespace Scripts
         {
             for(int i = 0; i < Actors.Count; i++)
             {
-                Actors[i].TargetPosition = ActorWayPoints[i].position;
+                if (i < ActorWayPoints.Count)
+                {
+                    Actors[i].TargetPosition = ActorWayPoints[i].position;
+                }
             }
             //Actors[0].TargetPosition = ActorWayPoint.position;
             //Actors[1].TargetPosition = ActorSoldierWayPoint.position;
@@ -179,6 +183,42 @@ namespace Scripts
             anim.SetFloat(_speedAnimationKey, 1f);
         }
 
+        public void Bow(int unitIndex)
+        {
+            if (unitIndex >= 0 && unitIndex < Actors.Count)
+            {
+                Actors[unitIndex].Bow();
+            }
+            else if (unitIndex < 0)
+            {
+                for (var i = 0; i < Actors.Count; i++)
+                {
+                    if (i != -unitIndex + 1)
+                    {
+                        Actors[i].Bow();
+                    }
+                }
+            }
+        }
+
+        public void Talk(int unitIndex)
+        {
+            if (unitIndex >= 0 && unitIndex < Actors.Count)
+            {
+                Actors[unitIndex].Talk();
+            }
+            else if (unitIndex < 0)
+            {
+                for (var i = 0; i < Actors.Count; i++)
+                {
+                    if (i != -unitIndex + 1)
+                    {
+                        Actors[i].Talk();
+                    }
+                }
+            }
+        }
+
         public void StartCutScene() 
         { 
             gameObject.SetActive(true);
@@ -186,12 +226,15 @@ namespace Scripts
             PlayableDirector.Play();
             this.enabled = true;
             Trigger.enabled = false;
+
+            EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = Vector3.zero });
         }
 
         public void Activation()
         {
             Trigger.enabled = true;
 
+            _storedArrowPointer = UIView.PointerArrowTargetPosition;
             EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = Trigger.bounds.center });
         }
 
@@ -208,7 +251,8 @@ namespace Scripts
 
             if (EventBus != null)
             {
-                EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = Vector3.zero });
+                EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = _storedArrowPointer });
+                _storedArrowPointer = Vector3.zero;
             }
         }
 

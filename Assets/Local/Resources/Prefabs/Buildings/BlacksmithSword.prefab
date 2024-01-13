@@ -921,7 +921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RootGameObject: {fileID: 77011886577438158}
-  ItemType: 2
+  ItemType: 15
   Capacity: 100
   Storage: {fileID: 6815577935884532715}
   Fill: {fileID: 7330146376570788652}
@@ -1479,7 +1479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RootGameObject: {fileID: 2423010751446457417}
-  ItemType: 2
+  ItemType: 15
   Capacity: 10
   Storage: {fileID: 915097358632772234}
   Fill: {fileID: 37733928338854307}
@@ -1749,6 +1749,8 @@ MonoBehaviour:
   UnloadingAreaIndicator: {fileID: 0}
   PickingUpAreaIndicator: {fileID: 0}
   UpgradeAreaIndicator: {fileID: 0}
+  ProductionAreaHelper: {fileID: 0}
+  PickingUpAreaHelper: {fileID: 0}
   ProgressBarPivot: {fileID: 8696724085808567959}
   StopProductionIcon: {fileID: 379014378580621120}
   NoResourceIcon: {fileID: 596570390312577216}
@@ -1767,14 +1769,14 @@ MonoBehaviour:
   - Visual: {fileID: 8459456124783931572}
     Cost:
     - Amount: 7
-      Type: 2
+      Type: 15
     - Amount: 65
       Type: 7
     Boost: []
   - Visual: {fileID: 748697504242553128}
     Cost:
     - Amount: 7
-      Type: 2
+      Type: 15
     - Amount: 70
       Type: 7
     Boost:
@@ -1783,7 +1785,7 @@ MonoBehaviour:
   - Visual: {fileID: 169460171473541911}
     Cost:
     - Amount: 8
-      Type: 2
+      Type: 15
     - Amount: 100
       Type: 7
     Boost:
@@ -1792,7 +1794,7 @@ MonoBehaviour:
   - Visual: {fileID: 6944299396544223650}
     Cost:
     - Amount: 9
-      Type: 2
+      Type: 15
     - Amount: 150
       Type: 7
     Boost:

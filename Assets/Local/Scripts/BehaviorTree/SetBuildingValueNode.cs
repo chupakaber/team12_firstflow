@@ -4,10 +4,17 @@ namespace Scripts.BehaviorTree
 {
     public class SetBuildingValueNode : BehaviorCompositeNode
     {
+        [HideInInspector]
+        public override string Section { get { return "Action"; } }
+
         public enum FieldNameEnum {
             LEVEL = 0,
             ACTIVE = 1,
-            UPGRADE_AREA_STATE = 2
+            UPGRADE_AREA_STATE = 2,
+            PRODUCTION_LIMIT = 3,
+            ITEM_COST = 4,
+            PRODUCE_ITEMS_PER_CYCLE = 5,
+            RESOURCE_LIMIT = 6,
         }
 
         public FieldNameEnum FieldName;
@@ -70,15 +77,39 @@ namespace Scripts.BehaviorTree
                 {
                     case FieldNameEnum.LEVEL:
                         _inputValue1.Level = (int) Mathf.Round(_inputValue2);
+                        internalState.EventBus.CallEvent(new LevelUpEvent() { Target = _inputValue1 });
                     break;
                     case FieldNameEnum.ACTIVE:
-                        _inputValue1.gameObject.SetActive(_inputValue2 > 0.5f);
+                        if (_inputValue2 > 0.5f)
+                        {
+                            internalState.EventBus.CallEvent(new ActivateObjectEvent() { Target = _inputValue1 });
+                        }
+                        else
+                        {
+                            internalState.EventBus.CallEvent(new DeactivateObjectEvent() { Target = _inputValue1 });
+                        }
                     break;
                     case FieldNameEnum.UPGRADE_AREA_STATE:
                         if (_inputValue1.UpgradeArea != null)
                         {
                             _inputValue1.UpgradeArea.gameObject.SetActive(_inputValue2 > 0.5f);
                         }
+                    break;
+                    case FieldNameEnum.PRODUCTION_LIMIT:
+                        _inputValue1.ProductionLimit = (int) Mathf.Round(_inputValue2);
+                        internalState.EventBus.CallEvent(new BuildingConfigurationChangedEvent() { Building = _inputValue1 });
+                    break;
+                    case FieldNameEnum.ITEM_COST:
+                        _inputValue1.ItemCost = (int) Mathf.Round(_inputValue2);
+                        internalState.EventBus.CallEvent(new BuildingConfigurationChangedEvent() { Building = _inputValue1 });
+                    break;
+                    case FieldNameEnum.PRODUCE_ITEMS_PER_CYCLE:
+                        _inputValue1.ProductionItemAmountPerCycle = (int) Mathf.Round(_inputValue2);
+                        internalState.EventBus.CallEvent(new BuildingConfigurationChangedEvent() { Building = _inputValue1 });
+                    break;
+                    case FieldNameEnum.RESOURCE_LIMIT:
+                        _inputValue1.ResourceLimit = (int) Mathf.Round(_inputValue2);
+                        internalState.EventBus.CallEvent(new BuildingConfigurationChangedEvent() { Building = _inputValue1 });
                     break;
                 }
 
