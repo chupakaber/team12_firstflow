@@ -4,6 +4,9 @@ namespace Scripts.BehaviorTree
 {
     public class LeaveQueueNode : BehaviorCompositeNode
     {
+        [HideInInspector]
+        public override string Section { get { return "Action"; } }
+
         public LeaveQueueNode()
         {
             Input1Type = typeof(bool);

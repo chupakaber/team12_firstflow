@@ -1,7 +1,12 @@
+using UnityEngine;
+
 namespace Scripts.BehaviorTree
 {
     public class ShowEmojiNode : BehaviorCompositeNode
     {
+        [HideInInspector]
+        public override string Section { get { return "Action"; } }
+
         public int IconIndex;
 
         public ShowEmojiNode()

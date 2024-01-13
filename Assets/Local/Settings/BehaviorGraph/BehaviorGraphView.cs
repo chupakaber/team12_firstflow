@@ -6,6 +6,7 @@ using System;
 using Scripts.BehaviorTree;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Scripts.BehaviorGraph
 {
@@ -20,10 +21,12 @@ namespace Scripts.BehaviorGraph
         public new class UxmlFactory : UxmlFactory<BehaviorGraphView, UxmlTraits> {}
 
         public Action<BehaviorNodeView> OnNodeSelected;
+        public Action<BehaviorLabelView> OnLabelSelected;
 
         public BehaviorTree.BehaviorTree Tree;
         
         private List<EdgeLabel> EdgeLabels = new List<EdgeLabel>();
+        private Vector2 _contextMousePosition;
 
         public BehaviorGraphView()
         {
@@ -40,22 +43,57 @@ namespace Scripts.BehaviorGraph
 
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
-            var types = TypeCache.GetTypesDerivedFrom<BehaviorActionNode>();
-            foreach (var type in types)
+            if (evt.target is GraphView)
             {
-                evt.menu.AppendAction($"+ {type.Name.Replace("Node", "")}", (a) => CreateNode(type));
-            }
+                var graph = evt.target as GraphView;
+                _contextMousePosition = graph.contentViewContainer.transform.matrix.inverse.MultiplyPoint(evt.localMousePosition);
 
-            types = TypeCache.GetTypesDerivedFrom<BehaviorCompositeNode>();
-            foreach (var type in types)
-            {
-                evt.menu.AppendAction($"+ {type.Name.Replace("Node", "")}", (a) => CreateNode(type));
-            }
+                var dict = new Dictionary<string, List<Type>>();
+                
+                var types = TypeCache.GetTypesDerivedFrom<BehaviorDecoratorNode>();
+                foreach (var type in types)
+                {
+                    var node = ScriptableObject.CreateInstance(type) as BehaviorDecoratorNode;
+                    if (dict.ContainsKey(node.Section))
+                    {
+                        dict[node.Section].Add(type);
+                    }
+                    else
+                    {
+                        dict.Add(node.Section, new List<Type>() { type });
+                    }
+                }
 
-            types = TypeCache.GetTypesDerivedFrom<BehaviorDecoratorNode>();
-            foreach (var type in types)
+                types = TypeCache.GetTypesDerivedFrom<BehaviorCompositeNode>();
+                foreach (var type in types)
+                {
+                    var node = ScriptableObject.CreateInstance(type) as BehaviorCompositeNode;
+                    if (dict.ContainsKey(node.Section))
+                    {
+                        dict[node.Section].Add(type);
+                    }
+                    else
+                    {
+                        dict.Add(node.Section, new List<Type>() { type });
+                    }
+                }
+
+                var keys = dict.Keys.ToList();
+                keys.Sort();
+                foreach (var key in keys)
+                {
+                    var value = dict[key];
+                    value.Sort((t1, t2) => { return t1.Name.CompareTo(t2.Name); });
+                    foreach (var type in value)
+                    {
+                        evt.menu.AppendAction($"Add Node/{(key!=""?key + "/":"")}{type.Name.Replace("Node", "")}", (a) => CreateNode(type));
+                    }
+                }
+                evt.menu.AppendAction($"Add Label", (a) => CreateLabel());
+            }
+            else if (evt.target is GraphView)
             {
-                evt.menu.AppendAction($"+ {type.Name.Replace("Node", "")}", (a) => CreateNode(type));
+                evt.menu.AppendAction($"-", (a) => {});
             }
         }
 
@@ -68,6 +106,7 @@ namespace Scripts.BehaviorGraph
             graphViewChanged += OnGraphViewChanged;
 
             Tree.Nodes.ForEach(n => CreateNodeView(n));
+            Tree.Labels.ForEach(n => CreateLabelView(n));
 
             foreach (var edgeLabel in EdgeLabels)
             {
@@ -109,7 +148,9 @@ namespace Scripts.BehaviorGraph
                         }
                         else if (parentView.Node is BehaviorDecoratorNode)
                         {
-                            inputPortIndex = ((BehaviorDecoratorNode) parentView.Node).InputTargetIndex;
+                            var decoratorNode = (BehaviorDecoratorNode) parentView.Node;
+                            inputPortIndex = decoratorNode.InputTargetIndex;
+                            outputPortIndex = 0;
                         }
 
                         var inputPort = GetPortByIndex(childView, inputPortIndex, true);
@@ -264,6 +305,12 @@ namespace Scripts.BehaviorGraph
                         var childNodeView = edge.input.node as BehaviorNodeView;
                         Tree.RemoveChild(parentNodeView.Node, childNodeView.Node);
                     }
+
+                    var labelView = element as BehaviorLabelView;
+                    if (labelView != null)
+                    {
+                        Tree.DeleteLabel(labelView.Label);
+                    }
                 }
             }
 
@@ -338,18 +385,40 @@ namespace Scripts.BehaviorGraph
             var newNode = Tree.CreateNode(type);
             newNode.Name = type.Name.Replace("Node", "");
             newNode.name = newNode.Name;
-            CreateNodeView(newNode);
+            var nodeView = CreateNodeView(newNode);
+
+            var pointerPosition = _contextMousePosition;
+            nodeView.style.left = pointerPosition.x;
+            nodeView.style.top = pointerPosition.y;
         }
 
-        private void CreateNodeView(BehaviorNode node)
+        private void CreateLabel()
+        {
+            var newNode = Tree.CreateLabel();
+            newNode.Name = "New Label";
+            newNode.name = newNode.Name;
+            var nodeView = CreateLabelView(newNode);
+
+            var pointerPosition = _contextMousePosition;
+            nodeView.style.left = pointerPosition.x;
+            nodeView.style.top = pointerPosition.y;
+        }
+
+        private BehaviorNodeView CreateNodeView(BehaviorNode node)
         {
             var nodeView = new BehaviorNodeView(node);
             nodeView.OnNodeSelected = OnNodeSelected;
             nodeView.style.backgroundColor = node.DefaultColor;
             AddElement(nodeView);
-            //var pointerPosition = Pointer.current.position;
-            //nodeView.style.left = pointerPosition.value.x;
-            //nodeView.style.top = pointerPosition.value.y;
+            return nodeView;
+        }
+
+        private BehaviorLabelView CreateLabelView(BehaviorLabel node)
+        {
+            var nodeView = new BehaviorLabelView(node);
+            nodeView.OnNodeSelected = OnLabelSelected;
+            AddElement(nodeView);
+            return nodeView;
         }
     }
 }

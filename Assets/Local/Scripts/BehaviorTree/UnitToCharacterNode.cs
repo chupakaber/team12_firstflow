@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Scripts.BehaviorTree
@@ -7,6 +6,8 @@ namespace Scripts.BehaviorTree
     {
         [HideInInspector]
         public override Color DefaultColor { get { return new Color(0.35f, 0.5f, 0.2f, 1f); } }
+        [HideInInspector]
+        public override string Section { get { return "Convert"; } }
 
         private SmartCharacter _output;
 

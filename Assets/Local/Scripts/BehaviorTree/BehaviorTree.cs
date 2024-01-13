@@ -12,6 +12,7 @@ namespace Scripts.BehaviorTree
     {
         public BehaviorNode.State TreeState = BehaviorNode.State.RUNNING;
         public List<BehaviorNode> Nodes = new List<BehaviorNode>();
+        public List<BehaviorLabel> Labels = new List<BehaviorLabel>();
 
         public BehaviorNode.State Run(BehaviorNode rootNode, IBehaviorState internalState, IEvent currentEvent)
         {
@@ -50,43 +51,54 @@ namespace Scripts.BehaviorTree
 
         public void AddChild(BehaviorNode parent, int outputPortIndex, BehaviorNode child, int inputPortIndex)
         {
-            var decoratorNode = parent as BehaviorDecoratorNode;
-            if (decoratorNode != null)
+            if (parent is BehaviorCompositeNode)
             {
-                decoratorNode.Child = child;
-                decoratorNode.InputTargetIndex = inputPortIndex;
+                var compositeNode = parent as BehaviorCompositeNode;
+                if (compositeNode != null)
+                {
+                    compositeNode.Children.Add(child);
+                    compositeNode.InputTargetIndex.Add(inputPortIndex);
+                    compositeNode.OutputIndex.Add(outputPortIndex);
+                }
             }
-
-            var compositeNode = parent as BehaviorCompositeNode;
-            if (compositeNode != null)
+            else if (parent is BehaviorDecoratorNode)
             {
-                compositeNode.Children.Add(child);
-                compositeNode.InputTargetIndex.Add(inputPortIndex);
-                compositeNode.OutputIndex.Add(outputPortIndex);
+                var decoratorNode = parent as BehaviorDecoratorNode;
+                if (decoratorNode != null)
+                {
+                    decoratorNode.Child = child;
+                    decoratorNode.InputTargetIndex = inputPortIndex;
+                }
             }
         }
 
         public void RemoveChild(BehaviorNode parent, BehaviorNode child)
         {
-            var decoratorNode = parent as BehaviorDecoratorNode;
-            if (decoratorNode != null)
+            if (parent is BehaviorCompositeNode)
             {
-                decoratorNode.Child = null;
+                var compositeNode = parent as BehaviorCompositeNode;
+                if (compositeNode != null)
+                {
+                    var childIndex = compositeNode.Children.IndexOf(child);
+                    if (childIndex < compositeNode.InputTargetIndex.Count)
+                    {
+                        compositeNode.InputTargetIndex.RemoveAt(childIndex);
+                    }
+                    if (childIndex < compositeNode.OutputIndex.Count)
+                    {
+                        compositeNode.OutputIndex.RemoveAt(childIndex);
+                    }
+                    compositeNode.Children.Remove(child);
+                }
             }
-
-            var compositeNode = parent as BehaviorCompositeNode;
-            if (compositeNode != null)
+            else if (parent is BehaviorDecoratorNode)
             {
-                var childIndex = compositeNode.Children.IndexOf(child);
-                if (childIndex < compositeNode.InputTargetIndex.Count)
+                var decoratorNode = parent as BehaviorDecoratorNode;
+                if (decoratorNode != null)
                 {
-                    compositeNode.InputTargetIndex.RemoveAt(childIndex);
+                    decoratorNode.Child = null;
+                    decoratorNode.InputTargetIndex = 0;
                 }
-                if (childIndex < compositeNode.OutputIndex.Count)
-                {
-                    compositeNode.OutputIndex.RemoveAt(childIndex);
-                }
-                compositeNode.Children.Remove(child);
             }
         }
 
@@ -94,22 +106,51 @@ namespace Scripts.BehaviorTree
         {
             var list = new List<BehaviorNode>();
 
-            var decoratorNode = parent as BehaviorDecoratorNode;
-            if (decoratorNode != null && decoratorNode.Child != null)
+            if (parent is BehaviorCompositeNode)
             {
-                list.Add(decoratorNode.Child);
-            }
-
-            var compositeNode = parent as BehaviorCompositeNode;
-            if (compositeNode != null)
-            {
-                foreach (var child in compositeNode.Children)
+                var compositeNode = parent as BehaviorCompositeNode;
+                if (compositeNode != null)
                 {
-                    list.Add(child);
+                    foreach (var child in compositeNode.Children)
+                    {
+                        list.Add(child);
+                    }
+                }
+            }
+            else if (parent is BehaviorDecoratorNode)
+            {
+                var decoratorNode = parent as BehaviorDecoratorNode;
+                if (decoratorNode != null)
+                {
+                    list.Add(decoratorNode.Child);
                 }
             }
 
             return list;
+        }
+
+        public BehaviorLabel CreateLabel()
+        {
+            var type = typeof(BehaviorLabel);
+            var node = ScriptableObject.CreateInstance(type) as BehaviorLabel;
+            
+            node.name = type.Name;
+            node.Guid = GUID.Generate().ToString();
+
+            Labels.Add(node);
+
+            AssetDatabase.AddObjectToAsset(node, this);
+            AssetDatabase.SaveAssets();
+
+            return node;
+        }
+
+        public void DeleteLabel(BehaviorLabel node)
+        {
+            Labels.Remove(node);
+
+            AssetDatabase.RemoveObjectFromAsset(node);
+            AssetDatabase.SaveAssets();
         }
 #endif
     }
