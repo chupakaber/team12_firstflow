@@ -4,6 +4,9 @@ namespace Scripts.BehaviorTree
 {
     public class SetTargetPositionNode : BehaviorCompositeNode
     {
+        [HideInInspector]
+        public override string Section { get { return "Action"; } }
+
         public override string Input2Name { get { return "Only Offset"; } }
 
         public float FollowingOffset = 1.7f;

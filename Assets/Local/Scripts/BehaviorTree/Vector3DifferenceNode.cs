@@ -4,6 +4,9 @@ namespace Scripts.BehaviorTree
 {
     public class Vector3DifferenceNode : BehaviorCompositeNode, IOutputVector3
     {
+        [HideInInspector]
+        public override string Section { get { return "Math"; } }
+
         public bool Normalize = false;
 
         private bool _hasInput1Value;

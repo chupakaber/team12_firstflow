@@ -5,6 +5,8 @@ namespace Scripts.BehaviorTree
     public class Vector3ValueNode : BehaviorDecoratorNode, IOutputVector3
     {
         public Vector3 Value;
+        [HideInInspector]
+        public override string Section { get { return "Math"; } }
 
         public Vector3ValueNode()
         {

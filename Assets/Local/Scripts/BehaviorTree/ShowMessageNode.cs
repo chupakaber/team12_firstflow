@@ -1,7 +1,12 @@
+using UnityEngine;
+
 namespace Scripts.BehaviorTree
 {
     public class ShowMessageNode : BehaviorCompositeNode
     {
+        [HideInInspector]
+        public override string Section { get { return "Action"; } }
+        
         public string Message;
 
         private SmartCharacter _value2;

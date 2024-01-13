@@ -1,7 +1,12 @@
+using UnityEngine;
+
 namespace Scripts.BehaviorTree
 {
     public class JoinQueueNode : BehaviorCompositeNode
     {
+        [HideInInspector]
+        public override string Section { get { return "Action"; } }
+
         public bool AtLast= true;
 
         public JoinQueueNode()

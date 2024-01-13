@@ -4,6 +4,9 @@ namespace Scripts.BehaviorTree
 {
     public class SetGameObjectValueNode : BehaviorCompositeNode
     {
+        [HideInInspector]
+        public override string Section { get { return "Action"; } }
+
         public enum FieldNameEnum {
             ACTIVE = 0,
         }
