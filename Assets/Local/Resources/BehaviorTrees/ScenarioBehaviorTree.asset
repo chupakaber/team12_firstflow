@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: TYPE
   m_EditorClassIdentifier: 
   Name: TYPE
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 17252cefe08b197479d804a38dd411b3
   Position: {x: -2987.6152, y: -775}
@@ -130,10 +130,9 @@ MonoBehaviour:
   Guid: 973345ad210bcfb489375e97464c50dc
   Position: {x: -2425, y: -2463.1462}
   Children:
-  - {fileID: 739604904934274099}
   - {fileID: 4947991826920320967}
-  InputTargetIndex: 0100000000000000
-  OutputIndex: 0000000000000000
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
   AggregateType: 0
   ItemType: 0
 --- !u!114 &-8631092986486789439
@@ -3000,8 +2999,6 @@ MonoBehaviour:
   - {fileID: -3801817023916882143}
   - {fileID: -899419731165854764}
   - {fileID: -7438784232028873551}
-  - {fileID: 739604904934274099}
-  - {fileID: 6072110519728828191}
   - {fileID: 4947991826920320967}
   - {fileID: -8252868605023723256}
   - {fileID: 8231877314378801194}
@@ -3225,27 +3222,6 @@ MonoBehaviour:
   InputTargetIndex: 
   OutputIndex: 
   FieldName: 0
---- !u!114 &739604904934274099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d3b50480ada64f48a97461bd34fc709, type: 3}
-  m_Name: DebugLog
-  m_EditorClassIdentifier: 
-  Name: DebugLog
-  CurrentState: 0
-  Started: 0
-  Guid: 45ec4ba8301341a418d6e5930315332a
-  Position: {x: -2187, y: -2311.1462}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
-  Message: TOTAL WORKERS
 --- !u!114 &1019053537765191253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3306,7 +3282,7 @@ MonoBehaviour:
   m_Name: EQUAL PLAYER
   m_EditorClassIdentifier: 
   Name: EQUAL PLAYER
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 2f3d1df690bb58c48bc2827d1d60a86f
   Position: {x: -1411.9523, y: -343.50003}
@@ -3666,7 +3642,7 @@ MonoBehaviour:
   m_Name: EQUAL PLAYER
   m_EditorClassIdentifier: 
   Name: EQUAL PLAYER
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: d2c5627ee5722e043b7df2ed2377aac3
   Position: {x: -2160.5002, y: -934}
@@ -3761,7 +3737,7 @@ MonoBehaviour:
   m_Name: EQUAL PLAYER
   m_EditorClassIdentifier: 
   Name: EQUAL PLAYER
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 61182c88d63cbf64cb0e1378b624be71
   Position: {x: -2931.5, y: -613}
@@ -3785,7 +3761,7 @@ MonoBehaviour:
   m_Name: EQUAL PLAYER
   m_EditorClassIdentifier: 
   Name: EQUAL PLAYER
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: e21454a492daaf84488e8de02c50eeee
   Position: {x: -2259.2139, y: 129.99982}
@@ -4993,27 +4969,6 @@ MonoBehaviour:
   Method: 0
   Value: 1
   StateID: 3
---- !u!114 &6072110519728828191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d3b50480ada64f48a97461bd34fc709, type: 3}
-  m_Name: DebugLog
-  m_EditorClassIdentifier: 
-  Name: DebugLog
-  CurrentState: 0
-  Started: 0
-  Guid: 3d5a331cfae504047bacf68a39be1b5d
-  Position: {x: -1450, y: -2385.5}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
-  Message: WORKER PRICE
 --- !u!114 &6194245814707540504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5074,7 +5029,7 @@ MonoBehaviour:
   m_Name: TYPE
   m_EditorClassIdentifier: 
   Name: TYPE
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 3e9ad14fa42e9e44598f9f6be7868ae9
   Position: {x: -1572, y: -343.5}
@@ -5379,7 +5334,7 @@ MonoBehaviour:
   m_Name: TYPE
   m_EditorClassIdentifier: 
   Name: TYPE
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 3900401e78a6c574fb73f1111d3a2d67
   Position: {x: -2369, y: -908}
@@ -5539,7 +5494,7 @@ MonoBehaviour:
   m_Name: TYPE
   m_EditorClassIdentifier: 
   Name: TYPE
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: e4320f676f4eb9144ac182ece5c7ae1f
   Position: {x: -2428.9885, y: 118.99994}
@@ -5826,10 +5781,9 @@ MonoBehaviour:
   Position: {x: -1667, y: -2463}
   Children:
   - {fileID: 3406867304154835407}
-  - {fileID: 6072110519728828191}
   - {fileID: 1313212752349678900}
-  InputTargetIndex: 010000000100000001000000
-  OutputIndex: 000000000000000000000000
+  InputTargetIndex: 0100000001000000
+  OutputIndex: 0000000000000000
   MathOperation: 6
   Value: 5
 --- !u!114 &8316530739654332136
