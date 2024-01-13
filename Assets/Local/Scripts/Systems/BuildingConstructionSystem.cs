@@ -25,7 +25,7 @@ namespace Scripts
                 {
                     foreach (var character in building.ConstructionCharacters)
                     {
-                        Collecting(building,character);
+                        Collecting(building, character);
                     }
                 }
             }
@@ -47,6 +47,11 @@ namespace Scripts
                 var building = (Building) newEvent.Target;
                 UpdateUpgradeProgressViewSettings(building);
             }
+        }
+
+        public void EventCatch(BuildingConfigurationChangedEvent newEvent)
+        {
+            UpdateUpgradeProgressViewSettings(newEvent.Building);
         }
 
         private void Collecting(Building building, Character character)
