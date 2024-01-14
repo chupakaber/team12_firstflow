@@ -60,6 +60,7 @@ namespace Scripts
                             assistant.transform.position = _workerSpawnPoint;
                             assistant.TargetBuilding = building;
                             assistant.FollowingOffset = 0.3f;
+                            assistant.Initialized = true;
                         }
                     }
                 }
@@ -76,6 +77,7 @@ namespace Scripts
                             apprentice.ResizeBagOfTries(apprentice.BaseBagOfTriesCapacity);
                             apprentice.TargetBuilding = building;
                             apprentice.FollowingOffset = 0.3f;
+                            apprentice.Initialized = true;
                         }
                     }
                 }
