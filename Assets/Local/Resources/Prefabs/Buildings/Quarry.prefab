@@ -1288,6 +1288,7 @@ MonoBehaviour:
   CollectingProgressBars:
   - {fileID: 5046179444926471015}
   - {fileID: 4301400644658794515}
+  Initialized: 0
 --- !u!1 &4919275440086215240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,6 +1449,7 @@ MonoBehaviour:
   CollectingProgressBars:
   - {fileID: 2176820587025229534}
   - {fileID: 6759923559313128856}
+  Initialized: 0
   ID: 91
   ConstructionArea: {fileID: 1227800336261554730}
   ProductionArea: {fileID: 0}
@@ -3701,6 +3703,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 338e9e62271b3d74aa5c75ad79e109cb, type: 3}
       propertyPath: m_Name
       value: Helper
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 338e9e62271b3d74aa5c75ad79e109cb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 338e9e62271b3d74aa5c75ad79e109cb, type: 3}
       propertyPath: m_StaticEditorFlags
