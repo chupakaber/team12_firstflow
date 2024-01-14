@@ -35,6 +35,8 @@ namespace Scripts
                 ProgressBarViews.Add(progressBar);
 
                 UpdateProgress(building);
+
+                building.Initialized = true;
             }
         }
 

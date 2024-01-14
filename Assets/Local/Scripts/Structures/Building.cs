@@ -60,7 +60,7 @@ namespace Scripts
 
             set
             {
-                if (value > _level && UpgradeAnimationEffect != null)
+                if (Initialized && value > _level && UpgradeAnimationEffect != null)
                 {
                     UpgradeAnimationEffect.Activate();
                 }
