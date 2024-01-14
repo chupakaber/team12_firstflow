@@ -10,6 +10,7 @@ namespace Scripts
         public Rigidbody CharacterRigidbody;
         public Animator CharacterAnimator;
         public Transform MessageEmitterPivot;
+        public AnimationEffect UpgradeAnimationEffect;
         public float Speed;
         public CharacterType CharacterType;
         public int ItemLimit;
@@ -162,6 +163,10 @@ namespace Scripts
 
         public virtual void LevelUp()
         {
+            if (UpgradeAnimationEffect != null)
+            {
+                UpgradeAnimationEffect.Activate();
+            }
         }
 
         public void AddLastInQueue(Character newCharacter)

@@ -13,6 +13,7 @@ namespace Scripts
 
         public override void LevelUp()
         {
+            base.LevelUp();
             if (this.TargetBuilding.ProduceItemType == Enums.ItemType.GOLD)
             {
                 this.TargetBuilding.ProductionItemAmountPerCycle += ProduceItemPerCicleBust;

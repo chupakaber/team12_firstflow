@@ -166,6 +166,7 @@ Transform:
   - {fileID: 132271731119370098}
   - {fileID: 9197502634522184532}
   - {fileID: 9013365163188290210}
+  - {fileID: 5040632390250866888}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5222714964136319190
@@ -184,6 +185,8 @@ MonoBehaviour:
   CollectingProgressBars: []
   CharacterRigidbody: {fileID: 6616809623660779437}
   CharacterAnimator: {fileID: 6276967336326016159}
+  MessageEmitterPivot: {fileID: 0}
+  UpgradeAnimationEffect: {fileID: 112062443069068861}
   Speed: 5.5
   CharacterType: 2
   ItemLimit: 5
@@ -192,7 +195,9 @@ MonoBehaviour:
   DropGoldMaxTime: 5
   PickUpItemConstraint: 0
   BaseBagOfTriesCapacity: 8
+  IsWork: 0
   IsCutSceneActiv: 0
+  RankHonor: 00000000640000002c01000058020000e8030000dc05000040420f00
   WorldDirection: {x: 0, y: 0, z: 0}
   LastDropItemTime: 0
   LastPickUpItemTime: 0
@@ -430,6 +435,79 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e6f730058a5445341a4147c21c266957, type: 3}
   m_PrefabInstance: {fileID: 92403470079821302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5130047930949912601
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1466144333492710776}
+    m_Modifications:
+    - target: {fileID: 198856686847680721, guid: f5af61fb48ea7814a81fa76ae0da0ade, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198856686847680721, guid: f5af61fb48ea7814a81fa76ae0da0ade, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198856686847680721, guid: f5af61fb48ea7814a81fa76ae0da0ade, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198856686847680721, guid: f5af61fb48ea7814a81fa76ae0da0ade, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198856686847680721, guid: f5af61fb48ea7814a81fa76ae0da0ade, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198856686847680721, guid: f5af61fb48ea7814a81fa76ae0da0ade, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198856686847680721, guid: f5af61fb48ea7814a81fa76ae0da0ade, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198856686847680721, guid: f5af61fb48ea7814a81fa76ae0da0ade, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198856686847680721, guid: f5af61fb48ea7814a81fa76ae0da0ade, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198856686847680721, guid: f5af61fb48ea7814a81fa76ae0da0ade, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528740669874747526, guid: f5af61fb48ea7814a81fa76ae0da0ade, type: 3}
+      propertyPath: m_Name
+      value: CharacterUpgradeEffect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f5af61fb48ea7814a81fa76ae0da0ade, type: 3}
+--- !u!114 &112062443069068861 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5097994904730344996, guid: f5af61fb48ea7814a81fa76ae0da0ade, type: 3}
+  m_PrefabInstance: {fileID: 5130047930949912601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a4f75829b2c19848905446ae3be2d33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &5040632390250866888 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 198856686847680721, guid: f5af61fb48ea7814a81fa76ae0da0ade, type: 3}
+  m_PrefabInstance: {fileID: 5130047930949912601}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7258650285851555912
 PrefabInstance:
