@@ -66,6 +66,7 @@ namespace Scripts
         private UISystem _uiSystem = new UISystem();
         private EnvironmentShaderSystem _environmentShaderSystem = new EnvironmentShaderSystem();
         private CharactersStatsUpSystem _charactersStatsUpSystem = new CharactersStatsUpSystem();
+        private CharacterInitSystem _characterInitSystem = new CharacterInitSystem();
         private ScenarioSystem _scenarioSystem = new ScenarioSystem();
         private MercenaryCampSystem _mercenaryCampSystem = new MercenaryCampSystem();
         private CharacterSpawnSystem _characterSpawnSystem = new CharacterSpawnSystem();
@@ -148,6 +149,7 @@ namespace Scripts
             AddSystem(_soundSystem);
             AddSystem(_carnivalBehaviorSystem);
             AddSystem(_cutSceneSystem);
+            AddSystem(_characterInitSystem);
 
             _container.AddLink(_eventBus, "EventBus");
             _container.AddLink(_characters, "Characters");

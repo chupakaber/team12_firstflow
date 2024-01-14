@@ -163,7 +163,7 @@ namespace Scripts
 
         public virtual void LevelUp()
         {
-            if (UpgradeAnimationEffect != null)
+            if (Initialized && UpgradeAnimationEffect != null)
             {
                 UpgradeAnimationEffect.Activate();
             }

@@ -12,6 +12,7 @@ namespace Scripts
 
         public ItemStack Items = new ItemStack();
 
+        public bool Initialized = false;
 
         public void AddItem(ItemType type, int count)
         {
