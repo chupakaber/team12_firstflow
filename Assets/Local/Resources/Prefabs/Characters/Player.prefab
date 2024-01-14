@@ -25,12 +25,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418136880109747670}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.026, y: 1.162, z: 0.48}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.013894916, y: 0.5716094, z: -0.8203881, w: 0.005753964}
+  m_LocalPosition: {x: 0.004718002, y: 0.0012274836, z: 0.0055009774}
+  m_LocalScale: {x: 0.010000001, y: 0.009999999, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 796236960348475552}
+  m_Father: {fileID: 5418657321206575766}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &2350703000907028196
 MonoBehaviour:
@@ -80,7 +80,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 493417915204310061}
   - {fileID: 7867225828085634441}
   - {fileID: 5643891674992353765}
   - {fileID: 4874748480109733441}
@@ -100,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemStackView: {fileID: 2350703000907028196}
   CollectingProgressBars: []
+  Initialized: 0
   CharacterRigidbody: {fileID: 7473274180135748190}
   CharacterAnimator: {fileID: 5936169016906651645}
   MessageEmitterPivot: {fileID: 0}
@@ -480,12 +480,20 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ff952236bf9f57a45882205006178c3d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -6803169544883306252, guid: dae1a37b5a830e747b7728d1c1172278, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 493417915204310061}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dae1a37b5a830e747b7728d1c1172278, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5936169016906651645}
   m_SourcePrefab: {fileID: 100100000, guid: dae1a37b5a830e747b7728d1c1172278, type: 3}
+--- !u!4 &5418657321206575766 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -6803169544883306252, guid: dae1a37b5a830e747b7728d1c1172278, type: 3}
+  m_PrefabInstance: {fileID: 7684470583835226722}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7378532923426918195 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dae1a37b5a830e747b7728d1c1172278, type: 3}
