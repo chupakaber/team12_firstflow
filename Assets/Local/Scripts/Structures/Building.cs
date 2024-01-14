@@ -34,6 +34,7 @@ namespace Scripts
         public List<BuildingLevel> Levels;
         public Unit UpgradeStorage;
         public Animation HonorIconAnimation;
+        public AnimationEffect UpgradeAnimationEffect;
 
         [SerializeField] private int _level;
 
@@ -59,6 +60,11 @@ namespace Scripts
 
             set
             {
+                if (value > _level && UpgradeAnimationEffect != null)
+                {
+                    UpgradeAnimationEffect.Activate();
+                }
+
                 _level = value;
                 if (ConstructionArea != null)
                 {

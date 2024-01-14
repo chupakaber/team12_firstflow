@@ -13,6 +13,7 @@ namespace Scripts
 
         public override void LevelUp()
         {
+            base.LevelUp();
             ItemLimit += ItemLimitBoostAmount;
         }
     }

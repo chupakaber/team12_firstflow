@@ -1463,11 +1463,11 @@ MonoBehaviour:
   ProgressBarPivot: {fileID: 8242243997429971938}
   StopProductionIcon: {fileID: 0}
   NoResourceIcon: {fileID: 0}
-  ProductionLimit: 10
+  ProductionLimit: 5
   ResourceLimit: 0
   ItemCost: 0
   ProductionItemAmountPerCycle: 1
-  ProductionCooldown: 2.5
+  ProductionCooldown: 3.5
   ProductionUseBagOfTries: 1
   ProduceItemType: 15
   ConsumeItemType: 0
@@ -1490,7 +1490,7 @@ MonoBehaviour:
       Type: 7
     Boost:
     - Type: 1
-      Value: 0.8
+      Value: 0.65
   - Visual: {fileID: 2083701843864557889}
     Cost:
     - Amount: 6
@@ -1508,7 +1508,7 @@ MonoBehaviour:
       Type: 7
     Boost:
     - Type: 1
-      Value: 0.67
+      Value: 0.6
   UpgradeStorage: {fileID: 9216879346185477321}
   HonorIconAnimation: {fileID: 0}
   _level: 1
