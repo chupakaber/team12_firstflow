@@ -56,6 +56,7 @@ Shader "Team12/DiffuseWithAO" {
             };
 
             uniform sampler2D _MainTex;
+            uniform float4 _MainTex_ST;
             uniform sampler2D _AmbientOcclusionTex;
             uniform float _AOBrightness;
             uniform float _AOPreMultiply;
@@ -111,7 +112,7 @@ Shader "Team12/DiffuseWithAO" {
 
             float4 frag(vertexOutput i) : COLOR
             {
-                half4 color = tex2D(_MainTex, i.uv0);
+                half4 color = tex2D(_MainTex, (i.uv0 + _MainTex_ST.zw) * _MainTex_ST.xy);
                 half4 ao = tex2D(_AmbientOcclusionTex, i.uv1);
                 half saturation = (ao.r - _SaturationBase) * _AOSaturation + _Saturation;
                 ao = ao * _AOPreMultiply + _AOBrightness;
