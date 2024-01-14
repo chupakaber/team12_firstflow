@@ -39,6 +39,9 @@ namespace Scripts.Systems
                             case ItemType.GUN:
                                 soundId = 4;
                             break;
+                            case ItemType.ROCK:
+                                soundId = 18;
+                            break;
                             case ItemType.BOTTLE_HERO:
                             case ItemType.BOTTLE_WORKER:
                                 soundId = 1;
