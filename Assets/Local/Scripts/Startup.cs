@@ -3,6 +3,7 @@ using Scripts.Systems;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Scripts
 {
@@ -109,16 +110,15 @@ namespace Scripts
             _mercenaryPools.Pools.Add(0, new ObjectPool<Mercenary>("Prefabs/Characters/Mercenary"));
             _alchemistPools.Pools.Add(0, new ObjectPool<SmartCharacter>("Prefabs/Characters/Alchemist"));
             
-
             AddSystem(_buildingInitSystem);
             AddSystem(_cameraFollowSystem);
             AddSystem(_objectActivationSystem);
             AddSystem(_characterSpawnSystem);
             AddSystem(_saveLoadSystem);
-            AddSystem(_scenarioSystem);
             AddSystem(_addItemSystem);
             AddSystem(_removeItemSystem);
             AddSystem(_addHonorSystem);
+            AddSystem(_scenarioSystem);
             AddSystem(_playerInputSystem);
             AddSystem(_triggerSystem);
             AddSystem(_buildingTriggerSystem);

@@ -51,6 +51,16 @@ namespace Scripts.BehaviorTree
                         totalWorkers++;
                     }
                 }
+                foreach (var building in internalState.Buildings)
+                {
+                    if (building.gameObject.activeSelf)
+                    {
+                        if (building.ProduceItemType == ItemType.ASSISTANT || building.ProduceItemType == ItemType.APPRENTICE)
+                        {
+                            totalWorkers += building.Items.GetAmount(building.ProduceItemType);
+                        }
+                    }
+                }
                 _output = totalWorkers;
             }
             else if (AggregateType == AggregateTypeEnum.TOTAL_BUILDING_ITEM_REQUIREMENT)
