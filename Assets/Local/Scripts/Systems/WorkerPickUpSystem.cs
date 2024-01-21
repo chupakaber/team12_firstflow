@@ -10,58 +10,49 @@ namespace Scripts
         public List<Character> Characters;
         public List<Building> Buildings;
 
+        private float _lastWorkerPickUpTime;
+
         public void EventCatch(FixedUpdateEvent newEvent)
         {
-            foreach (var building in Buildings)
+            if (Time.time >= _lastWorkerPickUpTime + 1f)
             {
-                if (building.ProduceItemType == ItemType.ASSISTANT || building.ProduceItemType == ItemType.APPRENTICE)
+                _lastWorkerPickUpTime = Time.time;
+                foreach (var building in Buildings)
                 {
-                    foreach (var character in building.UnloadingCharacters)
+                    if (building.ProduceItemType == ItemType.ASSISTANT || building.ProduceItemType == ItemType.APPRENTICE)
                     {
-                        if (character.CharacterType == CharacterType.PLAYER)
+                        foreach (var player in Characters)
                         {
-                            if (PickUp(building, character))
+                            if (player.CharacterType == CharacterType.PLAYER)
                             {
-                                break;
+                                foreach (var character in Characters)
+                                {
+                                    if (
+                                        (character.CharacterType == CharacterType.ASSISTANT && building.ProduceItemType == ItemType.ASSISTANT) 
+                                        || (character.CharacterType == CharacterType.APPRENTICE && building.ProduceItemType == ItemType.APPRENTICE))
+                                    {
+                                        var worker = (Worker) character;
+                                        if (worker.TargetBuilding == building && worker.PreviousInQueue == null)
+                                        {
+                                            if (building.Items.GetAmount(building.ProduceItemType) > 0)
+                                            {
+                                                EventBus.CallEvent(new RemoveItemEvent() { Unit = building, ItemType = building.ProduceItemType, Count = 1 });
+
+                                                worker.TargetBuilding = null;
+                                                player.AddLastInQueue(worker);
+                                                worker.FollowingOffset = 2.2f;
+
+                                                building.UnloadingCharacters.Remove(player);
+                                                return;
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-
-        private bool PickUp(Building building, Character player)
-        {
-            if (Time.time >= player.LastPickUpItemTime + 0.1f)
-            {
-                player.LastPickUpItemTime = Time.time;
-
-                foreach (var character in Characters)
-                {
-                    if (
-                        (character.CharacterType == CharacterType.ASSISTANT && building.ProduceItemType == ItemType.ASSISTANT) 
-                        || (character.CharacterType == CharacterType.APPRENTICE && building.ProduceItemType == ItemType.APPRENTICE))
-                    {
-                        var worker = (Worker) character;
-                        if (worker.TargetBuilding == building && worker.PreviousInQueue == null)
-                        {
-                            if (building.Items.GetAmount(building.ProduceItemType) > 0)
-                            {
-                                EventBus.CallEvent(new RemoveItemEvent() { Unit = building, ItemType = building.ProduceItemType, Count = 1 });
-
-                                worker.TargetBuilding = null;
-                                player.AddLastInQueue(worker);
-                                worker.FollowingOffset = 2.2f;
-
-                                building.UnloadingCharacters.Remove(player);
-                                return true;
-                            }
-                        }
-                    }
-                }
-            }
-
-            return false;
         }
     }
 }

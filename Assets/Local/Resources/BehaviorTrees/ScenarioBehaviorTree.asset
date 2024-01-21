@@ -112,6 +112,29 @@ MonoBehaviour:
   OutputIndex: 00000000
   ChildrenForFailure: []
   Operator: 1
+--- !u!114 &-8644584936102496659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b986486418f04a40b5df890a9f63cc9, type: 3}
+  m_Name: TOTAL WORKERS
+  m_EditorClassIdentifier: 
+  Name: TOTAL WORKERS
+  CurrentState: 0
+  Started: 0
+  Guid: 973345ad210bcfb489375e97464c50dc
+  Position: {x: -2425, y: -2463.1462}
+  Children:
+  - {fileID: 4947991826920320967}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  AggregateType: 0
+  ItemType: 0
 --- !u!114 &-8631092986486789439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +251,60 @@ MonoBehaviour:
   Child: {fileID: -6819193382394763196}
   InputTargetIndex: 1
   Value: 1
+--- !u!114 &-8252868605023723256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54b9835b9502cd478bbcd7f9842afd0, type: 3}
+  m_Name: +5
+  m_EditorClassIdentifier: 
+  Name: +5
+  CurrentState: 0
+  Started: 0
+  Guid: 64421a05dd2dcfb47b0069b6d3ee9585
+  Position: {x: -1945.0002, y: -2463.1462}
+  Children:
+  - {fileID: -4171118943894349905}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  MathOperation: 0
+  Value: 5
+--- !u!114 &-8216259117332788645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Crosroad #2
+  m_EditorClassIdentifier: 
+  Name: Crosroad #2
+  CurrentState: 0
+  Started: 0
+  Guid: f934a33c5f10e3b47ba1843b2a79e661
+  Position: {x: -2425, y: -2586.1462}
+  Children:
+  - {fileID: 3406867304154835407}
+  - {fileID: 1313212752349678900}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+  ID: 402
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
 --- !u!114 &-7942377139524086092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,6 +466,30 @@ MonoBehaviour:
   InputTargetIndex: 
   OutputIndex: 
   EventType: 3
+--- !u!114 &-7438784232028873551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d492f90ed5558442a3b7efac521ce7a, type: 3}
+  m_Name: Start
+  m_EditorClassIdentifier: 
+  Name: Start
+  CurrentState: 2
+  Started: 0
+  Guid: 6ca3e6a36f8ff16468bb44022985969a
+  Position: {x: -2750, y: -2345.1462}
+  Children:
+  - {fileID: -8216259117332788645}
+  - {fileID: -8644584936102496659}
+  - {fileID: -488277936199967310}
+  InputTargetIndex: 000000000000000000000000
+  OutputIndex: 000000000000000000000000
+  EventType: 0
 --- !u!114 &-7385179016383726324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,7 +578,7 @@ MonoBehaviour:
   m_Name: TYPE
   m_EditorClassIdentifier: 
   Name: TYPE
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 7c8fc2b3299ad5d44a3b4cfdf617f6e6
   Position: {x: -4087, y: 242}
@@ -637,6 +738,25 @@ MonoBehaviour:
   InputTargetIndex: 
   OutputIndex: 
   FieldName: 1
+--- !u!114 &-6524441439742630276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c2a197ecf07b04d93b76bae9693330, type: 3}
+  m_Name: Worker Price
+  m_EditorClassIdentifier: 
+  Guid: 4a51f1d2287e8f947a1226613e8abd16
+  Position: {x: -2854, y: -2903.1462}
+  Size: {x: 563, y: 100}
+  Name: Worker Price
+  Contents: Raise workers price by its count
+  BackgroundColor: {r: 0.2, g: 0.235, b: 0.294, a: 1}
+  TextColor: {r: 0.487, g: 0.723, b: 0.867, a: 1}
 --- !u!114 &-6504208972497899536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,7 +770,7 @@ MonoBehaviour:
   m_Name: '>0'
   m_EditorClassIdentifier: 
   Name: '>0'
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: c844e944630b41e429a1e1cadfba73dc
   Position: {x: 1211.0002, y: -1879.2504}
@@ -1439,7 +1559,7 @@ MonoBehaviour:
   m_Name: HIDE TUTORIAL ARROW
   m_EditorClassIdentifier: 
   Name: HIDE TUTORIAL ARROW
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 2cc92ee14b69b8f4893cde8cf5cfd035
   Position: {x: 1556, y: -2185.5}
@@ -1447,6 +1567,29 @@ MonoBehaviour:
   InputTargetIndex: 
   OutputIndex: 
   EventType: 3
+--- !u!114 &-4171118943894349905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54b9835b9502cd478bbcd7f9842afd0, type: 3}
+  m_Name: 50 OR SMALLER
+  m_EditorClassIdentifier: 
+  Name: 50 OR SMALLER
+  CurrentState: 0
+  Started: 0
+  Guid: ef4bafe9f86c4a94db4c328c592bc8eb
+  Position: {x: -1834.0001, y: -2463.1462}
+  Children:
+  - {fileID: 8231877314378801194}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  MathOperation: 5
+  Value: 50
 --- !u!114 &-4155006625130604367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1544,6 +1687,32 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &-3801817023916882143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: IS ASSISTANT
+  m_EditorClassIdentifier: 
+  Name: IS ASSISTANT
+  CurrentState: 2
+  Started: 0
+  Guid: 49f38e38302224e468d0b934a367edf0
+  Position: {x: -2779, y: -2648.1462}
+  Children:
+  - {fileID: -8216259117332788645}
+  - {fileID: -8644584936102496659}
+  - {fileID: -488277936199967310}
+  InputTargetIndex: 000000000000000000000000
+  OutputIndex: 000000000000000000000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 9
 --- !u!114 &-3772661318918005063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2371,6 +2540,32 @@ MonoBehaviour:
   Child: {fileID: -1883030177353805219}
   InputTargetIndex: 1
   Value: 1
+--- !u!114 &-899419731165854764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: IS APPRENTICE
+  m_EditorClassIdentifier: 
+  Name: IS APPRENTICE
+  CurrentState: 2
+  Started: 0
+  Guid: 7185a32b0ffed38409fa8d8aa4528a31
+  Position: {x: -2779, y: -2503.1462}
+  Children:
+  - {fileID: -8216259117332788645}
+  - {fileID: -8644584936102496659}
+  - {fileID: -488277936199967310}
+  InputTargetIndex: 000000000000000000000000
+  OutputIndex: 000000000000000000000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 10
 --- !u!114 &-798380945240352766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2454,6 +2649,37 @@ MonoBehaviour:
   Child: {fileID: -5805590193220071299}
   InputTargetIndex: 1
   Value: 1
+--- !u!114 &-488277936199967310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Crossroad #1
+  m_EditorClassIdentifier: 
+  Name: Crossroad #1
+  CurrentState: 0
+  Started: 0
+  Guid: ce81b319cac1306419c581699da341db
+  Position: {x: -2425, y: -2711.1462}
+  Children:
+  - {fileID: 3406867304154835407}
+  - {fileID: 1313212752349678900}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+  ID: 401
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
 --- !u!114 &-289255096253446273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2474,6 +2700,29 @@ MonoBehaviour:
   Child: {fileID: -7540495673040863194}
   InputTargetIndex: 1
   Value: {x: 0, y: 0, z: 0}
+--- !u!114 &-258301666707045809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d492f90ed5558442a3b7efac521ce7a, type: 3}
+  m_Name: Add Item
+  m_EditorClassIdentifier: 
+  Name: Add Item
+  CurrentState: 2
+  Started: 0
+  Guid: ad69c35cd75e7d64ea28142b7371cbbc
+  Position: {x: -2954, y: -2610.1462}
+  Children:
+  - {fileID: -3801817023916882143}
+  - {fileID: -899419731165854764}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0100000001000000
+  EventType: 3
 --- !u!114 &-253692257246350039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2740,6 +2989,22 @@ MonoBehaviour:
   - {fileID: 6636173489944011427}
   - {fileID: 2837349674971270667}
   - {fileID: -6504208972497899536}
+  - {fileID: -258301666707045809}
+  - {fileID: -8644584936102496659}
+  - {fileID: -488277936199967310}
+  - {fileID: 3406867304154835407}
+  - {fileID: 7185517289691502807}
+  - {fileID: -4171118943894349905}
+  - {fileID: -8216259117332788645}
+  - {fileID: -3801817023916882143}
+  - {fileID: -899419731165854764}
+  - {fileID: -7438784232028873551}
+  - {fileID: 4947991826920320967}
+  - {fileID: -8252868605023723256}
+  - {fileID: 8231877314378801194}
+  - {fileID: 1313212752349678900}
+  Labels:
+  - {fileID: -6524441439742630276}
 --- !u!114 &79279145139786393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3073,6 +3338,27 @@ MonoBehaviour:
   ChildrenForFailure: []
   Operator: 0
   Value: 801
+--- !u!114 &1313212752349678900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: SET RESOURCE LIMIT
+  m_EditorClassIdentifier: 
+  Name: SET RESOURCE LIMIT
+  CurrentState: 0
+  Started: 0
+  Guid: c38c4b0348cf79b42b3c5472872b35c9
+  Position: {x: -1450, y: -2765}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 6
 --- !u!114 &1339259269938326370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3672,7 +3958,7 @@ MonoBehaviour:
   m_Name: LEVEL
   m_EditorClassIdentifier: 
   Name: LEVEL
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: ec9ad58be7a607b43a5e4800c6546c23
   Position: {x: 1058, y: -1894.5}
@@ -3804,6 +4090,27 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &3406867304154835407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: SET ITEM COST
+  m_EditorClassIdentifier: 
+  Name: SET ITEM COST
+  CurrentState: 0
+  Started: 0
+  Guid: 1cbbb7fa928c61a4ca9c54e56352f768
+  Position: {x: -1450, y: -2610}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 4
 --- !u!114 &3483441604611787690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4330,6 +4637,29 @@ MonoBehaviour:
   InputTargetIndex: 000000000000000000000000
   OutputIndex: 040000000100000001000000
   EventType: 4
+--- !u!114 &4947991826920320967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54b9835b9502cd478bbcd7f9842afd0, type: 3}
+  m_Name: -2
+  m_EditorClassIdentifier: 
+  Name: -2
+  CurrentState: 0
+  Started: 0
+  Guid: 884530769b6d79a448454cacd5f1755f
+  Position: {x: -2187, y: -2463.1462}
+  Children:
+  - {fileID: 7185517289691502807}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  MathOperation: 1
+  Value: 2
 --- !u!114 &5032631864277934431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4862,7 +5192,7 @@ MonoBehaviour:
   m_Name: Alchemist #2
   m_EditorClassIdentifier: 
   Name: Alchemist #2
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: f2356e2be9864e64f84f658dfb64010f
   Position: {x: 881, y: -1846}
@@ -5059,6 +5389,29 @@ MonoBehaviour:
   InputTargetIndex: 000000000000000000000000
   OutputIndex: 000000000000000000000000
   FieldName: 1
+--- !u!114 &7185517289691502807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54b9835b9502cd478bbcd7f9842afd0, type: 3}
+  m_Name: x15
+  m_EditorClassIdentifier: 
+  Name: x15
+  CurrentState: 0
+  Started: 0
+  Guid: b5d11500673cb1e4abfa4f7612f82afc
+  Position: {x: -2063, y: -2463.1462}
+  Children:
+  - {fileID: -8252868605023723256}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  MathOperation: 2
+  Value: 15
 --- !u!114 &7313402003273497492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5097,7 +5450,7 @@ MonoBehaviour:
   m_Name: EQUAL PLAYER
   m_EditorClassIdentifier: 
   Name: EQUAL PLAYER
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: c063c9d67ff64ad4490b4c5a7d4b6bdb
   Position: {x: -3946, y: 265.5}
@@ -5289,7 +5642,7 @@ MonoBehaviour:
   m_Name: Vector3Value
   m_EditorClassIdentifier: 
   Name: Vector3Value
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: a8612e3ca6d445142b6394cba1cd20f7
   Position: {x: 1354, y: -2110}
@@ -5409,6 +5762,30 @@ MonoBehaviour:
   InputTargetIndex: 000000000000000000000000
   OutputIndex: 040000000000000000000000
   EventType: 5
+--- !u!114 &8231877314378801194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54b9835b9502cd478bbcd7f9842afd0, type: 3}
+  m_Name: 5 OR GREATER
+  m_EditorClassIdentifier: 
+  Name: 5 OR GREATER
+  CurrentState: 0
+  Started: 0
+  Guid: 74130f8ab5e7f774ca8b7ea4debdba0b
+  Position: {x: -1667, y: -2463}
+  Children:
+  - {fileID: 3406867304154835407}
+  - {fileID: 1313212752349678900}
+  InputTargetIndex: 0100000001000000
+  OutputIndex: 0000000000000000
+  MathOperation: 6
+  Value: 5
 --- !u!114 &8316530739654332136
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,6 +4,9 @@ namespace Scripts.BehaviorTree
 {
     public class Vector3MagnitudeNode : BehaviorCompositeNode, IOutputFloat
     {
+        [HideInInspector]
+        public override string Section { get { return "Math"; } }
+
         private Vector3 _input1Value;
         private float _output;
 

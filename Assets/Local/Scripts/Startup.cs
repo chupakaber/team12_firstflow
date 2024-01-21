@@ -36,6 +36,7 @@ namespace Scripts
 
         private PlayerInputSystem _playerInputSystem = new PlayerInputSystem();
         private CameraFollowSystem _cameraFollowSystem = new CameraFollowSystem();
+        private ObjectActivationSystem _objectActivationSystem = new ObjectActivationSystem();
         private AddItemSystem _addItemSystem = new AddItemSystem();
         private AddHonorSystem _addHonorSystem = new AddHonorSystem();
         private RemoveItemSystem _removeItemSystem = new RemoveItemSystem();
@@ -110,6 +111,7 @@ namespace Scripts
 
             AddSystem(_buildingInitSystem);
             AddSystem(_cameraFollowSystem);
+            AddSystem(_objectActivationSystem);
             AddSystem(_characterSpawnSystem);
             AddSystem(_saveLoadSystem);
             AddSystem(_scenarioSystem);

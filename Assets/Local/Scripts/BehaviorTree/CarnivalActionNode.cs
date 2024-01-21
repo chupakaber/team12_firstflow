@@ -1,9 +1,13 @@
 using Scripts.Enums;
+using UnityEngine;
 
 namespace Scripts.BehaviorTree
 {
     public class CarnivalActionNode : BehaviorCompositeNode
     {
+        [HideInInspector]
+        public override string Section { get { return "Action"; } }
+
         public enum ActionEnum
         {
             WALK_BY_PATH = 0,

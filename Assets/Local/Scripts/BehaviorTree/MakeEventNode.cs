@@ -5,6 +5,9 @@ namespace Scripts.BehaviorTree
 {
     public class MakeEventNode : BehaviorCompositeNode
     {
+        [HideInInspector]
+        public override string Section { get { return "Action"; } }
+
         public enum EventTypeEnum {
             ADD_ITEM_TO_CHARACTER = 0,
             REMOVE_ITEM_FROM_CHARACTER = 1,

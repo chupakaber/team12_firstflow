@@ -6,6 +6,8 @@ namespace Scripts.BehaviorTree
     {
         [HideInInspector]
         public override Color DefaultColor { get { return new Color(0.4f, 0f, 0.1f, 1f); } }
+        [HideInInspector]
+        public override string Section { get { return "Event"; } }
 
         public enum EventTypeEnum
         {
