@@ -22,6 +22,7 @@ namespace Scripts.BehaviorTree
             MovementInput = 8,
             RollBagOfTries = 9,
             Init = 10,
+            Assignment = 11,
         }
 
         public EventTypeEnum EventType = EventTypeEnum.Start;
@@ -126,6 +127,35 @@ namespace Scripts.BehaviorTree
                 case EventTypeEnum.Init:
                     if (currentEvent is InitEvent)
                     {
+                        success = true;
+                    }
+                    break;
+                case EventTypeEnum.EnterTrigger:
+                    if (currentEvent is EnterTriggerEvent)
+                    {
+                        var enterTriggerEvent = (EnterTriggerEvent) currentEvent;
+                        _output2 = (float) enterTriggerEvent.Character.CharacterType;
+                        _output5 = enterTriggerEvent.Character;
+                        _output6 = enterTriggerEvent.Trigger.gameObject;
+                        success = true;
+                    }
+                    break;
+                case EventTypeEnum.ExitTrigger:
+                    if (currentEvent is ExitTriggerEvent)
+                    {
+                        var exitTriggerEvent = (ExitTriggerEvent) currentEvent;
+                        _output2 = (float) exitTriggerEvent.Character.CharacterType;
+                        _output5 = exitTriggerEvent.Character;
+                        _output6 = exitTriggerEvent.Trigger.gameObject;
+                        success = true;
+                    }
+                    break;
+                case EventTypeEnum.Assignment:
+                    if (currentEvent is AssignmentEvent)
+                    {
+                        var assignmentEvent = (AssignmentEvent) currentEvent;
+                        _output5 = assignmentEvent.Character;
+                        _output6 = assignmentEvent.Building.gameObject;
                         success = true;
                     }
                     break;
