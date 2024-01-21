@@ -83,7 +83,25 @@ namespace Scripts
                 }
             }
         }
-    
+
+        public void EventCatch(EnterTriggerEvent newEvent)
+        {
+            Scenario.BehaviorTreeRunner.InternalState = _scenarioState;
+            Scenario.BehaviorTreeRunner.EventCatch(newEvent);
+        }
+
+        public void EventCatch(ExitTriggerEvent newEvent)
+        {
+            Scenario.BehaviorTreeRunner.InternalState = _scenarioState;
+            Scenario.BehaviorTreeRunner.EventCatch(newEvent);
+        }
+
+        public void EventCatch(AssignmentEvent newEvent)
+        {
+            Scenario.BehaviorTreeRunner.InternalState = _scenarioState;
+            Scenario.BehaviorTreeRunner.EventCatch(newEvent);
+        }
+
 /*
     {
         public List<Character> Characters;

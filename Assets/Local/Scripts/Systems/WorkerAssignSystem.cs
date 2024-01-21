@@ -66,6 +66,12 @@ namespace Scripts
                                                 assistant.LeaveQueue();
 
                                                 UpdateAssignmentHelper();
+
+                                                EventBus.CallEvent(new AssignmentEvent() {
+                                                    Character = assistant,
+                                                    Building = assistant.TargetBuilding,
+                                                    Area = assistant.TargetBuilding.UnloadingArea.gameObject
+                                                });
                                             }
                                         }
                                     }
@@ -79,6 +85,12 @@ namespace Scripts
                                             building.AssignedProductionCharacters.Add(apprentice);
 
                                             apprentice.LeaveQueue();
+
+                                            EventBus.CallEvent(new AssignmentEvent() {
+                                                Character = apprentice,
+                                                Building = apprentice.TargetBuilding,
+                                                Area = apprentice.TargetBuilding.ProductionArea.gameObject
+                                            });
                                         }
                                     }
                                 }
