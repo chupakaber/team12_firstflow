@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5555299837058858604, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
+      propertyPath: _level
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -253,6 +257,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 1081657815763535268, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 5507904031742310996, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 7028414745395856205, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 7899583225664021524, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
@@ -526,6 +536,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestPlace
       objectReference: {fileID: 0}
+    - target: {fileID: 6462171667983042133, guid: cf7bc7efd13f61e4e93df3fba49a5dea, type: 3}
+      propertyPath: CinematicBorders
+      value: 
+      objectReference: {fileID: 5080193985465256653}
+    - target: {fileID: 6995662297239680963, guid: cf7bc7efd13f61e4e93df3fba49a5dea, type: 3}
+      propertyPath: CinematicBorders
+      value: 
+      objectReference: {fileID: 5080193985465256653}
     - target: {fileID: 7686030637959931475, guid: cf7bc7efd13f61e4e93df3fba49a5dea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -821,6 +839,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399f4e1b3662126429e16fc9e7e470f4, type: 3}
+--- !u!114 &5080193985465256653 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4253045410147815530, guid: 399f4e1b3662126429e16fc9e7e470f4, type: 3}
+  m_PrefabInstance: {fileID: 5080193985465256652}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb771b0b5e7eb2408aec398a52938c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7122041033332202612
 PrefabInstance:
   m_ObjectHideFlags: 0

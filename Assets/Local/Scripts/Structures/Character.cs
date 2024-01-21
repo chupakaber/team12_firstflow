@@ -10,6 +10,7 @@ namespace Scripts
         public Rigidbody CharacterRigidbody;
         public Animator CharacterAnimator;
         public Transform MessageEmitterPivot;
+        public AnimationEffect UpgradeAnimationEffect;
         public float Speed;
         public CharacterType CharacterType;
         public int ItemLimit;
@@ -50,6 +51,8 @@ namespace Scripts
         private int _loadedAnimationKey = Animator.StringToHash("Loaded");
         private int _speedAnimationKey = Animator.StringToHash("Speed");
         private int _isWorkingAnimationKey = Animator.StringToHash("Working");
+        private int _bowAnimationKey = Animator.StringToHash("Bow");
+        private int _talkAnimationKey = Animator.StringToHash("Talk");
         
         private float _dropItemStartTimestamp = -1f;
 
@@ -148,8 +151,22 @@ namespace Scripts
             CharacterAnimator.SetBool(_isWorkingAnimationKey, IsWork);
         }
 
+        public void Bow()
+        {
+            CharacterAnimator.SetTrigger(_bowAnimationKey);
+        }
+
+        public void Talk()
+        {
+            CharacterAnimator.SetTrigger(_talkAnimationKey);
+        }
+
         public virtual void LevelUp()
         {
+            if (Initialized && UpgradeAnimationEffect != null)
+            {
+                UpgradeAnimationEffect.Activate();
+            }
         }
 
         public void AddLastInQueue(Character newCharacter)
@@ -240,7 +257,7 @@ namespace Scripts
             if (itemType == ItemType.GOLD)
             {
                 var dropTime = Mathf.Clamp(Time.time - _dropItemStartTimestamp, 0f, DropGoldMaxTime);
-                var cooldown = Mathf.Pow((DropGoldMaxTime - dropTime) / DropGoldMaxTime, 8f) * DropGoldMaxTime;
+                var cooldown = Mathf.Pow((DropGoldMaxTime - dropTime) / DropGoldMaxTime, 12f) * DropGoldMaxTime;
                 cooldown = Mathf.Max(cooldown, 0.0001f);
                 batchCount = (int) Mathf.Ceil(Mathf.Max(1f, MIN_COOLDOWN / cooldown));
                 return cooldown;

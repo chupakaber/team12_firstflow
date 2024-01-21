@@ -22,8 +22,6 @@ namespace Scripts.Systems
                 var itemView = ItemViewPools.Get((int) newEvent.ItemType);
                 if (itemView != null)
                 {
-                    //if (newEvent.Unit is Character)
-                    //{
                     if (CheckLastSoundTime())
                     {
                         var soundId = -1;
@@ -39,6 +37,9 @@ namespace Scripts.Systems
                             case ItemType.GUN:
                                 soundId = 4;
                             break;
+                            case ItemType.ROCK:
+                                soundId = 18;
+                            break;
                             case ItemType.BOTTLE_HERO:
                             case ItemType.BOTTLE_WORKER:
                                 soundId = 1;
@@ -50,7 +51,6 @@ namespace Scripts.Systems
                             EventBus.CallEvent(new PlaySoundEvent() { SoundId = soundId, IsMusic = false, AttachedTo = newEvent.Unit.transform });
                         }
                     }
-                    //}
 
                     newEvent.Unit.ItemStackView.AddItem(itemView);
                     var endPosition = newEvent.Unit.GetStackTopPosition(newEvent.ItemType);

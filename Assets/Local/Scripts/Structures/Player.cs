@@ -9,6 +9,7 @@ namespace Scripts
 
         public override void LevelUp()
         {
+            base.LevelUp();
             Speed += PlayerSpeedBoostAmount;
         }
     }
