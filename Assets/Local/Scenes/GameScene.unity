@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18326165, g: 0.22695886, b: 0.29506302, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 9d683bda838822f4fb9e960bcee39a44, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: c6b1e6670155a88478e076d43c9bb2ae, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: bd2e5332b45dfcc4f895119c37a9f635, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -171,9 +171,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1596268839699840657, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966580995956577269, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966580995956577269, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000754539689499354, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 3433285766396239739, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
       propertyPath: m_Name
       value: Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 3825755378380858341, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833190314598581215, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833190314598581215, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833190314598581215, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 5491096146202100638, guid: 41a170f2d20cd9e439cb96d2fc2c0713, type: 3}
       propertyPath: m_IsActive
