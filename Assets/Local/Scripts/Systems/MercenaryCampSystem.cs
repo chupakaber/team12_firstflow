@@ -47,9 +47,9 @@ namespace Scripts
             if (newEvent.ItemType == ItemType.GOLD && newEvent.Unit is Building)
             {
                 var building = (Building) newEvent.Unit;
-                if (building.ConsumeItemType == ItemType.NONE)
+                if (building.ConsumeItemType == ItemType.NONE && building.ProduceItemType == ItemType.GOLD)
                 {
-                    EndRaid();
+                    EndRaid(building);
                 }
             }
         }
@@ -59,11 +59,11 @@ namespace Scripts
             if (newEvent.ItemType == ItemType.GOLD && newEvent.Unit is Building)
             {
                 var building = (Building) newEvent.Unit;
-                if (building.ConsumeItemType == ItemType.NONE)
+                if (building.ConsumeItemType == ItemType.NONE && building.ProduceItemType == ItemType.GOLD)
                 {
                     if (building.Items.GetAmount(building.ProduceItemType) < 1)
                     {
-                        StartRaid();
+                        StartRaid(building);
                     }
                 }
             }
@@ -79,6 +79,11 @@ namespace Scripts
                     {
                         if (character.CharacterType == CharacterType.PLAYER)
                         {
+                            //if (building.ProductionCharacters.Count > 0 && building.ProductionCharacters.Contains(character))
+                            //{
+                            //    building.produc
+                            //}
+
                             if (MercenaryCreate(building, character))
                             {
                                 return;
@@ -184,6 +189,10 @@ namespace Scripts
                                 }
                             }
                         }
+                        else
+                        {
+                            character.WorldDirection = Vector3.zero;
+                        }
                     }
                 }
             }
@@ -229,8 +238,11 @@ namespace Scripts
             return false;
         }
 
-        public void StartRaid() 
+        public void StartRaid(Building building) 
         {
+            building.LastProductionTime = Time.time;
+            building.ProductionEndTime = Time.time;
+
             Mercenary firstMercenary = null;
             foreach (var character in Characters)
             {
@@ -254,12 +266,24 @@ namespace Scripts
                     mercenary.State = 1;
                     mercenary.CurrentRouteWaypointIndex = 0;
                     mercenary.FollowingOffset = 2.2f;
+
+                    if (building.AssignedProductionCharacters.Count < 1)
+                    {
+                        building.AssignedProductionCharacters.Add(mercenary);
+                    }
                 }
             }
         }
 
-        public void EndRaid() 
+        public void EndRaid(Building building) 
         {
+            building.ProductionEndTime = Time.time;
+
+            if (building.AssignedProductionCharacters.Count > 0)
+            {
+                building.AssignedProductionCharacters.Clear();
+            }
+
             foreach (var character in Characters)
             {
                 if (character.CharacterType == CharacterType.MERCENARY)
@@ -273,6 +297,13 @@ namespace Scripts
 
                     mercenary.LeaveQueue();
                     mercenary.State = 3;
+
+                    // for (var i = 0; i < _mercenaryRoute.Waypoints.Count; i++)
+                    // {
+                    //     if (_mercenaryRoute.Waypoints[i].IsKeyPoint)
+                    //     {
+                    //     }
+                    // }
                 }
             }
         }

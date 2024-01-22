@@ -13,6 +13,7 @@ namespace Scripts
 
         private float _lastCheckTime = -3f;
         private Dictionary<ItemType, CustomerRoute> _customerRoutes = new Dictionary<ItemType, CustomerRoute>();
+        // private Player _player;
 
         public void EventCatch(InitEvent newEvent)
         {
@@ -21,6 +22,14 @@ namespace Scripts
             {
                 _customerRoutes.TryAdd(route.ProductionType, route);
             }
+
+            // foreach (var character in Characters)
+            // {
+            //     if (character is Player)
+            //     {
+            //         _player = (Player) character;
+            //     }
+            // }
         }
 
         public void EventCatch(FixedUpdateEvent newEvent)
@@ -50,7 +59,17 @@ namespace Scripts
                             if (customersCount < 5)
                             {
                                 var random = Random.Range(0f, 1f);
-                                var customer = CustomerPools.Get(random < 0.2f ? 1 : (random > 0.8f ? 2 : 0));
+                                var randomIndex = random < 0.2f ? 1 : (random > 0.8f ? 2 : 0);
+
+                                var customer = CustomerPools.Get(randomIndex);
+
+                                // _player.GetRank(out var playerRank, out _, out _);
+                                // if (customer.Rank < playerRank)
+                                // {
+                                //     customer.Release();
+                                //     customer = CustomerPools.Get(0);
+                                // }
+
                                 Characters.Add(customer);
 
                                 customer.Route = route;

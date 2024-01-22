@@ -6,6 +6,8 @@ namespace Scripts.BehaviorTree
     {
         [HideInInspector]
         public override Color DefaultColor { get { return new Color(0.3f, 0.3f, 0.3f, 1f); } }
+        [HideInInspector]
+        public override string Section { get { return "Math"; } }
 
         public float Value;
 

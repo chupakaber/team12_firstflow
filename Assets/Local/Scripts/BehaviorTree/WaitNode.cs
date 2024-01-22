@@ -6,6 +6,8 @@ namespace Scripts.BehaviorTree
     {
         [HideInInspector]
         public override Color DefaultColor { get { return new Color(0.6f, 0.6f, 0.6f, 1f); } }
+        [HideInInspector]
+        public override string Section { get { return "Time"; } }
         
         public int TimerIndex = 0;
 

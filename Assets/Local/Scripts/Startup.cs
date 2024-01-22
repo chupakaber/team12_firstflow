@@ -3,6 +3,7 @@ using Scripts.Systems;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Scripts
 {
@@ -36,6 +37,7 @@ namespace Scripts
 
         private PlayerInputSystem _playerInputSystem = new PlayerInputSystem();
         private CameraFollowSystem _cameraFollowSystem = new CameraFollowSystem();
+        private ObjectActivationSystem _objectActivationSystem = new ObjectActivationSystem();
         private AddItemSystem _addItemSystem = new AddItemSystem();
         private AddHonorSystem _addHonorSystem = new AddHonorSystem();
         private RemoveItemSystem _removeItemSystem = new RemoveItemSystem();
@@ -65,6 +67,7 @@ namespace Scripts
         private UISystem _uiSystem = new UISystem();
         private EnvironmentShaderSystem _environmentShaderSystem = new EnvironmentShaderSystem();
         private CharactersStatsUpSystem _charactersStatsUpSystem = new CharactersStatsUpSystem();
+        private CharacterInitSystem _characterInitSystem = new CharacterInitSystem();
         private ScenarioSystem _scenarioSystem = new ScenarioSystem();
         private MercenaryCampSystem _mercenaryCampSystem = new MercenaryCampSystem();
         private CharacterSpawnSystem _characterSpawnSystem = new CharacterSpawnSystem();
@@ -107,15 +110,15 @@ namespace Scripts
             _mercenaryPools.Pools.Add(0, new ObjectPool<Mercenary>("Prefabs/Characters/Mercenary"));
             _alchemistPools.Pools.Add(0, new ObjectPool<SmartCharacter>("Prefabs/Characters/Alchemist"));
             
-
             AddSystem(_buildingInitSystem);
             AddSystem(_cameraFollowSystem);
+            AddSystem(_objectActivationSystem);
             AddSystem(_characterSpawnSystem);
             AddSystem(_saveLoadSystem);
-            AddSystem(_scenarioSystem);
             AddSystem(_addItemSystem);
             AddSystem(_removeItemSystem);
             AddSystem(_addHonorSystem);
+            AddSystem(_scenarioSystem);
             AddSystem(_playerInputSystem);
             AddSystem(_triggerSystem);
             AddSystem(_buildingTriggerSystem);
@@ -146,6 +149,7 @@ namespace Scripts
             AddSystem(_soundSystem);
             AddSystem(_carnivalBehaviorSystem);
             AddSystem(_cutSceneSystem);
+            AddSystem(_characterInitSystem);
 
             _container.AddLink(_eventBus, "EventBus");
             _container.AddLink(_characters, "Characters");

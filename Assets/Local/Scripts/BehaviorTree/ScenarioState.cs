@@ -97,6 +97,7 @@ namespace Scripts.BehaviorTree
                 {
                     var assistant = (Assistant) character;
                     SerializationUtils.Put(buffer, assistant.ResourceBuilding != null ? assistant.ResourceBuilding.ID : 0);
+                    SerializationUtils.Put(buffer, (int) assistant.PickUpItemConstraint);
                 }
 
                 var itemsCount = 0;
@@ -245,9 +246,11 @@ namespace Scripts.BehaviorTree
                 if (characterType == CharacterType.ASSISTANT)
                 {
                     var characterResourceBuildingID = SerializationUtils.Get(buffer, 0);
+                    var pickUpItemConstraint = (ItemType) SerializationUtils.Get(buffer, 0);
                     if (character != null)
                     {
                         var assistant = (Assistant) character;
+                        assistant.PickUpItemConstraint = pickUpItemConstraint;
                         foreach (var building in Buildings)
                         {
                             if (building.ID == characterResourceBuildingID)
@@ -356,7 +359,7 @@ namespace Scripts.BehaviorTree
                 bytesCount += SerializationUtils.SIZE_OF_INT;
                 if (character.CharacterType == CharacterType.ASSISTANT)
                 {
-                    bytesCount += SerializationUtils.SIZE_OF_INT;
+                    bytesCount += 2 * SerializationUtils.SIZE_OF_INT;
                 }
 
                 var itemsCount = 0;
@@ -369,6 +372,8 @@ namespace Scripts.BehaviorTree
             }
 
             bytesCount += Vector3Serializer<Vector3>.SIZE_OF_STRUCTURE;
+
+            bytesCount += SerializationUtils.SIZE_OF_FLOAT;
 
             return bytesCount;
         }

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Scripts.Enums;
-using UnityEngine.UIElements;
 
 namespace Scripts
 {
@@ -11,6 +10,7 @@ namespace Scripts
         public Rigidbody CharacterRigidbody;
         public Animator CharacterAnimator;
         public Transform MessageEmitterPivot;
+        public AnimationEffect UpgradeAnimationEffect;
         public float Speed;
         public CharacterType CharacterType;
         public int ItemLimit;
@@ -19,6 +19,7 @@ namespace Scripts
         public float DropGoldMaxTime = 5f;
         public ItemType PickUpItemConstraint = ItemType.NONE;
         public int BaseBagOfTriesCapacity = 8;
+        public bool IsWork;
         public bool IsCutSceneActiv;
 
         [Header("Ranks Config (6, 5, 4, 3, 2, 1)")]
@@ -49,6 +50,11 @@ namespace Scripts
 
         private int _loadedAnimationKey = Animator.StringToHash("Loaded");
         private int _speedAnimationKey = Animator.StringToHash("Speed");
+        private int _isWorkingAnimationKey = Animator.StringToHash("Working");
+        private int _bowAnimationKey = Animator.StringToHash("Bow");
+        private int _talkAnimationKey = Animator.StringToHash("Talk");
+        
+        private float _dropItemStartTimestamp = -1f;
 
         public void GetRank(out int rank, out int currentPoints, out int rankPoints)
         {
@@ -122,6 +128,7 @@ namespace Scripts
 
         public void ShowBagOfTries()
         {
+            IsWork = true;
             if (BagOfTriesView != null)
             {
                 BagOfTriesView.Show();
@@ -130,6 +137,7 @@ namespace Scripts
 
         public void HideBagOfTries()
         {
+            IsWork = false;
             if (BagOfTriesView != null)
             {
                 BagOfTriesView.Hide();
@@ -140,14 +148,36 @@ namespace Scripts
         {
             CharacterAnimator.SetBool(_loadedAnimationKey, Items.GetAmount() > 0);
             CharacterAnimator.SetFloat(_speedAnimationKey, (CharacterRigidbody.velocity.magnitude - 0.5f) / 4f);
+            CharacterAnimator.SetBool(_isWorkingAnimationKey, IsWork);
+        }
+
+        public void Bow()
+        {
+            CharacterAnimator.SetTrigger(_bowAnimationKey);
+        }
+
+        public void Talk()
+        {
+            CharacterAnimator.SetTrigger(_talkAnimationKey);
         }
 
         public virtual void LevelUp()
         {
+            if (Initialized && UpgradeAnimationEffect != null)
+            {
+                UpgradeAnimationEffect.Activate();
+            }
         }
 
         public void AddLastInQueue(Character newCharacter)
         {
+            if (Equals(newCharacter))
+            {
+                return;
+            }
+
+            newCharacter.LeaveQueue();
+
             if (newCharacter == this)
             {
                 throw new UnityException("Trying to add in character queue itself.");
@@ -165,6 +195,13 @@ namespace Scripts
 
         public void AddFirstInQueue(Character newCharacter)
         {
+            if (Equals(newCharacter))
+            {
+                return;
+            }
+
+            newCharacter.LeaveQueue();
+
             var character = this;
             while (character.PreviousInQueue != null)
             {
@@ -210,19 +247,28 @@ namespace Scripts
 
         public float GetDropCooldown(ItemType itemType, out int batchCount, int capacity = 1)
         {
+            if (_dropItemStartTimestamp < 0f)
+            {
+                _dropItemStartTimestamp = Time.time;
+            }
+
             batchCount = 1;
 
             if (itemType == ItemType.GOLD)
             {
-                var count = Mathf.Max(1, capacity);
-                var cooldown = DropGoldMaxTime / count;
-                cooldown = Mathf.Min(PickUpCooldown, cooldown);
+                var dropTime = Mathf.Clamp(Time.time - _dropItemStartTimestamp, 0f, DropGoldMaxTime);
+                var cooldown = Mathf.Pow((DropGoldMaxTime - dropTime) / DropGoldMaxTime, 12f) * DropGoldMaxTime;
+                cooldown = Mathf.Max(cooldown, 0.0001f);
                 batchCount = (int) Mathf.Ceil(Mathf.Max(1f, MIN_COOLDOWN / cooldown));
-
                 return cooldown;
             }
             
             return PickUpCooldown;
+        }
+
+        public void ClearDropItemCooldown()
+        {
+            _dropItemStartTimestamp = -1f;
         }
     }
 }

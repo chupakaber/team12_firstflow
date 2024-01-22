@@ -16,6 +16,7 @@
         BOTTLE_HERO = 11,
         BOTTLE_WORKER = 12,
         MERCENARY = 13,
-        EMPEROR_SWORD = 14
+        EMPEROR_SWORD = 14,
+        ROCK = 15,
     }
 }

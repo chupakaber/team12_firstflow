@@ -25,10 +25,33 @@ namespace Scripts
                 {
                     foreach (var character in building.ConstructionCharacters)
                     {
-                        Collecting(building,character);
+                        Collecting(building, character);
                     }
                 }
             }
+        }
+
+        public void EventCatch(ActivateObjectEvent newEvent)
+        {
+            if (newEvent.Target is Building)
+            {
+                var building = (Building) newEvent.Target;
+                UpdateUpgradeProgressViewSettings(building);
+            }
+        }
+
+        public void EventCatch(LevelUpEvent newEvent)
+        {
+            if (newEvent.Target is Building)
+            {
+                var building = (Building) newEvent.Target;
+                UpdateUpgradeProgressViewSettings(building);
+            }
+        }
+
+        public void EventCatch(BuildingConfigurationChangedEvent newEvent)
+        {
+            UpdateUpgradeProgressViewSettings(newEvent.Building);
         }
 
         private void Collecting(Building building, Character character)
@@ -128,7 +151,7 @@ namespace Scripts
                     }
                 }
             }
-            else if (building.Level > 0)
+            if (building.Level > 0)
             {
                 foreach (var progressBar in building.CollectingProgressBars)
                 {

@@ -13,6 +13,13 @@ namespace Scripts
         public Collider UnloadingArea;
         public Collider PickingUpArea;
         public Collider UpgradeArea;
+        public GameObject ConstructionAreaIndicator;
+        public GameObject ProductionAreaIndicator;
+        public GameObject UnloadingAreaIndicator;
+        public GameObject PickingUpAreaIndicator;
+        public GameObject UpgradeAreaIndicator;
+        public GameObject ProductionAreaHelper;
+        public GameObject PickingUpAreaHelper;
         public Transform ProgressBarPivot;
         public GameObject StopProductionIcon;
         public GameObject NoResourceIcon;
@@ -26,6 +33,8 @@ namespace Scripts
         public ItemType ConsumeItemType;
         public List<BuildingLevel> Levels;
         public Unit UpgradeStorage;
+        public Animation HonorIconAnimation;
+        public AnimationEffect UpgradeAnimationEffect;
 
         [SerializeField] private int _level;
 
@@ -51,6 +60,11 @@ namespace Scripts
 
             set
             {
+                if (Initialized && value > _level && UpgradeAnimationEffect != null)
+                {
+                    UpgradeAnimationEffect.Activate();
+                }
+
                 _level = value;
                 if (ConstructionArea != null)
                 {
@@ -79,6 +93,11 @@ namespace Scripts
             }
         }
         public bool IsWork { get; set; } = true;
+        public bool IsWorkAreaIndicatorEnabled { get {
+            return ProductionAreaIndicator.activeSelf;
+        } set {
+            ProductionAreaIndicator.SetActive(value);
+        } }
 
         public int GetLastCustomerHonor()
         {

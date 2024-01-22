@@ -63,7 +63,7 @@ namespace Scripts.BehaviorTree
 
         protected virtual void CreateOutputPorts()
         {
-            if (Node is BehaviorActionNode || Node is BehaviorCompositeNode || Node is BehaviorDecoratorNode)
+            if (Node is BehaviorCompositeNode || Node is BehaviorDecoratorNode)
             {
                 if (Input1Type != null)
                 {
@@ -177,7 +177,7 @@ namespace Scripts.BehaviorTree
 
         protected virtual void CreateInputPorts()
         {
-            if (Node is BehaviorActionNode || Node is BehaviorCompositeNode || Node is BehaviorDecoratorNode)
+            if (Node is BehaviorCompositeNode || Node is BehaviorDecoratorNode)
             {
                 if (Output1Type != null)
                 {

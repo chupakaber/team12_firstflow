@@ -136,17 +136,17 @@ namespace Scripts
                     TryRestoreTries(building);
                 }
 
+                if (building.ItemCost > 0)
+                {
+                    var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = building.ItemCost, Unit = building };
+                    EventBus.CallEvent(removeItemEvent);
+                }
+
                 if (success)
                 {
                     var sourcePileTopPosition = building.transform.position;
                     var addItemEvent = new AddItemEvent() { ItemType = building.ProduceItemType, Count = building.ProductionItemAmountPerCycle, Unit = building, FromPosition = sourcePileTopPosition };
                     EventBus.CallEvent(addItemEvent);
-                }
-
-                if (building.ItemCost > 0)
-                {
-                    var removeItemEvent = new RemoveItemEvent() { ItemType = building.ConsumeItemType, Count = building.ItemCost, Unit = building };
-                    EventBus.CallEvent(removeItemEvent);
                 }
 
                 if (building.ProduceItemType == ItemType.SPEAR || building.ProduceItemType == ItemType.SWORD || building.ProduceItemType == ItemType.GUN)
@@ -170,6 +170,13 @@ namespace Scripts
                         EventBus.CallEvent(new PlaySoundEvent() { SoundId = 14, IsMusic = false, AttachedTo = building.transform });
                     }
                 }
+                else if (building.ProduceItemType == ItemType.ROCK)
+                {
+                    if (CheckSoundTime(building, 7f))
+                    {
+                        EventBus.CallEvent(new PlaySoundEvent() { SoundId = 17, IsMusic = false, AttachedTo = building.transform });
+                    }
+                }
                 else if (building.ProduceItemType == ItemType.GOLD && building.ProductionArea == null)
                 {
                     foreach (var character in Characters)
@@ -187,6 +194,11 @@ namespace Scripts
 
         private void UpdateProductionStateIcon(Building building)
         {
+            if (building.ProductionAreaIndicator != null)
+            {
+                building.IsWorkAreaIndicatorEnabled = building.AssignedProductionCharacters.Count < 1;
+            }
+
             var inProgress = building.Level > 0 && building.ProductionCharacters.Count > 0 && building.ProductionLimit > building.Items.GetAmount(building.ProduceItemType);
             var noResource = building.Level > 0 && building.Items.GetAmount(building.ConsumeItemType) < building.ItemCost;
 
