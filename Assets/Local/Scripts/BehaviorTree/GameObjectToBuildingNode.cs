@@ -55,7 +55,7 @@ namespace Scripts.BehaviorTree
                 child.Run(this, childInputIndex, internalState, currentEvent);
             }
 
-            return State.FAILURE;
+            return State.SUCCESS;
         }
 
         public override void Clear()

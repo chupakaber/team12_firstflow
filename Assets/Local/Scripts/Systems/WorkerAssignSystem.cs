@@ -69,7 +69,7 @@ namespace Scripts
 
                                                 EventBus.CallEvent(new AssignmentEvent() {
                                                     Character = assistant,
-                                                    Building = assistant.TargetBuilding,
+                                                    Building = assistant.ResourceBuilding,
                                                     Area = assistant.TargetBuilding.UnloadingArea.gameObject
                                                 });
                                             }
