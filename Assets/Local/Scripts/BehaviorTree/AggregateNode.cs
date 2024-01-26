@@ -1,3 +1,4 @@
+using System.IO;
 using Scripts.Enums;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace Scripts.BehaviorTree
 
         public enum AggregateTypeEnum {
             TOTAL_WORKERS = 0,
-            TOTAL_BUILDING_ITEM_REQUIREMENT = 0
+            TOTAL_BUILDING_ITEM_REQUIREMENT = 1,
         }
 
         public AggregateTypeEnum AggregateType;
@@ -50,8 +51,60 @@ namespace Scripts.BehaviorTree
                         totalWorkers++;
                     }
                 }
+                foreach (var building in internalState.Buildings)
+                {
+                    if (building.gameObject.activeSelf)
+                    {
+                        if (building.ProduceItemType == ItemType.ASSISTANT || building.ProduceItemType == ItemType.APPRENTICE)
+                        {
+                            totalWorkers += building.Items.GetAmount(building.ProduceItemType);
+                        }
+                    }
+                }
                 _output = totalWorkers;
             }
+            else if (AggregateType == AggregateTypeEnum.TOTAL_BUILDING_ITEM_REQUIREMENT)
+            {
+                foreach (var building in internalState.Buildings)
+                {
+                    if (building.gameObject.activeSelf)
+                    {
+                        if (building.ProduceItemType == ItemType)
+                        {
+                            _output -= building.Items.GetAmount(ItemType);
+                        }
+
+                        if (building.Level + 1 < building.Levels.Count)
+                        {
+                            var buildingLevel = building.Levels[building.Level + 1];
+                            foreach (var requirement in buildingLevel.Cost)
+                            {
+                                if (requirement.Type == ItemType)
+                                {
+                                    if (building.Level == 0)
+                                    {
+                                        _output += Mathf.Clamp(requirement.Amount - building.Items.GetAmount(ItemType), 0, requirement.Amount);
+                                    }
+                                    else
+                                    {
+                                        _output += Mathf.Clamp(requirement.Amount - building.UpgradeStorage.Items.GetAmount(ItemType), 0, requirement.Amount);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                foreach (var character in internalState.Characters)
+                {
+                    if (character.CharacterType == CharacterType.PLAYER)
+                    {
+                        _output -= character.Items.GetAmount(ItemType);
+                    }
+                }
+            }
+
+            _output = Mathf.Max(0, _output);
         }
 
         protected override void OnStop(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)

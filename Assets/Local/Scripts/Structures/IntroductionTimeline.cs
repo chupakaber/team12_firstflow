@@ -24,6 +24,7 @@ namespace Scripts
         public Collider Trigger;
         public PlayableDirector PlayableDirector;
         public GameObject Root;
+        public CinematicBorders CinematicBorders;
 
         public NavMeshPath _path;
         public Vector3[] _pathCorners = new Vector3[128];
@@ -226,6 +227,7 @@ namespace Scripts
             PlayableDirector.Play();
             this.enabled = true;
             Trigger.enabled = false;
+            CinematicBorders.Close();
 
             EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = Vector3.zero });
         }
@@ -244,6 +246,7 @@ namespace Scripts
             PlayableDirector.Stop();
             Trigger.enabled = false;
             this.enabled = false;
+            CinematicBorders.Open();
             foreach(var actor in Actors) 
             {
                 actor.WorldDirection = Vector3.zero;

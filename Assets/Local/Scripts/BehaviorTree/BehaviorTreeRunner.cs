@@ -24,6 +24,7 @@ namespace Scripts.BehaviorTree
             _eventTypes.Add(EventCatchNode.EventTypeEnum.MovementInput, typeof(MovementInputEvent));
             _eventTypes.Add(EventCatchNode.EventTypeEnum.RollBagOfTries, typeof(RollBagOfTriesEvent));
             _eventTypes.Add(EventCatchNode.EventTypeEnum.Init, typeof(InitEvent));
+            _eventTypes.Add(EventCatchNode.EventTypeEnum.Assignment, typeof(AssignmentEvent));
         }
 
         public void EventCatch(IEvent currentEvent)

@@ -170,6 +170,13 @@ namespace Scripts
                         EventBus.CallEvent(new PlaySoundEvent() { SoundId = 14, IsMusic = false, AttachedTo = building.transform });
                     }
                 }
+                else if (building.ProduceItemType == ItemType.ROCK)
+                {
+                    if (CheckSoundTime(building, 7f))
+                    {
+                        EventBus.CallEvent(new PlaySoundEvent() { SoundId = 17, IsMusic = false, AttachedTo = building.transform });
+                    }
+                }
                 else if (building.ProduceItemType == ItemType.GOLD && building.ProductionArea == null)
                 {
                     foreach (var character in Characters)
