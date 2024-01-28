@@ -253,11 +253,12 @@ MonoBehaviour:
   CurrentState: 2
   Started: 0
   Guid: b5f44740b7100ea4faf0dec96df8cb3f
-  Position: {x: 203, y: 542}
+  Position: {x: 188, y: 587}
   Children:
-  - {fileID: -2252217159455595393}
-  InputTargetIndex: 00000000
-  OutputIndex: 00000000
+  - {fileID: 1011785207097488603}
+  - {fileID: 6011306836393482121}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
   EventType: 2
 --- !u!114 &-7629025245443869371
 MonoBehaviour:
@@ -345,7 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: CompareFloat
   CurrentState: 0
-  Started: 1
+  Started: 0
   Guid: 223951519d77d124f99d7cc1a0a6c0b4
   Position: {x: 1358, y: -374.5}
   Children:
@@ -1087,7 +1088,7 @@ MonoBehaviour:
   CurrentState: 0
   Started: 1
   Guid: 48e27c875594d3747a3769d09848b5ab
-  Position: {x: 460.7083, y: 581.50006}
+  Position: {x: 480.55002, y: 586.6}
   Children:
   - {fileID: -4345040912108292830}
   - {fileID: -7889062763675277692}
@@ -1384,7 +1385,7 @@ MonoBehaviour:
   CurrentState: 0
   Started: 0
   Guid: 369d7e601641b0945a78430bc66ac50f
-  Position: {x: 1690.0511, y: 2067}
+  Position: {x: 1691, y: 2067}
   Children:
   - {fileID: -8601298414192235192}
   InputTargetIndex: 00000000
@@ -1414,6 +1415,30 @@ MonoBehaviour:
   OutputIndex: 00000000
   ChildrenForFailure: []
   Operator: 2
+--- !u!114 &-34437615716006576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: '>0'
+  m_EditorClassIdentifier: 
+  Name: '>0'
+  CurrentState: 2
+  Started: 0
+  Guid: de82dd0b0c065214ca60b201bff4191a
+  Position: {x: 91.83241, y: 126.49992}
+  Children:
+  - {fileID: 7109282624455786080}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ChildrenForFailure: []
+  Operator: 1
+  Value: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1524,6 +1549,13 @@ MonoBehaviour:
   - {fileID: -2204804534289369048}
   - {fileID: -302035989539398441}
   - {fileID: -2912988569995229601}
+  - {fileID: 1011785207097488603}
+  - {fileID: 7109282624455786080}
+  - {fileID: 4500396859028228600}
+  - {fileID: 2836081513060748523}
+  - {fileID: 6011306836393482121}
+  - {fileID: -34437615716006576}
+  Labels: []
 --- !u!114 &238070740715046413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1566,6 +1598,32 @@ MonoBehaviour:
   InputTargetIndex: 02000000
   OutputIndex: 00000000
   Output: {fileID: 0}
+--- !u!114 &1011785207097488603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7485a34efe43d0e498dce0ac3c5bd59b, type: 3}
+  m_Name: CheckState
+  m_EditorClassIdentifier: 
+  Name: CheckState
+  CurrentState: 2
+  Started: 0
+  Guid: 406f10d0ab7caae43aa8d8741e3d7c0c
+  Position: {x: 331, y: 599.5}
+  Children:
+  - {fileID: -2252217159455595393}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  CompareOperator: 0
+  Value: 1
+  Min: 0
+  Max: 0
+  StateID: 1
 --- !u!114 &1348116413515432373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1748,6 +1806,29 @@ MonoBehaviour:
   Child: {fileID: -110013083006344411}
   InputTargetIndex: 1
   Value: 5
+--- !u!114 &2836081513060748523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffe549c032223648851950c2a86c679, type: 3}
+  m_Name: LEVEL
+  m_EditorClassIdentifier: 
+  Name: LEVEL
+  CurrentState: 2
+  Started: 0
+  Guid: cc1c40f2c31ca544c860444c95bb9338
+  Position: {x: 1.8324585, y: 126.49992}
+  Children:
+  - {fileID: -34437615716006576}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  FieldName: 3
+  Index: 0
 --- !u!114 &3307189747733207150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1835,7 +1916,7 @@ MonoBehaviour:
   CurrentState: 0
   Started: 0
   Guid: 0c73d8ff55cf2484f97afeb857d23503
-  Position: {x: 1583, y: 1821}
+  Position: {x: 1583.4999, y: 1871.9998}
   Children: []
   InputTargetIndex: 
   OutputIndex: 
@@ -1999,6 +2080,27 @@ MonoBehaviour:
   Min: 0
   Max: 0
   StateID: 0
+--- !u!114 &4500396859028228600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d3b50480ada64f48a97461bd34fc709, type: 3}
+  m_Name: DebugLog
+  m_EditorClassIdentifier: 
+  Name: DebugLog
+  CurrentState: 2
+  Started: 0
+  Guid: 5d3927449836c3741958f55ea986b2f3
+  Position: {x: 299, y: 127}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  Message: 1
 --- !u!114 &4912128264295445100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2066,6 +2168,36 @@ MonoBehaviour:
   OutputIndex: 01000000
   FieldName: 0
   IsSecondInputValueNeeded: 0
+--- !u!114 &6011306836393482121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: Alchemist #2
+  m_EditorClassIdentifier: 
+  Name: Alchemist #2
+  CurrentState: 2
+  Started: 0
+  Guid: abbcc4a110d5a5f4ca141c8991fd0f11
+  Position: {x: -147.16751, y: 126.49992}
+  Children:
+  - {fileID: 2836081513060748523}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 5002
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
 --- !u!114 &6504456511571809069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2202,6 +2334,30 @@ MonoBehaviour:
   Min: 0
   Max: 0
   StateID: 0
+--- !u!114 &7109282624455786080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38728efa30659324d971e3e2d65311d6, type: 3}
+  m_Name: SetState
+  m_EditorClassIdentifier: 
+  Name: SetState
+  CurrentState: 2
+  Started: 0
+  Guid: a98b60afe8c38c44f83bd0b873e10578
+  Position: {x: 185.83243, y: 126.49992}
+  Children:
+  - {fileID: 4500396859028228600}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  Method: 0
+  Value: 1
+  StateID: 1
 --- !u!114 &7495551180656856119
 MonoBehaviour:
   m_ObjectHideFlags: 0
