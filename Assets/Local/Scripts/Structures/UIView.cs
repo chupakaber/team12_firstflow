@@ -36,6 +36,12 @@ namespace Scripts
         public float FlyingCoinMinScale = 0.2f;
         public float FlyingCoinDuration = 0.5f;
 
+        [Header("Tutorial")]
+        public RectTransform TutorialAnimationTransform;
+        public Image TutorialAnimationImage;
+        public List<Material> TutorialStepMaterials = new List<Material>();
+        public List<Sprite> TutorialStepSprites = new List<Sprite>();
+
         [Header("Menu")]
         public Button SettingsButton;
         public Button MenuCloseButton;
@@ -60,6 +66,9 @@ namespace Scripts
         private int StickIndex = -1;
         private int _currentRank;
         private bool _externalSoundChange;
+        private bool _showTutorial = false;
+        private bool _hideTutorial = false;
+        private int _tutorialStepId = -1;
 
         public void Awake()
         {
@@ -257,6 +266,63 @@ namespace Scripts
             foreach (var label in _localizedLabels)
             {
                 label.SwitchLanguage(_currentLangID);
+            }
+        }
+
+        public void ShowTutorial(int id)
+        {
+            _showTutorial = true;
+            _tutorialStepId = id;
+            TryShowTutorial();
+        }
+
+        public void HideTutorial()
+        {
+            TutorialAnimationTransform.DOComplete(false);
+            TutorialAnimationTransform.DOScale(0.01f, 0.5f).OnComplete(() => {
+                TutorialAnimationTransform.gameObject.SetActive(false);
+                TryShowTutorial();
+            });
+        }
+
+        private void TryShowTutorial()
+        {
+            if (!_showTutorial)
+            {
+                return;
+            }
+
+            if (!TutorialAnimationTransform.gameObject.activeSelf)
+            {
+                _showTutorial = false;
+                TutorialAnimationTransform.gameObject.SetActive(true);
+                if (_tutorialStepId < 0)
+                {
+                    throw new UnityException($"Wrong tutorial step index: '{_tutorialStepId}'.");
+                }
+                else if (_tutorialStepId >= TutorialStepMaterials.Count || _tutorialStepId >= TutorialStepSprites.Count)
+                {
+                    throw new UnityException($"Tutorial material with index '{_tutorialStepId}' not set.");
+                }
+                else if (TutorialStepMaterials[_tutorialStepId] == null)
+                {
+                    throw new UnityException($"Tutorial material with index '{_tutorialStepId}' is empty.");
+                }
+                else if (TutorialStepSprites[_tutorialStepId] == null)
+                {
+                    throw new UnityException($"Tutorial sprite with index '{_tutorialStepId}' is empty.");
+                }
+                else
+                {
+                    TutorialAnimationImage.material = TutorialStepMaterials[_tutorialStepId];
+                    TutorialAnimationImage.sprite = TutorialStepSprites[_tutorialStepId];
+                    TutorialAnimationTransform.DOScale(1f, 0.5f).OnComplete(() => {
+                    });
+                }
+            }
+            else
+            {
+                HideTutorial();
             }
         }
 
