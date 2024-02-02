@@ -282,7 +282,7 @@ namespace Scripts
 
         public void DropItemsFromHands()
         {
-            ItemStackView.Drop(transform.position + Vector3.left * 0.5f);
+            ItemStackView.Drop(transform.position + Vector3.forward * -1.5f);
         }
 
         public void PickUpDroppedItems()
