@@ -141,7 +141,15 @@ namespace Scripts
             {
                 if (building.PickingUpAreaHelper != null)
                 {
-                    building.PickingUpAreaHelper.SetActive(building.AssignedPickingUpCharacters.Count == 0 && hasAssistant);
+                    var hasTargetBuilding = false;
+                    foreach (var otherBuilding in Buildings)
+                    {
+                        if (otherBuilding.UnloadingArea != null && otherBuilding.ConsumeItemType == building.ProduceItemType && otherBuilding.UnloadingCharacters.Count == 0)
+                        {
+                            hasTargetBuilding = true;
+                        }
+                    }
+                    building.PickingUpAreaHelper.SetActive(hasTargetBuilding && building.AssignedPickingUpCharacters.Count == 0 && hasAssistant);
                 }
                 if (building.ProductionAreaHelper != null)
                 {

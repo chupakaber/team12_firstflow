@@ -36,13 +36,13 @@ namespace Scripts
                                         {
                                             if (building.Items.GetAmount(building.ProduceItemType) > 0)
                                             {
-                                                EventBus.CallEvent(new RemoveItemEvent() { Unit = building, ItemType = building.ProduceItemType, Count = 1 });
-
                                                 worker.TargetBuilding = null;
                                                 player.AddLastInQueue(worker);
                                                 worker.FollowingOffset = 2.2f;
 
                                                 building.UnloadingCharacters.Remove(player);
+
+                                                EventBus.CallEvent(new RemoveItemEvent() { Unit = building, ItemType = building.ProduceItemType, Count = 1 });
                                                 return;
                                             }
                                         }
