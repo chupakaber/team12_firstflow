@@ -1,5 +1,6 @@
 ﻿using Scripts.Enums;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ namespace Scripts
         private List<ItemView> _items = new List<ItemView>();
         private Vector3 _temporaryWorldPosition;
         private bool _useTemporaryPosition;
+        private float _lastMovingTime = -1f;
 
         public void SortItems()
         {
@@ -26,14 +28,20 @@ namespace Scripts
             {
                 foreach (var item in _items)
                 {
-                    item.transform.parent = null;
+                    if (item.gameObject.activeSelf && !_exclusiveStacksDictionary.ContainsKey(item.ItemType))
+                    {
+                        item.transform.parent = null;
+                    }
                 }
             }
             else if (!_useTemporaryPosition && _items.Count > 0 && _items[0].transform.parent == null)
             {
                 foreach (var item in _items)
                 {
-                    item.transform.parent = transform;
+                    if (item.gameObject.activeSelf && !_exclusiveStacksDictionary.ContainsKey(item.ItemType))
+                    {
+                        item.transform.parent = transform;
+                    }
                 }
             }
 
@@ -51,11 +59,16 @@ namespace Scripts
                 var item = _items[i];
                 if (item.gameObject.activeSelf && !_exclusiveStacksDictionary.ContainsKey(item.ItemType))
                 {
-                    item.transform.localPosition = new Vector3(0, counter * _offset, 0);
+                    item.LastPosition = item.transform.localPosition;
+                    item.CurrentPosition = new Vector3(0, counter * _offset, 0);
                     item.transform.localRotation = Quaternion.identity;
                     if (_useTemporaryPosition)
                     {
-                        item.transform.localPosition += _temporaryWorldPosition;
+                        item.CurrentPosition += _temporaryWorldPosition;
+                    }
+                    else
+                    {
+                        item.transform.localPosition = item.CurrentPosition;
                     }
                     counter++;
                 }
@@ -76,10 +89,6 @@ namespace Scripts
 
                         item.transform.localPosition = new Vector3(0, counter * _offset, 0);
                         item.transform.localRotation = Quaternion.identity;
-                        if (_useTemporaryPosition)
-                        {
-                            item.transform.localPosition += _temporaryWorldPosition;
-                        }
                         counter++;
                     }
                 }
@@ -169,6 +178,9 @@ namespace Scripts
             _useTemporaryPosition = true;
 
             SortItems();
+
+            _lastMovingTime = Time.time;
+            StartCoroutine(AsyncMovingPivot());
         }
 
         public void PickUp()
@@ -180,6 +192,35 @@ namespace Scripts
 
             _useTemporaryPosition = false;
             SortItems();
+
+            _lastMovingTime = Time.time;
+            StartCoroutine(AsyncMovingPivot());
+        }
+
+        public IEnumerator AsyncMovingPivot()
+        {
+            while (Time.time - _lastMovingTime < 0.3f)
+            {
+                var d = (Time.time - _lastMovingTime) / 0.3f;
+                var verticalDelta = (0.5f - Mathf.Abs(d - 0.5f)) * 2f;
+                var i = 0;
+                foreach (var item in _items)
+                {
+                    if (item.gameObject.activeSelf && !_exclusiveStacksDictionary.ContainsKey(item.ItemType))
+                    {
+                        item.transform.localPosition = Vector3.Lerp(item.LastPosition, item.CurrentPosition, d) + new Vector3(0f, verticalDelta * (1f + (0.3f * i)), 0f);
+                    }
+                    i++;
+                }
+                yield return new WaitForEndOfFrame();
+            }
+            foreach (var item in _items)
+            {
+                if (item.gameObject.activeSelf && !_exclusiveStacksDictionary.ContainsKey(item.ItemType))
+                {
+                    item.transform.localPosition = item.CurrentPosition;
+                }
+            }
         }
 
         [Serializable]
