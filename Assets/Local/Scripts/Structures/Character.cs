@@ -243,11 +243,14 @@ namespace Scripts
 
             if (itemType == ItemType.GOLD)
             {
-                var count = Mathf.Max(1, sourceCount);
-                var cooldown = PickUpGoldMaxTime / count;
-                cooldown = Mathf.Min(PickUpCooldown, cooldown);
+                // var count = Mathf.Max(1, sourceCount);
+                // var cooldown = PickUpGoldMaxTime / count;
+                // cooldown = Mathf.Min(PickUpCooldown, cooldown);
+                // batchCount = (int) Mathf.Ceil(Mathf.Max(1f, MIN_COOLDOWN / cooldown));
+                var dropTime = Mathf.Clamp(Time.time - _dropItemStartTimestamp, 0f, DropGoldMaxTime);
+                var cooldown = Mathf.Pow((DropGoldMaxTime - dropTime) / DropGoldMaxTime, 12f) * DropGoldMaxTime;
+                cooldown = Mathf.Max(cooldown, 0.0001f);
                 batchCount = (int) Mathf.Ceil(Mathf.Max(1f, MIN_COOLDOWN / cooldown));
-                
                 return cooldown;
             }
 
