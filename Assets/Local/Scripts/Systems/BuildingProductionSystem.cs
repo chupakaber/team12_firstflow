@@ -81,6 +81,16 @@ namespace Scripts
         {
             foreach (var building in Buildings)
             {
+                foreach (var character in building.ProductionCharacters)
+                {
+                    // var rotationToBuilding = building.ProductionArea.transform.rotation;
+                    var rotationToBuilding = Quaternion.LookRotation(building.transform.position - building.ProductionArea.transform.position, Vector3.up);
+                    if (character.CharacterRigidbody.velocity.sqrMagnitude < 0.1f)
+                    {
+                        character.transform.rotation = Quaternion.Lerp(character.transform.rotation, rotationToBuilding, Time.fixedDeltaTime * 5f);
+                    }
+                }
+
                 if (Time.time < building.LastProductionCheckTime + PRODUCTION_CHECK_COOLDOWN)
                 {
                     continue;
