@@ -88,6 +88,12 @@ namespace Scripts
                     if (character.CharacterRigidbody.velocity.sqrMagnitude < 0.1f)
                     {
                         character.transform.rotation = Quaternion.Lerp(character.transform.rotation, rotationToBuilding, Time.fixedDeltaTime * 5f);
+                        if (character.CharacterType == CharacterType.PLAYER && character.Equals(building.ProductionCharacters[0]))
+                        {
+                            var deltaPosition = building.ProductionArea.transform.position - character.transform.position;
+                            deltaPosition.y = 0f;
+                            character.transform.position += deltaPosition * Time.fixedDeltaTime * 5f;
+                        }
                     }
                 }
 
@@ -107,20 +113,28 @@ namespace Scripts
 
                 if(building.ProductionArea != null && building.ProductionCharacters.Count < 1)
                 {
+                    OnStopProduction(building);
                     continue;
                 }
 
                 if (building.ItemCost > building.Items.GetAmount(building.ConsumeItemType))
                 {
+                    OnStopProduction(building);
                     continue;
                 }
 
                 if(building.ProductionLimit < building.Items.GetAmount(building.ProduceItemType) + building.ProductionItemAmountPerCycle)
                 {
+                    OnStopProduction(building);
                     continue;
                 }
 
                 building.IsWork = true;
+                
+                if (building.ProductionCharacters.Count > 0)
+                {
+                    building.ProductionCharacters[0].ShowBagOfTries();
+                }
 
                 if (Time.time < building.LastProductionTime + building.ProductionCooldown)
                 {
@@ -199,6 +213,14 @@ namespace Scripts
                 }
 
                 building.LastProductionTime = Time.time;
+            }
+        }
+
+        private void OnStopProduction(Building building)
+        {
+            if (building.ProductionCharacters.Count > 0)
+            {
+                building.ProductionCharacters[0].HideBagOfTries();
             }
         }
 
