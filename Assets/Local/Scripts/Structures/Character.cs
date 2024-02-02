@@ -44,6 +44,7 @@ namespace Scripts
         public LinkedList<Character> CharacterCollisions = new LinkedList<Character>();
         public Character NextInQueue;
         public Character PreviousInQueue;
+        public ItemStackView TemporaryItemStack;
 
 
         private const float MIN_COOLDOWN = 0.06f;
@@ -149,6 +150,14 @@ namespace Scripts
             CharacterAnimator.SetBool(_loadedAnimationKey, Items.GetAmount() > 0);
             CharacterAnimator.SetFloat(_speedAnimationKey, (CharacterRigidbody.velocity.magnitude - 0.5f) / 4f);
             CharacterAnimator.SetBool(_isWorkingAnimationKey, IsWork);
+            if (IsWork)
+            {
+                DropItemsFromHands();
+            }
+            else
+            {
+                PickUpDroppedItems();
+            }
         }
 
         public void Bow()
@@ -269,6 +278,16 @@ namespace Scripts
         public void ClearDropItemCooldown()
         {
             _dropItemStartTimestamp = -1f;
+        }
+
+        public void DropItemsFromHands()
+        {
+            ItemStackView.Drop(transform.position + Vector3.left * 0.5f);
+        }
+
+        public void PickUpDroppedItems()
+        {
+            ItemStackView.PickUp();
         }
     }
 }

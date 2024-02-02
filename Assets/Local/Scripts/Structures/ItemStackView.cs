@@ -17,9 +17,26 @@ namespace Scripts
         public float Offset { get { return _offset; } }
 
         private List<ItemView> _items = new List<ItemView>();
+        private Vector3 _temporaryWorldPosition;
+        private bool _useTemporaryPosition;
 
         public void SortItems()
         {
+            if (_useTemporaryPosition && _items.Count > 0 && _items[0].transform.parent != null)
+            {
+                foreach (var item in _items)
+                {
+                    item.transform.parent = null;
+                }
+            }
+            else if (!_useTemporaryPosition && _items.Count > 0 && _items[0].transform.parent == null)
+            {
+                foreach (var item in _items)
+                {
+                    item.transform.parent = transform;
+                }
+            }
+
             if (_exclusiveStacksDictionary.Count < _exclusiveStacks.Count)
             {
                 foreach (var stack in _exclusiveStacks)
@@ -36,6 +53,10 @@ namespace Scripts
                 {
                     item.transform.localPosition = new Vector3(0, counter * _offset, 0);
                     item.transform.localRotation = Quaternion.identity;
+                    if (_useTemporaryPosition)
+                    {
+                        item.transform.localPosition += _temporaryWorldPosition;
+                    }
                     counter++;
                 }
             }
@@ -55,6 +76,10 @@ namespace Scripts
 
                         item.transform.localPosition = new Vector3(0, counter * _offset, 0);
                         item.transform.localRotation = Quaternion.identity;
+                        if (_useTemporaryPosition)
+                        {
+                            item.transform.localPosition += _temporaryWorldPosition;
+                        }
                         counter++;
                     }
                 }
@@ -131,6 +156,30 @@ namespace Scripts
             }
             position.y += count * Offset;
             return position;
+        }
+
+        public void Drop(Vector3 worldPosition)
+        {
+            if (_useTemporaryPosition)
+            {
+                return;
+            }
+
+            _temporaryWorldPosition = worldPosition;
+            _useTemporaryPosition = true;
+
+            SortItems();
+        }
+
+        public void PickUp()
+        {
+            if (!_useTemporaryPosition)
+            {
+                return;
+            }
+
+            _useTemporaryPosition = false;
+            SortItems();
         }
 
         [Serializable]
