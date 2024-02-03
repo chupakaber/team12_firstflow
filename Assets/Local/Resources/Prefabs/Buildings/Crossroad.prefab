@@ -278,6 +278,7 @@ MonoBehaviour:
   - {fileID: 3441631325251216555}
   - {fileID: 2264750507875036360}
   - {fileID: 7743716309037421760}
+  Initialized: 0
   ID: -1
   ConstructionArea: {fileID: 8471052104909363219}
   ProductionArea: {fileID: 0}
@@ -315,6 +316,7 @@ MonoBehaviour:
     Boost: []
   UpgradeStorage: {fileID: 0}
   HonorIconAnimation: {fileID: 0}
+  UpgradeAnimationEffect: {fileID: 0}
   _level: 0
   ConstructionCharacters: []
   ProductionCharacters: []
@@ -742,8 +744,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4167082790776699320}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.19, y: 0, z: -1.17}
+  m_LocalRotation: {x: -0, y: -0.7071065, z: -0, w: 0.7071071}
+  m_LocalPosition: {x: 1.741, y: 0, z: 1.894}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -752,7 +754,7 @@ Transform:
   - {fileID: 6600376699092364435}
   - {fileID: 2801109806852133491}
   m_Father: {fileID: 6638843261506000139}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!65 &8471052104909363219
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1053,14 +1055,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4996939846064329224}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0.7071065, z: -0, w: 0.7071071}
+  m_LocalPosition: {x: 1.242, y: 0, z: -1.774}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5828390004511678911}
   m_Father: {fileID: 6638843261506000139}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!65 &4637692144988825437
 BoxCollider:
   m_ObjectHideFlags: 0
