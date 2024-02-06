@@ -35,6 +35,7 @@ namespace Scripts
         public Unit UpgradeStorage;
         public Animation HonorIconAnimation;
         public AnimationEffect UpgradeAnimationEffect;
+        public MeshRenderer UpgradeZoneMeshRenderer;
 
         [SerializeField] private int _level;
 
