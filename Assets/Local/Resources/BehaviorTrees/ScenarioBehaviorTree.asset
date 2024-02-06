@@ -2272,29 +2272,6 @@ MonoBehaviour:
   Child: {fileID: -2347968199939557470}
   InputTargetIndex: 1
   Value: 1
---- !u!114 &-3600765362344579348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f54b9835b9502cd478bbcd7f9842afd0, type: 3}
-  m_Name: MIN 5
-  m_EditorClassIdentifier: 
-  Name: MIN 5
-  CurrentState: 2
-  Started: 0
-  Guid: bf458355203aaad43acf925cfc9e2c3b
-  Position: {x: -3324.6658, y: -2318.9163}
-  Children:
-  - {fileID: -185846039661690403}
-  InputTargetIndex: 01000000
-  OutputIndex: 00000000
-  MathOperation: 5
-  Value: 5
 --- !u!114 &-3546650357787629568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2968,6 +2945,28 @@ MonoBehaviour:
   OutputIndex: 00000000
   FieldName: 6
   IsSecondInputValueNeeded: 0
+--- !u!114 &-2213412206934146271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daaff762aa30ed343988cece780a5e47, type: 3}
+  m_Name: MIN
+  m_EditorClassIdentifier: 
+  Name: MIN
+  CurrentState: 0
+  Started: 0
+  Guid: 23ffda6bbb335d04687dec22eeb6dec0
+  Position: {x: -3273, y: -2397}
+  Children:
+  - {fileID: -185846039661690403}
+  InputTargetIndex: 01000000
+  OutputIndex: 00000000
+  MathOperation: 5
 --- !u!114 &-2101678119369963652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3899,6 +3898,29 @@ MonoBehaviour:
   Method: 0
   Value: 1
   StateID: 19
+--- !u!114 &-21622288079595509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffe549c032223648851950c2a86c679, type: 3}
+  m_Name: BASE_PRODUCTION_LIMIT
+  m_EditorClassIdentifier: 
+  Name: BASE_PRODUCTION_LIMIT
+  CurrentState: 0
+  Started: 0
+  Guid: 2b0a5bc1167e982409e461e510e2c5c0
+  Position: {x: -3482, y: -2201}
+  Children:
+  - {fileID: -2213412206934146271}
+  InputTargetIndex: 01000000
+  OutputIndex: 00000000
+  FieldName: 6
+  Index: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4166,7 +4188,6 @@ MonoBehaviour:
   - {fileID: -185846039661690403}
   - {fileID: 4705098444280732965}
   - {fileID: 1205696499986999031}
-  - {fileID: -3600765362344579348}
   - {fileID: -1991089566464393722}
   - {fileID: -412172505360798720}
   - {fileID: -8597904501486561919}
@@ -4251,6 +4272,8 @@ MonoBehaviour:
   - {fileID: -6988559799293255346}
   - {fileID: -3459179930528525991}
   - {fileID: 8901237409047337782}
+  - {fileID: -2213412206934146271}
+  - {fileID: -21622288079595509}
   Labels:
   - {fileID: -6524441439742630276}
   - {fileID: 2134023816377030358}
@@ -6606,7 +6629,7 @@ MonoBehaviour:
   Guid: 7ccab77d313bdf549992e38a07c58891
   Position: {x: -3674.6658, y: -2318.9163}
   Children:
-  - {fileID: -3600765362344579348}
+  - {fileID: -2213412206934146271}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
   AggregateType: 1
@@ -7681,8 +7704,9 @@ MonoBehaviour:
   Position: {x: -3674.6658, y: -2478.9163}
   Children:
   - {fileID: -185846039661690403}
-  InputTargetIndex: 00000000
-  OutputIndex: 00000000
+  - {fileID: -21622288079595509}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
   ID: 91
   MinimumLevel: 0
   MaximumLevel: 1000

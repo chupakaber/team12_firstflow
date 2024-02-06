@@ -161,8 +161,25 @@ namespace Scripts
         {
             switch (boost.Type)
             {
+                case Enums.BoostType.PRODUCTION_COOLDOWN:
+                    building.ProductionCooldown = boost.Value;
+                break;
                 case Enums.BoostType.PRODUCTION_COOLDOWN_MULTIPLICATOR:
                     building.ProductionCooldown *= boost.Value;
+                break;
+                case Enums.BoostType.RESOURCE_LIMIT:
+                    building.ResourceLimit = (int) boost.Value;
+                break;
+                case Enums.BoostType.RESOURCE_LIMIT_MULTIPLICATOR:
+                    building.ResourceLimit = (int) (building.ResourceLimit * boost.Value);
+                break;
+                case Enums.BoostType.PRODUCTION_LIMIT:
+                    building.ProductionLimit = (int) boost.Value;
+                    building.BaseProductionLimit = building.ProductionLimit;
+                break;
+                case Enums.BoostType.PRODUCTION_LIMIT_MULTIPLICATOR:
+                    building.ProductionLimit = (int) (building.ProductionLimit * boost.Value);
+                    building.BaseProductionLimit = building.ProductionLimit;
                 break;
             }
         }

@@ -15,6 +15,7 @@ namespace Scripts.BehaviorTree
             ITEM_COST = 4,
             PRODUCE_ITEMS_PER_CYCLE = 5,
             RESOURCE_LIMIT = 6,
+            BASE_PRODUCTION_LIMIT = 7,
         }
 
         public FieldNameEnum FieldName;
@@ -94,6 +95,10 @@ namespace Scripts.BehaviorTree
                         {
                             _inputValue1.UpgradeArea.gameObject.SetActive(_inputValue2 > 0.5f);
                         }
+                    break;
+                    case FieldNameEnum.BASE_PRODUCTION_LIMIT:
+                        _inputValue1.BaseProductionLimit = (int) Mathf.Round(_inputValue2);
+                        internalState.EventBus.CallEvent(new BuildingConfigurationChangedEvent() { Building = _inputValue1 });
                     break;
                     case FieldNameEnum.PRODUCTION_LIMIT:
                         _inputValue1.ProductionLimit = (int) Mathf.Round(_inputValue2);

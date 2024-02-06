@@ -23,6 +23,7 @@ namespace Scripts
         public Transform ProgressBarPivot;
         public GameObject StopProductionIcon;
         public GameObject NoResourceIcon;
+        public int BaseProductionLimit;
         public int ProductionLimit;
         public int ResourceLimit;
         public int ItemCost;

@@ -14,6 +14,8 @@ namespace Scripts.BehaviorTree
             ITEMS_AMOUNT = 2,
             LEVEL = 3,
             ID = 4,
+            PRODUCTION_LIMIT = 5,
+            BASE_PRODUCTION_LIMIT = 6,
         }
 
         public FieldNameEnum FieldName;
@@ -42,6 +44,10 @@ namespace Scripts.BehaviorTree
                     return _building.Level;
                 case FieldNameEnum.ID:
                     return _building.ID;
+                case FieldNameEnum.BASE_PRODUCTION_LIMIT:
+                    return _building.BaseProductionLimit;
+                case FieldNameEnum.PRODUCTION_LIMIT:
+                    return _building.ProductionLimit;
             }
 
             return 0f;
