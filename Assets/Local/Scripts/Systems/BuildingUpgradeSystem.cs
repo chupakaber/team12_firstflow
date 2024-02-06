@@ -34,6 +34,20 @@ namespace Scripts
             }
         }
 
+        public void EventCatch(EnterTriggerEvent newEvent)
+        {
+            foreach (var building in Buildings)
+            {                
+                if (newEvent.Trigger.Equals(building.UpgradeArea) && newEvent.Character.CharacterType == Enums.CharacterType.PLAYER)
+                {
+                    if (building.UpgradeZoneMeshRenderer != null)
+                    {
+                        EventBus.CallEvent(new PreparationForInteractionEvent() {MeshRenderer = building.UpgradeZoneMeshRenderer});
+                    }
+                }
+            }
+        }
+
         private void Collecting(Building building, Character character)
         {
             if (building.UpgradeStorage == null || !character)

@@ -75,6 +75,7 @@ namespace Scripts
         private SoundSystem _soundSystem = new SoundSystem();
         private CarnivalBehaviorSystem _carnivalBehaviorSystem = new CarnivalBehaviorSystem();
         private CutSceneSystem _cutSceneSystem = new CutSceneSystem();
+        private FillingInteractionZoneSystem _fillingInteractionZoneSystem = new FillingInteractionZoneSystem();
 
         private bool _initialized;
 
@@ -150,6 +151,7 @@ namespace Scripts
             AddSystem(_carnivalBehaviorSystem);
             AddSystem(_cutSceneSystem);
             AddSystem(_characterInitSystem);
+            AddSystem(_fillingInteractionZoneSystem);
 
             _container.AddLink(_eventBus, "EventBus");
             _container.AddLink(_characters, "Characters");
