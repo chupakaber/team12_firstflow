@@ -10,10 +10,12 @@ namespace Scripts
     {
         public List<Character> Characters;
         public List<ProgressBarView> ProgressBarViews;
+        public List<TimerBarView> TimerBarViews;
         public List<Building> Buildings;
         public EventBus EventBus;
         public UIView UIView;
         public Camera Camera;
+        public Scenario Scenario;
         public PoolCollection<BagOfTriesView> BagOfTriesViewPools;
         public PoolCollection<PinnedCounterView> PinnedCounterViewPools;
         public PoolCollection<BubbleView> BubbleViewPools;
@@ -43,6 +45,12 @@ namespace Scripts
                     }
                 }
             }
+
+            var timerBars = Object.FindObjectsOfType<TimerBarView>();
+            foreach (var timerBar in timerBars)
+            {
+                TimerBarViews.Add(timerBar);
+            }
         }
 
         public void EventCatch(AddItemEvent newEvent)
@@ -69,6 +77,32 @@ namespace Scripts
                 var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
                 var progressBarTransform = (RectTransform)progressBar.transform;
                 progressBarTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
+            }
+
+            for (var i = 0; i< TimerBarViews.Count; i++)
+            {
+                var timerBar = TimerBarViews[i];
+                var building = timerBar.Building;
+
+                var value = 0f;
+                if (timerBar.ValueFromStateID > -1)
+                {
+                    value = Scenario.BehaviorTreeRunner.InternalState.GetState(timerBar.ValueFromStateID);
+                }
+                else if (building != null)
+                {
+                    value = Mathf.Max(0f, building.ProductionEndActivityTime - Time.time);
+                }
+                timerBar.Progress = value;
+
+                if (building != null)
+                {
+                    var worldPosition = building.transform.position + Vector3.up * 3f;
+                    var screenPosition = Camera.WorldToScreenPoint(worldPosition);
+                    var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
+                    var timerBarTransform = (RectTransform)timerBar.transform;
+                    timerBarTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
+                }
             }
 
             foreach (var character in Characters)

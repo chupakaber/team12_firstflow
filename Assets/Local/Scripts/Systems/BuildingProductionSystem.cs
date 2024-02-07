@@ -111,6 +111,11 @@ namespace Scripts
 
                 UpdateProductionStateIcon(building);
 
+                if (building.ProduceMethod == Building.ProductionMethod.RESOURCE_TO_TIME && Time.time > building.ProductionEndActivityTime)
+                {
+                    continue;
+                }
+
                 if(building.ProductionArea != null && building.ProductionCharacters.Count < 1)
                 {
                     OnStopProduction(building);

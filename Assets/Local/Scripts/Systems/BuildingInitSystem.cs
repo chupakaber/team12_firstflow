@@ -10,13 +10,16 @@ namespace Scripts
 
         public List<Building> Buildings;
         public List<ProgressBarView> ProgressBarViews;
+        public List<TimerBarView> TimerBarViews;
         
         private ProgressBarView _progressBarPrefab;
+        private TimerBarView _timerBarPrefab;
 
         public void EventCatch(InitEvent newEvent)
         {
             var buildingsArray = Object.FindObjectsOfType<Building>();
             _progressBarPrefab = Resources.Load<ProgressBarView>("Prefabs/UI/ProgressBar");
+            _timerBarPrefab = Resources.Load<TimerBarView>("Prefabs/UI/TimerBar");
 
             foreach (var building in buildingsArray)
             {
@@ -35,6 +38,15 @@ namespace Scripts
                 ProgressBarViews.Add(progressBar);
 
                 UpdateProgress(building);
+
+                if (building.ProduceMethod == Building.ProductionMethod.RESOURCE_TO_TIME)
+                {
+                    var timerBar = Object.Instantiate(_timerBarPrefab);
+                    timerBar.Building = building;
+                    timerBar.transform.SetParent(UIView.WorldSpaceTransform);
+                    timerBar.transform.localScale = Vector3.one;
+                    TimerBarViews.Add(timerBar);
+                }
 
                 building.Initialized = true;
             }

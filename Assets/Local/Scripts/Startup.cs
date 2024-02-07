@@ -1,9 +1,7 @@
 using Scripts.Enums;
 using Scripts.Systems;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Scripts
 {
@@ -17,6 +15,7 @@ namespace Scripts
         private List<Character> _characters = new List<Character>();
         private List<Building> _buildings = new List<Building>();
         private List<ProgressBarView> _progressBarViews = new List<ProgressBarView>();
+        private List<TimerBarView> _timerBarViews = new List<TimerBarView>();
         private PoolCollection<ItemView> _itemViewPools = new PoolCollection<ItemView>();
         private PoolCollection<IconView> _iconViewPools = new PoolCollection<IconView>();
         private PoolCollection<BagOfTriesView> _bagOfTriesViewPools = new PoolCollection<BagOfTriesView>();
@@ -159,6 +158,7 @@ namespace Scripts
             _container.AddLink(_uiView, "UIView");
             _container.AddLink(_buildings, "Buildings");
             _container.AddLink(_progressBarViews, "ProgressBarViews");
+            _container.AddLink(_timerBarViews, "TimerBarViews");
             _container.AddLink(_itemViewPools, "ItemViewPools");
             _container.AddLink(_iconViewPools, "IconViewPools");
             _container.AddLink(_unlockQueue, "UnlockQueue");
