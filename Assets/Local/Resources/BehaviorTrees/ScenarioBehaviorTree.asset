@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   Name: 1
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 0d3dbbf404d85ca4593c1c1cf5865708
   Position: {x: 718, y: -2256}
@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   Name: 1
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 29df91e77eb2e354b8259e9fc7f2d63f
   Position: {x: 718, y: -2114}
@@ -670,9 +670,10 @@ MonoBehaviour:
   Started: 0
   Guid: 7a9e716d73100c6439b3a3f1d8ad3a9b
   Position: {x: 1479, y: -2861}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
+  Children:
+  - {fileID: 7388894120103974041}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
   EventType: 3
 --- !u!114 &-7438784232028873551
 MonoBehaviour:
@@ -793,7 +794,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   Name: 1
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 9b7f873b8b34d914e88849269f834eb6
   Position: {x: 720, y: -2415}
@@ -992,7 +993,7 @@ MonoBehaviour:
   m_Name: Vector3Value
   m_EditorClassIdentifier: 
   Name: Vector3Value
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 098b9241cab2e474997735a42e4b22a1
   Position: {x: 788.99994, y: 804}
@@ -1033,7 +1034,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   Name: 1
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 90972455c4bbc524997b6fde1ce25628
   Position: {x: 720, y: -2837}
@@ -1117,7 +1118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AMOUNT
   CurrentState: 0
-  Started: 1
+  Started: 0
   Guid: e83b2889262353a41b6306fcd39eb31d
   Position: {x: -3169, y: -1098}
   Children:
@@ -1515,7 +1516,7 @@ MonoBehaviour:
   m_Name: CheckState 16
   m_EditorClassIdentifier: 
   Name: CheckState 16
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 8fa54a76be758cd41be2e8dd4a50b8c5
   Position: {x: 1076, y: -2531}
@@ -1683,7 +1684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AMOUNT
   CurrentState: 0
-  Started: 1
+  Started: 0
   Guid: 2b9d1b6b36f099a44b40e6d257858ea1
   Position: {x: -1995.6401, y: -127.49844}
   Children:
@@ -1692,6 +1693,27 @@ MonoBehaviour:
   OutputIndex: 00000000
   FieldName: 2
   IsSecondInputValueNeeded: 1
+--- !u!114 &-4968598572489299145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329dd31653f9e5341bac43e4448a1724, type: 3}
+  m_Name: ShowTutorial #8
+  m_EditorClassIdentifier: 
+  Name: ShowTutorial #8
+  CurrentState: 0
+  Started: 0
+  Guid: 004705f5a13b1bf4b8f74256af3500b9
+  Position: {x: 1563.7504, y: 1614}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  Index: 8
 --- !u!114 &-4836503661556468978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1977,7 +1999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AMOUNT
   CurrentState: 0
-  Started: 1
+  Started: 0
   Guid: 85a6adcc88f6ac94ca7cb4fc48bbbbaa
   Position: {x: -3168, y: -1578}
   Children:
@@ -2010,6 +2032,27 @@ MonoBehaviour:
   Method: 0
   Value: 1
   StateID: 13
+--- !u!114 &-4193957249521191645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329dd31653f9e5341bac43e4448a1724, type: 3}
+  m_Name: ShowTutorial #6
+  m_EditorClassIdentifier: 
+  Name: ShowTutorial #6
+  CurrentState: 0
+  Started: 0
+  Guid: dcbdaaf9033e5b143bf35f2df35e81b4
+  Position: {x: -2296, y: -1074}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  Index: 6
 --- !u!114 &-4184718740118134111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2316,7 +2359,7 @@ MonoBehaviour:
   m_Name: TRUE
   m_EditorClassIdentifier: 
   Name: TRUE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: b79da5caa5a89424ba6cdbeb3b42b0b7
   Position: {x: 1120.5051, y: 1443}
@@ -2336,7 +2379,7 @@ MonoBehaviour:
   m_Name: SHOW TUTORIAL ARROW
   m_EditorClassIdentifier: 
   Name: SHOW TUTORIAL ARROW
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 88cf2ce7a8c2ca044807d26e64313e47
   Position: {x: 930.50006, y: 806.5}
@@ -2553,7 +2596,7 @@ MonoBehaviour:
   m_Name: SetState 16
   m_EditorClassIdentifier: 
   Name: SetState 16
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: bc8e173c1cf62d447915300629eb3110
   Position: {x: 1216, y: -2531}
@@ -2924,7 +2967,7 @@ MonoBehaviour:
   m_Name: Shop Spear
   m_EditorClassIdentifier: 
   Name: Shop Spear
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 691e73307533d66488dd3c86d7562c9a
   Position: {x: 1112.505, y: 1313}
@@ -2954,7 +2997,7 @@ MonoBehaviour:
   m_Name: UPGRADE AREA STATE
   m_EditorClassIdentifier: 
   Name: UPGRADE AREA STATE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: e2be23460245caa4097b0e9e5b310512
   Position: {x: 1329, y: 1062}
@@ -3029,7 +3072,7 @@ MonoBehaviour:
   m_Name: MIN
   m_EditorClassIdentifier: 
   Name: MIN
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 23ffda6bbb335d04687dec22eeb6dec0
   Position: {x: -3273, y: -2397}
@@ -3079,9 +3122,10 @@ MonoBehaviour:
   Started: 0
   Guid: e6775fef10823174ab74e2c2f488fc24
   Position: {x: -3548, y: -71}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
+  Children:
+  - {fileID: 5909264971008659756}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
   EventType: 3
 --- !u!114 &-1991089566464393722
 MonoBehaviour:
@@ -3305,9 +3349,10 @@ MonoBehaviour:
   Started: 0
   Guid: 29da629515dfafc47a8a01199abcc4c9
   Position: {x: 2371.0005, y: -1732.0002}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
+  Children:
+  - {fileID: 6621280026691925800}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
   EventType: 3
 --- !u!114 &-1502500840477033761
 MonoBehaviour:
@@ -3471,7 +3516,7 @@ MonoBehaviour:
   m_Name: Crossroad #1
   m_EditorClassIdentifier: 
   Name: Crossroad #1
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: c27e97ff81048e24faaa038857772bd6
   Position: {x: 789, y: 1061.5}
@@ -3958,7 +4003,7 @@ MonoBehaviour:
   m_Name: PRODUCTION LIMIT
   m_EditorClassIdentifier: 
   Name: PRODUCTION LIMIT
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 45990208fc6328b498df77e284fd0993
   Position: {x: -3171.6658, y: -2502.9163}
@@ -4003,7 +4048,7 @@ MonoBehaviour:
   m_Name: BASE_PRODUCTION_LIMIT
   m_EditorClassIdentifier: 
   Name: BASE_PRODUCTION_LIMIT
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 2b0a5bc1167e982409e461e510e2c5c0
   Position: {x: -3482, y: -2201}
@@ -4371,6 +4416,16 @@ MonoBehaviour:
   - {fileID: -6476890985775111912}
   - {fileID: -1333634644227314578}
   - {fileID: -3020577978829304373}
+  - {fileID: 6621280026691925800}
+  - {fileID: 7542802853917601900}
+  - {fileID: 9149364175773356171}
+  - {fileID: 2155218823900900372}
+  - {fileID: 4890051174103654152}
+  - {fileID: 5909264971008659756}
+  - {fileID: -4193957249521191645}
+  - {fileID: 1387819931158623434}
+  - {fileID: -4968598572489299145}
+  - {fileID: 7388894120103974041}
   Labels:
   - {fileID: -6524441439742630276}
   - {fileID: 2134023816377030358}
@@ -4575,7 +4630,7 @@ MonoBehaviour:
   m_Name: TRUE
   m_EditorClassIdentifier: 
   Name: TRUE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 9e5b752e486fbcf49822ed8a73d50689
   Position: {x: 789, y: 1198.8075}
@@ -4618,7 +4673,7 @@ MonoBehaviour:
   m_Name: Vector3Value
   m_EditorClassIdentifier: 
   Name: Vector3Value
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 7733da8a321e4ab448d2f53b532c717f
   Position: {x: 1331, y: -2531}
@@ -4933,6 +4988,27 @@ MonoBehaviour:
   ChildrenForFailure: []
   Operator: 0
   Value: 101
+--- !u!114 &1387819931158623434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329dd31653f9e5341bac43e4448a1724, type: 3}
+  m_Name: ShowTutorial #7
+  m_EditorClassIdentifier: 
+  Name: ShowTutorial #7
+  CurrentState: 0
+  Started: 0
+  Guid: c4397cf891432a14fb9084a81ee9bb71
+  Position: {x: -3285.7507, y: -611}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  Index: 7
 --- !u!114 &1465522346698768971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4986,13 +5062,14 @@ MonoBehaviour:
   m_Name: SetState 5
   m_EditorClassIdentifier: 
   Name: SetState 5
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 3680dd7b04ae3a142ae906108793842d
   Position: {x: 1147.0159, y: 807}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
+  Children:
+  - {fileID: 4890051174103654152}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
   Method: 0
   Value: 0
   StateID: 5
@@ -5299,7 +5376,7 @@ MonoBehaviour:
   m_Name: SHOW TUTORIAL ARROW
   m_EditorClassIdentifier: 
   Name: SHOW TUTORIAL ARROW
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 204b3dff0c423e2458dbb8a25a466829
   Position: {x: 1469, y: -2528}
@@ -5445,6 +5522,27 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &2155218823900900372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329dd31653f9e5341bac43e4448a1724, type: 3}
+  m_Name: ShowTutorial #3
+  m_EditorClassIdentifier: 
+  Name: ShowTutorial #3
+  CurrentState: 0
+  Started: 0
+  Guid: 964ed83fd70a95041ae1892a3426c039
+  Position: {x: 1244, y: 291.00006}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  Index: 3
 --- !u!114 &2171345878589031454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5598,9 +5696,10 @@ MonoBehaviour:
   Started: 0
   Guid: 928284a139b15414fbb337c7b9515edb
   Position: {x: -3518, y: -611}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
+  Children:
+  - {fileID: 1387819931158623434}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
   EventType: 3
 --- !u!114 &2488966504275464276
 MonoBehaviour:
@@ -5976,9 +6075,10 @@ MonoBehaviour:
   Started: 0
   Guid: d4b7d670258383f4e8f1b9822380481e
   Position: {x: 1329.0269, y: 1614}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
+  Children:
+  - {fileID: -4968598572489299145}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
   EventType: 3
 --- !u!114 &3399076176584746527
 MonoBehaviour:
@@ -5993,7 +6093,7 @@ MonoBehaviour:
   m_Name: Blacksmith Spear #1
   m_EditorClassIdentifier: 
   Name: Blacksmith Spear #1
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 042d79361e73cc84da6ba3998aad6225
   Position: {x: 1108.5051, y: 1187}
@@ -6141,7 +6241,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   Name: 1
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 4211a62c6eb0a7f46b4b36dba5faaed3
   Position: {x: 721, y: -2962}
@@ -6281,7 +6381,7 @@ MonoBehaviour:
   m_Name: Quarry #1
   m_EditorClassIdentifier: 
   Name: Quarry #1
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 8e1df5d7c309ed5498b3a221b18d70d7
   Position: {x: 1107.505, y: 1062}
@@ -6661,9 +6761,10 @@ MonoBehaviour:
   Started: 0
   Guid: a33f0089cb4570746ae1496ae46255e5
   Position: {x: -2514, y: -1578}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
+  Children:
+  - {fileID: 7542802853917601900}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
   EventType: 3
 --- !u!114 &4526154654987126679
 MonoBehaviour:
@@ -6678,7 +6779,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   Name: 1
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: fd3e03998be505d4483a10a1ab215e7e
   Position: {x: 720, y: -2707}
@@ -6698,8 +6799,8 @@ MonoBehaviour:
   m_Name: SET ACTIVE
   m_EditorClassIdentifier: 
   Name: SET ACTIVE
-  CurrentState: 0
-  Started: 1
+  CurrentState: 2
+  Started: 0
   Guid: eb7c328a4f367a843bffd15252f4172c
   Position: {x: 2368, y: 228.5}
   Children: []
@@ -6745,7 +6846,7 @@ MonoBehaviour:
   m_Name: TOTAL BUILDING ITEM REQUIREMENT
   m_EditorClassIdentifier: 
   Name: TOTAL BUILDING ITEM REQUIREMENT
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 7ccab77d313bdf549992e38a07c58891
   Position: {x: -3674.6658, y: -2318.9163}
@@ -6785,6 +6886,27 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &4890051174103654152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329dd31653f9e5341bac43e4448a1724, type: 3}
+  m_Name: ShowTutorial #4
+  m_EditorClassIdentifier: 
+  Name: ShowTutorial #4
+  CurrentState: 2
+  Started: 0
+  Guid: e7ed661063e1b6e49a31879cbab7bd0b
+  Position: {x: 1293, y: 807}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  Index: 4
 --- !u!114 &4912670461118432347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7143,9 +7265,10 @@ MonoBehaviour:
   Started: 0
   Guid: 6758967922fbf8d4e85074ed43b68eca
   Position: {x: 1392.9999, y: -91.135056}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
+  Children:
+  - {fileID: 9149364175773356171}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
   FieldName: 2
 --- !u!114 &5865332811664258523
 MonoBehaviour:
@@ -7177,6 +7300,27 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &5909264971008659756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329dd31653f9e5341bac43e4448a1724, type: 3}
+  m_Name: ShowTutorial #5
+  m_EditorClassIdentifier: 
+  Name: ShowTutorial #5
+  CurrentState: 0
+  Started: 0
+  Guid: faf3798469cc970438fed4982a8b2035
+  Position: {x: -3319, y: -71}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  Index: 5
 --- !u!114 &5965604267803292537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7218,9 +7362,10 @@ MonoBehaviour:
   Started: 0
   Guid: d2c67fc3bb7b0da40af2c09c319c4313
   Position: {x: 1008.00006, y: 290.73978}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
+  Children:
+  - {fileID: 2155218823900900372}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
   EventType: 3
 --- !u!114 &6055967618626391791
 MonoBehaviour:
@@ -7507,6 +7652,27 @@ MonoBehaviour:
   InputTargetIndex: 
   OutputIndex: 
   EventType: 3
+--- !u!114 &6621280026691925800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329dd31653f9e5341bac43e4448a1724, type: 3}
+  m_Name: ShowTutorial #0
+  m_EditorClassIdentifier: 
+  Name: ShowTutorial #0
+  CurrentState: 2
+  Started: 0
+  Guid: 4d42832c41e1d6e4ca95d93cd8a5b710
+  Position: {x: 2624, y: -1732}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  Index: 0
 --- !u!114 &6636173489944011427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7597,9 +7763,10 @@ MonoBehaviour:
   Started: 0
   Guid: 99b5014f1d72d4c4d8390ee61e156e91
   Position: {x: -2539, y: -1074}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
+  Children:
+  - {fileID: -4193957249521191645}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
   EventType: 3
 --- !u!114 &6849234718002281224
 MonoBehaviour:
@@ -7748,7 +7915,7 @@ MonoBehaviour:
   m_Name: SetState 15
   m_EditorClassIdentifier: 
   Name: SetState 15
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 4ee95839f11f44e45b97d667222c09f0
   Position: {x: 1236, y: -2411}
@@ -7771,7 +7938,7 @@ MonoBehaviour:
   m_Name: BUILDING ACTIVE
   m_EditorClassIdentifier: 
   Name: BUILDING ACTIVE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 42f16424be3c92a4a8894df1b2909c12
   Position: {x: 931.0001, y: 1062}
@@ -7819,7 +7986,7 @@ MonoBehaviour:
   m_Name: Quarry
   m_EditorClassIdentifier: 
   Name: Quarry
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 85de8a932e27e40438c7db99be40b8e6
   Position: {x: -3674.6658, y: -2478.9163}
@@ -7928,6 +8095,27 @@ MonoBehaviour:
   OutputIndex: 00000000
   FieldName: 6
   IsSecondInputValueNeeded: 0
+--- !u!114 &7388894120103974041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329dd31653f9e5341bac43e4448a1724, type: 3}
+  m_Name: ShowTutorial #9
+  m_EditorClassIdentifier: 
+  Name: ShowTutorial #9
+  CurrentState: 0
+  Started: 0
+  Guid: 7a6e8c9225cbb7c459eaf7eeab7aeaa0
+  Position: {x: 1714, y: -2861}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  Index: 9
 --- !u!114 &7437792764172793174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7988,6 +8176,27 @@ MonoBehaviour:
   InputTargetIndex: 
   OutputIndex: 
   FieldName: 0
+--- !u!114 &7542802853917601900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329dd31653f9e5341bac43e4448a1724, type: 3}
+  m_Name: ShowTutorial #1
+  m_EditorClassIdentifier: 
+  Name: ShowTutorial #1
+  CurrentState: 0
+  Started: 0
+  Guid: 112ee8c4234dad845a2f91025f2d5e88
+  Position: {x: -2276, y: -1578}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  Index: 1
 --- !u!114 &7654428882487584643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8173,7 +8382,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   Name: 1
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 2ff013a536e65c543bbc4301b77d55bf
   Position: {x: 720, y: -2579}
@@ -8194,7 +8403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AMOUNT
   CurrentState: 0
-  Started: 1
+  Started: 0
   Guid: 1cb9326b3d9a63f409bcfd6d186a08ac
   Position: {x: -3169, y: -1344}
   Children:
@@ -8347,7 +8556,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   Name: 1
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 427e4a1da58a1f84cab237325fcf065c
   Position: {x: 720, y: -1859}
@@ -8627,7 +8836,7 @@ MonoBehaviour:
   m_Name: EQUAL
   m_EditorClassIdentifier: 
   Name: EQUAL
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: b44cdb4faf6ccd04f8606b9eb47ba075
   Position: {x: 883, y: -2528}
@@ -8651,7 +8860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AMOUNT
   CurrentState: 0
-  Started: 1
+  Started: 0
   Guid: 099094425dc9f0b45a0d39d81c62100d
   Position: {x: -1036, y: -544.5}
   Children:
@@ -8738,3 +8947,24 @@ MonoBehaviour:
   Method: 0
   Value: 1
   StateID: 17
+--- !u!114 &9149364175773356171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329dd31653f9e5341bac43e4448a1724, type: 3}
+  m_Name: ShowTutorial #2
+  m_EditorClassIdentifier: 
+  Name: ShowTutorial #2
+  CurrentState: 0
+  Started: 0
+  Guid: dd1253d20deb96f46a35e512fc4a920b
+  Position: {x: 1615, y: -91}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  Index: 2

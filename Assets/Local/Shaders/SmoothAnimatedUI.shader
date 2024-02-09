@@ -85,7 +85,7 @@ Shader "Team12/UI/SmoothAnimated"
                 float frameDelta = rawFrame - frame;
                 o.frameDelta = frameDelta;
                 
-                frame = frame - floor(frame / _Tiling.x) * _Tiling.x;
+                frame = frame - floor(frame / _Tiling.x) * _Tiling.x + _Tiling.y;
                 float frameY = floor(frame * _MainTex_ST.xy);
                 float frameX = frame - frameY / _MainTex_ST.xy;
 
@@ -93,7 +93,7 @@ Shader "Team12/UI/SmoothAnimated"
 
 
                 frame = floor(rawFrame) - 1;
-                frame = frame - floor(frame / _Tiling.x) * _Tiling.x;
+                frame = frame - floor(frame / _Tiling.x) * _Tiling.x + _Tiling.y;
                 frameY = floor(frame * _MainTex_ST.xy);
                 frameX = frame - frameY / _MainTex_ST.xy;
 

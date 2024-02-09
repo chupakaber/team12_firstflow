@@ -165,6 +165,9 @@ namespace Scripts
                     var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
                     UIView.PointerArrowTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
                     UIView.PointerArrowTransform.localRotation = Quaternion.Euler(0f, 0f, 180f);
+
+                    screenPosition = Camera.WorldToScreenPoint(UIView.PointerArrowTargetPosition);
+                    UIView.TutorialAnimationTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
                 }
             }
             else
@@ -213,6 +216,9 @@ namespace Scripts
                 var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
                 UIView.PointerArrowTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
                 UIView.PointerArrowTransform.localRotation = Quaternion.Euler(0f, 0f, -Quaternion.LookRotation(direction).eulerAngles.y - 45f);
+
+                screenPosition = Camera.WorldToScreenPoint(UIView.PointerArrowTargetPosition);
+                UIView.TutorialAnimationTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
             }
 
             foreach (var bubble in _bubbleViews)
