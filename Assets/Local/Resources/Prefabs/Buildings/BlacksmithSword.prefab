@@ -2010,14 +2010,17 @@ MonoBehaviour:
   ProductionAreaHelper: {fileID: 4056307416807025924}
   PickingUpAreaHelper: {fileID: 7231811355877944573}
   ProgressBarPivot: {fileID: 8696724085808567959}
-  StopProductionIcon: {fileID: 379014378580621120}
+  StopProductionIcon: {fileID: 0}
   NoResourceIcon: {fileID: 581653604664478781}
+  ProduceMethod: 1
+  BaseProductionLimit: 0
   ProductionLimit: 20
   ResourceLimit: 30
   ItemCost: 3
   ProductionItemAmountPerCycle: 1
   ProductionCooldown: 4
   ProductionUseBagOfTries: 1
+  ProductionConversionRate: 1
   ProduceItemType: 4
   ConsumeItemType: 1
   Levels:
@@ -2061,6 +2064,7 @@ MonoBehaviour:
   UpgradeStorage: {fileID: 915097358632772234}
   HonorIconAnimation: {fileID: 0}
   UpgradeAnimationEffect: {fileID: 8741843224700266417}
+  UpgradeZoneMeshRenderer: {fileID: 0}
   _level: 0
   ConstructionCharacters: []
   ProductionCharacters: []
@@ -2072,6 +2076,7 @@ MonoBehaviour:
   AssignedPickingUpCharacters: []
   LastProductionTime: -200
   ProductionEndTime: -100
+  ProductionEndActivityTime: 0
   LastProductionSoundTime: 0
   LastProductionCheckTime: 0
 --- !u!1 &5937836246124602144
