@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1e9a936f37de3694491eec5fb48bfb0a
+guid: c407e5a0aaa22fc49b25cf419cb6d719
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -19,17 +19,7 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'Scapula_R' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'ElbowPart1_R' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'Scapula_L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'ElbowPart1_L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'HipPart1_R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'KneePart1_R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'HipPart1_L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'KneePart1_L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -43,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: carrying
+      name: sitting_idle
       takeName: Take 001
       internalID: 1827226128182048838
       firstFrame: 1
-      lastFrame: 240
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
