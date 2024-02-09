@@ -56,6 +56,7 @@ namespace Scripts
         private int _talkAnimationKey = Animator.StringToHash("Talk");
         
         private float _dropItemStartTimestamp = -1f;
+        private float _pickupItemStartTimestamp = -1f;
 
         public void GetRank(out int rank, out int currentPoints, out int rankPoints)
         {
@@ -239,6 +240,11 @@ namespace Scripts
 
         public float GetPickUpCooldown(ItemType itemType, out int batchCount, int sourceCount = 1)
         {
+            if (_pickupItemStartTimestamp < 0f)
+            {
+                _pickupItemStartTimestamp = Time.time;
+            }
+            
             batchCount = 1;
 
             if (itemType == ItemType.GOLD)
@@ -247,7 +253,7 @@ namespace Scripts
                 // var cooldown = PickUpGoldMaxTime / count;
                 // cooldown = Mathf.Min(PickUpCooldown, cooldown);
                 // batchCount = (int) Mathf.Ceil(Mathf.Max(1f, MIN_COOLDOWN / cooldown));
-                var dropTime = Mathf.Clamp(Time.time - _dropItemStartTimestamp, 0f, DropGoldMaxTime);
+                var dropTime = Mathf.Clamp(Time.time - _pickupItemStartTimestamp, 0f, DropGoldMaxTime);
                 var cooldown = Mathf.Pow((DropGoldMaxTime - dropTime) / DropGoldMaxTime, 12f) * DropGoldMaxTime;
                 cooldown = Mathf.Max(cooldown, 0.0001f);
                 batchCount = (int) Mathf.Ceil(Mathf.Max(1f, MIN_COOLDOWN / cooldown));
@@ -281,6 +287,11 @@ namespace Scripts
         public void ClearDropItemCooldown()
         {
             _dropItemStartTimestamp = -1f;
+        }
+
+        public void ClearPickUpItemCooldown()
+        {
+            _pickupItemStartTimestamp = -1f;
         }
 
         public void DropItemsFromHands()

@@ -42,6 +42,7 @@ namespace Scripts
                 {
                     character.transform.rotation = Quaternion.Lerp(character.transform.rotation, Quaternion.LookRotation(horizontalDirection), Time.fixedDeltaTime * 10f);
                     character.ClearDropItemCooldown();
+                    character.ClearPickUpItemCooldown();
                 }
 
                 if (character.CharacterType == Enums.CharacterType.PLAYER && character.WorldDirection.sqrMagnitude <= float.Epsilon)
