@@ -666,12 +666,12 @@ MonoBehaviour:
   m_Name: SHOW TUTORIAL ARROW
   m_EditorClassIdentifier: 
   Name: SHOW TUTORIAL ARROW
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 7a9e716d73100c6439b3a3f1d8ad3a9b
   Position: {x: 1479, y: -2861}
   Children:
-  - {fileID: 7388894120103974041}
+  - {fileID: 3637031972494600758}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
   EventType: 3
@@ -993,7 +993,7 @@ MonoBehaviour:
   m_Name: Vector3Value
   m_EditorClassIdentifier: 
   Name: Vector3Value
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 098b9241cab2e474997735a42e4b22a1
   Position: {x: 788.99994, y: 804}
@@ -1118,7 +1118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AMOUNT
   CurrentState: 0
-  Started: 0
+  Started: 1
   Guid: e83b2889262353a41b6306fcd39eb31d
   Position: {x: -3169, y: -1098}
   Children:
@@ -1684,7 +1684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AMOUNT
   CurrentState: 0
-  Started: 0
+  Started: 1
   Guid: 2b9d1b6b36f099a44b40e6d257858ea1
   Position: {x: -1995.6401, y: -127.49844}
   Children:
@@ -1999,7 +1999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AMOUNT
   CurrentState: 0
-  Started: 0
+  Started: 1
   Guid: 85a6adcc88f6ac94ca7cb4fc48bbbbaa
   Position: {x: -3168, y: -1578}
   Children:
@@ -2185,7 +2185,7 @@ MonoBehaviour:
   CurrentState: 0
   Started: 0
   Guid: ba59c51c57a7a5649b3c3a44a1b541eb
-  Position: {x: -551.0001, y: -1525.5637}
+  Position: {x: -551, y: -1526}
   Children: []
   InputTargetIndex: 
   OutputIndex: 
@@ -2359,7 +2359,7 @@ MonoBehaviour:
   m_Name: TRUE
   m_EditorClassIdentifier: 
   Name: TRUE
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: b79da5caa5a89424ba6cdbeb3b42b0b7
   Position: {x: 1120.5051, y: 1443}
@@ -2379,7 +2379,7 @@ MonoBehaviour:
   m_Name: SHOW TUTORIAL ARROW
   m_EditorClassIdentifier: 
   Name: SHOW TUTORIAL ARROW
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 88cf2ce7a8c2ca044807d26e64313e47
   Position: {x: 930.50006, y: 806.5}
@@ -2967,7 +2967,7 @@ MonoBehaviour:
   m_Name: Shop Spear
   m_EditorClassIdentifier: 
   Name: Shop Spear
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 691e73307533d66488dd3c86d7562c9a
   Position: {x: 1112.505, y: 1313}
@@ -2997,7 +2997,7 @@ MonoBehaviour:
   m_Name: UPGRADE AREA STATE
   m_EditorClassIdentifier: 
   Name: UPGRADE AREA STATE
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: e2be23460245caa4097b0e9e5b310512
   Position: {x: 1329, y: 1062}
@@ -3036,6 +3036,27 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &-2246212996029978776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329dd31653f9e5341bac43e4448a1724, type: 3}
+  m_Name: ShowTutorial #9
+  m_EditorClassIdentifier: 
+  Name: ShowTutorial #9
+  CurrentState: 0
+  Started: 0
+  Guid: bf9cba42ee4ad334abf120f68715dfb1
+  Position: {x: -3616, y: 745}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  Index: 9
 --- !u!114 &-2225619314179792009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3274,7 +3295,7 @@ MonoBehaviour:
   m_Name: CheckState 31
   m_EditorClassIdentifier: 
   Name: CheckState 31
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: c1a06cc5f0e87124f932d497a06b8c45
   Position: {x: 1076, y: -2861}
@@ -3301,7 +3322,7 @@ MonoBehaviour:
   m_Name: 2
   m_EditorClassIdentifier: 
   Name: 2
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: f24ab4303f353da46889f4446ab85917
   Position: {x: -4310, y: -664}
@@ -3516,7 +3537,7 @@ MonoBehaviour:
   m_Name: Crossroad #1
   m_EditorClassIdentifier: 
   Name: Crossroad #1
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: c27e97ff81048e24faaa038857772bd6
   Position: {x: 789, y: 1061.5}
@@ -3817,8 +3838,8 @@ MonoBehaviour:
   m_Name: EQUAL
   m_EditorClassIdentifier: 
   Name: EQUAL
-  CurrentState: 0
-  Started: 1
+  CurrentState: 2
+  Started: 0
   Guid: 41119cbff6b3d8b4eaf248bcebb875a5
   Position: {x: 883, y: -2861}
   Children:
@@ -3937,7 +3958,7 @@ MonoBehaviour:
   m_Name: Vector3Value
   m_EditorClassIdentifier: 
   Name: Vector3Value
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 4f2a7caa2ac9d96439f51250fb09eddd
   Position: {x: 1332, y: -2861}
@@ -4425,7 +4446,8 @@ MonoBehaviour:
   - {fileID: -4193957249521191645}
   - {fileID: 1387819931158623434}
   - {fileID: -4968598572489299145}
-  - {fileID: 7388894120103974041}
+  - {fileID: 3637031972494600758}
+  - {fileID: -2246212996029978776}
   Labels:
   - {fileID: -6524441439742630276}
   - {fileID: 2134023816377030358}
@@ -4630,7 +4652,7 @@ MonoBehaviour:
   m_Name: TRUE
   m_EditorClassIdentifier: 
   Name: TRUE
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 9e5b752e486fbcf49822ed8a73d50689
   Position: {x: 789, y: 1198.8075}
@@ -5062,7 +5084,7 @@ MonoBehaviour:
   m_Name: SetState 5
   m_EditorClassIdentifier: 
   Name: SetState 5
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 3680dd7b04ae3a142ae906108793842d
   Position: {x: 1147.0159, y: 807}
@@ -5560,9 +5582,10 @@ MonoBehaviour:
   Started: 0
   Guid: 926c66643f35bd7459ca750abde3fc04
   Position: {x: -3846, y: 745}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
+  Children:
+  - {fileID: -2246212996029978776}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
   EventType: 3
 --- !u!114 &2249674123417096679
 MonoBehaviour:
@@ -6051,7 +6074,7 @@ MonoBehaviour:
   m_Name: SPEAR
   m_EditorClassIdentifier: 
   Name: SPEAR
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 4da09ec3d4c5f8e4c92f20a8b0a763ff
   Position: {x: -3981, y: -282}
@@ -6093,7 +6116,7 @@ MonoBehaviour:
   m_Name: Blacksmith Spear #1
   m_EditorClassIdentifier: 
   Name: Blacksmith Spear #1
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 042d79361e73cc84da6ba3998aad6225
   Position: {x: 1108.5051, y: 1187}
@@ -6245,7 +6268,7 @@ MonoBehaviour:
   Started: 0
   Guid: 4211a62c6eb0a7f46b4b36dba5faaed3
   Position: {x: 721, y: -2962}
-  Child: {fileID: 0}
+  Child: {fileID: -556229779806763876}
   InputTargetIndex: 0
   Value: 1
 --- !u!114 &3551819506137271186
@@ -6261,13 +6284,33 @@ MonoBehaviour:
   m_Name: WOOD
   m_EditorClassIdentifier: 
   Name: WOOD
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 1578b42ce66d0984b8a172cc2a9577d4
   Position: {x: -3975, y: 286}
   Child: {fileID: 8549146507361545044}
   InputTargetIndex: 1
   Value: 2
+--- !u!114 &3637031972494600758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbfc9f64b089a64fbb62c057c09368d, type: 3}
+  m_Name: HideTutorial
+  m_EditorClassIdentifier: 
+  Name: HideTutorial
+  CurrentState: 0
+  Started: 0
+  Guid: 327fe714a7a2e95478809c21156783c5
+  Position: {x: 1720, y: -2861}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
 --- !u!114 &3731995567138786580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6381,7 +6424,7 @@ MonoBehaviour:
   m_Name: Quarry #1
   m_EditorClassIdentifier: 
   Name: Quarry #1
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 8e1df5d7c309ed5498b3a221b18d70d7
   Position: {x: 1107.505, y: 1062}
@@ -6899,7 +6942,7 @@ MonoBehaviour:
   m_Name: ShowTutorial #4
   m_EditorClassIdentifier: 
   Name: ShowTutorial #4
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: e7ed661063e1b6e49a31879cbab7bd0b
   Position: {x: 1293, y: 807}
@@ -7001,7 +7044,7 @@ MonoBehaviour:
   m_Name: SetState 18
   m_EditorClassIdentifier: 
   Name: SetState 18
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 466be721118aa354d8e4b2fa1cd20a97
   Position: {x: 1219, y: -2671}
@@ -7591,8 +7634,8 @@ MonoBehaviour:
   m_Name: AMOUNT
   m_EditorClassIdentifier: 
   Name: AMOUNT
-  CurrentState: 2
-  Started: 0
+  CurrentState: 0
+  Started: 1
   Guid: 93a2116fd4238ac4981f225570f0aba8
   Position: {x: -4310, y: -494}
   Children:
@@ -7826,7 +7869,7 @@ MonoBehaviour:
   m_Name: SetState 31
   m_EditorClassIdentifier: 
   Name: SetState 31
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 40dfe1b5969cb6044bc097ff572a960d
   Position: {x: 1219, y: -2861}
@@ -7938,7 +7981,7 @@ MonoBehaviour:
   m_Name: BUILDING ACTIVE
   m_EditorClassIdentifier: 
   Name: BUILDING ACTIVE
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 42f16424be3c92a4a8894df1b2909c12
   Position: {x: 931.0001, y: 1062}
@@ -8095,27 +8138,6 @@ MonoBehaviour:
   OutputIndex: 00000000
   FieldName: 6
   IsSecondInputValueNeeded: 0
---- !u!114 &7388894120103974041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 329dd31653f9e5341bac43e4448a1724, type: 3}
-  m_Name: ShowTutorial #9
-  m_EditorClassIdentifier: 
-  Name: ShowTutorial #9
-  CurrentState: 0
-  Started: 0
-  Guid: 7a6e8c9225cbb7c459eaf7eeab7aeaa0
-  Position: {x: 1714, y: -2861}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
-  Index: 9
 --- !u!114 &7437792764172793174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8403,7 +8425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AMOUNT
   CurrentState: 0
-  Started: 0
+  Started: 1
   Guid: 1cb9326b3d9a63f409bcfd6d186a08ac
   Position: {x: -3169, y: -1344}
   Children:
@@ -8679,8 +8701,8 @@ MonoBehaviour:
   m_Name: AMOUNT
   m_EditorClassIdentifier: 
   Name: AMOUNT
-  CurrentState: 2
-  Started: 0
+  CurrentState: 0
+  Started: 1
   Guid: f1168707694e9d049aae65a4cdc1a54d
   Position: {x: -4270, y: 105}
   Children:
@@ -8860,7 +8882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AMOUNT
   CurrentState: 0
-  Started: 0
+  Started: 1
   Guid: 099094425dc9f0b45a0d39d81c62100d
   Position: {x: -1036, y: -544.5}
   Children:

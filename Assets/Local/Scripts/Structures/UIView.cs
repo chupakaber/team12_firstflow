@@ -39,8 +39,11 @@ namespace Scripts
         [Header("Tutorial")]
         public RectTransform TutorialAnimationTransform;
         public Image TutorialAnimationImage;
+        public RectTransform TutorialTaskTransform;
+        public TMP_Text TutorialTaskLabel;
         public List<Material> TutorialStepMaterials = new List<Material>();
         public List<Sprite> TutorialStepSprites = new List<Sprite>();
+        public List<string> TutorialStrings = new List<string>();
 
         [Header("Menu")]
         public Button SettingsButton;
@@ -281,6 +284,7 @@ namespace Scripts
             TutorialAnimationTransform.DOComplete(false);
             TutorialAnimationTransform.DOScale(0.01f, 0.5f).OnComplete(() => {
                 TutorialAnimationTransform.gameObject.SetActive(false);
+                TutorialTaskTransform.gameObject.SetActive(false);
                 TryShowTutorial();
             });
         }
@@ -295,6 +299,8 @@ namespace Scripts
             if (!TutorialAnimationTransform.gameObject.activeSelf)
             {
                 _showTutorial = false;
+                TutorialTaskTransform.gameObject.SetActive(true);
+                TutorialTaskLabel.text = TutorialStrings[_tutorialStepId];
                 TutorialAnimationTransform.gameObject.SetActive(true);
                 if (_tutorialStepId < 0)
                 {
