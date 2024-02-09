@@ -355,6 +355,16 @@ namespace Scripts
             _touchInputEvents.AddLast(currentEvent);
         }
 
+        public void EventCatch(ShowTutorialVideoEvent currentEvent)
+        {
+            UIView.ShowTutorial(currentEvent.Index);
+        }
+
+        public void EventCatch(HideTutorialVideoEvent currentEvent)
+        {
+            UIView.HideTutorial();
+        }
+
         private void UpdateItemsCount(Unit unit, ItemType itemType)
         {
             if (unit is Character)
