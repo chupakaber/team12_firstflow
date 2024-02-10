@@ -892,7 +892,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _baseRotation: {x: 0, y: 0, z: 0}
+  _dynamicRotation: {x: 0, y: 0, z: 0}
   _exclusiveStacks: []
+  Align: 1
 --- !u!1 &1833927639674411652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,7 +1338,7 @@ MonoBehaviour:
       Type: 7
     Boost:
     - Type: 1
-      Value: 0.8
+      Value: 0.86
   - Visual: {fileID: 8262905921015597303}
     Cost:
     - Amount: 6
@@ -1344,7 +1347,7 @@ MonoBehaviour:
       Type: 7
     Boost:
     - Type: 1
-      Value: 0.75
+      Value: 0.83
   - Visual: {fileID: 4612167323012774735}
     Cost:
     - Amount: 7
@@ -1353,7 +1356,7 @@ MonoBehaviour:
       Type: 7
     Boost:
     - Type: 1
-      Value: 0.67
+      Value: 0.62
   UpgradeStorage: {fileID: 1272715563403169151}
   HonorIconAnimation: {fileID: 0}
   UpgradeAnimationEffect: {fileID: 1225046244838206702}
@@ -1418,7 +1421,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _baseRotation: {x: 0, y: 0, z: 0}
+  _dynamicRotation: {x: 0, y: 0, z: 0}
   _exclusiveStacks: []
+  Align: 1
 --- !u!114 &1272715563403169151
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1150,7 +1150,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _baseRotation: {x: 0, y: 0, z: 0}
+  _dynamicRotation: {x: 0, y: 0, z: 0}
   _exclusiveStacks: []
+  Align: 1
 --- !u!114 &243217601791744313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1701,9 +1704,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _baseRotation: {x: 0, y: 0, z: 0}
+  _dynamicRotation: {x: 0, y: 0, z: 0}
   _exclusiveStacks:
   - ItemType: 7
     Transform: {fileID: 3427515908635891010}
+  Align: 1
 --- !u!1 &6170902742592678787
 GameObject:
   m_ObjectHideFlags: 0
@@ -2224,12 +2230,15 @@ MonoBehaviour:
   ProgressBarPivot: {fileID: 7274138818378373902}
   StopProductionIcon: {fileID: 4898060417843725566}
   NoResourceIcon: {fileID: 336087316621146423}
+  ProduceMethod: 1
+  BaseProductionLimit: 0
   ProductionLimit: 1000
   ResourceLimit: 30
   ItemCost: 1
-  ProductionItemAmountPerCycle: 7
+  ProductionItemAmountPerCycle: 9
   ProductionCooldown: 1.75
   ProductionUseBagOfTries: 0
+  ProductionConversionRate: 1
   ProduceItemType: 7
   ConsumeItemType: 6
   Levels:
@@ -2273,6 +2282,7 @@ MonoBehaviour:
   UpgradeStorage: {fileID: 243217601791744313}
   HonorIconAnimation: {fileID: 3103329274101039163}
   UpgradeAnimationEffect: {fileID: 2928883531549790349}
+  UpgradeZoneMeshRenderer: {fileID: 0}
   _level: 0
   ConstructionCharacters: []
   ProductionCharacters: []
@@ -2284,6 +2294,7 @@ MonoBehaviour:
   AssignedPickingUpCharacters: []
   LastProductionTime: -200
   ProductionEndTime: -100
+  ProductionEndActivityTime: 0
   LastProductionSoundTime: 0
   LastProductionCheckTime: 0
 --- !u!1 &8013540698862316488
