@@ -100,7 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _baseRotation: {x: 0, y: 0, z: 0}
+  _dynamicRotation: {x: 0, y: 0, z: 0}
   _exclusiveStacks: []
+  Align: 1
 --- !u!114 &4714826110490114940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,14 +335,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845548009763816971}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 0.134, y: 0.983, z: 2.778}
+  m_LocalRotation: {x: -0.07746533, y: -0.70285076, z: -0.07746533, w: 0.70285076}
+  m_LocalPosition: {x: 0.762, y: 1.177, z: -0.046}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3016967975488742283}
-  m_Father: {fileID: 2720240990674332363}
-  m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
+  m_Children: []
+  m_Father: {fileID: 3912526855316641098}
+  m_LocalEulerAnglesHint: {x: -12.579, y: -90, z: 0}
 --- !u!114 &7760175158192126462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,10 +354,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c1af02f1d9b9b45872252e2cea459b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offset: 0.2
+  _offset: 0.26
+  _baseRotation: {x: 90, y: 0, z: 0}
+  _dynamicRotation: {x: 27, y: 27, z: 180}
   _exclusiveStacks:
   - ItemType: 2
     Transform: {fileID: 3016967975488742283}
+  Align: 2
 --- !u!1 &1842751180857321884
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,7 +423,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3016967975488742283}
   m_Layer: 0
-  m_Name: Wood
+  m_Name: SecondStackPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -432,13 +437,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020468620472858769}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.765, y: 0, z: 1.319}
+  m_LocalRotation: {x: 0.064526014, y: -0.7041566, z: 0.064526014, w: 0.7041566}
+  m_LocalPosition: {x: -0.744, y: 1.163, z: 0.017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 141254886486740956}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 3912526855316641098}
+  m_LocalEulerAnglesHint: {x: 10.471, y: -90, z: 0}
 --- !u!1 &2124472109288852214
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,7 +1113,6 @@ Transform:
   m_Children:
   - {fileID: 3912526855316641098}
   - {fileID: 8443026545086230670}
-  - {fileID: 141254886486740956}
   - {fileID: 4037996536675037109}
   - {fileID: 7808976276658782503}
   - {fileID: 1295095940561577399}
@@ -1519,7 +1523,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _baseRotation: {x: 0, y: 0, z: 0}
+  _dynamicRotation: {x: 0, y: 0, z: 0}
   _exclusiveStacks: []
+  Align: 1
 --- !u!1 &6782291187025196846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2832,7 +2839,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8527583307021012244, guid: 3abc3d1fb8148c04e88b5a15089632fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 141254886486740956}
+    - targetCorrespondingSourceObject: {fileID: 8527583307021012244, guid: 3abc3d1fb8148c04e88b5a15089632fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3016967975488742283}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3abc3d1fb8148c04e88b5a15089632fc, type: 3}
 --- !u!4 &3912526855316641098 stripped

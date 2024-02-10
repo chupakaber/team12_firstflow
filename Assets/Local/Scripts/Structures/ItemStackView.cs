@@ -11,8 +11,14 @@ namespace Scripts
         [SerializeField]
         private float _offset;
         [SerializeField]
+        private Vector3 _baseRotation;
+        [SerializeField]
+        private Vector3 _dynamicRotation;
+        [SerializeField]
         private List<ExclusiveStack> _exclusiveStacks = new List<ExclusiveStack>();
         private Dictionary<ItemType, ExclusiveStack> _exclusiveStacksDictionary = new Dictionary<ItemType, ExclusiveStack>();
+
+        public ItemStackAlignType Align = ItemStackAlignType.VERTICAL_STACK;
 
         public int Count { get; private set; }
         public float Offset { get { return _offset; } }
@@ -60,8 +66,9 @@ namespace Scripts
                 if (item.gameObject.activeSelf && !_exclusiveStacksDictionary.ContainsKey(item.ItemType))
                 {
                     item.LastPosition = item.transform.localPosition;
-                    item.CurrentPosition = new Vector3(0, counter * _offset, 0);
-                    item.transform.localRotation = Quaternion.identity;
+                    GetAlignedPosition(item, counter, out var newPosition, out var newRotation);
+                    item.CurrentPosition = newPosition;
+                    item.transform.localRotation = newRotation;
                     if (_useTemporaryPosition)
                     {
                         item.CurrentPosition += _temporaryWorldPosition;
@@ -87,8 +94,9 @@ namespace Scripts
                             item.transform.SetParent(exclusiveStack.Transform);
                         }
 
-                        item.transform.localPosition = new Vector3(0, counter * _offset, 0);
-                        item.transform.localRotation = Quaternion.identity;
+                        GetAlignedPosition(item, counter, out var newPosition, out var newRotation);
+                        item.transform.localPosition = newPosition;
+                        item.transform.localRotation = newRotation;
                         counter++;
                     }
                 }
@@ -221,6 +229,34 @@ namespace Scripts
                     item.transform.localPosition = item.CurrentPosition;
                 }
             }
+        }
+
+        private void GetAlignedPosition(ItemView item, int index, out Vector3 position, out Quaternion rotation)
+        {
+            if (Align == ItemStackAlignType.VERTICAL_STACK)
+            {
+                rotation = Quaternion.identity;
+                position = new Vector3(0f, index * _offset, 0f);
+                return;
+            }
+            else if (Align == ItemStackAlignType.HEAP)
+            {
+                var r1 = Mathf.Sin(index * 2312f);
+                var r2 = Mathf.Sin(index * 3714f);
+                var r3 = Mathf.Sin(index * 7654f);
+                rotation = Quaternion.Euler(_baseRotation + new Vector3(_dynamicRotation.x * r1, _dynamicRotation.y * r2, _dynamicRotation.z * r3));
+                position = new Vector3(Mathf.Sin(index * 28.7f) * _offset * r1, _offset * (r2 + index * 0.1f), Mathf.Cos(index * 28.7f) * _offset * r3);
+                return;
+            }
+            rotation = Quaternion.identity;
+            position = Vector3.zero;
+        }
+
+        public enum ItemStackAlignType
+        {
+            NONE = 0,
+            VERTICAL_STACK = 1,
+            HEAP = 2,
         }
 
         [Serializable]
