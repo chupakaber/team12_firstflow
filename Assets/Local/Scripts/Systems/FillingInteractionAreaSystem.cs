@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Scripts
 {
-    public class FillingInteractionZoneSystem: ISystem
+    public class FillingInteractionAreaSystem: ISystem
     {
         public EventBus EventBus;
         public List<Character> Characters;

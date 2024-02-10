@@ -74,7 +74,7 @@ namespace Scripts
         private SoundSystem _soundSystem = new SoundSystem();
         private CarnivalBehaviorSystem _carnivalBehaviorSystem = new CarnivalBehaviorSystem();
         private CutSceneSystem _cutSceneSystem = new CutSceneSystem();
-        private FillingInteractionZoneSystem _fillingInteractionZoneSystem = new FillingInteractionZoneSystem();
+        private FillingInteractionAreaSystem _fillingInteractionZoneSystem = new FillingInteractionAreaSystem();
 
         private bool _initialized;
 
