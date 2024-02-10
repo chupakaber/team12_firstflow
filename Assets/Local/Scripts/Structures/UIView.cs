@@ -25,6 +25,7 @@ namespace Scripts
 
         [Header("Dynamic Indicators")]
         public RectTransform PointerArrowTransform;
+        public Image PointerArrowImage;
         public Vector3 PointerArrowTargetPosition;
         public Vector3 PointerArrowTargetPositionOnNavMesh;
 
@@ -60,17 +61,21 @@ namespace Scripts
         public RectTransform TitlesPanel;
         public Slider SoundSlider;
         public Slider MusicSlider;
+        public Slider TutorialSlider;
 
         [HideInInspector]
         public EventBus EventBus;
+
+        [HideInInspector]
+        public static float TutorialSwitch = 1f;
 
         private LocalizationLabelView[] _localizedLabels = new LocalizationLabelView[0];
         private int _currentLangID = -1;
         private int StickIndex = -1;
         private int _currentRank;
         private bool _externalSoundChange;
+        private bool _tutorialEnabled = false;
         private bool _showTutorial = false;
-        private bool _hideTutorial = false;
         private int _tutorialStepId = -1;
 
         public void Awake()
@@ -114,6 +119,9 @@ namespace Scripts
             LanguageButton.onClick.AddListener(() => {
                 SwitchLanguage(_currentLangID == 1 ? 0 : 1);
             });
+
+            TutorialSlider.value = TutorialSwitch;
+            TutorialSlider.onValueChanged.AddListener(OnTutorialChanged);
 
             _localizedLabels = FindObjectsOfType<LocalizationLabelView>();
             SwitchLanguage(Application.systemLanguage == SystemLanguage.Russian ? 1 : 0);
@@ -281,10 +289,11 @@ namespace Scripts
 
         public void HideTutorial()
         {
+            _tutorialEnabled = false;
+            TutorialTaskTransform.gameObject.SetActive(false);
             TutorialAnimationTransform.DOComplete(false);
             TutorialAnimationTransform.DOScale(0.01f, 0.5f).OnComplete(() => {
                 TutorialAnimationTransform.gameObject.SetActive(false);
-                TutorialTaskTransform.gameObject.SetActive(false);
                 TryShowTutorial();
             });
         }
@@ -299,9 +308,12 @@ namespace Scripts
             if (!TutorialAnimationTransform.gameObject.activeSelf)
             {
                 _showTutorial = false;
-                TutorialTaskTransform.gameObject.SetActive(true);
+                _tutorialEnabled = true;
+                if (Mathf.Abs(TutorialSlider.value - 1f) < 0.1f || Mathf.Abs(TutorialSlider.value - 0.33f) < 0.1f)
+                {
+                    TutorialTaskTransform.gameObject.SetActive(true);
+                }
                 TutorialTaskLabel.text = TutorialStrings[_tutorialStepId];
-                TutorialAnimationTransform.gameObject.SetActive(true);
                 if (_tutorialStepId < 0)
                 {
                     throw new UnityException($"Wrong tutorial step index: '{_tutorialStepId}'.");
@@ -320,10 +332,14 @@ namespace Scripts
                 }
                 else
                 {
+                    if (Mathf.Abs(TutorialSlider.value - 1f) < 0.1f || Mathf.Abs(TutorialSlider.value - 0.66f) < 0.1f)
+                    {
+                        TutorialAnimationTransform.gameObject.SetActive(true);
+                        TutorialAnimationTransform.DOScale(1f, 0.5f).OnComplete(() => {
+                        });
+                    }
                     TutorialAnimationImage.material = TutorialStepMaterials[_tutorialStepId];
                     TutorialAnimationImage.sprite = TutorialStepSprites[_tutorialStepId];
-                    TutorialAnimationTransform.DOScale(1f, 0.5f).OnComplete(() => {
-                    });
                 }
             }
             else
@@ -345,6 +361,22 @@ namespace Scripts
             if (EventBus != null && !_externalSoundChange)
             {
                 EventBus.CallEvent(new SetSoundVolumeEvent() { Volume = value, IsMusic = true });
+            }
+        }
+
+        private void OnTutorialChanged(float value)
+        {
+            if (TutorialSlider.enabled)
+            {
+                TutorialSlider.enabled = false;
+                TutorialSwitch = Mathf.Round(value * 3f) / 3f;
+                TutorialSlider.value = TutorialSwitch;
+                var taskEnabled = Mathf.Abs(TutorialSwitch - 0.33f) < 0.1f || Mathf.Abs(TutorialSwitch - 1f) < 0.1f;
+                var bubbleEnabled = Mathf.Abs(TutorialSwitch - 0.66f) < 0.1f || Mathf.Abs(TutorialSwitch - 1f) < 0.1f;
+                TutorialTaskTransform.gameObject.SetActive(taskEnabled);
+                TutorialAnimationTransform.gameObject.SetActive(bubbleEnabled);
+                PointerArrowImage.enabled = !(Mathf.Abs(TutorialSwitch) < 0.1f);
+                TutorialSlider.enabled = true;
             }
         }
     }
