@@ -26,6 +26,7 @@ namespace Scripts
         private List<ItemView> _items = new List<ItemView>();
         private Vector3 _temporaryWorldPosition;
         private bool _useTemporaryPosition;
+        private bool _isMoving;
         private float _lastMovingTime = -1f;
 
         public void SortItems()
@@ -73,7 +74,7 @@ namespace Scripts
                     {
                         item.CurrentPosition += _temporaryWorldPosition;
                     }
-                    else
+                    if (!_isMoving)
                     {
                         item.transform.localPosition = item.CurrentPosition;
                     }
@@ -119,7 +120,7 @@ namespace Scripts
             Count -= removeCount;
             
             int a = 0;
-            for (var i = 0; i < _items.Count; i++) 
+            for (var i = _items.Count - 1; i >= 0; i--)
             {
                 var item = _items[i];
                 if (item.ItemType == itemType)
@@ -207,6 +208,7 @@ namespace Scripts
 
         public IEnumerator AsyncMovingPivot()
         {
+            _isMoving = true;
             while (Time.time - _lastMovingTime < 0.3f)
             {
                 var d = (Time.time - _lastMovingTime) / 0.3f;
@@ -229,6 +231,7 @@ namespace Scripts
                     item.transform.localPosition = item.CurrentPosition;
                 }
             }
+            _isMoving = false;
         }
 
         private void GetAlignedPosition(ItemView item, int index, out Vector3 position, out Quaternion rotation)

@@ -152,7 +152,7 @@ namespace Scripts
                 }
             }
 
-            if (UIView.PointerArrowTargetPosition.sqrMagnitude <= float.Epsilon || (player.transform.position - UIView.PointerArrowTargetPosition).magnitude < 7.5f)
+            if (UIView.PointerArrowTargetPosition.sqrMagnitude <= float.Epsilon || (player.transform.position - UIView.PointerArrowTargetPosition).magnitude < 5f)
             {
                 if (UIView.PointerArrowTransform.gameObject.activeSelf && UIView.PointerArrowTargetPosition.sqrMagnitude <= float.Epsilon)
                 {
@@ -197,21 +197,27 @@ namespace Scripts
                     var cornersCount = _path.GetCornersNonAlloc(_pathCorners);
                     if (cornersCount > 2)
                     {
+                        var shift = 0;
                         var d1 = (_pathCorners[1] - _pathCorners[0]).magnitude;
-                        var d2 = (_pathCorners[2] - _pathCorners[0]).magnitude;
+                        if (d1 <= 0.5f)
+                        {
+                            shift = 1;
+                            d1 = (_pathCorners[1 + shift] - _pathCorners[0]).magnitude;
+                        }
+                        var d2 = (_pathCorners[2 + shift] - _pathCorners[0]).magnitude;
                         var d = Mathf.Clamp((d2 - d1) / d1, 0f, 1f);
                         var w1 = d;
                         var w2 = 1f - d;
-                        worldPosition = _pathCorners[1] * w1 + _pathCorners[2] * w2;
+                        worldPosition = _pathCorners[1 + shift] * w1 + _pathCorners[2 + shift] * w2;
                     }
                 }
                 player.NavMeshAgent.enabled = false;
 
                 direction = worldPosition - player.transform.position;
                 var distance = Mathf.Min(Mathf.Max(minimalMagnitude, direction.magnitude), 2.5f);
-                worldPosition = player.transform.position + direction.normalized * distance;
+                worldPosition = player.transform.position + direction.normalized * distance + Vector3.up * 1.1f;
 
-                _targetArrowWorldPosition = Vector3.Lerp(_targetArrowWorldPosition, worldPosition, Time.deltaTime * 3f);
+                _targetArrowWorldPosition = Vector3.Lerp(_targetArrowWorldPosition, worldPosition, Time.deltaTime * 6f);
                 var screenPosition = Camera.WorldToScreenPoint(_targetArrowWorldPosition);
                 var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
                 UIView.PointerArrowTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
