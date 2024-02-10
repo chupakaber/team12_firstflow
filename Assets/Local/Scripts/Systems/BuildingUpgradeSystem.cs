@@ -40,9 +40,9 @@ namespace Scripts
             {                
                 if (newEvent.Trigger.Equals(building.UpgradeArea) && newEvent.Character.CharacterType == Enums.CharacterType.PLAYER)
                 {
-                    if (building.UpgradeZoneMeshRenderer != null)
+                    if (building.UpgradeAreaMeshRenderer != null)
                     {
-                        EventBus.CallEvent(new PreparationForInteractionEvent() {MeshRenderer = building.UpgradeZoneMeshRenderer});
+                        EventBus.CallEvent(new PreparationForInteractionEvent() {MeshRenderer = building.UpgradeAreaMeshRenderer});
                     }
                 }
             }
