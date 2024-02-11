@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Scripts
@@ -20,7 +19,7 @@ namespace Scripts
             MaterialPropertyBlock materialPropertyBlock = new MaterialPropertyBlock();
             meshRenderer.GetPropertyBlock(materialPropertyBlock);
             var valueID = Shader.PropertyToID("_Value");
-            materialPropertyBlock.SetFloat(valueID, Time.time);
+            materialPropertyBlock.SetFloat(valueID, Time.timeSinceLevelLoad);
             meshRenderer.SetPropertyBlock(materialPropertyBlock);
         }
     }

@@ -4,6 +4,7 @@ Shader "Team12/Unlit/FillingClockWise"
     {
 
         _Value ("Value", Float) = -100
+        _Cooldown ("Cooldown", Float) = 1
 
         _BaseColor("BaseColor", Color) = (.25, .5, .5, 1)
 
@@ -38,6 +39,7 @@ Shader "Team12/Unlit/FillingClockWise"
             };
 
             float _Value;
+            float _Cooldown;
             float4 _BaseColor;
             float4 _FillColor;
 
@@ -45,8 +47,8 @@ Shader "Team12/Unlit/FillingClockWise"
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv*2 -1;
-                float deltaTime = (_Time.y - _Value);
+                o.uv = v.uv*2 - 1;
+                float deltaTime = (_Time.y - _Value) / _Cooldown;
                 o.value = deltaTime * 3.14 - 1.57 - max(0, deltaTime - 1) * 1000;
                 return o;
             }
