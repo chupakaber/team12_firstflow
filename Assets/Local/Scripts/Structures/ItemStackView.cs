@@ -120,7 +120,7 @@ namespace Scripts
             Count -= removeCount;
             
             int a = 0;
-            for (var i = _items.Count - 1; i >= 0; i--)
+            for (var i = 0; i < _items.Count; i++)
             {
                 var item = _items[i];
                 if (item.ItemType == itemType)
