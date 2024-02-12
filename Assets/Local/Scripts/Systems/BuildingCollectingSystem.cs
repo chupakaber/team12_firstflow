@@ -26,6 +26,20 @@ namespace Scripts
             }
         }
 
+        public void EventCatch(EnterTriggerEvent newEvent)
+        {
+            foreach (var building in Buildings)
+            {                
+                if (newEvent.Trigger.Equals(building.UnloadingArea) && newEvent.Character.CharacterType == Enums.CharacterType.PLAYER)
+                {
+                    if (building.UnloadingAreaMeshRenderer != null)
+                    {
+                        EventBus.CallEvent(new PreparationForInteractionEvent() {MeshRenderer = building.UnloadingAreaMeshRenderer});
+                    }
+                }
+            }
+        }
+
         private void Collecting(Building building, Character character)
         {
             var consumeItemType = building.ConsumeItemType;

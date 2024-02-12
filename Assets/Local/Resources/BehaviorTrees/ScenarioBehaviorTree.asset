@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: TYPE
   m_EditorClassIdentifier: 
   Name: TYPE
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 17252cefe08b197479d804a38dd411b3
   Position: {x: -3609.0005, y: -1098}
@@ -837,7 +837,7 @@ MonoBehaviour:
   m_Name: TYPE
   m_EditorClassIdentifier: 
   Name: TYPE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 7c8fc2b3299ad5d44a3b4cfdf617f6e6
   Position: {x: -4310, y: -282}
@@ -1118,7 +1118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AMOUNT
   CurrentState: 0
-  Started: 1
+  Started: 0
   Guid: e83b2889262353a41b6306fcd39eb31d
   Position: {x: -3169, y: -1098}
   Children:
@@ -1289,7 +1289,7 @@ MonoBehaviour:
   m_Name: SHOW TUTORIAL ARROW
   m_EditorClassIdentifier: 
   Name: SHOW TUTORIAL ARROW
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: dac6dbf2aabd97e4e8e3f4c072ef202b
   Position: {x: 1505, y: -2064}
@@ -1684,7 +1684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AMOUNT
   CurrentState: 0
-  Started: 1
+  Started: 0
   Guid: 2b9d1b6b36f099a44b40e6d257858ea1
   Position: {x: -1995.6401, y: -127.49844}
   Children:
@@ -1754,9 +1754,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
-  m_Name: is Shop Spear
+  m_Name: is Shop Sword
   m_EditorClassIdentifier: 
-  Name: is Shop Spear
+  Name: is Shop Sword
   CurrentState: 2
   Started: 0
   Guid: 87abbb1279715af45ad6a9082e4a82fc
@@ -1999,7 +1999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AMOUNT
   CurrentState: 0
-  Started: 1
+  Started: 0
   Guid: 85a6adcc88f6ac94ca7cb4fc48bbbbaa
   Position: {x: -3168, y: -1578}
   Children:
@@ -2223,7 +2223,7 @@ MonoBehaviour:
   m_Name: FALSE
   m_EditorClassIdentifier: 
   Name: FALSE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 695dae5306000a94a94592de5d6d3e57
   Position: {x: 1259, y: 649.73975}
@@ -2542,7 +2542,7 @@ MonoBehaviour:
   m_Name: EQUAL PLAYER
   m_EditorClassIdentifier: 
   Name: EQUAL PLAYER
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 50eeb1fd0993d0a4190077696a8a5f86
   Position: {x: -4124, y: 286}
@@ -2563,10 +2563,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
-  m_Name: Sawmill #1
+  m_Name: Blacksmith Spear #1
   m_EditorClassIdentifier: 
-  Name: Sawmill #1
-  CurrentState: 0
+  Name: Blacksmith Spear #1
+  CurrentState: 2
   Started: 0
   Guid: 72bafd245753f7d41a8f3f550f15fe56
   Position: {x: 1259, y: 524.73975}
@@ -2574,7 +2574,7 @@ MonoBehaviour:
   - {fileID: 1594635916059535059}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
-  ID: 101
+  ID: 201
   MinimumLevel: 0
   MaximumLevel: 1000
   ProduceItemTypes: 
@@ -3070,7 +3070,7 @@ MonoBehaviour:
   m_Name: TYPE
   m_EditorClassIdentifier: 
   Name: TYPE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 399842fe418a3ac49b19de5c9ee2f64c
   Position: {x: -4270, y: 286}
@@ -3680,8 +3680,8 @@ MonoBehaviour:
   m_Name: EQUAL
   m_EditorClassIdentifier: 
   Name: EQUAL
-  CurrentState: 0
-  Started: 1
+  CurrentState: 2
+  Started: 0
   Guid: 586b8953796f74b4d9440bc53f8021b3
   Position: {x: 883, y: -2038}
   Children:
@@ -3838,7 +3838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: EQUAL
   CurrentState: 0
-  Started: 1
+  Started: 0
   Guid: 41119cbff6b3d8b4eaf248bcebb875a5
   Position: {x: 883, y: -2861}
   Children:
@@ -4881,7 +4881,7 @@ MonoBehaviour:
   m_Name: EQUAL PLAYER
   m_EditorClassIdentifier: 
   Name: EQUAL PLAYER
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 2f3d1df690bb58c48bc2827d1d60a86f
   Position: {x: -1379, y: -621.25024}
@@ -5043,7 +5043,7 @@ MonoBehaviour:
   m_Name: Vector3Value
   m_EditorClassIdentifier: 
   Name: Vector3Value
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 5c1480c4d0d1f884da6c6f40239fff3a
   Position: {x: 1358, y: -2038}
@@ -5157,10 +5157,10 @@ MonoBehaviour:
   m_Name: UPGRADE AREA STATE
   m_EditorClassIdentifier: 
   Name: UPGRADE AREA STATE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 4735025d255d6c048abdd53d2fd645bd
-  Position: {x: 1403, y: 524.73975}
+  Position: {x: 1448, y: 525}
   Children: []
   InputTargetIndex: 
   OutputIndex: 
@@ -5438,7 +5438,7 @@ MonoBehaviour:
   m_Name: EQUAL PLAYER
   m_EditorClassIdentifier: 
   Name: EQUAL PLAYER
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: d2c5627ee5722e043b7df2ed2377aac3
   Position: {x: -3459, y: -1344}
@@ -5556,7 +5556,7 @@ MonoBehaviour:
   m_Name: ShowTutorial #3
   m_EditorClassIdentifier: 
   Name: ShowTutorial #3
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 964ed83fd70a95041ae1892a3426c039
   Position: {x: 1244, y: 291.00006}
@@ -5619,7 +5619,7 @@ MonoBehaviour:
   m_Name: EQUAL PLAYER
   m_EditorClassIdentifier: 
   Name: EQUAL PLAYER
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 61182c88d63cbf64cb0e1378b624be71
   Position: {x: -3459, y: -1098}
@@ -5643,7 +5643,7 @@ MonoBehaviour:
   m_Name: CheckState 17
   m_EditorClassIdentifier: 
   Name: CheckState 17
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 4eb4294bbd405724e92f352b4e79d2d9
   Position: {x: 1057, y: -2038}
@@ -5669,7 +5669,7 @@ MonoBehaviour:
   m_Name: EQUAL PLAYER
   m_EditorClassIdentifier: 
   Name: EQUAL PLAYER
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: e21454a492daaf84488e8de02c50eeee
   Position: {x: -1844.6403, y: 155.50153}
@@ -6073,7 +6073,7 @@ MonoBehaviour:
   m_Name: SPEAR
   m_EditorClassIdentifier: 
   Name: SPEAR
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 4da09ec3d4c5f8e4c92f20a8b0a763ff
   Position: {x: -3981, y: -282}
@@ -6283,7 +6283,7 @@ MonoBehaviour:
   m_Name: WOOD
   m_EditorClassIdentifier: 
   Name: WOOD
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 1578b42ce66d0984b8a172cc2a9577d4
   Position: {x: -3975, y: 286}
@@ -6403,7 +6403,7 @@ MonoBehaviour:
   m_Name: TRUE
   m_EditorClassIdentifier: 
   Name: TRUE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 2bb3918f91ce2c444b05cce93c7bec74
   Position: {x: 860.00006, y: 524.73975}
@@ -7147,7 +7147,7 @@ MonoBehaviour:
   m_Name: State in start new game
   m_EditorClassIdentifier: 
   Guid: a636fbaea43a3ef429aab029e48ad138
-  Position: {x: 2254.036, y: -1878.4901}
+  Position: {x: 2255, y: -1881}
   Size: {x: 300, y: 90}
   Name: State in start new game
   Contents: 
@@ -7401,7 +7401,7 @@ MonoBehaviour:
   m_Name: SHOW TUTORIAL ARROW
   m_EditorClassIdentifier: 
   Name: SHOW TUTORIAL ARROW
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: d2c67fc3bb7b0da40af2c09c319c4313
   Position: {x: 1008.00006, y: 290.73978}
@@ -7495,7 +7495,7 @@ MonoBehaviour:
   m_Name: TYPE
   m_EditorClassIdentifier: 
   Name: TYPE
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 3e9ad14fa42e9e44598f9f6be7868ae9
   Position: {x: -1524, y: -621}
@@ -7634,8 +7634,8 @@ MonoBehaviour:
   m_Name: AMOUNT
   m_EditorClassIdentifier: 
   Name: AMOUNT
-  CurrentState: 0
-  Started: 1
+  CurrentState: 2
+  Started: 0
   Guid: 93a2116fd4238ac4981f225570f0aba8
   Position: {x: -4310, y: -494}
   Children:
@@ -7779,7 +7779,7 @@ MonoBehaviour:
   m_Name: BUILDING ACTIVE
   m_EditorClassIdentifier: 
   Name: BUILDING ACTIVE
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 6ef34e5949e19b84bbbd94e5e3811482
   Position: {x: 1028, y: 524.73975}
@@ -7914,7 +7914,7 @@ MonoBehaviour:
   m_Name: TYPE
   m_EditorClassIdentifier: 
   Name: TYPE
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 3900401e78a6c574fb73f1111d3a2d67
   Position: {x: -3609, y: -1344}
@@ -8084,7 +8084,7 @@ MonoBehaviour:
   m_Name: EQUAL PLAYER
   m_EditorClassIdentifier: 
   Name: EQUAL PLAYER
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: c063c9d67ff64ad4490b4c5a7d4b6bdb
   Position: {x: -4146, y: -282}
@@ -8128,7 +8128,7 @@ MonoBehaviour:
   m_Name: TYPE
   m_EditorClassIdentifier: 
   Name: TYPE
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: e4320f676f4eb9144ac182ece5c7ae1f
   Position: {x: -1995.6401, y: 155.50153}
@@ -8425,7 +8425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AMOUNT
   CurrentState: 0
-  Started: 1
+  Started: 0
   Guid: 1cb9326b3d9a63f409bcfd6d186a08ac
   Position: {x: -3169, y: -1344}
   Children:
@@ -8447,7 +8447,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   Name: 1
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 36c981c22c90a0d42b323b072f60b0e7
   Position: {x: 718, y: -1987}
@@ -8488,7 +8488,7 @@ MonoBehaviour:
   m_Name: 2
   m_EditorClassIdentifier: 
   Name: 2
-  CurrentState: 2
+  CurrentState: 0
   Started: 0
   Guid: 16a2d1c0ea4640047a0a1af5925f390d
   Position: {x: -4270, y: -71}
@@ -8701,8 +8701,8 @@ MonoBehaviour:
   m_Name: AMOUNT
   m_EditorClassIdentifier: 
   Name: AMOUNT
-  CurrentState: 0
-  Started: 1
+  CurrentState: 2
+  Started: 0
   Guid: f1168707694e9d049aae65a4cdc1a54d
   Position: {x: -4270, y: 105}
   Children:
@@ -8806,7 +8806,7 @@ MonoBehaviour:
   m_Name: Is Sawmill #1
   m_EditorClassIdentifier: 
   Name: Is Sawmill #1
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: 1081c80f16751d645bb59c6b1dee72dd
   Position: {x: 854.0001, y: 290.73978}
@@ -8882,7 +8882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AMOUNT
   CurrentState: 0
-  Started: 1
+  Started: 0
   Guid: 099094425dc9f0b45a0d39d81c62100d
   Position: {x: -1036, y: -544.5}
   Children:
@@ -8958,7 +8958,7 @@ MonoBehaviour:
   m_Name: SetState 17
   m_EditorClassIdentifier: 
   Name: SetState 17
-  CurrentState: 0
+  CurrentState: 2
   Started: 0
   Guid: ba9f0434d1a4a1d45b0de93f49879a89
   Position: {x: 1215, y: -2038}

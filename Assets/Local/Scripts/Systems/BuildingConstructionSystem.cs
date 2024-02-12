@@ -144,7 +144,7 @@ namespace Scripts
                 {
                     break;
                 }
-            }            
+            }
         }
 
         public void UpdateUpgradeProgressViewSettings(Building building)

@@ -45,7 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _baseRotation: {x: 0, y: 0, z: 0}
+  _dynamicRotation: {x: 0, y: 0, z: 0}
   _exclusiveStacks: []
+  Align: 1
 --- !u!1 &1281108906890449132
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,6 +103,7 @@ MonoBehaviour:
   - {fileID: 8372636061771006664}
   - {fileID: 6384100091593960963}
   - {fileID: 7365026780547731937}
+  Initialized: 0
   ID: -1
   ConstructionArea: {fileID: 9115113445415105110}
   ProductionArea: {fileID: 4393688851089369503}
@@ -116,12 +120,15 @@ MonoBehaviour:
   ProgressBarPivot: {fileID: 1856449883228854383}
   StopProductionIcon: {fileID: 0}
   NoResourceIcon: {fileID: 0}
+  ProduceMethod: 1
+  BaseProductionLimit: 0
   ProductionLimit: 1
   ResourceLimit: 25
   ItemCost: 25
   ProductionItemAmountPerCycle: 1
   ProductionCooldown: 0.1
   ProductionUseBagOfTries: 0
+  ProductionConversionRate: 1
   ProduceItemType: 11
   ConsumeItemType: 7
   Levels:
@@ -137,6 +144,10 @@ MonoBehaviour:
     Boost: []
   UpgradeStorage: {fileID: 0}
   HonorIconAnimation: {fileID: 0}
+  UpgradeAnimationEffect: {fileID: 0}
+  ConstructionAreaMeshRenderer: {fileID: 0}
+  UpgradeAreaMeshRenderer: {fileID: 0}
+  UnloadingAreaMeshRenderer: {fileID: 6706778504855871010}
   _level: 0
   ConstructionCharacters: []
   ProductionCharacters: []
@@ -148,6 +159,7 @@ MonoBehaviour:
   AssignedPickingUpCharacters: []
   LastProductionTime: -200
   ProductionEndTime: -100
+  ProductionEndActivityTime: 0
   LastProductionSoundTime: 0
   LastProductionCheckTime: 0
 --- !u!1 &2338370658575162834
@@ -1705,6 +1717,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f82378c254fd0474bb1c970a0f4ee059, type: 3}
+--- !u!23 &6706778504855871010 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8457123021988800445, guid: f82378c254fd0474bb1c970a0f4ee059, type: 3}
+  m_PrefabInstance: {fileID: 2904539256204786079}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6960843680530492512 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5248696197623420415, guid: f82378c254fd0474bb1c970a0f4ee059, type: 3}

@@ -46,6 +46,7 @@ namespace Scripts
         public AnimationEffect UpgradeAnimationEffect;
         public MeshRenderer ConstructionAreaMeshRenderer;
         public MeshRenderer UpgradeAreaMeshRenderer;
+        public MeshRenderer UnloadingAreaMeshRenderer;
 
         [SerializeField] private int _level;
 
