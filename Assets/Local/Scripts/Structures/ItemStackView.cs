@@ -15,6 +15,8 @@ namespace Scripts
         [SerializeField]
         private Vector3 _dynamicRotation;
         [SerializeField]
+        private Transform _maxIndicatorTransform;
+        [SerializeField]
         private List<ExclusiveStack> _exclusiveStacks = new List<ExclusiveStack>();
         private Dictionary<ItemType, ExclusiveStack> _exclusiveStacksDictionary = new Dictionary<ItemType, ExclusiveStack>();
 
@@ -206,7 +208,15 @@ namespace Scripts
             StartCoroutine(AsyncMovingPivot());
         }
 
-        public IEnumerator AsyncMovingPivot()
+        public void SetMaxState(bool value)
+        {
+            if (_maxIndicatorTransform != null)
+            {
+                _maxIndicatorTransform.gameObject.SetActive(value);
+            }
+        }
+
+        private IEnumerator AsyncMovingPivot()
         {
             _isMoving = true;
             while (Time.time - _lastMovingTime < 0.3f)

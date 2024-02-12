@@ -290,7 +290,12 @@ namespace Scripts
         public void HideTutorial()
         {
             _tutorialEnabled = false;
-            TutorialTaskTransform.gameObject.SetActive(false);
+            if (TutorialTaskTransform.gameObject.activeSelf)
+            {
+                TutorialTaskTransform.DOScale(0.1f, 0.2f).OnComplete(() => {
+                    TutorialTaskTransform.gameObject.SetActive(false);
+                });
+            }
             TutorialAnimationTransform.DOComplete(false);
             TutorialAnimationTransform.DOScale(0.01f, 0.5f).OnComplete(() => {
                 TutorialAnimationTransform.gameObject.SetActive(false);
@@ -312,6 +317,9 @@ namespace Scripts
                 if (Mathf.Abs(TutorialSlider.value - 1f) < 0.1f || Mathf.Abs(TutorialSlider.value - 0.33f) < 0.1f)
                 {
                     TutorialTaskTransform.gameObject.SetActive(true);
+                    TutorialTaskTransform.DOScale(1.5f, 0.2f).OnComplete(() => {
+                        TutorialTaskTransform.DOScale(1f, 0.2f);
+                    });
                 }
                 TutorialTaskLabel.text = TutorialStrings[_tutorialStepId];
                 if (_tutorialStepId < 0)
