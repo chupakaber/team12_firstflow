@@ -1271,8 +1271,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _shiftFrequency: {x: 0, y: 0, z: 0}
+  _shiftFrequencyOffset: {x: 0, y: 0, z: 0}
+  _radialScale: {x: 0, y: 0, z: 0}
+  _linearShift: {x: 0, y: 0, z: 0}
+  _rotationFrequency: {x: 0, y: 0, z: 0}
+  _frequentRotationScale: {x: 0, y: 0, z: 0}
+  _linearRotationScale: {x: 0, y: 0, z: 0}
   _baseRotation: {x: 0, y: 0, z: 0}
-  _dynamicRotation: {x: 0, y: 0, z: 0}
+  _maxIndicatorTransform: {fileID: 0}
   _exclusiveStacks: []
   Align: 1
 --- !u!114 &9216879346185477321
@@ -1521,7 +1528,9 @@ MonoBehaviour:
   UpgradeStorage: {fileID: 9216879346185477321}
   HonorIconAnimation: {fileID: 0}
   UpgradeAnimationEffect: {fileID: 7009264292341649264}
-  UpgradeZoneMeshRenderer: {fileID: 0}
+  ConstructionAreaMeshRenderer: {fileID: 0}
+  UpgradeAreaMeshRenderer: {fileID: 1719589266747282711}
+  UnloadingAreaMeshRenderer: {fileID: 0}
   _level: 1
   ConstructionCharacters: []
   ProductionCharacters: []
@@ -2793,8 +2802,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _shiftFrequency: {x: 0, y: 0, z: 0}
+  _shiftFrequencyOffset: {x: 0, y: 0, z: 0}
+  _radialScale: {x: 0, y: 0, z: 0}
+  _linearShift: {x: 0, y: 0, z: 0}
+  _rotationFrequency: {x: 0, y: 0, z: 0}
+  _frequentRotationScale: {x: 0, y: 0, z: 0}
+  _linearRotationScale: {x: 0, y: 0, z: 0}
   _baseRotation: {x: 0, y: 0, z: 0}
-  _dynamicRotation: {x: 0, y: 0, z: 0}
+  _maxIndicatorTransform: {fileID: 0}
   _exclusiveStacks: []
   Align: 1
 --- !u!1 &8588959985358375730
@@ -4063,6 +4079,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 936fd7b138e1bbe4086929aa5597ce70, type: 3}
+--- !u!23 &1719589266747282711 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 938214459326093027, guid: 936fd7b138e1bbe4086929aa5597ce70, type: 3}
+  m_PrefabInstance: {fileID: 1934296348107965428}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7334254269055307919 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9155960023596176251, guid: 936fd7b138e1bbe4086929aa5597ce70, type: 3}

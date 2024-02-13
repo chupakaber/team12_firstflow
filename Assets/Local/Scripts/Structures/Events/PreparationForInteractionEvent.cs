@@ -6,5 +6,6 @@ namespace Scripts
     {
         public Building Building;
         public MeshRenderer MeshRenderer;
+        public bool Disable;
     }
 }

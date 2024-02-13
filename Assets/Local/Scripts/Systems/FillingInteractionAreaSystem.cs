@@ -11,15 +11,15 @@ namespace Scripts
 
         public void EventCatch(PreparationForInteractionEvent newEvent) 
         {
-            FillingZone(newEvent.MeshRenderer);
+            FillingZone(newEvent.MeshRenderer, newEvent.Disable);
         }
 
-        public void FillingZone(MeshRenderer meshRenderer)
+        public void FillingZone(MeshRenderer meshRenderer, bool disable)
         {
             MaterialPropertyBlock materialPropertyBlock = new MaterialPropertyBlock();
             meshRenderer.GetPropertyBlock(materialPropertyBlock);
             var valueID = Shader.PropertyToID("_Value");
-            materialPropertyBlock.SetFloat(valueID, Time.timeSinceLevelLoad);
+            materialPropertyBlock.SetFloat(valueID, disable ? -100f : Time.timeSinceLevelLoad);
             meshRenderer.SetPropertyBlock(materialPropertyBlock);
         }
     }
