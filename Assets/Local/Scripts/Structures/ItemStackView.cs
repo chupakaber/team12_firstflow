@@ -10,10 +10,25 @@ namespace Scripts
     {
         [SerializeField]
         private float _offset;
+
+        [SerializeField]
+        private Vector3 _shiftFrequency = Vector3.zero;
+        [SerializeField]
+        private Vector3 _shiftFrequencyOffset = Vector3.zero;
+        [SerializeField]
+        private Vector3 _radialScale = Vector3.zero;
+        [SerializeField]
+        private Vector3 _linearShift = Vector3.zero;
+
+        [SerializeField]
+        private Vector3 _rotationFrequency = Vector3.zero;
+        [SerializeField]
+        private Vector3 _frequentRotationScale = Vector3.zero;
+        [SerializeField]
+        private Vector3 _linearRotationScale = Vector3.zero;
+
         [SerializeField]
         private Vector3 _baseRotation;
-        [SerializeField]
-        private Vector3 _dynamicRotation;
         [SerializeField]
         private Transform _maxIndicatorTransform;
         [SerializeField]
@@ -30,6 +45,11 @@ namespace Scripts
         private bool _useTemporaryPosition;
         private bool _isMoving;
         private float _lastMovingTime = -1f;
+
+        public void FixedUpdate()
+        {
+            SortItems();
+        }
 
         public void SortItems()
         {
@@ -174,7 +194,14 @@ namespace Scripts
                     }
                 }
             }
-            position.y += count * Offset;
+            if (Align == ItemStackAlignType.VERTICAL_STACK)
+            {
+                position.y += count * Offset;
+            }
+            else
+            {
+                //position.y += count * Offset * _linearShift.y;
+            }
             return position;
         }
 
@@ -254,11 +281,22 @@ namespace Scripts
             }
             else if (Align == ItemStackAlignType.HEAP)
             {
-                var r1 = Mathf.Sin(index * 2312f);
-                var r2 = Mathf.Sin(index * 3714f);
-                var r3 = Mathf.Sin(index * 7654f);
-                rotation = Quaternion.Euler(_baseRotation + new Vector3(_dynamicRotation.x * r1, _dynamicRotation.y * r2, _dynamicRotation.z * r3));
-                position = new Vector3(Mathf.Sin(index * 28.7f) * _offset * r1, _offset * (r2 + index * 0.1f), Mathf.Cos(index * 28.7f) * _offset * r3);
+                var ls1 = index * _linearShift.x;
+                var ls2 = index * _linearShift.y;
+                var ls3 = index * _linearShift.z;
+                var fs1 = Mathf.Sin(index * _shiftFrequency.x + _shiftFrequencyOffset.x) * _radialScale.x;
+                var fs2 = Mathf.Sin(index * _shiftFrequency.y + _shiftFrequencyOffset.y) * _radialScale.y;
+                var fs3 = Mathf.Sin(index * _shiftFrequency.z + _shiftFrequencyOffset.z) * _radialScale.z;
+                position = new Vector3(ls1 + fs1, ls2 + fs2, ls3 + fs3);
+
+                var lr1 = index * _linearRotationScale.x;
+                var lr2 = index * _linearRotationScale.y;
+                var lr3 = index * _linearRotationScale.z;
+                var fr1 = Mathf.Sin(index * _rotationFrequency.x) * _frequentRotationScale.x;
+                var fr2 = Mathf.Sin(index * _rotationFrequency.y) * _frequentRotationScale.y;
+                var fr3 = Mathf.Sin(index * _rotationFrequency.z) * _frequentRotationScale.z;
+                rotation = Quaternion.Euler(_baseRotation + new Vector3(lr1 + fr1, lr2 + fr2, lr3 + fr3));
+
                 return;
             }
             rotation = Quaternion.identity;
