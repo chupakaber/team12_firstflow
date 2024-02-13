@@ -12,5 +12,7 @@ namespace Scripts.Enums
         MERCENARY = 7,
         CARNIVAL = 8,
         ALCHEMIST = 9,
+        DAOS = 10,
+        DONKEY = 11,
     }
 }

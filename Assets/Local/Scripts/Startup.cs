@@ -82,6 +82,7 @@ namespace Scripts
         {
             _mainCamera = Camera.main;
             _characters.Add(GameObject.Find("Character").GetComponent<SmartCharacter>());
+            _characters.Add(GameObject.Find("DaosCharacter").GetComponent<SmartCharacter>());
             _uiView = FindObjectOfType<UIView>();
             _unlockQueue = FindObjectOfType<UnlockQueue>();
             _scenario = FindObjectOfType<Scenario>();

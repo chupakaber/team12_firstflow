@@ -139,6 +139,7 @@ namespace Scripts
                 if (building.ProductionCharacters.Count > 0)
                 {
                     building.ProductionCharacters[0].ShowBagOfTries();
+                    building.ProductionCharacters[0].WorkType = building.ProduceItemType == ItemType.GOLD ? 1f : 0f;
                 }
 
                 if (Time.time < building.LastProductionTime + building.ProductionCooldown)

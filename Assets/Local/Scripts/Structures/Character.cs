@@ -20,7 +20,10 @@ namespace Scripts
         public ItemType PickUpItemConstraint = ItemType.NONE;
         public int BaseBagOfTriesCapacity = 8;
         public bool IsWork;
+        public float WorkType;
+        public bool IsSitting;
         public bool IsCutSceneActiv;
+        public Transform[] WorkingInstruments = new Transform[0];
 
         [Header("Ranks Config (6, 5, 4, 3, 2, 1)")]
         public List<int> RankHonor = new List<int> {
@@ -52,11 +55,14 @@ namespace Scripts
         private int _loadedAnimationKey = Animator.StringToHash("Loaded");
         private int _speedAnimationKey = Animator.StringToHash("Speed");
         private int _isWorkingAnimationKey = Animator.StringToHash("Working");
+        private int _workingTypeAnimationKey = Animator.StringToHash("WorkingType");
+        private int _isSittingAnimationKey = Animator.StringToHash("Sitting");
         private int _bowAnimationKey = Animator.StringToHash("Bow");
         private int _talkAnimationKey = Animator.StringToHash("Talk");
         
         private float _dropItemStartTimestamp = -1f;
         private float _pickupItemStartTimestamp = -1f;
+        private float _lastUpdateInventoryInHand;
 
         public void GetRank(out int rank, out int currentPoints, out int rankPoints)
         {
@@ -150,7 +156,9 @@ namespace Scripts
         {
             CharacterAnimator.SetBool(_loadedAnimationKey, Items.GetAmount() > 0);
             CharacterAnimator.SetFloat(_speedAnimationKey, (CharacterRigidbody.velocity.magnitude - 0.5f) / 4f);
+            CharacterAnimator.SetFloat(_workingTypeAnimationKey, WorkType);
             CharacterAnimator.SetBool(_isWorkingAnimationKey, IsWork);
+            CharacterAnimator.SetBool(_isSittingAnimationKey, IsSitting);
             if (IsWork)
             {
                 DropItemsFromHands();
@@ -159,6 +167,8 @@ namespace Scripts
             {
                 PickUpDroppedItems();
             }
+
+            UpdateInventoryInHand();
         }
 
         public void Bow()
@@ -302,6 +312,41 @@ namespace Scripts
         public void PickUpDroppedItems()
         {
             ItemStackView.PickUp();
+        }
+
+        private void UpdateInventoryInHand()
+        {
+            if (Time.time - _lastUpdateInventoryInHand > 0.3f)
+            {
+                _lastUpdateInventoryInHand = Time.time;
+                if (WorkingInstruments.Length > 0)
+                {
+                    for (var i = 0; i < WorkingInstruments.Length; i++)
+                    {
+                        var instrument = WorkingInstruments[i];
+                        if (instrument != null)
+                        {
+                            var value = IsWork && (int) Mathf.Round(WorkType * (WorkingInstruments.Length - 1)) == i;
+                            if (instrument.gameObject.activeSelf != value && !value)
+                            {
+                                instrument.gameObject.SetActive(value);
+                            }
+                        }
+                    }
+                    for (var i = 0; i < WorkingInstruments.Length; i++)
+                    {
+                        var instrument = WorkingInstruments[i];
+                        if (instrument != null)
+                        {
+                            var value = IsWork && (int) Mathf.Round(WorkType * (WorkingInstruments.Length - 1)) == i;
+                            if (instrument.gameObject.activeSelf != value && value)
+                            {
+                                instrument.gameObject.SetActive(value);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

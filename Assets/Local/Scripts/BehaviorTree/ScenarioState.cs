@@ -181,7 +181,7 @@ namespace Scripts.BehaviorTree
 
             foreach (var character in Characters)
             {
-                if (character.CharacterType == CharacterType.PLAYER || character.CharacterType == CharacterType.CARNIVAL)
+                if (character.CharacterType == CharacterType.PLAYER || character.CharacterType == CharacterType.CARNIVAL || character.CharacterType == CharacterType.DAOS || character.CharacterType == CharacterType.DONKEY)
                 {
                     continue;
                 }
