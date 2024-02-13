@@ -1,11 +1,17 @@
 ﻿using System.Collections.Generic;
+using Scripts.Enums;
 using UnityEngine;
 
 namespace Scripts
 {
     public class CharacterMovementSystem: ISystem
     {
+        public EventBus EventBus;
+
         public List<Character> Characters;
+        public List<Building> Buildings;
+
+        private bool _lastPlayerStayCondition;
 
         public void EventCatch(FixedUpdateEvent newEvent)
         {
@@ -45,9 +51,49 @@ namespace Scripts
                     character.ClearPickUpItemCooldown();
                 }
 
-                if (character.CharacterType == Enums.CharacterType.PLAYER && character.WorldDirection.sqrMagnitude <= float.Epsilon)
+                var isStay = character.WorldDirection.sqrMagnitude <= float.Epsilon;
+
+                if (character.CharacterType == CharacterType.PLAYER)
                 {
-                    character.CharacterRigidbody.velocity *= 0f;
+                    if (isStay)
+                    {
+                        character.CharacterRigidbody.velocity *= 0f;
+                    }
+                    UpdateFillingAreaUnderPlayer(character, isStay);
+                }
+            }
+        }
+
+        private void UpdateFillingAreaUnderPlayer(Character character, bool isStay)
+        {
+            if (_lastPlayerStayCondition == isStay)
+            {
+                return;
+            }
+
+            _lastPlayerStayCondition = isStay;
+            foreach (var building in Buildings)
+            {
+                if (building.UnloadingAreaMeshRenderer != null)
+                {
+                    if (building.UnloadingCharacters.Count > 0 && building.UnloadingCharacters[0].Equals(character))
+                    {
+                        EventBus.CallEvent(new PreparationForInteractionEvent() { MeshRenderer = building.UnloadingAreaMeshRenderer, Disable = !isStay });
+                    }
+                }
+                if (building.UpgradeAreaMeshRenderer != null)
+                {
+                    if (building.UpgradeCharacters.Count > 0 && building.UpgradeCharacters[0].Equals(character))
+                    {
+                        EventBus.CallEvent(new PreparationForInteractionEvent() { MeshRenderer = building.UpgradeAreaMeshRenderer, Disable = !isStay });
+                    }
+                }
+                if (building.ConstructionAreaMeshRenderer != null)
+                {
+                    if (building.ConstructionCharacters.Count > 0 && building.ConstructionCharacters[0].Equals(character))
+                    {
+                        EventBus.CallEvent(new PreparationForInteractionEvent() { MeshRenderer = building.ConstructionAreaMeshRenderer, Disable = !isStay });
+                    }
                 }
             }
         }

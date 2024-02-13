@@ -54,20 +54,6 @@ namespace Scripts
             UpdateUpgradeProgressViewSettings(newEvent.Building);
         }
 
-        public void EventCatch(EnterTriggerEvent newEvent)
-        {
-            foreach (var building in Buildings)
-            {                
-                if (newEvent.Trigger.Equals(building.ConstructionArea) && newEvent.Character.CharacterType == Enums.CharacterType.PLAYER)
-                {
-                    if (building.ConstructionAreaMeshRenderer != null)
-                    {
-                        EventBus.CallEvent(new PreparationForInteractionEvent() {MeshRenderer = building.ConstructionAreaMeshRenderer});
-                    }
-                }
-            }
-        }
-
         private void Collecting(Building building, Character character)
         {
             var characterHorizontalVelocity = character.CharacterRigidbody.velocity;
