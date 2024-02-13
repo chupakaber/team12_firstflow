@@ -303,6 +303,11 @@ namespace Scripts
             });
         }
 
+        public int GetCurrentTutorialStep()
+        {
+            return _tutorialEnabled ? _tutorialStepId : -1;
+        }
+
         private void TryShowTutorial()
         {
             if (!_showTutorial)

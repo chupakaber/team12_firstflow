@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Scripts.BehaviorTree
@@ -40,17 +41,16 @@ namespace Scripts.BehaviorTree
             SUCCESS = 2
         }
         
-        [HideInInspector]
-        public State CurrentState;
-        [HideInInspector]
-        public bool Started;
-        [HideInInspector]
+        [HideInInspector, DoNotSerialize]
         public string Guid;
         [HideInInspector]
         public Vector2 Position;
         [HideInInspector]
         public virtual Color DefaultColor { get { return new Color(0.23f, 0.23f, 0.23f, 1f); } }
         public virtual string Section { get { return ""; } }
+
+        public State CurrentState { get; set; }
+        public bool Started { get; set; }
 
         public State Run(BehaviorNode parent, int inputIndex, IBehaviorState internalState, IEvent currentEvent)
         {
