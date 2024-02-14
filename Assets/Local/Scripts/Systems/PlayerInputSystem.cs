@@ -15,6 +15,7 @@ namespace Scripts
 
         private PlayerInput _playerInput;
         private Transform _cameraTransform;
+        private int _lastTouchID = -1;
 
         public void EventCatch(StartEvent newEvent)
         {
@@ -38,6 +39,16 @@ namespace Scripts
             ClearDebug();
 
             _playerInput = null;
+        }
+
+        public void EventCatch(ApplicationFocusChangedEvent newEvent)
+        {
+            var touchEvent = new TouchInputEvent();
+            touchEvent.Index = 0;
+            touchEvent.TouchID = _lastTouchID;
+            touchEvent.End = true;
+            touchEvent.Position = Vector2.zero;
+            EventBus.CallEvent(touchEvent);
         }
 
         private void OnMovement(InputAction.CallbackContext context)
@@ -68,6 +79,8 @@ namespace Scripts
             touchEvent.End = callbackContext.phase == InputActionPhase.Canceled || callbackContext.phase == InputActionPhase.Disabled;
             touchEvent.Position = touchEvent.End ? Vector2.zero : o.Position;
             EventBus.CallEvent(touchEvent);
+
+            _lastTouchID = o.TouchId;
         }
 
 #region DEBUG

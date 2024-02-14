@@ -188,7 +188,14 @@ namespace Scripts
             _eventBus.CallEvent(new InitEvent());
             _eventBus.CallEvent(new StartEvent());
 
+            Application.focusChanged += FocusChanged;
+
             _initialized = true;
+        }
+
+        public void FocusChanged(bool active)
+        {
+            _eventBus.CallEvent(new ApplicationFocusChangedEvent() { Active = active });
         }
 
         public void Update()
