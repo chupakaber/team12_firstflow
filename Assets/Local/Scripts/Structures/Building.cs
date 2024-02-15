@@ -103,6 +103,10 @@ namespace Scripts
                 {
                     Levels[i].Visual.SetActive(i == _level);
                 }
+                if (ItemStackView.gameObject.activeSelf != (_level > 0))
+                {
+                    ItemStackView.gameObject.SetActive(_level > 0);
+                }
             }
         }
         public bool IsWork { get; set; } = true;

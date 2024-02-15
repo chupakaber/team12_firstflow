@@ -22,6 +22,7 @@ namespace Scripts
         //public Transform ActorSecondClerkWayPoint;
         public Transform CameraWayPoint;
         public Collider Trigger;
+        public MeshRenderer TriggerAreaMeshRenderer;
         public PlayableDirector PlayableDirector;
         public GameObject Root;
         public CinematicBorders CinematicBorders;
@@ -227,6 +228,10 @@ namespace Scripts
             PlayableDirector.Play();
             this.enabled = true;
             Trigger.enabled = false;
+            if (TriggerAreaMeshRenderer != null)
+            {
+                TriggerAreaMeshRenderer.enabled = false;
+            }
             CinematicBorders.Close();
 
             EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = Vector3.zero });
@@ -235,6 +240,10 @@ namespace Scripts
         public void Activation()
         {
             Trigger.enabled = true;
+            if (TriggerAreaMeshRenderer != null)
+            {
+                TriggerAreaMeshRenderer.enabled = true;
+            }
 
             _storedArrowPointer = UIView.PointerArrowTargetPosition;
             EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = Trigger.bounds.center });
@@ -245,6 +254,10 @@ namespace Scripts
             Root.SetActive(false);
             PlayableDirector.Stop();
             Trigger.enabled = false;
+            if (TriggerAreaMeshRenderer != null)
+            {
+                TriggerAreaMeshRenderer.enabled = false;
+            }
             this.enabled = false;
             CinematicBorders.Open();
             foreach(var actor in Actors) 
