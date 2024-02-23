@@ -67,7 +67,7 @@ namespace Scripts
         public EventBus EventBus;
 
         [HideInInspector]
-        public static float TutorialSwitch = 1f;
+        public static float TutorialSwitch = 0.33f;
 
         private LocalizationLabelView[] _localizedLabels = new LocalizationLabelView[0];
         private int _currentLangID = -1;
