@@ -32,10 +32,17 @@ namespace Scripts
         {
             foreach (var building in Buildings)
             {
-                var progressBar = Object.Instantiate(_progressBarPrefab);
-                progressBar.transform.SetParent(UIView.WorldSpaceTransform);
-                progressBar.transform.localScale = Vector3.one;
-                ProgressBarViews.Add(progressBar);
+                if (building.ProgressBarPivot != null)
+                {
+                    var progressBar = Object.Instantiate(_progressBarPrefab);
+                    progressBar.transform.SetParent(UIView.WorldSpaceTransform);
+                    progressBar.transform.localScale = Vector3.one;
+                    ProgressBarViews.Add(progressBar);
+                }
+                else
+                {
+                    ProgressBarViews.Add(null);
+                }
 
                 UpdateProgress(building);
 

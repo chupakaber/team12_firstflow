@@ -333,6 +333,29 @@ MonoBehaviour:
   Min: 0
   Max: 0
   StateID: 14
+--- !u!114 &-8378513779327929322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: Sawmill #1
+  m_EditorClassIdentifier: 
+  Name: Sawmill #1
+  Guid: 167ac1ef05b0a0e4987a80939154d6a5
+  Position: {x: 2741.9995, y: 1129.5001}
+  Children:
+  - {fileID: -2448319560921694044}
+  - {fileID: 2986344692142272217}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 101
 --- !u!114 &-8328284851474796852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,6 +399,25 @@ MonoBehaviour:
   OutputIndex: 00000000
   MathOperation: 0
   Value: 10
+--- !u!114 &-8230233209030405671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: ACTIVE
+  m_EditorClassIdentifier: 
+  Name: ACTIVE
+  Guid: a2f053e49deaa0346ab8665959989dd4
+  Position: {x: 3234.263, y: 1317}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
 --- !u!114 &-8216259117332788645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,6 +447,29 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &-8053383477903032500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: =1
+  m_EditorClassIdentifier: 
+  Name: =1
+  Guid: 6ac0eb7d0fcc58449ba55bf20e206326
+  Position: {x: 4014, y: 2309}
+  Children:
+  - {fileID: 3952586154171855373}
+  - {fileID: 6649727419776159872}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 1
 --- !u!114 &-7942377139524086092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -934,6 +999,34 @@ MonoBehaviour:
   InputTargetIndex: 
   OutputIndex: 
   FieldName: 1
+--- !u!114 &-6812344594441976587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: MansionFirstFloor
+  m_EditorClassIdentifier: 
+  Name: MansionFirstFloor
+  Guid: 33ccab965f929384286ccc14bdf35a8d
+  Position: {x: 3038.263, y: 1317}
+  Children:
+  - {fileID: -8230233209030405671}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 5502
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
 --- !u!114 &-6526168959216693906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1622,6 +1715,24 @@ MonoBehaviour:
   ChildrenForFailure: []
   Operator: 0
   Value: 501
+--- !u!114 &-4727572134495328310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  Guid: c48108aa7c43aff4da686355d18a1f87
+  Position: {x: 2932.0002, y: 2086.4}
+  Child: {fileID: -2253249387025358173}
+  InputTargetIndex: 1
+  Value: 1
 --- !u!114 &-4723788988551724873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1701,6 +1812,25 @@ MonoBehaviour:
   Method: 0
   Value: 1
   StateID: 18
+--- !u!114 &-4619982426084061220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7a1e54833b1674a8da9f1f1c646da6, type: 3}
+  m_Name: UnitToBuilding
+  m_EditorClassIdentifier: 
+  Name: UnitToBuilding
+  Guid: e33bf358d5f3e7e42901a9ff71e75c22
+  Position: {x: 2289, y: 1435}
+  Children:
+  - {fileID: -2862937653893238500}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
 --- !u!114 &-4562662647800903717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1819,6 +1949,34 @@ MonoBehaviour:
   InputTargetIndex: 00000000
   OutputIndex: 00000000
   GameObjectName: BridgeFence
+--- !u!114 &-4285028525304838092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: MansionLeftTower
+  m_EditorClassIdentifier: 
+  Name: MansionLeftTower
+  Guid: e2aa72bba73360b41aa3941a04ebe301
+  Position: {x: 2932, y: 1833}
+  Children:
+  - {fileID: -2253249387025358173}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 5507
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
 --- !u!114 &-4273328151877730383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2366,6 +2524,27 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &-3289461909039167380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffe549c032223648851950c2a86c679, type: 3}
+  m_Name: LEVEL
+  m_EditorClassIdentifier: 
+  Name: LEVEL
+  Guid: e47ee4a852a85ac4d97585eb7b8418ca
+  Position: {x: 3891, y: 2309}
+  Children:
+  - {fileID: -8053383477903032500}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  FieldName: 3
+  Index: 0
 --- !u!114 &-3261768279909964926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2575,6 +2754,32 @@ MonoBehaviour:
   InputTargetIndex: 
   OutputIndex: 
   FieldName: 1
+--- !u!114 &-2862937653893238500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffe549c032223648851950c2a86c679, type: 3}
+  m_Name: ID
+  m_EditorClassIdentifier: 
+  Name: ID
+  Guid: c90b12f8fa10cb847aedc0ee79c62982
+  Position: {x: 2450.263, y: 1387}
+  Children:
+  - {fileID: 5002067285943709335}
+  - {fileID: -8378513779327929322}
+  - {fileID: 5356196610229875132}
+  - {fileID: 3521823252207212076}
+  - {fileID: 2721955513875951948}
+  - {fileID: 7031571163161786140}
+  InputTargetIndex: 000000000000000000000000000000000000000000000000
+  OutputIndex: 000000000000000000000000000000000000000000000000
+  FieldName: 4
+  Index: 0
 --- !u!114 &-2849907328935770525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2751,6 +2956,52 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &-2473380052927470616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  Guid: e24a9fb123b481d4c860eded4ce21241
+  Position: {x: 2909.0002, y: 2391}
+  Child: {fileID: -852930769269221537}
+  InputTargetIndex: 1
+  Value: 1
+--- !u!114 &-2448319560921694044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: MansionFoundation
+  m_EditorClassIdentifier: 
+  Name: MansionFoundation
+  Guid: a4b83f5130e23174ebc47c055cb13181
+  Position: {x: 3038, y: 1048}
+  Children:
+  - {fileID: 1786933986568031337}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 5501
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
 --- !u!114 &-2347968199939557470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2799,6 +3050,25 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &-2253249387025358173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: ACTIVE
+  m_EditorClassIdentifier: 
+  Name: ACTIVE
+  Guid: af421c264bd2da6489c10a91b280090b
+  Position: {x: 3206, y: 1914}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
 --- !u!114 &-2246212996029978776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3068,6 +3338,25 @@ MonoBehaviour:
   Child: {fileID: -8818389136171265078}
   InputTargetIndex: 0
   Value: 2
+--- !u!114 &-1697607344854769005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: ACTIVE
+  m_EditorClassIdentifier: 
+  Name: ACTIVE
+  Guid: 7947558a92626054fbba937efcf6cf0e
+  Position: {x: 3186, y: 2686}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
 --- !u!114 &-1651163593275786317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3130,6 +3419,52 @@ MonoBehaviour:
   InputTargetIndex: 00000000
   OutputIndex: 04000000
   EventType: 3
+--- !u!114 &-1499787760801931563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: MansionLeftTower
+  m_EditorClassIdentifier: 
+  Name: MansionLeftTower
+  Guid: 4b27f8ee1a3068f4fb0a99090d803555
+  Position: {x: 3702.6775, y: 2309}
+  Children:
+  - {fileID: -3289461909039167380}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 5507
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
+--- !u!114 &-1451379809838419957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  Guid: 20a863ea7df069c4c8e954cce4b4e22d
+  Position: {x: 2989, y: 2764}
+  Child: {fileID: -1697607344854769005}
+  InputTargetIndex: 1
+  Value: 1
 --- !u!114 &-1423466142614793881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3246,6 +3581,26 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &-1142565611483547853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d492f90ed5558442a3b7efac521ce7a, type: 3}
+  m_Name: Construction Complete\n[Event]
+  m_EditorClassIdentifier: 
+  Name: Construction Complete\n[Event]
+  Guid: 409ffc77fa991ba47864e265cbaafb25
+  Position: {x: 2076, y: 1357}
+  Children:
+  - {fileID: -4619982426084061220}
+  InputTargetIndex: 00000000
+  OutputIndex: 04000000
+  EventType: 5
 --- !u!114 &-1100110022450567462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3423,6 +3778,54 @@ MonoBehaviour:
   ChildrenForFailure: []
   Operator: 0
   Value: 10
+--- !u!114 &-852930769269221537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daaff762aa30ed343988cece780a5e47, type: 3}
+  m_Name: PLUS
+  m_EditorClassIdentifier: 
+  Name: PLUS
+  Guid: 7586fbbf223cebb428efd18d9e82da98
+  Position: {x: 3050, y: 2308.5}
+  Children:
+  - {fileID: 9163896882621038486}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  MathOperation: 0
+--- !u!114 &-830374294758801596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: MansionRightTower
+  m_EditorClassIdentifier: 
+  Name: MansionRightTower
+  Guid: 067346f96f035054a957cdb31c093d29
+  Position: {x: 2932.0002, y: 1950.25}
+  Children:
+  - {fileID: -2253249387025358173}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 5508
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
 --- !u!114 &-798380945240352766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3691,6 +4094,34 @@ MonoBehaviour:
   OutputIndex: 00000000
   FieldName: 3
   Index: 0
+--- !u!114 &-185937245672943295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: MansionLeftWall
+  m_EditorClassIdentifier: 
+  Name: MansionLeftWall
+  Guid: 0716c8bbc56a6be4dab9a02ff9151ae5
+  Position: {x: 3296, y: 2309}
+  Children:
+  - {fileID: 211298818666448387}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 5505
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
 --- !u!114 &-185846039661690403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4124,6 +4555,43 @@ MonoBehaviour:
   - {fileID: -2246212996029978776}
   - {fileID: -2621217716484835949}
   - {fileID: 5078414874644946824}
+  - {fileID: -1142565611483547853}
+  - {fileID: -4619982426084061220}
+  - {fileID: -2862937653893238500}
+  - {fileID: 5002067285943709335}
+  - {fileID: -6812344594441976587}
+  - {fileID: -8230233209030405671}
+  - {fileID: 1103632417812718193}
+  - {fileID: -8378513779327929322}
+  - {fileID: -2448319560921694044}
+  - {fileID: 2986344692142272217}
+  - {fileID: 1786933986568031337}
+  - {fileID: 5356196610229875132}
+  - {fileID: -4727572134495328310}
+  - {fileID: 5498566838007310680}
+  - {fileID: 2623558742949189612}
+  - {fileID: -4285028525304838092}
+  - {fileID: -830374294758801596}
+  - {fileID: -2253249387025358173}
+  - {fileID: 3521823252207212076}
+  - {fileID: 2721955513875951948}
+  - {fileID: 5317853067557723090}
+  - {fileID: -2473380052927470616}
+  - {fileID: -852930769269221537}
+  - {fileID: 9163896882621038486}
+  - {fileID: -185937245672943295}
+  - {fileID: 211298818666448387}
+  - {fileID: 4449243204882425}
+  - {fileID: -1499787760801931563}
+  - {fileID: -3289461909039167380}
+  - {fileID: -8053383477903032500}
+  - {fileID: 3952586154171855373}
+  - {fileID: 5475532130050215957}
+  - {fileID: 6649727419776159872}
+  - {fileID: 7031571163161786140}
+  - {fileID: 2164335592381326476}
+  - {fileID: -1451379809838419957}
+  - {fileID: -1697607344854769005}
   Labels:
   - {fileID: -6524441439742630276}
   - {fileID: 2134023816377030358}
@@ -4137,6 +4605,29 @@ MonoBehaviour:
   - {fileID: 5462894563867417476}
   - {fileID: -1860411199823041373}
   - {fileID: 7437792764172793174}
+  - {fileID: 2909170754663954272}
+--- !u!114 &4449243204882425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: =1
+  m_EditorClassIdentifier: 
+  Name: =1
+  Guid: d02c09a26305fea4cac305e5b9e87972
+  Position: {x: 3593, y: 2309}
+  Children:
+  - {fileID: -1499787760801931563}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 1
 --- !u!114 &79279145139786393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4221,6 +4712,27 @@ MonoBehaviour:
   Method: 0
   Value: 1
   StateID: 2
+--- !u!114 &211298818666448387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffe549c032223648851950c2a86c679, type: 3}
+  m_Name: LEVEL
+  m_EditorClassIdentifier: 
+  Name: LEVEL
+  Guid: dddad031afaf34e4a8095a96c89e0131
+  Position: {x: 3473, y: 2309}
+  Children:
+  - {fileID: 4449243204882425}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  FieldName: 3
+  Index: 0
 --- !u!114 &258350701208915894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4532,6 +5044,24 @@ MonoBehaviour:
   OutputIndex: 00000000
   ChildrenForFailure: []
   Operator: 0
+  Value: 1
+--- !u!114 &1103632417812718193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  Guid: 8f7d3ac4789ca254d89b2f6a6e28e12a
+  Position: {x: 3073.2627, y: 1442}
+  Child: {fileID: -8230233209030405671}
+  InputTargetIndex: 1
   Value: 1
 --- !u!114 &1179840288637710135
 MonoBehaviour:
@@ -4858,6 +5388,25 @@ MonoBehaviour:
   Child: {fileID: 282604817448008428}
   InputTargetIndex: 1
   Value: 1
+--- !u!114 &1786933986568031337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: ACTIVE
+  m_EditorClassIdentifier: 
+  Name: ACTIVE
+  Guid: 9eb5b9621efe7e14898e7aa7c92cb38e
+  Position: {x: 3281, y: 1086.5}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
 --- !u!114 &1823691467471444197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5149,6 +5698,34 @@ MonoBehaviour:
   InputTargetIndex: 
   OutputIndex: 
   Index: 3
+--- !u!114 &2164335592381326476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: MansionThirdFloor
+  m_EditorClassIdentifier: 
+  Name: MansionThirdFloor
+  Guid: 16b5da2262956cd4b93a82b847e4c862
+  Position: {x: 2988.9993, y: 2638.9998}
+  Children:
+  - {fileID: -1697607344854769005}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 5504
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
 --- !u!114 &2171345878589031454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5387,6 +5964,34 @@ MonoBehaviour:
   Min: 0
   Max: 0
   StateID: 8
+--- !u!114 &2623558742949189612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: MansionRightWall
+  m_EditorClassIdentifier: 
+  Name: MansionRightWall
+  Guid: 2b9e95188d6973842bb31916cc700077
+  Position: {x: 2932.0002, y: 1712.25}
+  Children:
+  - {fileID: -2253249387025358173}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 5506
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
 --- !u!114 &2659118210299248690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5438,6 +6043,28 @@ MonoBehaviour:
   ChildrenForFailure: []
   Operator: 0
   Value: 201
+--- !u!114 &2721955513875951948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: <= 5508
+  m_EditorClassIdentifier: 
+  Name: <= 5508
+  Guid: c9e9aaa8a567be0489b68b3c263656e9
+  Position: {x: 2757, y: 2391.475}
+  Children:
+  - {fileID: -2473380052927470616}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ChildrenForFailure: []
+  Operator: 2
+  Value: 5509
 --- !u!114 &2776231370249376900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5537,6 +6164,25 @@ MonoBehaviour:
   ChildrenForFailure: []
   Operator: 1
   Value: 1
+--- !u!114 &2909170754663954272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c2a197ecf07b04d93b76bae9693330, type: 3}
+  m_Name: Mansion construction
+  m_EditorClassIdentifier: 
+  Guid: 2e195b57b28e33c45b5700651efbab2b
+  Position: {x: 2204.58, y: 942.39}
+  Size: {x: 554, y: 100}
+  Name: Mansion construction
+  Contents: 
+  BackgroundColor: {r: 0.2, g: 0.235, b: 0.294, a: 1}
+  TextColor: {r: 0.487, g: 0.723, b: 0.867, a: 1}
 --- !u!114 &2976566233998380161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5586,6 +6232,24 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &2986344692142272217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  Guid: 771dc95a2db1d384593f9191933de13b
+  Position: {x: 3038, y: 1175}
+  Child: {fileID: 1786933986568031337}
+  InputTargetIndex: 1
+  Value: 1
 --- !u!114 &3104998475414783724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5758,6 +6422,28 @@ MonoBehaviour:
   Min: 0
   Max: 0
   StateID: 15
+--- !u!114 &3521823252207212076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: '>= 5505'
+  m_EditorClassIdentifier: 
+  Name: '>= 5505'
+  Guid: 51a92bfedf25bf742bf5ba1e165952d5
+  Position: {x: 2756.5059, y: 2245.8086}
+  Children:
+  - {fileID: 5317853067557723090}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ChildrenForFailure: []
+  Operator: 1
+  Value: 5504
 --- !u!114 &3532340057249199061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6005,6 +6691,34 @@ MonoBehaviour:
   Min: 0
   Max: 0
   StateID: 6
+--- !u!114 &3952586154171855373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: MansionSecondFloor
+  m_EditorClassIdentifier: 
+  Name: MansionSecondFloor
+  Guid: 67f8442b5eaa7be48a6dab98c71bdc9d
+  Position: {x: 4125.2515, y: 2309.0005}
+  Children:
+  - {fileID: 5475532130050215957}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 5503
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
 --- !u!114 &3977344426625778034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6467,6 +7181,29 @@ MonoBehaviour:
   OutputIndex: 00000000
   MathOperation: 1
   Value: 2
+--- !u!114 &5002067285943709335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: MansionFoundation
+  m_EditorClassIdentifier: 
+  Name: MansionFoundation
+  Guid: c2ae3ba729a8478429f92a6624452e86
+  Position: {x: 2742.263, y: 1340}
+  Children:
+  - {fileID: -6812344594441976587}
+  - {fileID: 1103632417812718193}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 5501
 --- !u!114 &5032631864277934431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6564,6 +7301,50 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &5317853067557723090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  Guid: 92c0b5a4fb60e6e4689c55961002dad6
+  Position: {x: 2909, y: 2246}
+  Child: {fileID: -852930769269221537}
+  InputTargetIndex: 0
+  Value: 1
+--- !u!114 &5356196610229875132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: MansionFirstFloor
+  m_EditorClassIdentifier: 
+  Name: MansionFirstFloor
+  Guid: b5754516cedcbb448bd9551851528e5e
+  Position: {x: 2742.0005, y: 1616.0504}
+  Children:
+  - {fileID: -4727572134495328310}
+  - {fileID: 5498566838007310680}
+  - {fileID: 2623558742949189612}
+  - {fileID: -4285028525304838092}
+  - {fileID: -830374294758801596}
+  InputTargetIndex: 0000000000000000000000000000000000000000
+  OutputIndex: 0000000000000000000000000000000000000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 5502
 --- !u!114 &5376207450314269398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6671,6 +7452,53 @@ MonoBehaviour:
   Contents: 
   BackgroundColor: {r: 0.2, g: 0.235, b: 0.294, a: 1}
   TextColor: {r: 0.487, g: 0.723, b: 0.867, a: 1}
+--- !u!114 &5475532130050215957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: ACTIVE
+  m_EditorClassIdentifier: 
+  Name: ACTIVE
+  Guid: 01a03850a4843b24eb9a0bd056903acf
+  Position: {x: 4351.1, y: 2371.5005}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
+--- !u!114 &5498566838007310680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: MansionLeftWall
+  m_EditorClassIdentifier: 
+  Name: MansionLeftWall
+  Guid: 4f1bf52ddda154c45877a76e71ba6dd5
+  Position: {x: 2932.0002, y: 1593.25}
+  Children:
+  - {fileID: -2253249387025358173}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 5505
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
 --- !u!114 &5610417700878566325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7177,6 +8005,24 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &6649727419776159872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  Guid: aa16d5a42c805a745bf368f89dc9d31c
+  Position: {x: 4125, y: 2434.0005}
+  Child: {fileID: 5475532130050215957}
+  InputTargetIndex: 1
+  Value: 1
 --- !u!114 &6729962076776007561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7320,6 +8166,29 @@ MonoBehaviour:
   InputTargetIndex: 
   OutputIndex: 
   FieldName: 1
+--- !u!114 &7031571163161786140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: MansionSecondFloor
+  m_EditorClassIdentifier: 
+  Name: MansionSecondFloor
+  Guid: 2b491b987e14c0e41846c0603ddad244
+  Position: {x: 2757.0005, y: 2638.9502}
+  Children:
+  - {fileID: 2164335592381326476}
+  - {fileID: -1451379809838419957}
+  InputTargetIndex: 0000000000000000
+  OutputIndex: 0000000000000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 5503
 --- !u!114 &7079764700418096319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8319,3 +9188,25 @@ MonoBehaviour:
   InputTargetIndex: 
   OutputIndex: 
   Index: 2
+--- !u!114 &9163896882621038486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820477b3d9b551645b830d4b6755405b, type: 3}
+  m_Name: =2
+  m_EditorClassIdentifier: 
+  Name: =2
+  Guid: 9bbc8e5cd222ffe4495f81599bfb2113
+  Position: {x: 3167, y: 2308.5}
+  Children:
+  - {fileID: -185937245672943295}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ChildrenForFailure: []
+  Operator: 0
+  Value: 2

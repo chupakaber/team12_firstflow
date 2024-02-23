@@ -67,16 +67,20 @@ namespace Scripts
         {
             for (var i = 0; i< ProgressBarViews.Count; i++)
             {
-                var building = Buildings[i];
                 var progressBar = ProgressBarViews[i];
 
-                progressBar.Progress = building.ProductionProgress();
+                if (progressBar != null)
+                {
+                    var building = Buildings[i];
+                    
+                    progressBar.Progress = building.ProductionProgress();
 
-                var worldPosition = building.ProgressBarPivot.position;
-                var screenPosition = Camera.WorldToScreenPoint(worldPosition);
-                var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
-                var progressBarTransform = (RectTransform)progressBar.transform;
-                progressBarTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
+                    var worldPosition = building.ProgressBarPivot.position;
+                    var screenPosition = Camera.WorldToScreenPoint(worldPosition);
+                    var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
+                    var progressBarTransform = (RectTransform)progressBar.transform;
+                    progressBarTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
+                }
             }
 
             for (var i = 0; i< TimerBarViews.Count; i++)
