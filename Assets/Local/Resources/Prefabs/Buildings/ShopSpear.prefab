@@ -204,8 +204,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _shiftFrequency: {x: 0, y: 0, z: 0}
+  _shiftFrequencyOffset: {x: 0, y: 0, z: 0}
+  _radialScale: {x: 0, y: 0, z: 0}
+  _linearShift: {x: 0, y: 0, z: 0}
+  _rotationFrequency: {x: 0, y: 0, z: 0}
+  _frequentRotationScale: {x: 0, y: 0, z: 0}
+  _linearRotationScale: {x: 0, y: 0, z: 0}
   _baseRotation: {x: 0, y: 0, z: 0}
-  _dynamicRotation: {x: 0, y: 0, z: 0}
+  _maxIndicatorTransform: {fileID: 0}
   _exclusiveStacks:
   - ItemType: 7
     Transform: {fileID: 3537264926842119984}
@@ -1270,7 +1277,7 @@ MonoBehaviour:
     Cost:
     - Amount: 2
       Type: 15
-    - Amount: 30
+    - Amount: 25
       Type: 7
     Boost:
     - Type: 1
@@ -1279,7 +1286,7 @@ MonoBehaviour:
     Cost:
     - Amount: 3
       Type: 15
-    - Amount: 70
+    - Amount: 50
       Type: 7
     Boost:
     - Type: 1
@@ -1288,7 +1295,7 @@ MonoBehaviour:
     Cost:
     - Amount: 4
       Type: 15
-    - Amount: 100
+    - Amount: 180
       Type: 7
     Boost:
     - Type: 1
@@ -1298,6 +1305,7 @@ MonoBehaviour:
   UpgradeAnimationEffect: {fileID: 3548988988296585733}
   ConstructionAreaMeshRenderer: {fileID: 6882828807159973599}
   UpgradeAreaMeshRenderer: {fileID: 2233689223182827793}
+  UnloadingAreaMeshRenderer: {fileID: 0}
   _level: 0
   ConstructionCharacters: []
   ProductionCharacters: []
@@ -1358,8 +1366,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _shiftFrequency: {x: 0, y: 0, z: 0}
+  _shiftFrequencyOffset: {x: 0, y: 0, z: 0}
+  _radialScale: {x: 0, y: 0, z: 0}
+  _linearShift: {x: 0, y: 0, z: 0}
+  _rotationFrequency: {x: 0, y: 0, z: 0}
+  _frequentRotationScale: {x: 0, y: 0, z: 0}
+  _linearRotationScale: {x: 0, y: 0, z: 0}
   _baseRotation: {x: 0, y: 0, z: 0}
-  _dynamicRotation: {x: 0, y: 0, z: 0}
+  _maxIndicatorTransform: {fileID: 0}
   _exclusiveStacks: []
   Align: 1
 --- !u!114 &8559780755744524495

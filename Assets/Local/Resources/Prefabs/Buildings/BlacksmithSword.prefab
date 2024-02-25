@@ -1399,8 +1399,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _shiftFrequency: {x: 0, y: 0, z: 0}
+  _shiftFrequencyOffset: {x: 0, y: 0, z: 0}
+  _radialScale: {x: 0, y: 0, z: 0}
+  _linearShift: {x: 0, y: 0, z: 0}
+  _rotationFrequency: {x: 0, y: 0, z: 0}
+  _frequentRotationScale: {x: 0, y: 0, z: 0}
+  _linearRotationScale: {x: 0, y: 0, z: 0}
   _baseRotation: {x: 0, y: 0, z: 0}
-  _dynamicRotation: {x: 0, y: 0, z: 0}
+  _maxIndicatorTransform: {fileID: 0}
   _exclusiveStacks: []
   Align: 1
 --- !u!114 &915097358632772234
@@ -1947,14 +1954,14 @@ MonoBehaviour:
     Boost: []
   - Visual: {fileID: 8459456124783931572}
     Cost:
-    - Amount: 10
+    - Amount: 8
       Type: 15
     - Amount: 65
       Type: 7
     Boost: []
   - Visual: {fileID: 748697504242553128}
     Cost:
-    - Amount: 12
+    - Amount: 8
       Type: 15
     - Amount: 70
       Type: 7
@@ -1963,7 +1970,7 @@ MonoBehaviour:
       Value: 0.87
   - Visual: {fileID: 169460171473541911}
     Cost:
-    - Amount: 14
+    - Amount: 10
       Type: 15
     - Amount: 100
       Type: 7
@@ -1972,7 +1979,7 @@ MonoBehaviour:
       Value: 0.86
   - Visual: {fileID: 6944299396544223650}
     Cost:
-    - Amount: 16
+    - Amount: 12
       Type: 15
     - Amount: 150
       Type: 7
@@ -2159,8 +2166,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _shiftFrequency: {x: 0, y: 0, z: 0}
+  _shiftFrequencyOffset: {x: 0, y: 0, z: 0}
+  _radialScale: {x: 0, y: 0, z: 0}
+  _linearShift: {x: 0, y: 0, z: 0}
+  _rotationFrequency: {x: 0, y: 0, z: 0}
+  _frequentRotationScale: {x: 0, y: 0, z: 0}
+  _linearRotationScale: {x: 0, y: 0, z: 0}
   _baseRotation: {x: 0, y: 0, z: 0}
-  _dynamicRotation: {x: 0, y: 0, z: 0}
+  _maxIndicatorTransform: {fileID: 0}
   _exclusiveStacks:
   - ItemType: 1
     Transform: {fileID: 2255402684401857251}
