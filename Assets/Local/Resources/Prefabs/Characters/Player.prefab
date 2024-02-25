@@ -78,8 +78,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _shiftFrequency: {x: 0, y: 0, z: 0}
+  _shiftFrequencyOffset: {x: 0, y: 0, z: 0}
+  _radialScale: {x: 0, y: 0, z: 0}
+  _linearShift: {x: 0, y: 0, z: 0}
+  _rotationFrequency: {x: 0, y: 0, z: 0}
+  _frequentRotationScale: {x: 0, y: 0, z: 0}
+  _linearRotationScale: {x: 0, y: 0, z: 0}
   _baseRotation: {x: 0, y: 0, z: 0}
-  _dynamicRotation: {x: 0, y: 0, z: 0}
   _maxIndicatorTransform: {fileID: 7375210742553528661}
   _exclusiveStacks: []
   Align: 1
@@ -245,7 +251,7 @@ MonoBehaviour:
   - {fileID: 2662108539973651867}
   - {fileID: 2662108539973651867}
   - {fileID: 0}
-  RankHonor: 00000000640000002c010000f4010000dc050000fc08000040420f00
+  RankHonor: 00000000640000002c0100002602000040060000c409000040420f00
   WorldDirection: {x: 0, y: 0, z: 0}
   LastDropItemTime: 0
   LastPickUpItemTime: 0
