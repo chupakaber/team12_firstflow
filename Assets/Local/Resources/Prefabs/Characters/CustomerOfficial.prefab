@@ -45,7 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _baseRotation: {x: 0, y: 0, z: 0}
+  _dynamicRotation: {x: 0, y: 0, z: 0}
+  _maxIndicatorTransform: {fileID: 0}
   _exclusiveStacks: []
+  Align: 1
 --- !u!1 &5415835665078485910
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,9 +186,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemStackView: {fileID: 7873545307855562010}
   CollectingProgressBars: []
+  Initialized: 0
   CharacterRigidbody: {fileID: 1853636807648437890}
   CharacterAnimator: {fileID: 4467938525098955354}
   MessageEmitterPivot: {fileID: 0}
+  UpgradeAnimationEffect: {fileID: 0}
   Speed: 5.5
   CharacterType: 4
   ItemLimit: 1
@@ -194,7 +200,10 @@ MonoBehaviour:
   PickUpItemConstraint: 0
   BaseBagOfTriesCapacity: 8
   IsWork: 0
+  WorkType: 0
+  IsSitting: 0
   IsCutSceneActiv: 0
+  WorkingInstruments: []
   RankHonor: 00000000640000002c01000058020000e8030000dc05000040420f00
   WorldDirection: {x: 0, y: 0, z: 0}
   LastDropItemTime: 0
@@ -202,6 +211,7 @@ MonoBehaviour:
   BagOfTriesView: {fileID: 0}
   NextInQueue: {fileID: 0}
   PreviousInQueue: {fileID: 0}
+  TemporaryItemStack: {fileID: 0}
   NavMeshAgent: {fileID: 4047979110364894255}
   BehaviorTree: {fileID: 0}
   LevelDecor: []
@@ -270,7 +280,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.45
   m_Height: 2.4
   m_Direction: 1
   m_Center: {x: 0, y: 1.2, z: 0}

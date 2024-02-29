@@ -8,6 +8,8 @@ namespace Scripts
         public RectTransform Transform;
         public RectTransform Pointer;
         public float Radius;
+        public float VisualRadius;
+        public float ValuePow = 1f;
         public Vector2 ValueScale = Vector2.one;
         public Vector2 ActiveAreaMin;
         public Vector2 ActiveAreaMax;
@@ -64,8 +66,11 @@ namespace Scripts
             var delta = position - _startPosition;
             var convertedDelta = delta * _aspect;
             convertedDelta = convertedDelta.normalized * Mathf.Min(convertedDelta.magnitude, Radius);
-            Pointer.anchoredPosition = convertedDelta;
+            var visualConvertedDelta = convertedDelta.normalized * Mathf.Min(convertedDelta.magnitude, VisualRadius);
+            Pointer.anchoredPosition = visualConvertedDelta;
             _value = convertedDelta / Radius;
+            _value.x = Mathf.Sign(_value.x) * Mathf.Pow(_value.x, ValuePow);
+            _value.y = Mathf.Sign(_value.y) * Mathf.Pow(_value.y, ValuePow);
             return _value;
         }
     }

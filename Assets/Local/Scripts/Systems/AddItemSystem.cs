@@ -53,6 +53,13 @@ namespace Scripts.Systems
                     }
 
                     newEvent.Unit.ItemStackView.AddItem(itemView);
+                    
+                    if (newEvent.Unit is SmartCharacter)
+                    {
+                        var smartCharacter = (SmartCharacter) newEvent.Unit;
+                        newEvent.Unit.ItemStackView.SetMaxState(newEvent.Unit.Items.GetAmount() >= smartCharacter.ItemLimit);
+                    }
+
                     var endPosition = newEvent.Unit.GetStackTopPosition(newEvent.ItemType);
                     if (newEvent.FromPosition.sqrMagnitude > float.Epsilon)
                     {

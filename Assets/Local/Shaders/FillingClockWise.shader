@@ -3,7 +3,8 @@ Shader "Team12/Unlit/FillingClockWise"
     Properties
     {
 
-        _Value ("Value", Range(-1.57,1.57)) = 0.0
+        _Value ("Value", Float) = -100
+        _Cooldown ("Cooldown", Float) = 1
 
         _BaseColor("BaseColor", Color) = (.25, .5, .5, 1)
 
@@ -34,10 +35,11 @@ Shader "Team12/Unlit/FillingClockWise"
             {
                 float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
-                float4 origVertex : TEXCOORD1;
+                float value : TEXCOORD1;
             };
 
             float _Value;
+            float _Cooldown;
             float4 _BaseColor;
             float4 _FillColor;
 
@@ -45,17 +47,18 @@ Shader "Team12/Unlit/FillingClockWise"
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
-                o.origVertex = v.vertex;
+                o.uv = v.uv*2 - 1;
+                float deltaTime = (_Time.y - _Value) / _Cooldown;
+                o.value = deltaTime * 3.14 - 1.57 - max(0, deltaTime - 1) * 1000;
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float sY = i.origVertex.y / abs(i.origVertex.y);
-                float g = pow((i.origVertex.x*i.origVertex.x + i.origVertex.y*i.origVertex.y),0.5);
-                float angle = asin((i.origVertex.x/g/2 + 0.5) * sY);
-                float a = clamp((_Value - angle) * 1000000,0,1);
+                float sY = i.uv.y / abs(i.uv.y);
+                float g = pow((i.uv.x*i.uv.x + i.uv.y*i.uv.y),0.5);
+                float angle = asin((i.uv.x/g/2 + 0.5) * sY);
+                float a = clamp((i.value - angle) * 1000000,0,1);
                 fixed4 col = _BaseColor * (1 - a) + _FillColor * a;
                 return col;
             }

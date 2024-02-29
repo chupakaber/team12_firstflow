@@ -49,14 +49,15 @@ namespace Scripts
 
         public int GetAmount(ItemType type)
         {
+            var amount = 0;
             foreach (var item in _items)
             {
-                if (type == item.Type)
+                if (CompareItemType(item.Type, type))
                 {
-                    return item.Amount;
+                    amount += item.Amount;
                 }
             }
-            return 0; 
+            return amount;
         }
 
         public int GetAmount()
@@ -76,6 +77,15 @@ namespace Scripts
                 return 0;
             }
             return 1;
+        }
+
+        public bool ItemIsUnique(ItemType type)
+        {
+            if (type == ItemType.EMPEROR_SWORD)
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool TryGetFirstItem(out ItemType type, out int amount)
@@ -102,6 +112,27 @@ namespace Scripts
         public IEnumerator<Item> GetEnumerator()
         {
              return _items.GetEnumerator();
+        }
+
+        public bool CompareItemType(ItemType comparingItemType, ItemType pattern)
+        {
+            if (pattern == ItemType.NONE)
+            {
+                return false;
+            }
+
+            if (pattern == ItemType.ALL_PHYSIC_NON_UNIQUE)
+            {
+                if (GetItemVolume(comparingItemType) > 0)
+                {
+                    if (!ItemIsUnique(comparingItemType))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return comparingItemType == pattern;
         }
     }
 }

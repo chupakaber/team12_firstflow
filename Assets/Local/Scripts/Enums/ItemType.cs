@@ -18,5 +18,6 @@
         MERCENARY = 13,
         EMPEROR_SWORD = 14,
         ROCK = 15,
+        ALL_PHYSIC_NON_UNIQUE = 16,
     }
 }

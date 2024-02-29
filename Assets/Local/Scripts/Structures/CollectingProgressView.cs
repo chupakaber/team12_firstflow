@@ -17,7 +17,7 @@ namespace Scripts
         {
             if (!RootGameObject.activeSelf)
             {
-                return;
+                // return;
             }
             
             var value = Storage.Items.GetAmount(ItemType);

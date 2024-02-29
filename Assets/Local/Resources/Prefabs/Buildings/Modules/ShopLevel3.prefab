@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3413048945881357959}
   - component: {fileID: 736656706341638795}
-  m_Layer: 0
+  - component: {fileID: 4842296297212464594}
+  m_Layer: 7
   m_Name: Collider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,6 +54,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.8701362, z: 1.2404382}
   m_Center: {x: 0, y: 0.4350681, z: -0.12022086}
+--- !u!208 &4842296297212464594
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2552052273700893455}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.4350681, z: 0.620219}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.4350681, z: -0.1202209}
+  m_TimeToStationary: 0.5
 --- !u!1 &2796167304543820946
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,7 +435,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4027731612838969022}
   - component: {fileID: 2590234902893280417}
-  m_Layer: 0
+  - component: {fileID: 3802750439670478856}
+  m_Layer: 7
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,6 +479,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.5767787, y: 1, z: 1.1305708}
   m_Center: {x: 1.0250556, y: 0.5, z: 0.06528544}
+--- !u!208 &3802750439670478856
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081641729264632991}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.2883894, y: 0.5, z: 0.5652855}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 1.025056, y: 0.5, z: 0.06528544}
+  m_TimeToStationary: 0.5
 --- !u!1001 &8864799386795062813
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -114,7 +114,9 @@ namespace Scripts.BehaviorTree
                 }
             }
 
+            SerializationUtils.Put(buffer, Vector3Serializer<Vector3>.Instance, UIView.PointerArrowTargetPosition);
             SerializationUtils.Put(buffer, Vector3Serializer<Vector3>.Instance, UIView.PointerArrowTargetPositionOnNavMesh);
+            SerializationUtils.Put(buffer, UIView.GetCurrentTutorialStep());
             
             SerializationUtils.Put(buffer, SoundVolume);
             SerializationUtils.Put(buffer, MusicVolume);
@@ -179,7 +181,7 @@ namespace Scripts.BehaviorTree
 
             foreach (var character in Characters)
             {
-                if (character.CharacterType == CharacterType.PLAYER || character.CharacterType == CharacterType.CARNIVAL)
+                if (character.CharacterType == CharacterType.PLAYER || character.CharacterType == CharacterType.CARNIVAL || character.CharacterType == CharacterType.DAOS || character.CharacterType == CharacterType.DONKEY)
                 {
                     continue;
                 }
@@ -308,10 +310,21 @@ namespace Scripts.BehaviorTree
             }
 
             var storedTargetPosition = SerializationUtils.Get(buffer, Vector3Serializer<Vector3>.Instance);
+            var storedTargetPositionOnNavMesh = SerializationUtils.Get(buffer, Vector3Serializer<Vector3>.Instance);
             if (storedTargetPosition.sqrMagnitude > float.Epsilon)
             {
-                UIView.PointerArrowTargetPositionOnNavMesh = storedTargetPosition;
-                UIView.PointerArrowTargetPosition = UIView.PointerArrowTargetPositionOnNavMesh;
+                UIView.PointerArrowTargetPosition = storedTargetPosition;
+                EventBus.CallEvent(new SetArrowPointerEvent() { TargetPosition = storedTargetPosition });
+            }
+
+            var tutorialStep = SerializationUtils.Get(buffer, 0);
+            if (tutorialStep > -1)
+            {
+                UIView.ShowTutorial(tutorialStep);
+            }
+            else
+            {
+                UIView.HideTutorial();
             }
 
             SoundVolume = SerializationUtils.Get(buffer, 1f);

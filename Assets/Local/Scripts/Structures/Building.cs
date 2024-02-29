@@ -6,6 +6,12 @@ namespace Scripts
 {
     public class Building: Unit
     {
+        public enum ProductionMethod {
+            NONE = 0,
+            RESOURCE_TO_PRODUCT = 1,
+            RESOURCE_TO_TIME = 2,
+        }
+
         [Header("Building Config")]
         public int ID = -1;
         public Collider ConstructionArea;
@@ -23,18 +29,24 @@ namespace Scripts
         public Transform ProgressBarPivot;
         public GameObject StopProductionIcon;
         public GameObject NoResourceIcon;
+        public ProductionMethod ProduceMethod = ProductionMethod.RESOURCE_TO_PRODUCT;
+        public int BaseProductionLimit;
         public int ProductionLimit;
         public int ResourceLimit;
         public int ItemCost;
         public int ProductionItemAmountPerCycle;
         public float ProductionCooldown;
         public bool ProductionUseBagOfTries = true;
+        public float ProductionConversionRate = 1f;
         public ItemType ProduceItemType;
         public ItemType ConsumeItemType;
         public List<BuildingLevel> Levels;
         public Unit UpgradeStorage;
         public Animation HonorIconAnimation;
         public AnimationEffect UpgradeAnimationEffect;
+        public MeshRenderer ConstructionAreaMeshRenderer;
+        public MeshRenderer UpgradeAreaMeshRenderer;
+        public MeshRenderer UnloadingAreaMeshRenderer;
 
         [SerializeField] private int _level;
 
@@ -49,6 +61,7 @@ namespace Scripts
         public List<Character> AssignedPickingUpCharacters = new List<Character>();
         public float LastProductionTime;
         public float ProductionEndTime;
+        public float ProductionEndActivityTime;
         public float LastProductionSoundTime;
         public float LastProductionCheckTime;
         public int Level
@@ -89,6 +102,10 @@ namespace Scripts
                 for (var i = 0; i < Levels.Count; i++)
                 {
                     Levels[i].Visual.SetActive(i == _level);
+                }
+                if (ItemStackView.gameObject.activeSelf != (_level > 0))
+                {
+                    ItemStackView.gameObject.SetActive(_level > 0);
                 }
             }
         }

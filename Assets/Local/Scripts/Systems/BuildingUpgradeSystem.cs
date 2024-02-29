@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Scripts.Enums;
 using UnityEngine;
 
 namespace Scripts
@@ -136,7 +137,6 @@ namespace Scripts
                         {
                             progressBar.Capacity = requirement.Amount;
                             progressBar.FillValues();
-                            // Debug.Log($"Change UPGRADE capacity {building.name} [{building.Level}] | {progressBar.ItemType} | {requirement.Amount}");
                         }
                     }
                 }
@@ -147,8 +147,25 @@ namespace Scripts
         {
             switch (boost.Type)
             {
-                case Enums.BoostType.PRODUCTION_COOLDOWN_MULTIPLICATOR:
+                case BoostType.PRODUCTION_COOLDOWN:
+                    building.ProductionCooldown = boost.Value;
+                break;
+                case BoostType.PRODUCTION_COOLDOWN_MULTIPLICATOR:
                     building.ProductionCooldown *= boost.Value;
+                break;
+                case BoostType.RESOURCE_LIMIT:
+                    building.ResourceLimit = (int) boost.Value;
+                break;
+                case BoostType.RESOURCE_LIMIT_MULTIPLICATOR:
+                    building.ResourceLimit = (int) (building.ResourceLimit * boost.Value);
+                break;
+                case BoostType.PRODUCTION_LIMIT:
+                    building.ProductionLimit = (int) boost.Value;
+                    building.BaseProductionLimit = building.ProductionLimit;
+                break;
+                case BoostType.PRODUCTION_LIMIT_MULTIPLICATOR:
+                    building.ProductionLimit = (int) (building.ProductionLimit * boost.Value);
+                    building.BaseProductionLimit = building.ProductionLimit;
                 break;
             }
         }

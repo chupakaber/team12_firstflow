@@ -35,6 +35,7 @@ namespace Scripts
             else
             {
                 newEvent.Unit.ItemStackView.RemoveItem(newEvent.ItemType, newEvent.Count);
+                newEvent.Unit.ItemStackView.SetMaxState(false);
             }
         }
 

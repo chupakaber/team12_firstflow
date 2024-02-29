@@ -5,13 +5,13 @@ namespace Scripts
 {
     public class ProgressBarView: MonoBehaviour
     {
-        [SerializeField] private Image _background;
-        [SerializeField] private Image _image;
+        [SerializeField] protected Image _background;
+        [SerializeField] protected Image _image;
 
-        public float Progress 
-        { 
-            set 
-            { 
+        public virtual float Progress
+        {
+            set
+            {
                 _image.fillAmount = value;
                 
                 if (value <= float.Epsilon)
@@ -24,7 +24,7 @@ namespace Scripts
                 }
 
                 _background.enabled = _image.enabled;
-            } 
+            }
         }
     }
 }

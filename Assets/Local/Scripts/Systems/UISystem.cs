@@ -10,10 +10,12 @@ namespace Scripts
     {
         public List<Character> Characters;
         public List<ProgressBarView> ProgressBarViews;
+        public List<TimerBarView> TimerBarViews;
         public List<Building> Buildings;
         public EventBus EventBus;
         public UIView UIView;
         public Camera Camera;
+        public Scenario Scenario;
         public PoolCollection<BagOfTriesView> BagOfTriesViewPools;
         public PoolCollection<PinnedCounterView> PinnedCounterViewPools;
         public PoolCollection<BubbleView> BubbleViewPools;
@@ -43,6 +45,12 @@ namespace Scripts
                     }
                 }
             }
+
+            var timerBars = Object.FindObjectsOfType<TimerBarView>();
+            foreach (var timerBar in timerBars)
+            {
+                TimerBarViews.Add(timerBar);
+            }
         }
 
         public void EventCatch(AddItemEvent newEvent)
@@ -69,6 +77,32 @@ namespace Scripts
                 var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
                 var progressBarTransform = (RectTransform)progressBar.transform;
                 progressBarTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
+            }
+
+            for (var i = 0; i< TimerBarViews.Count; i++)
+            {
+                var timerBar = TimerBarViews[i];
+                var building = timerBar.Building;
+
+                var value = 0f;
+                if (timerBar.ValueFromStateID > -1)
+                {
+                    value = Scenario.BehaviorTreeRunner.InternalState.GetState(timerBar.ValueFromStateID);
+                }
+                else if (building != null)
+                {
+                    value = Mathf.Max(0f, building.ProductionEndActivityTime - Time.time);
+                }
+                timerBar.Progress = value;
+
+                if (building != null)
+                {
+                    var worldPosition = building.transform.position + Vector3.up * 3f;
+                    var screenPosition = Camera.WorldToScreenPoint(worldPosition);
+                    var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
+                    var timerBarTransform = (RectTransform)timerBar.transform;
+                    timerBarTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
+                }
             }
 
             foreach (var character in Characters)
@@ -118,7 +152,7 @@ namespace Scripts
                 }
             }
 
-            if (UIView.PointerArrowTargetPosition.sqrMagnitude <= float.Epsilon || (player.transform.position - UIView.PointerArrowTargetPosition).magnitude < 7.5f)
+            if (UIView.PointerArrowTargetPosition.sqrMagnitude <= float.Epsilon || (player.transform.position - UIView.PointerArrowTargetPosition).magnitude < 5f)
             {
                 if (UIView.PointerArrowTransform.gameObject.activeSelf && UIView.PointerArrowTargetPosition.sqrMagnitude <= float.Epsilon)
                 {
@@ -131,6 +165,10 @@ namespace Scripts
                     var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
                     UIView.PointerArrowTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
                     UIView.PointerArrowTransform.localRotation = Quaternion.Euler(0f, 0f, 180f);
+
+                    _targetArrowWorldPosition = UIView.PointerArrowTargetPosition;
+                    screenPosition = Camera.WorldToScreenPoint(UIView.PointerArrowTargetPosition);
+                    UIView.TutorialAnimationTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
                 }
             }
             else
@@ -140,10 +178,8 @@ namespace Scripts
                     UIView.PointerArrowTransform.gameObject.SetActive(true);
                 }
 
-                var direction = Vector3.forward;
+                var direction = (Vector3.back + Vector3.right).normalized;
                 var worldPosition = UIView.PointerArrowTargetPosition;
-
-                var minimalMagnitude = (worldPosition - player.transform.position).magnitude;
 
                 if (_path == null)
                 {
@@ -158,27 +194,30 @@ namespace Scripts
                 if (player.NavMeshAgent.CalculatePath(navMeshWorldPosition, _path))
                 {
                     var cornersCount = _path.GetCornersNonAlloc(_pathCorners);
-                    if (cornersCount > 2)
+                    if (TryGetPathPositionAndDirection(cornersCount, 2.5f, out var pointerPosition, out var pointerDirection))
                     {
-                        var d1 = (_pathCorners[1] - _pathCorners[0]).magnitude;
-                        var d2 = (_pathCorners[2] - _pathCorners[0]).magnitude;
-                        var d = Mathf.Clamp((d2 - d1) / d1, 0f, 1f);
-                        var w1 = d;
-                        var w2 = 1f - d;
-                        worldPosition = _pathCorners[1] * w1 + _pathCorners[2] * w2;
+                        worldPosition = pointerPosition;
+                        direction = pointerDirection;
+                        if (TryGetPathPositionAndDirection(cornersCount, 5f, out var pointerPosition2, out var pointerDirection2))
+                        {
+                            direction = (pointerPosition2 - pointerPosition).normalized;
+                        }
                     }
                 }
                 player.NavMeshAgent.enabled = false;
 
-                direction = worldPosition - player.transform.position;
-                var distance = Mathf.Min(Mathf.Max(minimalMagnitude, direction.magnitude), 2.5f);
-                worldPosition = player.transform.position + direction.normalized * distance;
+                worldPosition += Vector3.up * 1.1f;
 
-                _targetArrowWorldPosition = Vector3.Lerp(_targetArrowWorldPosition, worldPosition, Time.deltaTime * 3f);
+                _targetArrowWorldPosition = Vector3.Lerp(_targetArrowWorldPosition, worldPosition, Time.deltaTime * 6f);
                 var screenPosition = Camera.WorldToScreenPoint(_targetArrowWorldPosition);
                 var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
                 UIView.PointerArrowTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
-                UIView.PointerArrowTransform.localRotation = Quaternion.Euler(0f, 0f, -Quaternion.LookRotation(direction).eulerAngles.y - 45f);
+                direction = Quaternion.Euler(0f, 45f, 0f) * direction;
+                direction.z *= 0.7f;
+                UIView.PointerArrowTransform.localRotation = Quaternion.Euler(0f, 0f, -Quaternion.LookRotation(direction).eulerAngles.y);
+
+                screenPosition = Camera.WorldToScreenPoint(UIView.PointerArrowTargetPosition);
+                UIView.TutorialAnimationTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
             }
 
             foreach (var bubble in _bubbleViews)
@@ -215,6 +254,41 @@ namespace Scripts
                 }
             }
             _touchInputEvents.Clear();
+        }
+
+        private bool TryGetPathPositionAndDirection(int count, float distance, out Vector3 position, out Vector3 direction)
+        {
+            if (count < 1)
+            {
+                position = Vector3.zero;
+                direction = (Vector3.back + Vector3.right).normalized;
+                return false;
+            }
+            
+            var d = 0f;
+            var index = 0;
+            while (index < count - 1)
+            {
+                var previousCorner = _pathCorners[index];
+                var nextCorner = _pathCorners[index + 1];
+                var delta = nextCorner - previousCorner;
+                var segmentLength = delta.magnitude;
+                if (d + segmentLength < distance)
+                {
+                    d += segmentLength;
+                }
+                else
+                {
+                    position = previousCorner + delta.normalized * (distance - d);
+                    direction = delta.normalized;
+                    return true;
+                }
+                index++;
+            }
+
+            position = _pathCorners[count - 1];
+            direction = (Vector3.back + Vector3.right).normalized;
+            return false;
         }
 
         public void EventCatch(RollBagOfTriesEvent newEvent)
@@ -319,6 +393,16 @@ namespace Scripts
         public void EventCatch(TouchInputEvent currentEvent)
         {
             _touchInputEvents.AddLast(currentEvent);
+        }
+
+        public void EventCatch(ShowTutorialVideoEvent currentEvent)
+        {
+            UIView.ShowTutorial(currentEvent.Index);
+        }
+
+        public void EventCatch(HideTutorialVideoEvent currentEvent)
+        {
+            UIView.HideTutorial();
         }
 
         private void UpdateItemsCount(Unit unit, ItemType itemType)

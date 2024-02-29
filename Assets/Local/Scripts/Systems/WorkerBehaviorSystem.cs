@@ -75,7 +75,7 @@ namespace Scripts
 
                                 var pathDelta = pathPosition - workerPosition;
                                 // pathDelta.y = 0f;
-                                character.WorldDirection = pathDelta.normalized * Mathf.Min(Mathf.Max(pathDelta.magnitude, 0.1f), 1f);
+                                character.WorldDirection = pathDelta.normalized * Mathf.Min(Mathf.Max(pathDelta.magnitude, 0.2f), 1f);
 
                                 if (Physics.Raycast(character.transform.position + Vector3.up * 1.7f, character.WorldDirection, out var hitInfo, 2f))
                                 {
