@@ -44,7 +44,7 @@ namespace Scripts
                 //newCharacterVelocity.y += characterRigidbody.velocity.y;
                 characterRigidbody.velocity = Vector3.Lerp(characterRigidbody.velocity, newCharacterVelocity, Time.fixedDeltaTime * 8f);
 
-                if (horizontalDirection.sqrMagnitude > 0.1f)
+                if (horizontalDirection.sqrMagnitude > 0.01f)
                 {
                     character.transform.rotation = Quaternion.Lerp(character.transform.rotation, Quaternion.LookRotation(horizontalDirection), Time.fixedDeltaTime * 10f);
                     character.ClearDropItemCooldown();
