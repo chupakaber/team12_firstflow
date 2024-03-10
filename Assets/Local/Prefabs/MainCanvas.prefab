@@ -430,7 +430,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Transform: {fileID: 6559233238179505512}
   Pointer: {fileID: 8595492114192220011}
-  Radius: 225
+  Radius: 350
+  VisualRadius: 225
+  ValuePow: 2
   ValueScale: {x: 1, y: 1}
   ActiveAreaMin: {x: 0, y: 0}
   ActiveAreaMax: {x: 1, y: 1}
@@ -910,7 +912,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 16.35968, y: 250.95679}
+  m_AnchoredPosition: {x: 16.35962, y: 250.95679}
   m_SizeDelta: {x: 372, y: 372}
   m_Pivot: {x: 0.78, y: -0.42}
 --- !u!222 &9088628937020196796
