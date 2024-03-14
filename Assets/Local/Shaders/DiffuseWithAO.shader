@@ -24,6 +24,7 @@ Shader "Team12/DiffuseWithAO" {
         _FogHeight ("Fog Height", Range(-10, 10)) = 0.5
         _FogHeightScale ("Fog Height Scale", Range(0.01, 10)) = 0.15
         _FogColor ("Fog Color", Color) = (0.82, 0.82, 0.82, 0)
+        _FogColor2 ("Fog Color 2", Color) = (0.82, 0.82, 0.82, 0)
     }
 
     SubShader {
@@ -78,6 +79,7 @@ Shader "Team12/DiffuseWithAO" {
             uniform float _FogHeight;
             uniform float _FogHeightScale;
             uniform float4 _FogColor;
+            uniform float4 _FogColor2;
             uniform float4 _CameraWorldPosition;
             uniform float _LambertIntensity;
             uniform float _LambertOffset;
@@ -104,9 +106,13 @@ Shader "Team12/DiffuseWithAO" {
                 
                 float4 worldPosition = mul(unity_ObjectToWorld, i.vertex);
                 half fogValue = length(_CameraWorldPosition - worldPosition);
-                fogValue = max(pow((fogValue + _FogStart) * _FogScale, _FogPower), (-worldPosition.y + _FogHeight) * _FogHeightScale);
-                fogValue = clamp(fogValue, 0, 1);
-                o.fog = float4(_FogColor.rgb, _FogColor.a * fogValue);
+                half fogValue1 = clamp(pow(max(0, (fogValue + _FogStart) * _FogScale), _FogPower), 0, 1);
+                half fogValue2 = clamp((-worldPosition.y + _FogHeight) * _FogHeightScale, 0, 1);
+                fogValue1 = fogValue1 * (1 - clamp(fogValue2, 0, 1));
+                fogValue = max(fogValue1, fogValue2);
+                fogValue1 = fogValue1 / max(fogValue1 + fogValue2, 0.01);
+                fogValue2 = 1 - fogValue1;
+                o.fog = float4(_FogColor.rgb * fogValue1 + _FogColor2.rgb * fogValue2, _FogColor.a * fogValue);
                 return o;
             }
 

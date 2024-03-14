@@ -9,6 +9,8 @@ Shader "Team12/DiffuseWithLightmap" {
         _Brightness ("Brightness", Range(-3, 3)) = 0
         // _PreIntensity ("Pre Intencity", Range(-5, 5)) = 2.5
         _Intensity ("Intencity", Range(-5, 5)) = 1
+        _LambertIntensity ("_LambertIntensity", Range(0, 3)) = 1
+        _LambertOffset ("_LambertOffset", Range(-5, 5)) = 0
 
         _SaturationBase ("Saturation Base", Range(0, 1)) = 0.6
         _AOSaturation ("AO Saturation", Range(-1, 10)) = 3
@@ -21,6 +23,7 @@ Shader "Team12/DiffuseWithLightmap" {
         _FogHeight ("Fog Height", Range(-10, 10)) = 0.5
         _FogHeightScale ("Fog Height Scale", Range(0.01, 10)) = 0.15
         _FogColor ("Fog Color", Color) = (0.82, 0.82, 0.82, 1)
+        _FogColor2 ("Fog Color 2", Color) = (0.82, 0.82, 0.82, 1)
 
         _GIAlbedoColor ("Color Albedo (GI)", Color)=(1,1,1,1)
         _GIAlbedoTex ("Albedo (GI)",2D)="white"{}
@@ -80,7 +83,11 @@ Shader "Team12/DiffuseWithLightmap" {
             uniform float _FogHeight;
             uniform float _FogHeightScale;
             uniform float4 _FogColor;
+            uniform float4 _FogColor2;
             uniform float4 _CameraWorldPosition;
+            uniform float _LambertIntensity;
+            uniform float _LambertOffset;
+            uniform float4 _WorldSpaceLightDirectionTest;
 
             vertexOutput vert(vertexInput i) 
             {
@@ -98,7 +105,7 @@ Shader "Team12/DiffuseWithLightmap" {
                 float3 normalDirection = UnityObjectToWorldNormal(i.normal);
                 float3 lightDirection = normalize(_WorldSpaceLightPos0.xyz);
 
-                float3 diffuseReflection = (0.5 + max(0.0, dot(normalDirection, lightDirection)) * 0.5);
+                float3 diffuseReflection = (_LambertOffset + max(0.0, dot(normalDirection, lightDirection)) * _LambertIntensity);
 
                 o.col = i.color * float4(diffuseReflection, 1.0);
                 o.pos = UnityObjectToClipPos(i.vertex);
@@ -106,9 +113,13 @@ Shader "Team12/DiffuseWithLightmap" {
                 float4 worldPosition = mul(modelMatrix, i.vertex);
                 o.worldPosition = worldPosition;
                 half fogValue = length(_CameraWorldPosition - worldPosition);
-                fogValue = max(pow(max(0, (fogValue + _FogStart) * _FogScale), _FogPower), (-worldPosition.y + _FogHeight) * _FogHeightScale);
-                fogValue = clamp(fogValue, 0, 1);
-                o.fog = float4(_FogColor.rgb, _FogColor.a * fogValue);
+                half fogValue1 = clamp(pow(max(0, (fogValue + _FogStart) * _FogScale), _FogPower), 0, 1);
+                half fogValue2 = clamp((-worldPosition.y + _FogHeight) * _FogHeightScale, 0, 1);
+                fogValue1 = fogValue1 * (1 - clamp(fogValue2, 0, 1));
+                fogValue = max(fogValue1, fogValue2);
+                fogValue1 = fogValue1 / max(fogValue1 + fogValue2, 0.01);
+                fogValue2 = 1 - fogValue1;
+                o.fog = float4(_FogColor.rgb * fogValue1 + _FogColor2.rgb * fogValue2, _FogColor.a * fogValue);
                 return o;
             }
 
