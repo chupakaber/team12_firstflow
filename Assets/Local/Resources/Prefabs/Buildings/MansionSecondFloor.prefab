@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 986947102418038395}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071069, y: -0, z: -0, w: 0.70710665}
-  m_LocalPosition: {x: -0.468, y: -0.117, z: -0.007}
+  m_LocalPosition: {x: -0.468, y: -0.05, z: -0.007}
   m_LocalScale: {x: 0.92, y: 1.85, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -162,7 +162,7 @@ Transform:
   m_GameObject: {fileID: 1549563380711913427}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0.001}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -416,7 +416,7 @@ Transform:
   m_GameObject: {fileID: 1867260621227471328}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0.001}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -498,7 +498,7 @@ Transform:
   m_GameObject: {fileID: 2079522412220219919}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071069, y: -0, z: -0, w: 0.70710665}
-  m_LocalPosition: {x: 0.461, y: -0.117, z: -0.007}
+  m_LocalPosition: {x: 0.461, y: -0.05, z: -0.007}
   m_LocalScale: {x: 0.92, y: 1.85, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -655,6 +655,7 @@ Transform:
   - {fileID: 170924180619071473}
   - {fileID: 6743438182170955799}
   - {fileID: 1472488669903354428}
+  - {fileID: 6630710430536399217}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &530374745766478608
@@ -688,6 +689,7 @@ MonoBehaviour:
   ProductionAreaHelper: {fileID: 0}
   PickingUpAreaHelper: {fileID: 0}
   ProgressBarPivot: {fileID: 0}
+  TeleportingSafePoint: {fileID: 6630710430536399217}
   StopProductionIcon: {fileID: 0}
   NoResourceIcon: {fileID: 0}
   ProduceMethod: 0
@@ -903,6 +905,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7015946555077192927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6630710430536399217}
+  m_Layer: 0
+  m_Name: TeleportPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6630710430536399217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015946555077192927}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8842984760032465598}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8202368765133909651
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,8 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0.2
+  _shiftFrequency: {x: 0, y: 0, z: 0}
+  _shiftFrequencyOffset: {x: 0, y: 0, z: 0}
+  _radialScale: {x: 0, y: 0, z: 0}
+  _linearShift: {x: 0, y: 0, z: 0}
+  _rotationFrequency: {x: 0, y: 0, z: 0}
+  _frequentRotationScale: {x: 0, y: 0, z: 0}
+  _linearRotationScale: {x: 0, y: 0, z: 0}
   _baseRotation: {x: 0, y: 0, z: 0}
-  _dynamicRotation: {x: 0, y: 0, z: 0}
   _maxIndicatorTransform: {fileID: 0}
   _exclusiveStacks: []
   Align: 1
@@ -585,7 +591,7 @@ PrefabInstance:
     - target: {fileID: 6865624396856746446, guid: e5eae2f7e3d19eb44b6afffc79e86b38, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b895a069a9f17434e92135f9bb851759, type: 2}
+      objectReference: {fileID: 2100000, guid: 3582e93ed91ad3340a4f98d92b1354bf, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

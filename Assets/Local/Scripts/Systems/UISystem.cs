@@ -72,14 +72,29 @@ namespace Scripts
                 if (progressBar != null)
                 {
                     var building = Buildings[i];
-                    
-                    progressBar.Progress = building.ProductionProgress();
 
-                    var worldPosition = building.ProgressBarPivot.position;
-                    var screenPosition = Camera.WorldToScreenPoint(worldPosition);
-                    var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
-                    var progressBarTransform = (RectTransform)progressBar.transform;
-                    progressBarTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
+                    if (building.ProductionArea == null)
+                    {
+                        progressBar.Progress = building.ProductionProgress();
+
+                        var worldPosition = building.ProgressBarPivot.position;
+                        var screenPosition = Camera.WorldToScreenPoint(worldPosition);
+                        var canvasTransform = (RectTransform)UIView.WorldSpaceTransform.transform;
+                        var progressBarTransform = (RectTransform)progressBar.transform;
+                        progressBarTransform.localPosition = canvasTransform.InverseTransformPoint(screenPosition);
+                    }
+                    else
+                    {
+                        if (progressBar.gameObject.activeSelf)
+                        {
+                            progressBar.gameObject.SetActive(false);
+                        }
+
+                        if (building.ProductionCharacters.Count > 0 && building.ProductionCharacters[0].BagOfTriesView != null)
+                        {
+                            building.ProductionCharacters[0].BagOfTriesView.SetProgress(building.ProductionProgress());
+                        }
+                    }
                 }
             }
 
@@ -302,6 +317,8 @@ namespace Scripts
             if (character.BagOfTriesView == null)
             {
                 character.BagOfTriesView = BagOfTriesViewPools.Get(0);
+
+                character.BagOfTriesView.ShowTries = character.CharacterType != CharacterType.PLAYER;
                 
                 character.BagOfTriesView.Transform.SetParent(UIView.FrontSpaceTransform);
                 character.BagOfTriesView.Transform.localScale = Vector3.one;

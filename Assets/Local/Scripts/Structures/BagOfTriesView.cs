@@ -12,9 +12,11 @@ namespace Scripts
         public Image RegularIcon;
         public Image SuccessIcon;
         public Image FailIcon;
+        public Image ProgressCircle;
         public List<RectTransform> Points;
         public List<Image> PointImages;
         public int PointsCount;
+        public bool ShowTries = true;
         
         [SerializeField]
         private float _radialScale = 50f;
@@ -36,7 +38,7 @@ namespace Scripts
 
             for (var i = 0; i < Points.Count; i++)
             {
-                var isActive = i < size;
+                var isActive = i < size && ShowTries;
                 if (isActive)
                 {
                     if (!Points[i].gameObject.activeSelf)
@@ -60,7 +62,7 @@ namespace Scripts
 
         public void Show()
         {
-            if (PointsCount == 0)
+            if (PointsCount == 0 || Transform.gameObject.activeSelf)
             {
                 return;
             }
@@ -90,6 +92,11 @@ namespace Scripts
                     resultIcon.enabled = false;
                 });
             });
+        }
+
+        public void SetProgress(float value)
+        {
+            ProgressCircle.fillAmount = value;
         }
     }
 }

@@ -27,6 +27,7 @@ namespace Scripts
         public GameObject ProductionAreaHelper;
         public GameObject PickingUpAreaHelper;
         public Transform ProgressBarPivot;
+        public Transform TeleportingSafePoint;
         public GameObject StopProductionIcon;
         public GameObject NoResourceIcon;
         public ProductionMethod ProduceMethod = ProductionMethod.RESOURCE_TO_PRODUCT;

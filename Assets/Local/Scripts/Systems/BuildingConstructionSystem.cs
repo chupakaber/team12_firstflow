@@ -103,10 +103,11 @@ namespace Scripts
                                 EventBus.CallEvent(new ConstructionCompleteEvent() { Building = building });
 
                                 var i = 0;
+                                var moveDirection = new Vector3(1f, 0f, -1f);
+                                var targetPoint = building.TeleportingSafePoint == null ? building.PickingUpArea == null ? building.ConstructionArea.transform.position + moveDirection * 3f : building.PickingUpArea.transform.position : building.TeleportingSafePoint.transform.position;
                                 foreach (var teleportingCharacter in building.ConstructionCharacters)
                                 {
-                                    var moveDirection = new Vector3(1f, 0f, -1f);
-                                    teleportingCharacter.transform.position = building.PickingUpArea == null ? building.ConstructionArea.transform.position + moveDirection * (i + 3) * 1f : building.PickingUpArea.transform.position + moveDirection * i;
+                                    teleportingCharacter.transform.position = targetPoint + moveDirection * i;
                                     i++;
                                 }
 
