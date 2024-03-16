@@ -63,6 +63,12 @@ namespace Scripts
         public Slider MusicSlider;
         public Slider TutorialSlider;
 
+        [Header("Ranks")]
+        public Button OpenRanksButton;
+        public Button CloseRanksButton;
+        public Button CloseRanksButton2;
+        public RectTransform RanksListTransform;
+
         [HideInInspector]
         public EventBus EventBus;
 
@@ -119,6 +125,9 @@ namespace Scripts
             LanguageButton.onClick.AddListener(() => {
                 SwitchLanguage(_currentLangID == 1 ? 0 : 1);
             });
+            CloseRanksButton.onClick.AddListener(CloseRanks);
+            CloseRanksButton2.onClick.AddListener(CloseRanks);
+            OpenRanksButton.onClick.AddListener(OpenRanks);
 
             TutorialSlider.value = TutorialSwitch;
             TutorialSlider.onValueChanged.AddListener(OnTutorialChanged);
@@ -185,17 +194,52 @@ namespace Scripts
 
                         if (currentRank < 6)
                         {
-                            RankEffectCurrentLabel.text = (currentRank + 1).ToString();
-                            RankEffectNextLabel.text = currentRank > 0 ? currentRank.ToString() : "";
-                            RankEffect.gameObject.SetActive(true);
-                            RankEffect.Play();
-                            RankEffect.transform.DOScale(1f, 5f).OnComplete(() => {
-                                RankEffect.gameObject.SetActive(false);
-                            });
+                            OpenNewRank();
                         }
                     }
                 }
             }
+        }
+
+        public void RanksSetup()
+        {
+            RankEffectCurrentLabel.text = (_currentRank + 1).ToString();
+            RankEffectNextLabel.text = _currentRank > 0 ? _currentRank.ToString() : "";
+            RankEffect.gameObject.SetActive(true);
+            var lineHeight = ((RectTransform) RanksListTransform.GetChild(0)).sizeDelta.y;
+            for (var i = 0; i < RanksListTransform.childCount; i++)
+            {
+                var line = RanksListTransform.GetChild(i);
+                var visible = i <= 7 - _currentRank;
+                var active = i <= 6 - _currentRank;
+                line.gameObject.SetActive(visible);
+                line.GetChild(0).gameObject.SetActive(!active);
+                line.GetChild(1).gameObject.SetActive(active);
+            }
+            RanksListTransform.anchoredPosition = new Vector2(RanksListTransform.anchoredPosition.x, lineHeight * (4f - _currentRank));
+            //RankEffect.transform.DOScale(1f, 5f).OnComplete(() => {
+            //    RankEffect.gameObject.SetActive(false);
+            //});
+        }
+
+        public void OpenRanks()
+        {
+            RanksSetup();
+            RankEffect.Play("RankShort");
+        }
+
+        public void OpenNewRank()
+        {
+            RanksSetup();
+            RankEffect.Play("Rank");
+        }
+
+        public void CloseRanks()
+        {
+            RankEffect.Play("RankClose");
+            RankEffect.transform.DOScale(1f, 0.2f).OnComplete(() => {
+                RankEffect.gameObject.SetActive(false);
+            });
         }
 
         public void FlyCoin(IconView icon, bool isIncrease = true)
