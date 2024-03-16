@@ -73,8 +73,13 @@ namespace Scripts
                 {
                     var building = Buildings[i];
 
-                    if (building.ProductionArea == null)
+                    if (building.ProductionArea == null && building.ProgressBarPivot.gameObject.activeSelf)
                     {
+                        if (!progressBar.gameObject.activeSelf)
+                        {
+                            progressBar.gameObject.SetActive(true);
+                        }
+
                         progressBar.Progress = building.ProductionProgress();
 
                         var worldPosition = building.ProgressBarPivot.position;
