@@ -56,6 +56,11 @@ namespace Scripts
         public void EventCatch(AddItemEvent newEvent)
         {
             UpdateItemsCount(newEvent.Unit, newEvent.ItemType);
+
+            if (newEvent.Unit is Player && newEvent.ItemType == ItemType.HONOR)
+            {
+                UIView.ShowFlyingHonor(newEvent.Count);
+            }
         }
 
         public void EventCatch(RemoveItemEvent newEvent)
@@ -429,6 +434,14 @@ namespace Scripts
         public void EventCatch(HideTutorialVideoEvent currentEvent)
         {
             UIView.HideTutorial();
+        }
+
+        public void EventCatch(ShowUIEffectEvent currentEvent)
+        {
+            if (currentEvent.EffectID == 1)
+            {
+                UIView.ShowFirstHonorEffect();
+            }
         }
 
         private void UpdateItemsCount(Unit unit, ItemType itemType)

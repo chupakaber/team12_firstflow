@@ -22,6 +22,9 @@ namespace Scripts
         public Animation RankEffect;
         public TMP_Text RankEffectCurrentLabel;
         public TMP_Text RankEffectNextLabel;
+        public Image CurrentRankPointsBar;
+        public Image LastRankPointsBar;
+        public Color RankPointsBarColor;
 
         [Header("Dynamic Indicators")]
         public RectTransform PointerArrowTransform;
@@ -36,6 +39,10 @@ namespace Scripts
         public RectTransform FlyingCoinPivot;
         public float FlyingCoinMinScale = 0.2f;
         public float FlyingCoinDuration = 0.5f;
+
+        [Header("Flying Honor")]
+        public Animation FlyingHonorAnimation;
+        public TMP_Text FlyingHonorLabel;
 
         [Header("Tutorial")]
         public RectTransform TutorialAnimationTransform;
@@ -69,6 +76,9 @@ namespace Scripts
         public Button CloseRanksButton2;
         public RectTransform RanksListTransform;
 
+        [Header("First Honor Effect")]
+        public Animation FirstHonorAnimation;
+
         [HideInInspector]
         public EventBus EventBus;
 
@@ -79,6 +89,7 @@ namespace Scripts
         private int _currentLangID = -1;
         private int StickIndex = -1;
         private int _currentRank;
+        private int _currentHonorPoints;
         private bool _externalSoundChange;
         private bool _tutorialEnabled = false;
         private bool _showTutorial = false;
@@ -166,6 +177,14 @@ namespace Scripts
             {
                 if (counter.ItemType == ItemType.HONOR)
                 {
+                    if (count > _currentHonorPoints)
+                    {
+                        _currentHonorPoints = count;
+                        LastRankPointsBar.fillAmount = CurrentRankPointsBar.fillAmount;
+                        CurrentRankPointsBar.color = Color.white;
+                        CurrentRankPointsBar.DOColor(RankPointsBarColor, 0.3f);
+                    }
+
                     if (currentRank <= 1)
                     {
                         counter.Counter.text = $"{count}";
@@ -350,6 +369,21 @@ namespace Scripts
         public int GetCurrentTutorialStep()
         {
             return _tutorialEnabled ? _tutorialStepId : -1;
+        }
+
+        public void ShowFlyingHonor(int value)
+        {
+            FlyingHonorLabel.text = "+" + value;
+            FlyingHonorAnimation.Play();
+        }
+
+        public void ShowFirstHonorEffect()
+        {
+            FirstHonorAnimation.gameObject.SetActive(true);
+            FirstHonorAnimation.Play();
+            FirstHonorAnimation.transform.DOScale(1f, 5f).OnComplete(() => {
+                FirstHonorAnimation.gameObject.SetActive(false);
+            });
         }
 
         private void TryShowTutorial()
