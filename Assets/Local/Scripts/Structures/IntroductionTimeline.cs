@@ -235,6 +235,7 @@ namespace Scripts
             CinematicBorders.Close();
 
             EventBus.CallEvent(new SetArrowPointerEvent() { TargetGameObject = null, TargetPosition = Vector3.zero });
+            EventBus.CallEvent(new HideTutorialVideoEvent() {});
         }
 
         public void Activation()
@@ -290,6 +291,7 @@ namespace Scripts
             UIView.TitlesPanel.gameObject.SetActive(true);
             DeactivationCutScene();
             Actors[Actors.Count -1].IsCutSceneActiv = false;
+            EventBus.CallEvent(new CutSceneCompletedEvent() { CutSceneID = Index});
         }
     }
 }

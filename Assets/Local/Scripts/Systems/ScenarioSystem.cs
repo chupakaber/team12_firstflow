@@ -102,6 +102,12 @@ namespace Scripts
             Scenario.BehaviorTreeRunner.EventCatch(newEvent);
         }
 
+        public void EventCatch(CutSceneCompletedEvent newEvent)
+        {
+            Scenario.BehaviorTreeRunner.InternalState = _scenarioState;
+            Scenario.BehaviorTreeRunner.EventCatch(newEvent);
+        }
+
 /*
     {
         public List<Character> Characters;

@@ -23,6 +23,7 @@ namespace Scripts.BehaviorTree
             RollBagOfTries = 9,
             Init = 10,
             Assignment = 11,
+            CutSceneCompleted = 12,
         }
 
         public EventTypeEnum EventType = EventTypeEnum.Start;
@@ -156,6 +157,14 @@ namespace Scripts.BehaviorTree
                         var assignmentEvent = (AssignmentEvent) currentEvent;
                         _output5 = assignmentEvent.Character;
                         _output6 = assignmentEvent.Building.gameObject;
+                        success = true;
+                    }
+                    break;
+                case EventTypeEnum.CutSceneCompleted:
+                    if (currentEvent is CutSceneCompletedEvent)
+                    {
+                        var cutsceneCompetedEvent = (CutSceneCompletedEvent) currentEvent;
+                        _output2 = Mathf.Round(cutsceneCompetedEvent.CutSceneID);
                         success = true;
                     }
                     break;
