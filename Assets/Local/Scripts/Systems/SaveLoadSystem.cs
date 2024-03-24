@@ -56,6 +56,8 @@ namespace Scripts
 
         private void Load()
         {
+            EventBus.CallEvent(new SaveLoadStateEvent() { Saving = false, Loading = true });
+
             _lastSaveTime = Time.time;
 
             if (File.Exists(_savePath))
@@ -65,10 +67,14 @@ namespace Scripts
                 var scenarioState = (ScenarioState) Scenario.BehaviorTreeRunner.InternalState;
                 scenarioState.Unpack(_byteBuffer);
             }
+
+            EventBus.CallEvent(new SaveLoadStateEvent() { Saving = false, Loading = false });
         }
 
         private void Save()
         {
+            EventBus.CallEvent(new SaveLoadStateEvent() { Saving = true, Loading = false });
+
             var scenarioState = (ScenarioState) Scenario.BehaviorTreeRunner.InternalState;
 
             var dataLength = scenarioState.GetStructureLength();
@@ -83,6 +89,8 @@ namespace Scripts
             scenarioState.Pack(_byteBuffer);
 
             File.WriteAllBytes(_savePath, _byteBuffer.Data);
+
+            EventBus.CallEvent(new SaveLoadStateEvent() { Saving = false, Loading = false });
         }
 
         private void ClearProgressAndRestart()

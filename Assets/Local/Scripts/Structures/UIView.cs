@@ -407,19 +407,27 @@ namespace Scripts
                 TutorialTaskLabel.text = TutorialStrings[_tutorialStepId];
                 if (_tutorialStepId < 0)
                 {
-                    throw new UnityException($"Wrong tutorial step index: '{_tutorialStepId}'.");
+#if DEBUG
+                    Debug.LogWarning($"Wrong tutorial step index: '{_tutorialStepId}'.");
+#endif
                 }
                 else if (_tutorialStepId >= TutorialStepMaterials.Count || _tutorialStepId >= TutorialStepSprites.Count)
                 {
-                    throw new UnityException($"Tutorial material with index '{_tutorialStepId}' not set.");
+#if DEBUG
+                    Debug.LogWarning($"Tutorial material with index '{_tutorialStepId}' not set.");
+#endif
                 }
                 else if (TutorialStepMaterials[_tutorialStepId] == null)
                 {
-                    throw new UnityException($"Tutorial material with index '{_tutorialStepId}' is empty.");
+#if DEBUG
+                    Debug.LogWarning($"Tutorial material with index '{_tutorialStepId}' is empty.");
+#endif
                 }
                 else if (TutorialStepSprites[_tutorialStepId] == null)
                 {
-                    throw new UnityException($"Tutorial sprite with index '{_tutorialStepId}' is empty.");
+#if DEBUG
+                    Debug.LogWarning($"Tutorial sprite with index '{_tutorialStepId}' is empty.");
+#endif
                 }
                 else
                 {
