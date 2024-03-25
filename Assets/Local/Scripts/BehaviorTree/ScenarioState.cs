@@ -10,7 +10,7 @@ namespace Scripts.BehaviorTree
     [Serializable]
     public class ScenarioState : IBehaviorState, ISerializable
     {
-        private const int STRUCTURE_VERSION = 1;
+        private const int STRUCTURE_VERSION = 2;
 
         // Global settings
         public float MusicVolume = 1f;
@@ -20,6 +20,7 @@ namespace Scripts.BehaviorTree
         public EventBus EventBus { get; set; }
         public List<Building> Buildings { get; set; }
         public List<Character> Characters { get; set; }
+        public List<IGameObjectWithState> GameObjectsWithState { get; set; }
         public UIView UIView { get; set; }
 
         public SmartCharacter Player;
@@ -111,6 +112,21 @@ namespace Scripts.BehaviorTree
                 {
                     SerializationUtils.Put(buffer, (int) item.Type);
                     SerializationUtils.Put(buffer, item.Amount);
+                }
+            }
+
+            SerializationUtils.Put(buffer, GameObjectsWithState.Count);
+            foreach (var obj in GameObjectsWithState)
+            {
+                var gameObject = obj.GetGameObject();
+                SerializationUtils.Put(buffer, obj.ObjectID);
+                SerializationUtils.Put(buffer, gameObject.activeSelf ? 1 : 0);
+                var states = obj.States;
+                var statesCount = states.Count;
+                SerializationUtils.Put(buffer, statesCount);
+                for (var i = 0; i < statesCount; i++)
+                {
+                    SerializationUtils.Put(buffer, states[i]);
                 }
             }
 
@@ -309,6 +325,53 @@ namespace Scripts.BehaviorTree
                 }
             }
 
+            if (version > 1)
+            {
+                var gameObjectsWithStateCount = SerializationUtils.Get(buffer, 0);
+                for (var i = 0; i < gameObjectsWithStateCount; i++)
+                {
+                    var objectID = SerializationUtils.Get(buffer, 0);
+                    var active = SerializationUtils.Get(buffer, 0) == 1;
+                    var objStatesCount = SerializationUtils.Get(buffer, 0);
+                    
+                    IGameObjectWithState gameObjectWithState = null;
+
+                    for (var j = 0; j < GameObjectsWithState.Count; j++)
+                    {
+                        var iteratedGameObjectsWithState = GameObjectsWithState[j];
+                        if (iteratedGameObjectsWithState.ObjectID == objectID)
+                        {
+                            gameObjectWithState = iteratedGameObjectsWithState;
+                        }
+                    }
+
+                    if (gameObjectWithState != null)
+                    {
+                        var gameObject = gameObjectWithState.GetGameObject();
+                        gameObject.SetActive(active);
+
+                        var objStates = gameObjectWithState.States;
+                        while (objStates.Count < objStatesCount && objStates.Count < 1000)
+                        {
+                            objStates.Add(0f);
+                        }
+                        for (var j = 0; j < objStatesCount; j++)
+                        {
+                            objStates[j] = SerializationUtils.Get(buffer, 0f);
+                        }
+
+                        gameObjectWithState.OnLoad();
+                    }
+                    else
+                    {
+                        for (var j = 0; j < objStatesCount; j++)
+                        {
+                            SerializationUtils.Get(buffer, 0f);
+                        }
+                    }
+                }
+            }
+
             var storedTargetPosition = SerializationUtils.Get(buffer, Vector3Serializer<Vector3>.Instance);
             var storedTargetPositionOnNavMesh = SerializationUtils.Get(buffer, Vector3Serializer<Vector3>.Instance);
             if (storedTargetPosition.sqrMagnitude > float.Epsilon)
@@ -384,8 +447,19 @@ namespace Scripts.BehaviorTree
                 bytesCount += itemsCount * 2 * SerializationUtils.SIZE_OF_INT;
             }
 
+            bytesCount += SerializationUtils.SIZE_OF_INT;
+            foreach (var obj in GameObjectsWithState)
+            {
+                bytesCount += SerializationUtils.SIZE_OF_INT * 3;
+                bytesCount += SerializationUtils.SIZE_OF_FLOAT * obj.States.Count;
+            }
+
+            bytesCount += Vector3Serializer<Vector3>.SIZE_OF_STRUCTURE;
             bytesCount += Vector3Serializer<Vector3>.SIZE_OF_STRUCTURE;
 
+            bytesCount += SerializationUtils.SIZE_OF_INT;
+
+            bytesCount += SerializationUtils.SIZE_OF_FLOAT;
             bytesCount += SerializationUtils.SIZE_OF_FLOAT;
 
             return bytesCount;

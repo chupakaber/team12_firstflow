@@ -14,6 +14,7 @@ namespace Scripts
 
         private List<Character> _characters = new List<Character>();
         private List<Building> _buildings = new List<Building>();
+        private List<IGameObjectWithState> _gameObjectsWithState = new List<IGameObjectWithState>();
         private List<ProgressBarView> _progressBarViews = new List<ProgressBarView>();
         private List<TimerBarView> _timerBarViews = new List<TimerBarView>();
         private PoolCollection<ItemView> _itemViewPools = new PoolCollection<ItemView>();
@@ -89,6 +90,12 @@ namespace Scripts
             _audioListener = new GameObject("AudioListener").AddComponent<AudioListener>();
             _soundCollection = ScriptableObject.Instantiate(Resources.Load<SoundCollection>("Settings/Sounds"));
 
+            var gameObjectsWithStateView = FindObjectsOfType<LockedFenceView>();
+            foreach (var obj in gameObjectsWithStateView)
+            {
+                _gameObjectsWithState.Add(obj);
+            }
+
             var names = System.Enum.GetNames(typeof(ItemType));
             var values = (ItemType[])System.Enum.GetValues(typeof(ItemType));
             for (int i = 0; i < values.Length; i++)
@@ -158,6 +165,7 @@ namespace Scripts
             _container.AddLink(_mainCamera, "Camera");
             _container.AddLink(_uiView, "UIView");
             _container.AddLink(_buildings, "Buildings");
+            _container.AddLink(_gameObjectsWithState, "GameObjectsWithState");
             _container.AddLink(_progressBarViews, "ProgressBarViews");
             _container.AddLink(_timerBarViews, "TimerBarViews");
             _container.AddLink(_itemViewPools, "ItemViewPools");

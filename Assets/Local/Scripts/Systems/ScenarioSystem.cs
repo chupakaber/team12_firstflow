@@ -11,6 +11,7 @@ namespace Scripts
         public Scenario Scenario;
         public List<Character> Characters;
         public List<Building> Buildings;
+        public List<IGameObjectWithState> GameObjectsWithState;
 
         private ScenarioState _scenarioState = new ScenarioState();
 
@@ -20,6 +21,7 @@ namespace Scripts
                 EventBus = EventBus,
                 Characters = Characters,
                 Buildings = Buildings,
+                GameObjectsWithState = GameObjectsWithState,
                 UIView = UIView,
             };
 
