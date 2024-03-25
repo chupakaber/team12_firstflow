@@ -7,6 +7,7 @@ namespace Scripts
 {
     public class MercenaryCampSystem: ISystem
     {
+        public EventBus EventBus;
         public List<Character> Characters;
         public List<Building> Buildings;
 
@@ -106,40 +107,36 @@ namespace Scripts
                         if (mercenary.PreviousInQueue != null)
                         {
                             targetPosition = mercenary.PreviousInQueue.transform.position;
+                            mercenary.CurrentRouteWaypointIndex = ((Mercenary)mercenary.PreviousInQueue).CurrentRouteWaypointIndex;
                             mercenary.FollowingOffset = 2.2f;
                         }
                         else
                         {
                             if (mercenary.State == 0 || mercenary.State == 2)
                             {
-                                if (mercenary.CurrentRouteWaypointIndex < mercenary.Route.Waypoints.Count)
-                                {
-                                    var waypoint = mercenary.Route.Waypoints[mercenary.CurrentRouteWaypointIndex];
-                                    targetPosition = waypoint.Transform.position;
-                                    mercenary.FollowingOffset = 0.3f;
-                                }
+                                var waypoint = mercenary.Route.Waypoints[mercenary.CurrentRouteWaypointIndex % mercenary.Route.Waypoints.Count];
+                                targetPosition = waypoint.Transform.position;
+                                mercenary.FollowingOffset = 0.3f;
                             }
                             else
                             {
-                                if (mercenary.CurrentRouteWaypointIndex < mercenary.Route.Waypoints.Count)
+                                var waypoint = mercenary.Route.Waypoints[mercenary.CurrentRouteWaypointIndex % mercenary.Route.Waypoints.Count];
+                                targetPosition = waypoint.Transform.position;
+                                mercenary.FollowingOffset = 0.3f;
+
+                                if ((mercenary.transform.position - targetPosition).magnitude < mercenary.FollowingOffset + 0.2f)
                                 {
-                                    var waypoint = mercenary.Route.Waypoints[mercenary.CurrentRouteWaypointIndex];
-                                    targetPosition = waypoint.Transform.position;
-                                    mercenary.FollowingOffset = 0.3f;
+                                    mercenary.CurrentRouteWaypointIndex++;
 
-                                    if ((mercenary.transform.position - targetPosition).magnitude < mercenary.FollowingOffset + 0.2f)
+                                    if (waypoint.IsKeyPoint)
                                     {
-                                        mercenary.CurrentRouteWaypointIndex++;
-
-                                        if (waypoint.IsKeyPoint)
+                                        mercenary.State++;
+                                        if (mercenary.State > 3)
                                         {
-                                            mercenary.State++;
-                                            if (mercenary.State > 3)
-                                            {
-                                                mercenary.State = 0;
-                                            }
-                                            break;
+                                            mercenary.State = 0;
                                         }
+                                        mercenary.CurrentRouteWaypointIndex--;
+                                        break;
                                     }
                                 }
                             }
@@ -233,6 +230,14 @@ namespace Scripts
 
                 mercenary.Route = _mercenaryRoute;
 
+                building.AssignedUnloadingCharacters.Add(mercenary);
+
+                EventBus.CallEvent(new AssignmentEvent() {
+                    Character = mercenary,
+                    Building = building,
+                    Area = building.UnloadingArea.gameObject
+                });
+
                 return true;
             }
             return false;
@@ -266,6 +271,7 @@ namespace Scripts
                     mercenary.State = 1;
                     mercenary.CurrentRouteWaypointIndex = 0;
                     mercenary.FollowingOffset = 2.2f;
+                    mercenary.TargetPosition = Vector3.zero;
 
                     if (building.AssignedProductionCharacters.Count < 1)
                     {
@@ -295,8 +301,10 @@ namespace Scripts
                         mercenary.Route = _mercenaryRoute;
                     }
 
-                    mercenary.LeaveQueue();
+                    character.LeaveQueue();
+                    mercenary.CurrentRouteWaypointIndex++;
                     mercenary.State = 3;
+                    mercenary.TargetPosition = Vector3.zero;
 
                     // for (var i = 0; i < _mercenaryRoute.Waypoints.Count; i++)
                     // {
