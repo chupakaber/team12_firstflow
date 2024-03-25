@@ -8,8 +8,20 @@ namespace Scripts
         public EventBus EventBus;
         public List<Character> Characters;
 
+        private bool _loading = false;
+
+        public void EventCatch(SaveLoadStateEvent newEvent)
+        {
+            _loading = newEvent.Loading;
+        }
+
         public void EventCatch(AddItemEvent newEvent)
         {
+            if (_loading)
+            {
+                return;
+            }
+
             if (newEvent.ItemType == ItemType.GOLD && newEvent.Unit is Building)
             {
                 var building = (Building) newEvent.Unit;

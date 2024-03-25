@@ -16,6 +16,9 @@ namespace Scripts.BehaviorTree
             ID = 4,
             PRODUCTION_LIMIT = 5,
             BASE_PRODUCTION_LIMIT = 6,
+            ASSIGNED_PRODUCTION_WORKERS_AMOUNT = 7,
+            ASSIGNED_UNLOADING_WORKERS_AMOUNT = 8,
+            ASSIGNED_PICKING_WORKERS_AMOUNT = 9,
         }
 
         public FieldNameEnum FieldName;
@@ -48,6 +51,12 @@ namespace Scripts.BehaviorTree
                     return _building.BaseProductionLimit;
                 case FieldNameEnum.PRODUCTION_LIMIT:
                     return _building.ProductionLimit;
+                case FieldNameEnum.ASSIGNED_PRODUCTION_WORKERS_AMOUNT:
+                    return _building.AssignedProductionCharacters.Count;
+                case FieldNameEnum.ASSIGNED_UNLOADING_WORKERS_AMOUNT:
+                    return _building.AssignedUnloadingCharacters.Count;
+                case FieldNameEnum.ASSIGNED_PICKING_WORKERS_AMOUNT:
+                    return _building.AssignedPickingUpCharacters.Count;
             }
 
             return 0f;
