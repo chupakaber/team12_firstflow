@@ -238,6 +238,12 @@ namespace Scripts.BehaviorTree
                         EventBus.CallEvent(spawnEvent);
                         character = spawnEvent.Character;
                     break;
+                    case CharacterType.DAOS:
+                        Characters.Add(GameObject.Find("DaosCharacter").GetComponent<SmartCharacter>());
+                    break;
+                    case CharacterType.DONKEY:
+                        Characters.Add(GameObject.Find("Donkey").GetComponent<SmartCharacter>());
+                    break;
                 }
 
                 if (characterType == CharacterType.MERCENARY && character != null)

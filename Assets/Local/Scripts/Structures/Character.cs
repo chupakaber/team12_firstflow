@@ -306,12 +306,12 @@ namespace Scripts
 
         public void DropItemsFromHands()
         {
-            ItemStackView.Drop(transform.position + Vector3.forward * -1.5f);
+            ItemStackView?.Drop(transform.position + Vector3.forward * -1.5f);
         }
 
         public void PickUpDroppedItems()
         {
-            ItemStackView.PickUp();
+            ItemStackView?.PickUp();
         }
 
         private void UpdateInventoryInHand()

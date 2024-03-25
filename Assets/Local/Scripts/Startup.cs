@@ -76,6 +76,7 @@ namespace Scripts
         private CarnivalBehaviorSystem _carnivalBehaviorSystem = new CarnivalBehaviorSystem();
         private CutSceneSystem _cutSceneSystem = new CutSceneSystem();
         private FillingInteractionAreaSystem _fillingInteractionZoneSystem = new FillingInteractionAreaSystem();
+        private DaosDonkeySystem _daosDonkeySystem = new DaosDonkeySystem();
 
         private bool _initialized;
 
@@ -84,6 +85,7 @@ namespace Scripts
             _mainCamera = Camera.main;
             _characters.Add(GameObject.Find("Character").GetComponent<SmartCharacter>());
             _characters.Add(GameObject.Find("DaosCharacter").GetComponent<SmartCharacter>());
+            _characters.Add(GameObject.Find("Donkey").GetComponent<SmartCharacter>());
             _uiView = FindObjectOfType<UIView>();
             _unlockQueue = FindObjectOfType<UnlockQueue>();
             _scenario = FindObjectOfType<Scenario>();
@@ -159,6 +161,7 @@ namespace Scripts
             AddSystem(_cutSceneSystem);
             AddSystem(_characterInitSystem);
             AddSystem(_fillingInteractionZoneSystem);
+            AddSystem(_daosDonkeySystem);
 
             _container.AddLink(_eventBus, "EventBus");
             _container.AddLink(_characters, "Characters");
