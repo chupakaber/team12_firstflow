@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using DG.Tweening;
+using Scripts.BehaviorTree;
 using Scripts.Enums;
 using UnityEngine;
 using UnityEngine.AI;
@@ -444,6 +445,11 @@ namespace Scripts
             }
         }
 
+        public void EventCatch(NewRankEvent currentEvent)
+        {
+            UIView.OpenNewRank(currentEvent);
+        }
+
         private void UpdateItemsCount(Unit unit, ItemType itemType)
         {
             if (unit is Character)
@@ -463,6 +469,8 @@ namespace Scripts
                             EventBus.CallEvent(new PlaySoundEvent() { SoundId = 7, IsMusic = false, FadeMusic = true, AttachedTo = character.transform, Position = character.transform.position });
 
                             // TODO: make visual effect
+
+                            ((ScenarioState) Scenario.BehaviorTreeRunner.InternalState).EventsQueue.AddLast(new NewRankEvent() {});
                         }
 
                         UIView.SetRank(rank, rank - 1, currentPoints, rankPoints, (float) currentPoints / rankPoints);

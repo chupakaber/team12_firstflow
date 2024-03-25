@@ -26,7 +26,7 @@ namespace Scripts
         {
         }
 
-        public virtual void OnActivate()
+        public virtual void OnActivate(IQueuedEvent queuedEvent)
         {
         }
     }

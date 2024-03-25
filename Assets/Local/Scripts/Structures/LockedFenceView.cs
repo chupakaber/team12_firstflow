@@ -20,7 +20,7 @@ namespace Scripts
             }
         }
 
-        public override void OnActivate()
+        public override void OnActivate(IQueuedEvent queuedEvent)
         {
             _camera = Camera.main;
             _scenario = FindObjectOfType<Scenario>();
@@ -40,10 +40,10 @@ namespace Scripts
             }
             
             _endTime = Time.time + 6f;
-            StartCoroutine(LockCameraAsync());
+            StartCoroutine(LockCameraAsync(queuedEvent));
         }
 
-        public IEnumerator LockCameraAsync()
+        public IEnumerator LockCameraAsync(IQueuedEvent queuedEvent)
         {
             _player.IsCutSceneActiv = true;
 
@@ -63,6 +63,11 @@ namespace Scripts
 
             _player.IsCutSceneActiv = false;
             gameObject.SetActive(false);
+            
+            if (queuedEvent != null)
+            {
+                queuedEvent.Locked = false;
+            }
         }
     }
 }

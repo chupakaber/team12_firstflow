@@ -31,10 +31,9 @@ namespace Scripts.BehaviorTree
             if (parent is IOutputGameObject)
             {
                 var gameObject = ((IOutputGameObject) parent).GetOutputGameObject();
-                if (gameObject.TryGetComponent<GameObectWithStateView>(out var obj))
+                if (gameObject.TryGetComponent<IGameObjectWithState>(out var obj))
                 {
-                    obj.OnActivate();
-                    internalState.EventBus.CallEvent(new SaveEvent());
+                    ((ScenarioState) internalState).EventsQueue.AddLast(new ActivateInteractiveObjectEvent() { TargetObject = obj });
 
                     for (var i = 0; i < Children.Count; i++)
                     {

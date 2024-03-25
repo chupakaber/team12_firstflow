@@ -10,6 +10,6 @@ namespace Scripts
         GameObject GetGameObject();
         void OnLoad();
         void OnInteract();
-        void OnActivate();
+        void OnActivate(IQueuedEvent queuedEvent);
     }
 }

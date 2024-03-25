@@ -22,6 +22,7 @@ namespace Scripts.BehaviorTree
         public List<Character> Characters { get; set; }
         public List<IGameObjectWithState> GameObjectsWithState { get; set; }
         public UIView UIView { get; set; }
+        public LinkedList<IQueuedEvent> EventsQueue { get; set; } = new LinkedList<IQueuedEvent>();
 
         public SmartCharacter Player;
 

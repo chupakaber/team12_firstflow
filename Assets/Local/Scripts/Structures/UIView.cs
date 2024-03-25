@@ -94,6 +94,7 @@ namespace Scripts
         private bool _tutorialEnabled = false;
         private bool _showTutorial = false;
         private int _tutorialStepId = -1;
+        private IQueuedEvent _rankPopupEvent;
 
         public void Awake()
         {
@@ -210,11 +211,6 @@ namespace Scripts
                         _currentRank = currentRank;
                         RankCurrentLabel.text = currentRank.ToString();
                         RankNextLabel.text = nextRank > 0 ? nextRank.ToString() : "";
-
-                        if (currentRank < 6)
-                        {
-                            OpenNewRank();
-                        }
                     }
                 }
             }
@@ -247,8 +243,9 @@ namespace Scripts
             RankEffect.Play("RankShort");
         }
 
-        public void OpenNewRank()
+        public void OpenNewRank(IQueuedEvent queuedEvent)
         {
+            _rankPopupEvent = queuedEvent;
             RanksSetup();
             RankEffect.Play("Rank");
         }
@@ -258,6 +255,11 @@ namespace Scripts
             RankEffect.Play("RankClose");
             RankEffect.transform.DOScale(1f, 0.2f).OnComplete(() => {
                 RankEffect.gameObject.SetActive(false);
+                if (_rankPopupEvent != null)
+                {
+                    _rankPopupEvent.Locked = false;
+                    _rankPopupEvent = null;
+                }
             });
         }
 

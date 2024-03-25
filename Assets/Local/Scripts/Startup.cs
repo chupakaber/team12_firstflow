@@ -77,6 +77,7 @@ namespace Scripts
         private CutSceneSystem _cutSceneSystem = new CutSceneSystem();
         private FillingInteractionAreaSystem _fillingInteractionZoneSystem = new FillingInteractionAreaSystem();
         private DaosDonkeySystem _daosDonkeySystem = new DaosDonkeySystem();
+        private ActivateInteractiveObjectSystem _activateInteractiveObjectSystem = new ActivateInteractiveObjectSystem();
 
         private bool _initialized;
 
@@ -162,6 +163,7 @@ namespace Scripts
             AddSystem(_characterInitSystem);
             AddSystem(_fillingInteractionZoneSystem);
             AddSystem(_daosDonkeySystem);
+            AddSystem(_activateInteractiveObjectSystem);
 
             _container.AddLink(_eventBus, "EventBus");
             _container.AddLink(_characters, "Characters");

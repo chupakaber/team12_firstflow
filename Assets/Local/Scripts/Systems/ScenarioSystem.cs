@@ -110,6 +110,25 @@ namespace Scripts
             Scenario.BehaviorTreeRunner.EventCatch(newEvent);
         }
 
+        public void EventCatch(UpdateEvent newEvent)
+        {
+            var scenarioState = (ScenarioState) Scenario.BehaviorTreeRunner.InternalState;
+            if (scenarioState.EventsQueue.First != null)
+            {
+                var queuedEvent = scenarioState.EventsQueue.First.Value;
+                if (queuedEvent.Started && !queuedEvent.Locked)
+                {
+                    scenarioState.EventsQueue.RemoveFirst();
+                }
+                else if (!queuedEvent.Started)
+                {
+                    queuedEvent.Started = true;
+                    queuedEvent.Locked = true;
+                    EventBus.CallEvent((IEvent) queuedEvent);
+                }
+            }
+        }
+
 /*
     {
         public List<Character> Characters;

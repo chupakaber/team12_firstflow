@@ -653,6 +653,25 @@ MonoBehaviour:
   Method: 0
   Value: 1
   StateID: 14
+--- !u!114 &-7733488404257997609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cabfa7777c00a244a97f6947d48dea2, type: 3}
+  m_Name: SET ACTIVE
+  m_EditorClassIdentifier: 
+  Name: SET ACTIVE
+  Guid: 94500e4a94f9c934b9f9749e223b9d28
+  Position: {x: 2406, y: -91}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
+  FieldName: 1
 --- !u!114 &-7691746109312338677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1190,6 +1209,24 @@ MonoBehaviour:
   InputTargetIndex: 
   OutputIndex: 
   FieldName: 1
+--- !u!114 &-6815233743788724434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc3187a9a6b7084fabe6b9eedb740b2, type: 3}
+  m_Name: ActivateInteractiveObject
+  m_EditorClassIdentifier: 
+  Name: ActivateInteractiveObject
+  Guid: 7e4b7e17bb2c33e4e9150ee8368711fc
+  Position: {x: -181.00003, y: -341.00006}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
 --- !u!114 &-6697023109870950856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1407,25 +1444,6 @@ MonoBehaviour:
   Child: {fileID: -6469125221335106525}
   InputTargetIndex: 1
   Value: 0
---- !u!114 &-6405551812509585477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3616bc1983e09fb42acb60a1ee749bd3, type: 3}
-  m_Name: DEACTIVATE
-  m_EditorClassIdentifier: 
-  Name: DEACTIVATE
-  Guid: d12b52760869fa849a3e89c075eae0cf
-  Position: {x: 32.85005, y: 280}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
-  FieldName: 0
 --- !u!114 &-6335312450085459683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1603,25 +1621,6 @@ MonoBehaviour:
   Contents: 
   BackgroundColor: {r: 0.2, g: 0.235, b: 0.294, a: 1}
   TextColor: {r: 0.487, g: 0.723, b: 0.867, a: 1}
---- !u!114 &-6027354531924714142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3616bc1983e09fb42acb60a1ee749bd3, type: 3}
-  m_Name: DEACTIVATE
-  m_EditorClassIdentifier: 
-  Name: DEACTIVATE
-  Guid: b5603b3973d0eb842a428bd62211ba2c
-  Position: {x: 27.850037, y: 60.00002}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
-  FieldName: 0
 --- !u!114 &-6022109954018711389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1766,7 +1765,7 @@ MonoBehaviour:
   Guid: ec84cfb2b7dfa074e8db15406be6efc8
   Position: {x: -163, y: 21}
   Children:
-  - {fileID: -6027354531924714142}
+  - {fileID: 231528340069743501}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
   GameObjectName: BridgeFence2
@@ -2273,6 +2272,34 @@ MonoBehaviour:
   ChildrenForFailure: []
   Operator: 0
   Value: 501
+--- !u!114 &-4759210699188910719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a047cd0ba84b149aa7d22037d9142e, type: 3}
+  m_Name: MansionFoundation
+  m_EditorClassIdentifier: 
+  Name: MansionFoundation
+  Guid: ce6e1a2c02801d745ae6c5fd72b4dc17
+  Position: {x: 2205, y: -91}
+  Children:
+  - {fileID: -7733488404257997609}
+  InputTargetIndex: 00000000
+  OutputIndex: 00000000
+  ID: 5501
+  MinimumLevel: 0
+  MaximumLevel: 1000
+  ProduceItemTypes: 
+  ConsumeItemTypes: 
+  ProductionAreaNeeded: 0
+  PickingUpAreaNeeded: 0
+  UnloadingAreaNeeded: 0
+  ForEach: 0
 --- !u!114 &-4715686752771279581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3363,24 +3390,6 @@ MonoBehaviour:
   Child: {fileID: -1333634644227314578}
   InputTargetIndex: 1
   Value: 1
---- !u!114 &-3004318379468763243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
-  m_Name: FALSE
-  m_EditorClassIdentifier: 
-  Name: FALSE
-  Guid: fe673ec94b775dd47a0581e3991607c9
-  Position: {x: -163.15, y: 355.00003}
-  Child: {fileID: -6405551812509585477}
-  InputTargetIndex: 1
-  Value: 0
 --- !u!114 &-2879607646521596115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4046,7 +4055,7 @@ MonoBehaviour:
   Guid: ad9f411932b127d499bf884df784de39
   Position: {x: -337, y: -341}
   Children:
-  - {fileID: 7953719677718779159}
+  - {fileID: -6815233743788724434}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
   GameObjectName: BridgeFence
@@ -4847,7 +4856,7 @@ MonoBehaviour:
   Guid: 65e399ee5f1eca745ae4563d46ee89aa
   Position: {x: -163.15, y: 242.00003}
   Children:
-  - {fileID: -6405551812509585477}
+  - {fileID: 3198879837280304110}
   InputTargetIndex: 00000000
   OutputIndex: 00000000
   GameObjectName: BridgeFence3
@@ -5285,9 +5294,7 @@ MonoBehaviour:
   - {fileID: -8575932793810398688}
   - {fileID: 2069205270874010324}
   - {fileID: 4032114925188178795}
-  - {fileID: 7953719677718779159}
   - {fileID: -1821716442433743661}
-  - {fileID: 8765361165223401335}
   - {fileID: -5059682455818945910}
   - {fileID: -9209488102759923313}
   - {fileID: 3532340057249199061}
@@ -5506,11 +5513,7 @@ MonoBehaviour:
   - {fileID: -5314300917922993935}
   - {fileID: 7579453600643018698}
   - {fileID: -5826623057451224343}
-  - {fileID: 2344525169059788370}
   - {fileID: -554424615711543226}
-  - {fileID: -3004318379468763243}
-  - {fileID: -6027354531924714142}
-  - {fileID: -6405551812509585477}
   - {fileID: 6106481403904105779}
   - {fileID: 6433923002839899843}
   - {fileID: 5810808321182596326}
@@ -5664,6 +5667,12 @@ MonoBehaviour:
   - {fileID: 4527216317097514672}
   - {fileID: 3968545695819927487}
   - {fileID: 7715093723493030931}
+  - {fileID: -6815233743788724434}
+  - {fileID: 231528340069743501}
+  - {fileID: 3198879837280304110}
+  - {fileID: -4759210699188910719}
+  - {fileID: -7733488404257997609}
+  - {fileID: 5787668126845203387}
   Labels:
   - {fileID: -6524441439742630276}
   - {fileID: 2134023816377030358}
@@ -5760,8 +5769,10 @@ MonoBehaviour:
   - {fileID: -7381417173124172747}
   - {fileID: -6476890985775111912}
   - {fileID: -3020577978829304373}
-  InputTargetIndex: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  OutputIndex: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  - {fileID: -4759210699188910719}
+  - {fileID: 5787668126845203387}
+  InputTargetIndex: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  OutputIndex: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   EventType: 10
 --- !u!114 &206456240511327896
 MonoBehaviour:
@@ -5805,6 +5816,24 @@ MonoBehaviour:
   OutputIndex: 00000000
   FieldName: 3
   Index: 0
+--- !u!114 &231528340069743501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc3187a9a6b7084fabe6b9eedb740b2, type: 3}
+  m_Name: ActivateInteractiveObject
+  m_EditorClassIdentifier: 
+  Name: ActivateInteractiveObject
+  Guid: 307d739536f3da840846aa4b6e2cd110
+  Position: {x: -2.6499891, y: 20.999983}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
 --- !u!114 &274990122295294784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5859,12 +5888,10 @@ MonoBehaviour:
   Position: {x: -346, y: 20.950012}
   Children:
   - {fileID: -5826623057451224343}
-  - {fileID: 2344525169059788370}
   - {fileID: -554424615711543226}
-  - {fileID: -3004318379468763243}
   - {fileID: -71046750551465850}
-  InputTargetIndex: 0000000000000000000000000000000000000000
-  OutputIndex: 0000000000000000000000000000000000000000
+  InputTargetIndex: 000000000000000000000000
+  OutputIndex: 000000000000000000000000
   FieldName: 1
 --- !u!114 &464108257566133565
 MonoBehaviour:
@@ -7050,24 +7077,6 @@ MonoBehaviour:
   ChildrenForFailure: []
   Operator: 0
   Value: 1
---- !u!114 &2344525169059788370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
-  m_Name: FALSE
-  m_EditorClassIdentifier: 
-  Name: FALSE
-  Guid: 2a6d4ce43194d2143867b91a1fa5e1ec
-  Position: {x: -163.15, y: 131}
-  Child: {fileID: -6027354531924714142}
-  InputTargetIndex: 1
-  Value: 0
 --- !u!114 &2355446994088756681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7607,6 +7616,24 @@ MonoBehaviour:
   Child: {fileID: 6430809617320714091}
   InputTargetIndex: 1
   Value: 5
+--- !u!114 &3198879837280304110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc3187a9a6b7084fabe6b9eedb740b2, type: 3}
+  m_Name: ActivateInteractiveObject
+  m_EditorClassIdentifier: 
+  Name: ActivateInteractiveObject
+  Guid: 0444967158e3ac64f8b1cb939048101e
+  Position: {x: 10.000011, y: 241.99997}
+  Children: []
+  InputTargetIndex: 
+  OutputIndex: 
 --- !u!114 &3251031536942126746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8141,12 +8168,11 @@ MonoBehaviour:
   - {fileID: -1155288498380096698}
   - {fileID: -745600396261593127}
   - {fileID: -1821716442433743661}
-  - {fileID: 8765361165223401335}
   - {fileID: 206456240511327896}
   - {fileID: -9209488102759923313}
   - {fileID: -5059682455818945910}
-  InputTargetIndex: 000000000000000000000000000000000000000000000000000000000000000000000000
-  OutputIndex: 000000000000000000000000000000000000000000000000000000000100000000000000
+  InputTargetIndex: 0000000000000000000000000000000000000000000000000000000000000000
+  OutputIndex: 0000000000000000000000000000000000000000000000000100000000000000
   ChildrenForFailure: []
   Operator: 1
   Value: 0
@@ -9410,6 +9436,24 @@ MonoBehaviour:
   PickingUpAreaNeeded: 0
   UnloadingAreaNeeded: 0
   ForEach: 0
+--- !u!114 &5787668126845203387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
+  m_Name: TRUE
+  m_EditorClassIdentifier: 
+  Name: TRUE
+  Guid: 25dfe9c7561465c46bb1bcb27eb80dd2
+  Position: {x: 2205, y: 33.99993}
+  Child: {fileID: -7733488404257997609}
+  InputTargetIndex: 1
+  Value: 1
 --- !u!114 &5794521305881716659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10827,25 +10871,6 @@ MonoBehaviour:
   Child: {fileID: -919284606577204788}
   InputTargetIndex: 1
   Value: 1
---- !u!114 &7953719677718779159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3616bc1983e09fb42acb60a1ee749bd3, type: 3}
-  m_Name: DEACTIVATE
-  m_EditorClassIdentifier: 
-  Name: DEACTIVATE
-  Guid: 32eef795125263146bcc53aa6be0a793
-  Position: {x: -193, y: -341}
-  Children: []
-  InputTargetIndex: 
-  OutputIndex: 
-  FieldName: 0
 --- !u!114 &8047727014538146104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11389,24 +11414,6 @@ MonoBehaviour:
   Contents: Switch tutorial arrow after assighnment npc
   BackgroundColor: {r: 0.2, g: 0.235, b: 0.294, a: 1}
   TextColor: {r: 0.487, g: 0.723, b: 0.867, a: 1}
---- !u!114 &8765361165223401335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a65841fbaec8f458659a09488c3df3, type: 3}
-  m_Name: FALSE
-  m_EditorClassIdentifier: 
-  Name: FALSE
-  Guid: 81228c4a332e7424fa089eae59452ed8
-  Position: {x: -337, y: -219}
-  Child: {fileID: 7953719677718779159}
-  InputTargetIndex: 1
-  Value: 0
 --- !u!114 &8886790934348301404
 MonoBehaviour:
   m_ObjectHideFlags: 0
