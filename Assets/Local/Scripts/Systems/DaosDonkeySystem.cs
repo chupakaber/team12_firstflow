@@ -147,14 +147,12 @@ namespace Scripts
                         {
                             if (_donkey.CurrentRouteWaypointIndex >= _donkeyRoute.Waypoints.Count || _donkey.CurrentRouteWaypointIndex == 0)
                             {
-                                Debug.Log($"HOME");
                                 _donkey.CurrentRouteWaypointIndex = 0;
                                 _move = false;
                             }
                             else
                             {
                                 _cleaning = true;
-                                Debug.Log($"CLEAR DONKEY BASKETS");
                             }
                         }
                     }
